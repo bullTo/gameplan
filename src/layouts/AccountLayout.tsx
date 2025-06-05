@@ -1,0 +1,202 @@
+import { Routes, Route, Navigate } from 'react-router-dom'
+import { Button } from '@/components/ui/button'
+import { useNavigate, useLocation } from 'react-router-dom'
+import { ChevronDown, Gift } from 'lucide-react'
+import {
+  DropdownMenu,
+  DropdownMenuContent,
+  DropdownMenuItem,
+  DropdownMenuTrigger,
+} from "@/components/ui/dropdown-menu"
+import { getUserData, logoutUser } from '@/api/auth'
+import Footer from '@/components/Footer'
+
+// Import page components
+import Dashboard from '@/pages/account/Dashboard'
+import Predictions from '@/pages/account/Predictions'
+import PredictionDetail from '@/pages/account/PredictionDetail'
+import Tracker from '@/pages/account/Tracker'
+import Profile from '@/pages/account/Profile'
+import Settings from '@/pages/account/Settings'
+import Referral from '@/pages/account/Referral'
+import Account from '@/pages/account/Account'
+import Subscription from '@/pages/account/Subscription'
+import SubscriptionSuccess from '@/pages/account/SubscriptionSuccess'
+import SubscriptionCancel from '@/pages/account/SubscriptionCancel'
+
+
+const AccountLayout = () => {
+  const navigate = useNavigate()
+  const location = useLocation()
+
+  // Helper function to check if a menu item is active
+  const isActive = (path: string) => {
+    return location.pathname === path
+  }
+
+  const handleLogout = () => {
+    // Implement logout functionality
+    logoutUser()
+    navigate('/')
+  }
+
+  return (
+    <div className="min-h-screen" style={{ backgroundColor: '#072730' }}>
+      <header style={{
+        backgroundColor: '#1B1C25',
+        borderBottom: '1px solid rgba(14, 173, 171, 0.2)'
+      }}>
+        <div className="mx-auto max-w-7xl px-12 py-3 flex justify-between items-center">
+          <div className="flex items-center">
+            <div className="flex items-center">
+              <img
+                src="/gameplan-ai-logo.png"
+                alt="GamePlan AI Logo"
+                style={{ height: '40px', width: 'auto' }}
+              />
+            </div>
+          </div>
+          <nav className="flex items-center space-x-6">
+            <Button
+              variant="ghost"
+              onClick={() => navigate('/account/dashboard')}
+              className="flex items-center px-3 py-2 text-base"
+              style={{
+                color: isActive('/account/dashboard') ? '#0EADAB' : 'white',
+                fontWeight: isActive('/account/dashboard') ? 'bold' : 'normal',
+                textDecoration: isActive('/account/dashboard') ? 'underline' : 'none',
+                letterSpacing: '1.4px',
+                fontFamily: 'Poppins'
+              }}
+            >
+              Dashboard
+            </Button>
+            <Button
+              variant="ghost"
+              onClick={() => navigate('/account/predictions')}
+              className="flex items-center px-3 py-2 text-base"
+              style={{
+                color: isActive('/account/predictions') ? '#0EADAB' : 'white',
+                fontWeight: isActive('/account/predictions') ? 'bold' : 'normal',
+                letterSpacing: '1.4px',
+                fontFamily: 'Poppins'
+              }}
+            >
+              Predictions
+            </Button>
+            <Button
+              variant="ghost"
+              onClick={() => navigate('/account/tracker')}
+              className="flex items-center px-3 py-2 text-base"
+              style={{
+                color: isActive('/account/tracker') ? '#0EADAB' : 'white',
+                fontWeight: isActive('/account/tracker') ? 'bold' : 'normal',
+                letterSpacing: '1.4px',
+                fontFamily: 'Poppins'
+              }}
+            >
+              Tracker
+            </Button>
+            <DropdownMenu>
+              <DropdownMenuTrigger asChild>
+                <Button
+                  variant="ghost"
+                  className="flex items-center gap-2 px-3 py-2 text-base"
+                  style={{
+                    color: isActive('/account/account') ? '#0EADAB' : 'white',
+                    fontWeight: isActive('/account/account') ? 'bold' : 'normal',
+                    letterSpacing: '1.4px',
+                    fontFamily: 'Poppins'
+                  }}
+                >
+                  <span>{getUserData()?.name || 'My Account'}</span>
+                  <ChevronDown size={14} style={{ transform: 'rotate(90deg)' }} />
+                </Button>
+              </DropdownMenuTrigger>
+              <DropdownMenuContent style={{ backgroundColor: '#1B1C25', borderRadius: '8px', borderColor: 'rgba(14, 173, 171, 0.2)' }}>
+                <DropdownMenuItem
+                  onClick={() => navigate('/account/account')}
+                  style={{
+                    fontFamily: 'Poppins',
+                    color: 'white',
+                    backgroundColor: '#1B1C25'
+                  }}
+                  className="hover:bg-[#0EADAB]/10 focus:bg-[#0EADAB]/10"
+                >
+                  My Account
+                </DropdownMenuItem>
+                <DropdownMenuItem
+                  onClick={() => navigate('/account/subscription')}
+                  style={{
+                    fontFamily: 'Poppins',
+                    color: 'white',
+                    backgroundColor: '#1B1C25'
+                  }}
+                  className="hover:bg-[#0EADAB]/10 focus:bg-[#0EADAB]/10"
+                >
+                  Subscription
+                </DropdownMenuItem>
+                <DropdownMenuItem
+                  onClick={handleLogout}
+                  style={{
+                    fontFamily: 'Poppins',
+                    color: 'white',
+                    backgroundColor: '#1B1C25'
+                  }}
+                  className="hover:bg-[#0EADAB]/10 focus:bg-[#0EADAB]/10"
+                >
+                  Sign Out
+                </DropdownMenuItem>
+              </DropdownMenuContent>
+            </DropdownMenu>
+            <Button
+              variant="ghost"
+              onClick={() => navigate('/account/referral')}
+              className="flex items-center px-3 py-2"
+              style={{
+                color: isActive('/account/referral') ? '#0EADAB' : 'white',
+                fontFamily: 'Poppins'
+              }}
+            >
+              <Gift size={16} />
+            </Button>
+            <Button
+              variant="ghost"
+              onClick={handleLogout}
+              className="flex items-center px-3 py-2 text-base"
+              style={{
+                color: 'white',
+                letterSpacing: '1.4px',
+                fontFamily: 'Poppins'
+              }}
+            >
+              Logout
+            </Button>
+          </nav>
+        </div>
+      </header>
+
+      <main className="mx-auto max-w-7xl px-4 py-6 sm:px-6 lg:px-8" style={{ color: 'white' }}>
+        <Routes>
+          <Route path="dashboard" element={<Dashboard />} />
+          <Route path="predictions" element={<Predictions />} />
+          <Route path="predictions/:id" element={<PredictionDetail />} />
+          <Route path="tracker" element={<Tracker />} />
+          <Route path="profile" element={<Profile />} />
+          <Route path="settings" element={<Settings />} />
+          <Route path="referral" element={<Referral />} />
+          <Route path="account" element={<Account />} />
+          <Route path="subscription" element={<Subscription />} />
+          <Route path="subscription/success" element={<SubscriptionSuccess />} />
+          <Route path="subscription/cancel" element={<SubscriptionCancel />} />
+          <Route path="*" element={<Navigate to="/account/dashboard" replace />} />
+        </Routes>
+      </main>
+
+      {/* Footer */}
+      <Footer variant="account" />
+    </div>
+  )
+}
+
+export default AccountLayout

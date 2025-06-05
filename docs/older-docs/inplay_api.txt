@@ -1,0 +1,4857 @@
+n this documentation you will find all detailed information about our API endpoints URLs, what data it accepts, what format it accepts and what data it returns and in which format.
+
+The Goalserve API organized as REST, and Webhooks Notifications:
+
+Goalserve REST API requestable by standart http GET method and returns data in two main formats: XML and JSON. To get access to Goalserve REST API you must be registered in our system and granted accesss with your unique private api access key.
+
+Goalserve Webhook Notifications services requeres you to provide http POST endpoint on your server, and it will send you events notifications with JSON formatted objects.
+
+Inplay REST API
+API Reference documentation for Goalserve Inplay API module.
+
+To get access to Goalserve Inplay API you must be registered in our system and get your unique api access key. Also, your IP address must be whitelisted in our system.
+
+Soccer
+curl --request GET \\
+  --url {REQUEST_URL_FROM_ADMIN}
+Response object
+
+{
+  "updated": "09.14.2021 11:24:08",
+  "updated_ts": 1631618648131,
+  "events": {
+    "65012526": {
+      "core": {
+        "safe": "",
+        "removed": "",
+        "stopped": "0",
+        "blocked": "0",
+        "finished": "0",
+        "updated": "14.09.2021 11:24:07",
+        "updated_ts": "1631618647262"
+      },
+      "info": {
+        "id": "65012526",
+        "mid": "5062504",
+        "bet365id": "107929286",
+        "name": "Transport United FC vs Paro FC",
+        "sport": "soccer",
+        "league": "Bhutan Premier League",
+        "start_time": "11:00",
+        "start_date": "14.09.2021",
+        "start_ts": "1631617200",
+        "period": "2nd Half",
+        "score": "1:1",
+        "ball_pos": "",
+        "state_info": null,
+        "state": "11002",
+        "minute": "64",
+        "seconds": "63:42"
+      },
+      "team_info": {
+        "home": {
+          "name": "Transport United FC",
+          "score": "1",
+          "color": "",
+          "kit_color": "#F0F0F0,#F0F0F0,#D6003D,#D6003D",
+          "Serve": ""
+        },
+        "away": {
+          "name": "Paro FC",
+          "score": "1",
+          "color": "",
+          "kit_color": "#2B72DE,#2B72DE",
+          "Serve": ""
+        }
+      },
+      "bonus": {},
+      "stream": "",
+      "stats": {
+        "0": {
+          "name": "ITeam",
+          "home": "Transport United FC",
+          "away": "Paro FC"
+        },
+        "1": {
+          "name": "IGoal",
+          "home": "1",
+          "away": "1"
+        },
+        "2": {
+          "name": "ICorner",
+          "home": "3",
+          "away": "4"
+        },
+        "3": {
+          "name": "IYellowCard",
+          "home": "1",
+          "away": "1"
+        },
+        "4": {
+          "name": "IRedCard",
+          "home": "0",
+          "away": "0"
+        },
+        "5": {
+          "name": "IThrowIn",
+          "home": "0",
+          "away": "0"
+        },
+        "6": {
+          "name": "IFreeKick",
+          "home": "0",
+          "away": "0"
+        },
+        "7": {
+          "name": "IGoalKick",
+          "home": "0",
+          "away": "0"
+        },
+        "8": {
+          "name": "IPenalty",
+          "home": "0",
+          "away": "0"
+        },
+        "9": {
+          "name": "ISubstitution",
+          "home": "1",
+          "away": "2"
+        },
+        "10": {
+          "name": "IAttacks",
+          "home": "127",
+          "away": "118"
+        },
+        "11": {
+          "name": "IDangerousAttacks",
+          "home": "70",
+          "away": "86"
+        },
+        "12": {
+          "name": "IOnTarget",
+          "home": "2",
+          "away": "3"
+        },
+        "13": {
+          "name": "IOffTarget",
+          "home": "3",
+          "away": "3"
+        },
+        "14": {
+          "name": "IPosession",
+          "home": "48",
+          "away": "52"
+        }
+      },
+      "extra": {
+        "0": {
+          "code": "252",
+          "minute": "8",
+          "value": "8' - 1st Corner - Paro FC"
+        },
+        "1": {
+          "code": "",
+          "minute": "0",
+          "value": "0:0 Goals 00:00 - 09:59"
+        },
+        "2": {
+          "code": "",
+          "minute": "0",
+          "value": "0:1 Corners 00:00 - 09:59"
+        }
+      },
+      "history": {},
+      "odds": {
+        "1": {
+          "id": 1,
+          "name": "Home Team Goals",
+          "short_name": "Home Team Goals",
+          "suspend": "0",
+          "order": "",
+          "participants": {
+            "6501252610": {
+              "id": "6501252610",
+              "name": "Over",
+              "short_name": "Over",
+              "value_eu": "8.5",
+              "suspend": "0",
+              "handicap": "2.5"
+            },
+            "6501252611": {
+              "id": "6501252611",
+              "name": "Under",
+              "short_name": "Under",
+              "value_eu": "1.05",
+              "suspend": "0",
+              "handicap": "2.5"
+            },
+            "6501252612": {
+              "id": "6501252612",
+              "name": "Over",
+              "short_name": "Over",
+              "value_eu": "2.625",
+              "suspend": "0",
+              "handicap": "1.5"
+            },
+            "6501252613": {
+              "id": "6501252613",
+              "name": "Under",
+              "short_name": "Under",
+              "value_eu": "1.444",
+              "suspend": "0",
+              "handicap": "1.5"
+            }
+          }
+        },
+        "2": {
+          "id": 2,
+          "name": "Away Team Goals",
+          "short_name": "Away Team Goals",
+          "suspend": "0",
+          "order": "",
+          "participants": {
+            "6501252620": {
+              "id": "6501252620",
+              "name": "Over",
+              "short_name": "Over",
+              "value_eu": "1.833",
+              "suspend": "0",
+              "handicap": "1.5"
+            },
+            "6501252621": {
+              "id": "6501252621",
+              "name": "Under",
+              "short_name": "Under",
+              "value_eu": "1.833",
+              "suspend": "0",
+              "handicap": "1.5"
+            },
+            "6501252622": {
+              "id": "6501252622",
+              "name": "Over",
+              "short_name": "Over",
+              "value_eu": "5",
+              "suspend": "0",
+              "handicap": "2.5"
+            },
+            "6501252623": {
+              "id": "6501252623",
+              "name": "Under",
+              "short_name": "Under",
+              "value_eu": "1.142",
+              "suspend": "0",
+              "handicap": "2.5"
+            }
+          }
+        },
+        "11": {
+          "id": 11,
+          "name": "3-Way Handicap",
+          "short_name": "3-Way Handicap",
+          "suspend": "0",
+          "order": "",
+          "participants": {
+            "65012526110": {
+              "id": "65012526110",
+              "name": "Home",
+              "short_name": "Home",
+              "value_eu": "1.09",
+              "suspend": "0",
+              "handicap": "2",
+              "is_main": "0"
+            },
+            "65012526111": {
+              "id": "65012526111",
+              "name": "Draw",
+              "short_name": "Draw",
+              "value_eu": "9",
+              "suspend": "0",
+              "handicap": "-2",
+              "is_main": "0"
+            },
+            "65012526112": {
+              "id": "65012526112",
+              "name": "Away",
+              "short_name": "Away",
+              "value_eu": "21",
+              "suspend": "0",
+              "handicap": "-2",
+              "is_main": "0"
+            },
+            "65012526113": {
+              "id": "65012526113",
+              "name": "Home",
+              "short_name": "Home",
+              "value_eu": "1.5",
+              "suspend": "0",
+              "handicap": "1",
+              "is_main": "1"
+            },
+            "65012526114": {
+              "id": "65012526114",
+              "name": "Draw",
+              "short_name": "Draw",
+              "value_eu": "3.4",
+              "suspend": "0",
+              "handicap": "-1",
+              "is_main": "1"
+            },
+            "65012526115": {
+              "id": "65012526115",
+              "name": "Away",
+              "short_name": "Away",
+              "value_eu": "6.5",
+              "suspend": "0",
+              "handicap": "-1",
+              "is_main": "1"
+            }
+          }
+        },
+        "12": {
+          "id": 12,
+          "name": "Asian Handicap",
+          "short_name": "Asian Handicap",
+          "suspend": "0",
+          "order": "",
+          "participants": {
+            "65012526120": {
+              "id": "65012526120",
+              "name": "Home",
+              "short_name": "Home",
+              "value_eu": "1.825",
+              "suspend": "0",
+              "handicap": "0.25",
+              "is_main": "1"
+            },
+            "65012526121": {
+              "id": "65012526121",
+              "name": "Away",
+              "short_name": "Away",
+              "value_eu": "1.975",
+              "suspend": "0",
+              "handicap": "-0.25",
+              "is_main": "1"
+            },
+            "65012526122": {
+              "id": "65012526122",
+              "name": "Home",
+              "short_name": "Home",
+              "value_eu": "1.325",
+              "suspend": "0",
+              "handicap": "0.75",
+              "is_main": "0"
+            },
+            "65012526123": {
+              "id": "65012526123",
+              "name": "Away",
+              "short_name": "Away",
+              "value_eu": "3.075",
+              "suspend": "0",
+              "handicap": "-0.75",
+              "is_main": "0"
+            }
+          }
+        }
+      }
+    },
+    "65012721": {
+      "core": {
+        "safe": "",
+        "removed": "",
+        "stopped": "0",
+        "blocked": "0",
+        "finished": "0",
+        "updated": "14.09.2021 11:23:51",
+        "updated_ts": "1631618631941"
+      },
+      "info": {
+        "id": "65012721",
+        "mid": "5062898",
+        "bet365id": "107929334",
+        "name": "Viborg FF Reserves vs AaB Reserves",
+        "sport": "soccer",
+        "league": "Denmark Reserve League",
+        "start_time": "12:00",
+        "start_date": "14.09.2021",
+        "start_ts": "1631620800",
+        "period": "1st Half",
+        "score": "0:1",
+        "ball_pos": "",
+        "state_info": ",6",
+        "state": "21936",
+        "minute": "24",
+        "seconds": "24:24"
+      },
+      "team_info": {
+        "home": {
+          "name": "Viborg FF Reserves",
+          "score": "0",
+          "color": "",
+          "kit_color": "#F0F0F0,#025C17",
+          "Serve": ""
+        },
+        "away": {
+          "name": "AaB Reserves",
+          "score": "1",
+          "color": "",
+          "kit_color": "#0A0A0A,#0A0A0A,#0A0A0A,#888888",
+          "Serve": ""
+        }
+      },
+      "bonus": {},
+      "stream": "",
+      "stats": {
+        "0": {
+          "name": "ITeam",
+          "home": "Viborg FF Reserves",
+          "away": "AaB Reserves"
+        },
+        "1": {
+          "name": "IGoal",
+          "home": "0",
+          "away": "1"
+        },
+        "2": {
+          "name": "ICorner",
+          "home": "0",
+          "away": "0"
+        },
+        "3": {
+          "name": "IYellowCard",
+          "home": "0",
+          "away": "1"
+        },
+        "4": {
+          "name": "IRedCard",
+          "home": "0",
+          "away": "0"
+        },
+        "5": {
+          "name": "IThrowIn",
+          "home": "0",
+          "away": "0"
+        },
+        "6": {
+          "name": "IFreeKick",
+          "home": "0",
+          "away": "0"
+        },
+        "7": {
+          "name": "IGoalKick",
+          "home": "0",
+          "away": "0"
+        },
+        "8": {
+          "name": "IPenalty",
+          "home": "0",
+          "away": "0"
+        },
+        "9": {
+          "name": "ISubstitution",
+          "home": "0",
+          "away": "0"
+        },
+        "10": {
+          "name": "IAttacks",
+          "home": "19",
+          "away": "16"
+        },
+        "11": {
+          "name": "IDangerousAttacks",
+          "home": "8",
+          "away": "8"
+        },
+        "12": {
+          "name": "IOnTarget",
+          "home": "3",
+          "away": "2"
+        },
+        "13": {
+          "name": "IOffTarget",
+          "home": "0",
+          "away": "0"
+        },
+        "14": {
+          "name": "IPosession",
+          "home": "49",
+          "away": "51"
+        }
+      },
+      "extra": {
+        "0": {
+          "code": "255",
+          "minute": "18",
+          "value": "18' - 1st Goal -   (AaB Reserves) - "
+        },
+        "1": {
+          "code": "253",
+          "minute": "23",
+          "value": "23' - 1st Yellow Card -  (AaB Reserves)"
+        }
+      },
+      "history": {},
+      "odds": {
+        "1": {
+          "id": 1,
+          "name": "Home Team Goals",
+          "short_name": "Home Team Goals",
+          "suspend": "0",
+          "order": "",
+          "participants": {
+            "6501272110": {
+              "id": "6501272110",
+              "name": "Over",
+              "short_name": "Over",
+              "value_eu": "15",
+              "suspend": "0",
+              "handicap": "4.5"
+            },
+            "6501272111": {
+              "id": "6501272111",
+              "name": "Under",
+              "short_name": "Under",
+              "value_eu": "1.01",
+              "suspend": "0",
+              "handicap": "4.5"
+            },
+            "6501272112": {
+              "id": "6501272112",
+              "name": "Over",
+              "short_name": "Over",
+              "value_eu": "2.2",
+              "suspend": "0",
+              "handicap": "1.5"
+            },
+            "6501272113": {
+              "id": "6501272113",
+              "name": "Under",
+              "short_name": "Under",
+              "value_eu": "1.615",
+              "suspend": "0",
+              "handicap": "1.5"
+            }
+          }
+        },
+        "2": {
+          "id": 2,
+          "name": "Away Team Goals",
+          "short_name": "Away Team Goals",
+          "suspend": "0",
+          "order": "",
+          "participants": {
+            "6501272120": {
+              "id": "6501272120",
+              "name": "Over",
+              "short_name": "Over",
+              "value_eu": "2.5",
+              "suspend": "0",
+              "handicap": "2.5"
+            },
+            "6501272121": {
+              "id": "6501272121",
+              "name": "Under",
+              "short_name": "Under",
+              "value_eu": "1.5",
+              "suspend": "0",
+              "handicap": "2.5"
+            },
+            "6501272122": {
+              "id": "6501272122",
+              "name": "Over",
+              "short_name": "Over",
+              "value_eu": "9",
+              "suspend": "0",
+              "handicap": "4.5"
+            },
+            "6501272123": {
+              "id": "6501272123",
+              "name": "Under",
+              "short_name": "Under",
+              "value_eu": "1.04",
+              "suspend": "0",
+              "handicap": "4.5"
+            }
+          }
+        },
+        "11": {
+          "id": 11,
+          "name": "3-Way Handicap",
+          "short_name": "3-Way Handicap",
+          "suspend": "0",
+          "order": "",
+          "participants": {
+            "65012721110": {
+              "id": "65012721110",
+              "name": "Home",
+              "short_name": "Home",
+              "value_eu": "1.142",
+              "suspend": "0",
+              "handicap": "3",
+              "is_main": "0"
+            },
+            "65012721111": {
+              "id": "65012721111",
+              "name": "Draw",
+              "short_name": "Draw",
+              "value_eu": "7.5",
+              "suspend": "0",
+              "handicap": "-3",
+              "is_main": "0"
+            },
+            "65012721112": {
+              "id": "65012721112",
+              "name": "Away",
+              "short_name": "Away",
+              "value_eu": "10",
+              "suspend": "0",
+              "handicap": "-3",
+              "is_main": "0"
+            },
+            "65012721113": {
+              "id": "65012721113",
+              "name": "Home",
+              "short_name": "Home",
+              "value_eu": "2.25",
+              "suspend": "0",
+              "handicap": "1",
+              "is_main": "1"
+            },
+            "65012721114": {
+              "id": "65012721114",
+              "name": "Draw",
+              "short_name": "Draw",
+              "value_eu": "3.6",
+              "suspend": "0",
+              "handicap": "-1",
+              "is_main": "1"
+            },
+            "65012721115": {
+              "id": "65012721115",
+              "name": "Away",
+              "short_name": "Away",
+              "value_eu": "2.5",
+              "suspend": "0",
+              "handicap": "-1",
+              "is_main": "1"
+            }
+          }
+        },
+        "12": {
+          "id": 12,
+          "name": "Asian Handicap",
+          "short_name": "Asian Handicap",
+          "suspend": "0",
+          "order": "",
+          "participants": {
+            "65012721120": {
+              "id": "65012721120",
+              "name": "Home",
+              "short_name": "Home",
+              "value_eu": "1.475",
+              "suspend": "0",
+              "handicap": "1.5",
+              "is_main": "0"
+            },
+            "65012721121": {
+              "id": "65012721121",
+              "name": "Away",
+              "short_name": "Away",
+              "value_eu": "2.475",
+              "suspend": "0",
+              "handicap": "-1.5",
+              "is_main": "0"
+            },
+            "65012721122": {
+              "id": "65012721122",
+              "name": "Home",
+              "short_name": "Home",
+              "value_eu": "2.25",
+              "suspend": "0",
+              "handicap": "0.5",
+              "is_main": "0"
+            },
+            "65012721123": {
+              "id": "65012721123",
+              "name": "Away",
+              "short_name": "Away",
+              "value_eu": "1.575",
+              "suspend": "0",
+              "handicap": "-0.5",
+              "is_main": "0"
+            }
+          }
+        }
+      }
+    }
+  }
+}
+Request Information
+Category	Value
+Http Method	GET
+URL	{REQUEST_URL_FROM_ADMIN}
+Request Headers
+No headers required
+
+Response Headers
+Name	Value
+Content-Type	application/json
+Output Schema of request
+ NOTE:
+IF THE ROOT FIELD "updated_ts" IS NOT UPDATED FOR MORE THAN 30 SECONDS, THIS MEANS THAT ALL ODDS AND MATCHES ARE SUSPENDED AND INACTIVE DUE TO LOSS OF CONNECTION TO THE SERVER.
+
+Field	Type	Description
+updated	datetime	Last update of the feed.
+updated_ts	timestamp	Last update of the feed as Timestamp.
+events	object	Collection of sports events objects.
+events.{event_id}	numeric	Id of sport event object.
+events.{id}.core.safe		Presented for backwards compatible with old API.
+events.{id}.core.removed		Presented for backwards compatible with old API.
+events.{id}.core.stopped	numeric	Indicates whether match time is stopped or it is running, e.g. a referee stops the time while there is an injury on the pitch.
+Value 1 or 0.
+events.{id}.core.blocked	numeric	Indicates whether event blocked or not.
+events.{id}.core.finished	numeric	Indicates whether event finished or not.
+events.{id}.core.updated	datetime	Indicates when event data was updated. Format dd.MM.yyyy HH:mm:ss.
+events.{id}.core.updated_ts	timestamp	Indicates when event data was updated.
+events.{id}.info.id	numeric	Id of sport event object.
+events.{id}.info.mid	numeric	Additional Id of sport event object.
+events.{id}.info.bet365id	numeric	Bet365 Id of sport event object.
+events.{id}.info.name	string	Event name.
+events.{id}.info.sport	string	Event sport type name.
+events.{id}.info.league	string	Event league name.
+events.{id}.info.start_time	string	Event start time. Format HH:mm. (GMT+1)
+events.{id}.info.start_date	string	Event start date. Format dd.MM.yyyy. (GMT+1)
+events.{id}.info.start_ts	timestamp	Event start datetime. (GMT+1)
+events.{id}.info.start_ts_utc	timestamp	Event start datetime UTC.
+events.{id}.info.period	string	Event current period name.
+events.{id}.info.score	string	Event current score.
+events.{id}.info.ball_pos	string	optional Ball position on field in coordinates system 'x' and 'y'.
+events.{id}.info.state_info	string	optional Event current state info.
+events.{id}.info.state	numeric	optional Event current state code.
+events.{id}.info.minute	numeric	optional Event current minute.
+events.{id}.info.seconds	string	optional Event current time. Format mm:ss.
+events.{id}.team_info.{home or away}.name	string	Team name.
+events.{id}.team_info.{home or away}.score	numeric	Team score.
+events.{id}.team_info.{home or away}.color		Presented for backwards compatible with old API.
+events.{id}.team_info.{home or away}.kit_color	string	Comma separated colors codes for upper part of the outfit (shirts).
+events.{id}.team_info.{home or away}.Serve		Presented for backwards compatible with old API.
+events.{id}.bonus		Presented for backwards compatible with old API.
+events.{id}.stream		Presented for backwards compatible with old API.
+events.{id}.stats.{idx}	numeric	idx - Statistics index in collection of statistics data.
+events.{id}.stats.{idx}.name
+events.{id}.stats.{idx}.home
+events.{id}.stats.{idx}.away	string
+string
+string	ITeam - Teams info.
+Home team name.
+Away team name.
+events.{id}.stats.{idx}.name
+events.{id}.stats.{idx}.home
+events.{id}.stats.{idx}.away	string
+numeric
+numeric	IGoal - Teams goals statistic.
+Home team goals.
+Away team goals.
+events.{id}.stats.{idx}.name
+events.{id}.stats.{idx}.home
+events.{id}.stats.{idx}.away	string
+numeric
+numeric	ICorner - Teams corners statistic.
+Home team corners.
+Away team corners.
+events.{id}.stats.{idx}.name
+events.{id}.stats.{idx}.home
+events.{id}.stats.{idx}.away	string
+numeric
+numeric	IYellowCard - Teams yellow cards statistic.
+Home team yellow cards.
+Away team yellow cards.
+events.{id}.stats.{idx}.name
+events.{id}.stats.{idx}.home
+events.{id}.stats.{idx}.away	string
+numeric
+numeric	IRedCard - Teams red cards statistic.
+Home team red cards.
+Away team red cards.
+events.{id}.stats.{idx}.name
+events.{id}.stats.{idx}.home
+events.{id}.stats.{idx}.away	string
+numeric
+numeric	IThrowIn - Teams throw-ins statistic.
+Home team throw-ins.
+Away team throw-ins.
+events.{id}.stats.{idx}.name
+events.{id}.stats.{idx}.home
+events.{id}.stats.{idx}.away	string
+numeric
+numeric	IFreeKick - Teams free-kicks statistic.
+Home team free-kicks.
+Away team free-kicks.
+events.{id}.stats.{idx}.name
+events.{id}.stats.{idx}.home
+events.{id}.stats.{idx}.away	string
+numeric
+numeric	IGoalKick - Teams goal-kicks statistic.
+Home team goal-kicks.
+Away team goal-kicks.
+events.{id}.stats.{idx}.name
+events.{id}.stats.{idx}.home
+events.{id}.stats.{idx}.away	string
+numeric
+numeric	IPenalty - Teams penalties statistic.
+Home team penalties.
+Away team penalties.
+events.{id}.stats.{idx}.name
+events.{id}.stats.{idx}.home
+events.{id}.stats.{idx}.away	string
+numeric
+numeric	ISubstitution - Teams substitutions statistic.
+Home team substitutions.
+Away team substitutions.
+events.{id}.stats.{idx}.name
+events.{id}.stats.{idx}.home
+events.{id}.stats.{idx}.away	string
+numeric
+numeric	IAttacks - Teams atacks statistic.
+Home team atacks.
+Away team atacks.
+events.{id}.stats.{idx}.name
+events.{id}.stats.{idx}.home
+events.{id}.stats.{idx}.away	string
+numeric
+numeric	IDangerousAttacks - Teams dangerous atacks statistic.
+Home team dangerous atacks.
+Away team dangerous atacks.
+events.{id}.stats.{idx}.name
+events.{id}.stats.{idx}.home
+events.{id}.stats.{idx}.away	string
+numeric
+numeric	IOnTarget - Teams on-target statistic.
+Home team on-target.
+Away team on-target.
+events.{id}.stats.{idx}.name
+events.{id}.stats.{idx}.home
+events.{id}.stats.{idx}.away	string
+numeric
+numeric	IOffTarget - Teams off-target statistic.
+Home team off-target.
+Away team off-target.
+events.{id}.stats.{idx}.name
+events.{id}.stats.{idx}.home
+events.{id}.stats.{idx}.away	string
+numeric
+numeric	IPosession - Teams posession statistic.
+Home team posession.
+Away team posession.
+events.{id}.stats.{idx}.name
+events.{id}.stats.{idx}.home
+events.{id}.stats.{idx}.away	string
+numeric
+numeric	IFirstHalfScore - Teams match first half statistic.
+Home team first half score.
+Away team first half score.
+events.{id}.extra.{idx}	numeric	idx - Message index in collection of event messages.
+events.{id}.extra.{idx}.code
+events.{id}.extra.{idx}.minute
+events.{id}.extra.{idx}.value	numeric
+numeric
+string	Message code.
+The minute at which the event occurred.
+Message text.
+events.{id}.history		Presented for backwards compatible with old API.
+events.{id}.odds.{m_id}	numeric	m_id - Odds Market id.
+events.{id}.odds.{m_id}.id	numeric	Odds Market id.
+events.{id}.odds.{m_id}.name	string	Odds Market name.
+events.{id}.odds.{m_id}.short_name	string	Odds Market short name.
+events.{id}.odds.{m_id}.suspend	numeric	Indicates whether market blocked or not.
+events.{id}.odds.{m_id}.order		Presented for backwards compatible with old API.
+events.{id}.odds.{m_id}.participants	object	Collection of Odds Market participants objects.
+events.{id}.odds.{m_id}.participants.{p_id}	numeric	p_id - Participant odd id.
+events.{id}.odds.{m_id}.participants.{p_id}.id	numeric	Participant odd id.
+events.{id}.odds.{m_id}.participants.{p_id}.name	string	Participant odd name.
+events.{id}.odds.{m_id}.participants.{p_id}.short_name	string	Participant odd short name.
+events.{id}.odds.{m_id}.participants.{p_id}.value_eu	numeric	Participant odd value.
+events.{id}.odds.{m_id}.participants.{p_id}.suspend	numeric	Indicates whether participant odd blocked or not.
+events.{id}.odds.{m_id}.participants.{p_id}.handicap	numeric	optional Additional argument for the participant odd - margin or handicap value.
+events.{id}.odds.{m_id}.participants.{p_id}.is_main	numeric	optional Indicates the main participant in current betting odds market.
+Basketball
+curl --request GET \\
+  --url {REQUEST_URL_FROM_ADMIN}
+Response object
+
+{
+  "updated": "10.01.2021 05:51:19",
+  "updated_ts": 1633067479990,
+  "events": {
+    "108688394": {
+      "core": {
+        "safe": "",
+        "removed": "",
+        "stopped": "1",
+        "blocked": "1",
+        "finished": "0",
+        "updated": "01.10.2021 05:51:19",
+        "updated_ts": "1633067479975"
+      },
+      "info": {
+        "id": "108688394",
+        "mid": "0",
+        "bet365id": "108678464",
+        "name": "DAL Mavericks (Guardian) Esports vs BKN Nets (Ragnarok) Esports",
+        "sport": "Basketball",
+        "league": "Ebasketball H2H GG League - 4x5mins",
+        "start_time": null,
+        "start_date": null,
+        "start_ts": "",
+        "period": "4th Quarter",
+        "score": "74:69",
+        "ball_pos": "",
+        "state": "01084",
+        "minute": "0",
+        "seconds": "00:00"
+      },
+      "team_info": {
+        "home": {
+          "name": "DAL Mavericks (Guardian) Esports",
+          "score": "74",
+          "color": "",
+          "kit_color": "",
+          "Serve": ""
+        },
+        "away": {
+          "name": "BKN Nets (Ragnarok) Esports",
+          "score": "69",
+          "color": "",
+          "kit_color": "",
+          "Serve": ""
+        }
+      },
+      "bonus": {},
+      "stream": "",
+      "stats": {
+        "0": {
+          "name": "ITeam",
+          "home": "DAL Mavericks (Guardian) Esports",
+          "away": "BKN Nets (Ragnarok) Esports"
+        },
+        "1": {
+          "name": "1",
+          "home": "19",
+          "away": "6"
+        },
+        "2": {
+          "name": "2",
+          "home": "18",
+          "away": "12"
+        },
+        "3": {
+          "name": "Half",
+          "home": "37",
+          "away": "18"
+        },
+        "4": {
+          "name": "3",
+          "home": "15",
+          "away": "25"
+        },
+        "5": {
+          "name": "4",
+          "home": "22",
+          "away": "26"
+        },
+        "6": {
+          "name": "OT",
+          "home": null,
+          "away": null
+        },
+        "7": {
+          "name": "T",
+          "home": "74",
+          "away": "69"
+        }
+      },
+      "extra": {
+        "0": {
+          "code": "",
+          "minute": "0",
+          "value": "Score After 1st Quarter - 19-6"
+        },
+        "1": {
+          "code": "",
+          "minute": "0",
+          "value": "Score After 2nd Quarter - 37-18"
+        },
+        "2": {
+          "code": "",
+          "minute": "0",
+          "value": "Score After 3rd Quarter - 52-43"
+        }
+      },
+      "history": {},
+      "odds": {
+        "1446": {
+          "id": 1446,
+          "name": "Game Lines Spread",
+          "short_name": "Game Lines Spread",
+          "suspend": "1",
+          "order": "",
+          "participants": {
+            "10868839414460": {
+              "id": "10868839414460",
+              "name": "Home",
+              "short_name": "Home",
+              "value_eu": "0",
+              "suspend": "1",
+              "handicap": "-4.5"
+            },
+            "10868839414461": {
+              "id": "10868839414461",
+              "name": "Away",
+              "short_name": "Away",
+              "value_eu": "0",
+              "suspend": "1",
+              "handicap": "4.5"
+            }
+          }
+        }
+      }
+    }
+  }
+}
+Request Information
+Category	Value
+Http Method	GET
+URL	{REQUEST_URL_FROM_ADMIN}
+Request Headers
+No headers required
+
+Response Headers
+Name	Value
+Content-Type	application/json
+Output Schema of request
+ NOTE:
+IF THE ROOT FIELD "updated_ts" IS NOT UPDATED FOR MORE THAN 30 SECONDS, THIS MEANS THAT ALL ODDS AND MATCHES ARE SUSPENDED AND INACTIVE DUE TO LOSS OF CONNECTION TO THE SERVER.
+
+Field	Type	Description
+updated	datetime	Last update of the feed.
+updated_ts	timestamp	Last update of the feed as Timestamp.
+events	object	Collection of sports events objects.
+events.{event_id}	numeric	Id of sport event object.
+events.{id}.core.safe		Presented for backwards compatible with old API.
+events.{id}.core.removed		Presented for backwards compatible with old API.
+events.{id}.core.stopped	numeric	Indicates whether match time is stopped or it is running, e.g. a referee stops the time while there is an injury on the pitch.
+Value 1 or 0.
+events.{id}.core.blocked	numeric	Indicates whether event blocked or not.
+events.{id}.core.finished	numeric	Indicates whether event finished or not.
+events.{id}.core.updated	datetime	Indicates when event data was updated. Format dd.MM.yyyy HH:mm:ss.
+events.{id}.core.updated_ts	timestamp	Indicates when event data was updated.
+events.{id}.info.id	numeric	Id of sport event object.
+events.{id}.info.mid	numeric	Additional Id of sport event object.
+events.{id}.info.bet365id	numeric	Bet365 Id of sport event object.
+events.{id}.info.name	string	Event name.
+events.{id}.info.sport	string	Event sport type name.
+events.{id}.info.league	string	Event league name.
+events.{id}.info.start_time	string	optional Event start time. Format HH:mm. (GMT+1)
+events.{id}.info.start_date	string	optional Event start date. Format dd.MM.yyyy. (GMT+1)
+events.{id}.info.start_ts	timestamp	optional Event start datetime. (GMT+1)
+events.{id}.info.period	string	Event current period name.
+events.{id}.info.score	string	Event current score.
+events.{id}.info.ball_pos	string	optional Ball position on field in coordinates system 'x' and 'y'.
+events.{id}.info.state	numeric	optional Event current state code.
+events.{id}.info.minute	numeric	optional Event current minute.
+events.{id}.info.seconds	string	optional Event current time. Format mm:ss.
+events.{id}.team_info.{home or away}.name	string	Team name.
+events.{id}.team_info.{home or away}.score	numeric	Team score.
+events.{id}.team_info.{home or away}.color		Presented for backwards compatible with old API.
+events.{id}.team_info.{home or away}.kit_color	string	Comma separated colors codes for upper part of the outfit (shirts).
+events.{id}.team_info.{home or away}.Serve		Presented for backwards compatible with old API.
+events.{id}.bonus		Presented for backwards compatible with old API.
+events.{id}.stream		Presented for backwards compatible with old API.
+events.{id}.stats.{idx}	numeric	idx - Statistics index in collection of statistics data.
+events.{id}.stats.{idx}.name
+events.{id}.stats.{idx}.home
+events.{id}.stats.{idx}.away	string
+string
+string	ITeam - Teams info.
+Home team name.
+Away team name.
+events.{id}.stats.{idx}.name
+events.{id}.stats.{idx}.home
+events.{id}.stats.{idx}.away	string
+numeric
+numeric	1 - Teams 1st Quarter scores statistic.
+Home team scores.
+Away team scores.
+events.{id}.stats.{idx}.name
+events.{id}.stats.{idx}.home
+events.{id}.stats.{idx}.away	string
+numeric
+numeric	2 - Teams 2nd Quarter scores statistic.
+Home team scores.
+Away team scores.
+events.{id}.stats.{idx}.name
+events.{id}.stats.{idx}.home
+events.{id}.stats.{idx}.away	string
+numeric
+numeric	3 - Teams 1st Half scores statistic.
+Home team scores.
+Away team scores.
+events.{id}.stats.{idx}.name
+events.{id}.stats.{idx}.home
+events.{id}.stats.{idx}.away	string
+numeric
+numeric	4 - Teams 3rd Quarter scores statistic.
+Home team scores.
+Away team scores.
+events.{id}.stats.{idx}.name
+events.{id}.stats.{idx}.home
+events.{id}.stats.{idx}.away	string
+numeric
+numeric	5 - Teams 4th Quarter scores statistic.
+Home team scores.
+Away team scores.
+events.{id}.stats.{idx}.name
+events.{id}.stats.{idx}.home
+events.{id}.stats.{idx}.away	string
+numeric
+numeric	6 - Teams Over-time scores statistic.
+optional Home team scores.
+optional Away team scores.
+events.{id}.stats.{idx}.name
+events.{id}.stats.{idx}.home
+events.{id}.stats.{idx}.away	string
+numeric
+numeric	7 - Teams Total scores statistic.
+Home team scores.
+Away team scores.
+events.{id}.extra.{idx}	numeric	idx - Message index in collection of event messages.
+events.{id}.extra.{idx}.code
+events.{id}.extra.{idx}.minute
+events.{id}.extra.{idx}.value	numeric
+numeric
+string	optional Message code.
+The minute at which the event occurred.
+Message text.
+events.{id}.history		Presented for backwards compatible with old API.
+events.{id}.odds.{m_id}	numeric	m_id - Odds Market id.
+events.{id}.odds.{m_id}.id	numeric	Odds Market id.
+events.{id}.odds.{m_id}.name	string	Odds Market name.
+events.{id}.odds.{m_id}.short_name	string	Odds Market short name.
+events.{id}.odds.{m_id}.suspend	numeric	Indicates whether market blocked or not.
+events.{id}.odds.{m_id}.order		Presented for backwards compatible with old API.
+events.{id}.odds.{m_id}.participants	object	Collection of Odds Market participants objects.
+events.{id}.odds.{m_id}.participants.{p_id}	numeric	p_id - Participant odd id.
+events.{id}.odds.{m_id}.participants.{p_id}.id	numeric	Participant odd id.
+events.{id}.odds.{m_id}.participants.{p_id}.name	string	Participant odd name.
+events.{id}.odds.{m_id}.participants.{p_id}.short_name	string	Participant odd short name.
+events.{id}.odds.{m_id}.participants.{p_id}.value_eu	numeric	Participant odd value.
+events.{id}.odds.{m_id}.participants.{p_id}.suspend	numeric	Indicates whether participant odd blocked or not.
+events.{id}.odds.{m_id}.participants.{p_id}.handicap	numeric	optional Additional argument for the participant odd - margin or handicap value.
+events.{id}.odds.{m_id}.participants.{p_id}.is_main	numeric	optional Indicates the main participant in current betting odds market.
+Tennis
+curl --request GET \\
+  --url {REQUEST_URL_FROM_ADMIN}
+Response object
+
+{
+  "updated": "10.01.2021 06:15:43",
+  "updated_ts": 1633068943885,
+  "events": {
+    "65646809": {
+      "core": {
+        "safe": "",
+        "removed": "",
+        "stopped": "1",
+        "blocked": "0",
+        "finished": "0",
+        "updated": "01.10.2021 01:00:59",
+        "updated_ts": "1633050059410"
+      },
+      "info": {
+        "id": "65646809",
+        "mid": "0",
+        "bet365id": "108693418",
+        "name": "Strong Kirchheimer vs Alexander Bernard",
+        "sport": "Tennis",
+        "league": "ITF M15 Cancun",
+        "start_time": null,
+        "start_date": null,
+        "start_ts": "",
+        "period": "Set 2",
+        "score": "7:5,3:3",
+        "ball_pos": "",
+        "state_info": "7:3~5:3#2~1#36% (4/11)~60% (3/5)#69~69#50~29",
+        "state": "9001",
+        "minute": "0",
+        "seconds": "00:00"
+      },
+      "team_info": {
+        "home": {
+          "name": "Strong Kirchheimer",
+          "score": "",
+          "color": "",
+          "kit_color": "",
+          "Serve": ""
+        },
+        "away": {
+          "name": "Alexander Bernard",
+          "score": "",
+          "color": "",
+          "kit_color": "",
+          "Serve": ""
+        }
+      },
+      "bonus": {},
+      "stream": "",
+      "stats": {
+        "0": {
+          "name": "ITeam",
+          "home": "Strong Kirchheimer",
+          "away": "Alexander Bernard"
+        },
+        "1": {
+          "name": "POINTS",
+          "home": 0,
+          "away": 0
+        },
+        "2": {
+          "name": "S1",
+          "home": 7,
+          "away": 5
+        },
+        "3": {
+          "name": "T",
+          "home": 1,
+          "away": 0
+        },
+        "4": {
+          "name": "S2",
+          "home": 3,
+          "away": 3
+        },
+        "5": {
+          "name": "TURN",
+          "home": 0,
+          "away": 1
+        }
+      },
+      "extra": {
+        "0": {
+          "code": "",
+          "minute": "0",
+          "value": "Game 18 - Strong Kirchheimer - holds to love"
+        },
+        "1": {
+          "code": "",
+          "minute": "0",
+          "value": "Game 17 - Alexander Bernard - holds to 15"
+        },
+        "2": {
+          "code": "",
+          "minute": "0",
+          "value": "Game 16 - Alexander Bernard - breaks to love"
+        }
+      },
+      "history": {},
+      "odds": {
+        "66": {
+          "id": 66,
+          "name": "Set 2 Race to",
+          "short_name": "Set 2 Race to",
+          "suspend": "0",
+          "order": "",
+          "participants": {
+            "65646809660": {
+              "id": "65646809660",
+              "name": "Home",
+              "short_name": "Home",
+              "value_eu": "2.2",
+              "suspend": "0",
+              "handicap": "4"
+            },
+            "65646809661": {
+              "id": "65646809661",
+              "name": "Away",
+              "short_name": "Away",
+              "value_eu": "1.615",
+              "suspend": "0",
+              "handicap": "4"
+            },
+            "65646809662": {
+              "id": "65646809662",
+              "name": "Home",
+              "short_name": "Home",
+              "value_eu": "1.666",
+              "suspend": "0",
+              "handicap": "5"
+            },
+            "65646809663": {
+              "id": "65646809663",
+              "name": "Away",
+              "short_name": "Away",
+              "value_eu": "2.1",
+              "suspend": "0",
+              "handicap": "5"
+            }
+          }
+        },
+        "67": {
+          "id": 67,
+          "name": "To Win",
+          "short_name": "To Win",
+          "suspend": "0",
+          "order": "",
+          "participants": {
+            "65646809670": {
+              "id": "65646809670",
+              "name": "Home",
+              "short_name": "Home",
+              "value_eu": "1.04",
+              "suspend": "0"
+            },
+            "65646809671": {
+              "id": "65646809671",
+              "name": "Away",
+              "short_name": "Away",
+              "value_eu": "9",
+              "suspend": "0"
+            }
+          }
+        },
+        "10100": {
+          "id": 10100,
+          "name": "Player 1 Over/Under by Games",
+          "short_name": "Player 1 Over/Under by Games",
+          "suspend": "0",
+          "order": "",
+          "participants": {
+            "65646809101000": {
+              "id": "65646809101000",
+              "name": "Over",
+              "short_name": "Over",
+              "value_eu": "1.833",
+              "suspend": "0",
+              "handicap": "13.5"
+            },
+            "65646809101001": {
+              "id": "65646809101001",
+              "name": "Under",
+              "short_name": "Under",
+              "value_eu": "1.833",
+              "suspend": "0",
+              "handicap": "13.5"
+            }
+          }
+        }
+      }
+    },
+    "65646826": {
+      "core": {
+        "safe": "",
+        "removed": "",
+        "stopped": "1",
+        "blocked": "0",
+        "finished": "0",
+        "updated": "01.10.2021 01:00:59",
+        "updated_ts": "1633050059408"
+      },
+      "info": {
+        "id": "65646826",
+        "mid": "0",
+        "bet365id": "108692991",
+        "name": "Rogers/Rosca vs Inoue/Monroy",
+        "sport": "Tennis",
+        "league": "ITF W15 Cancun WD",
+        "start_time": null,
+        "start_date": null,
+        "start_ts": "",
+        "period": "Set 2",
+        "score": "6:2,1:1",
+        "ball_pos": "",
+        "state_info": "6:1~2:1#0~0#60% (3/5)~20% (1/5)#68~50#60~43",
+        "state": "9001",
+        "minute": "0",
+        "seconds": "00:00"
+      },
+      "team_info": {
+        "home": {
+          "name": "Rogers/Rosca",
+          "score": "",
+          "color": "",
+          "kit_color": "",
+          "Serve": ""
+        },
+        "away": {
+          "name": "Inoue/Monroy",
+          "score": "",
+          "color": "",
+          "kit_color": "",
+          "Serve": ""
+        }
+      },
+      "bonus": {},
+      "stream": "",
+      "stats": {
+        "0": {
+          "name": "ITeam",
+          "home": "Rogers/Rosca",
+          "away": "Inoue/Monroy"
+        },
+        "1": {
+          "name": "POINTS",
+          "home": 0,
+          "away": 0
+        },
+        "2": {
+          "name": "S1",
+          "home": 6,
+          "away": 2
+        },
+        "3": {
+          "name": "T",
+          "home": 1,
+          "away": 0
+        },
+        "4": {
+          "name": "S2",
+          "home": 1,
+          "away": 1
+        },
+        "5": {
+          "name": "TURN",
+          "home": 0,
+          "away": 1
+        }
+      },
+      "extra": {
+        "0": {
+          "code": "",
+          "minute": "0",
+          "value": "Game 10 - Inoue/Monroy - breaks to 30"
+        },
+        "1": {
+          "code": "",
+          "minute": "0",
+          "value": "Game 9 - Rogers/Rosca - breaks to 30"
+        }
+      },
+      "history": {},
+      "odds": {
+        "67": {
+          "id": 67,
+          "name": "To Win",
+          "short_name": "To Win",
+          "suspend": "0",
+          "order": "",
+          "participants": {
+            "65646826670": {
+              "id": "65646826670",
+              "name": "Home",
+              "short_name": "Home",
+              "value_eu": "1.03",
+              "suspend": "0"
+            },
+            "65646826671": {
+              "id": "65646826671",
+              "name": "Away",
+              "short_name": "Away",
+              "value_eu": "11",
+              "suspend": "0"
+            }
+          }
+        },
+        "80852": {
+          "id": 80852,
+          "name": "Game Winner (2nd Set)",
+          "short_name": "Game Winner (2nd Set)",
+          "suspend": "0",
+          "order": "",
+          "participants": {
+            "65646826808520": {
+              "id": "65646826808520",
+              "name": "Away",
+              "short_name": "Away",
+              "value_eu": "1.833",
+              "suspend": "0",
+              "handicap": "3"
+            },
+            "65646826808521": {
+              "id": "65646826808521",
+              "name": "Home",
+              "short_name": "Home",
+              "value_eu": "1.833",
+              "suspend": "0",
+              "handicap": "3"
+            }
+          }
+        }
+      }
+    }
+  }
+}
+Request Information
+Category	Value
+Http Method	GET
+URL	{REQUEST_URL_FROM_ADMIN}
+Request Headers
+No headers required
+
+Response Headers
+Name	Value
+Content-Type	application/json
+Output Schema of request
+ NOTE:
+IF THE ROOT FIELD "updated_ts" IS NOT UPDATED FOR MORE THAN 30 SECONDS, THIS MEANS THAT ALL ODDS AND MATCHES ARE SUSPENDED AND INACTIVE DUE TO LOSS OF CONNECTION TO THE SERVER.
+
+Field	Type	Description
+updated	datetime	Last update of the feed.
+updated_ts	timestamp	Last update of the feed as Timestamp.
+events	object	Collection of sports events objects.
+events.{event_id}	numeric	Id of sport event object.
+events.{id}.core.safe		Presented for backwards compatible with old API.
+events.{id}.core.removed		Presented for backwards compatible with old API.
+events.{id}.core.stopped	numeric	Indicates whether match time is stopped or it is running, e.g. a referee stops the time while there is an injury on the pitch.
+Value 1 or 0.
+events.{id}.core.blocked	numeric	Indicates whether event blocked or not.
+events.{id}.core.finished	numeric	Indicates whether event finished or not.
+events.{id}.core.updated	datetime	Indicates when event data was updated. Format dd.MM.yyyy HH:mm:ss.
+events.{id}.core.updated_ts	timestamp	Indicates when event data was updated.
+events.{id}.info.id	numeric	Id of sport event object.
+events.{id}.info.mid	numeric	Additional Id of sport event object.
+events.{id}.info.bet365id	numeric	Bet365 Id of sport event object.
+events.{id}.info.name	string	Event name.
+events.{id}.info.sport	string	Event sport type name.
+events.{id}.info.league	string	Event league name.
+events.{id}.info.start_time	string	optional Event start time. Format HH:mm. (GMT+1)
+events.{id}.info.start_date	string	optional Event start date. Format dd.MM.yyyy. (GMT+1)
+events.{id}.info.start_ts	timestamp	optional Event start datetime. (GMT+1)
+events.{id}.info.period	string	Event current period name.
+events.{id}.info.score	string	Event current score.
+events.{id}.info.ball_pos	string	optional Ball position on field in coordinates system 'x' and 'y'.
+events.{id}.info.state_info	string	optional Event current state info.
+events.{id}.info.state	numeric	optional Event current state code.
+events.{id}.info.minute	numeric	optional Event current minute.
+events.{id}.info.seconds	string	optional Event current time. Format mm:ss.
+events.{id}.team_info.{home or away}.name	string	Player(s) name.
+events.{id}.team_info.{home or away}.score	numeric	Player(s) score.
+events.{id}.team_info.{home or away}.color		Presented for backwards compatible with old API.
+events.{id}.team_info.{home or away}.kit_color	string	Comma separated colors codes for upper part of the outfit (shirts).
+events.{id}.team_info.{home or away}.Serve		Presented for backwards compatible with old API.
+events.{id}.bonus		Presented for backwards compatible with old API.
+events.{id}.stream		Presented for backwards compatible with old API.
+events.{id}.stats.{idx}	numeric	idx - Statistics index in collection of statistics data.
+events.{id}.stats.{idx}.name
+events.{id}.stats.{idx}.home
+events.{id}.stats.{idx}.away	string
+string
+string	ITeam - Player(s) info.
+Home player(s) name.
+Away player(s) name.
+events.{id}.stats.{idx}.name
+events.{id}.stats.{idx}.home
+events.{id}.stats.{idx}.away	string
+numeric
+numeric	POINTS - Player(s) scores statistic.
+Home player(s) scores.
+Away player(s) scores.
+events.{id}.stats.{idx}.name
+events.{id}.stats.{idx}.home
+events.{id}.stats.{idx}.away	string
+numeric
+numeric	S1 - Player(s) 1st Set scores statistic.
+Home player(s) scores.
+Away player(s) scores.
+events.{id}.stats.{idx}.name
+events.{id}.stats.{idx}.home
+events.{id}.stats.{idx}.away	string
+numeric
+numeric	T - Player(s) T scores statistic.
+Home player(s) scores.
+Away player(s) scores.
+events.{id}.stats.{idx}.name
+events.{id}.stats.{idx}.home
+events.{id}.stats.{idx}.away	string
+numeric
+numeric	S2 - Player(s) 2nd Set scores statistic.
+Home player(s) scores.
+Away player(s) scores.
+events.{id}.stats.{idx}.name
+events.{id}.stats.{idx}.home
+events.{id}.stats.{idx}.away	string
+numeric
+numeric	S3 - optional Player(s) 3rd Set scores statistic.
+Home player(s) scores.
+Away player(s) scores.
+events.{id}.stats.{idx}.name
+events.{id}.stats.{idx}.home
+events.{id}.stats.{idx}.away	string
+numeric
+numeric	S4 - optional Player(s) 4th Set scores statistic.
+Home player(s) scores.
+Away player(s) scores.
+events.{id}.stats.{idx}.name
+events.{id}.stats.{idx}.home
+events.{id}.stats.{idx}.away	string
+numeric
+numeric	S5 - optional Player(s) 5th Set scores statistic.
+Home player(s) scores.
+Away player(s) scores.
+events.{id}.stats.{idx}.name
+events.{id}.stats.{idx}.home
+events.{id}.stats.{idx}.away	string
+numeric
+numeric	TURN - Player(s) Serving statistic.
+Home player(s) serving.
+Away player(s) serving.
+events.{id}.extra.{idx}	numeric	idx - Message index in collection of event messages.
+events.{id}.extra.{idx}.code
+events.{id}.extra.{idx}.minute
+events.{id}.extra.{idx}.value	numeric
+numeric
+string	optional Message code.
+optional The minute at which the event occurred.
+Message text.
+events.{id}.history		Presented for backwards compatible with old API.
+events.{id}.odds.{m_id}	numeric	m_id - Odds Market id.
+events.{id}.odds.{m_id}.id	numeric	Odds Market id.
+events.{id}.odds.{m_id}.name	string	Odds Market name.
+events.{id}.odds.{m_id}.short_name	string	Odds Market short name.
+events.{id}.odds.{m_id}.suspend	numeric	Indicates whether market blocked or not.
+events.{id}.odds.{m_id}.order		Presented for backwards compatible with old API.
+events.{id}.odds.{m_id}.participants	object	Collection of Odds Market participants objects.
+events.{id}.odds.{m_id}.participants.{p_id}	numeric	p_id - Participant odd id.
+events.{id}.odds.{m_id}.participants.{p_id}.id	numeric	Participant odd id.
+events.{id}.odds.{m_id}.participants.{p_id}.name	string	Participant odd name.
+events.{id}.odds.{m_id}.participants.{p_id}.short_name	string	Participant odd short name.
+events.{id}.odds.{m_id}.participants.{p_id}.value_eu	numeric	Participant odd value.
+events.{id}.odds.{m_id}.participants.{p_id}.suspend	numeric	Indicates whether participant odd blocked or not.
+events.{id}.odds.{m_id}.participants.{p_id}.handicap	numeric	optional Additional argument for the participant odd - margin or handicap value.
+events.{id}.odds.{m_id}.participants.{p_id}.is_main	numeric	optional Indicates the main participant in current betting odds market.
+Baseball
+curl --request GET \\
+  --url {REQUEST_URL_FROM_ADMIN}
+Response object
+
+{
+  "updated": "10.01.2021 06:53:01",
+  "updated_ts": 1633071181969,
+  "events": {
+    "1362": {
+      "core": {
+        "safe": "",
+        "removed": "",
+        "stopped": "1",
+        "blocked": "0",
+        "finished": "0",
+        "updated": "01.10.2021 06:52:56",
+        "updated_ts": "1633071176728"
+      },
+      "info": {
+        "id": "1362",
+        "mid": "0",
+        "bet365id": "108670885",
+        "name": "KT Wiz-Game 1 vs Lotte Giants-Game 1",
+        "sport": "Baseball",
+        "league": "Korean KBO",
+        "start_time": null,
+        "start_date": null,
+        "start_ts": "",
+        "period": "Inning 2",
+        "score": "0:3",
+        "ball_pos": "",
+        "state": "1217",
+        "minute": "0",
+        "seconds": "00:00"
+      },
+      "team_info": {
+        "home": {
+          "name": "KT Wiz-Game 1",
+          "score": "0",
+          "color": "",
+          "kit_color": "#FF8040,#FF8000,#D446BA,#00C1BA,#C40010,#0046A8,#3D4A4E",
+          "Serve": ""
+        },
+        "away": {
+          "name": "Lotte Giants-Game 1",
+          "score": "3",
+          "color": "",
+          "kit_color": "#F0F0F0,#F0F0F0,#D446BA,#00C1BA,#C40010,#0046A8,#3D4A4E",
+          "Serve": ""
+        }
+      },
+      "bonus": {},
+      "stream": "",
+      "stats": {
+        "0": {
+          "name": "ITeam",
+          "home": "KT Wiz-Game 1",
+          "away": "Lotte Giants-Game 1"
+        },
+        "1": {
+          "name": "1",
+          "home": "0",
+          "away": "0"
+        },
+        "2": {
+          "name": "2",
+          "home": "0",
+          "away": "3"
+        },
+        "3": {
+          "name": "3",
+          "home": "-1",
+          "away": "-1"
+        },
+        "4": {
+          "name": "4",
+          "home": "-1",
+          "away": "-1"
+        },
+        "5": {
+          "name": "5",
+          "home": "-1",
+          "away": "-1"
+        },
+        "6": {
+          "name": "6",
+          "home": "-1",
+          "away": "-1"
+        },
+        "7": {
+          "name": "7",
+          "home": "-1",
+          "away": "-1"
+        },
+        "8": {
+          "name": "8",
+          "home": "-1",
+          "away": "-1"
+        },
+        "9": {
+          "name": "9",
+          "home": "-1",
+          "away": "-1"
+        },
+        "10": {
+          "name": "",
+          "home": "",
+          "away": ""
+        },
+        "11": {
+          "name": "R",
+          "home": "0",
+          "away": "3"
+        },
+        "12": {
+          "name": "H",
+          "home": "1",
+          "away": "2"
+        }
+      },
+      "extra": {
+        "0": {
+          "code": "",
+          "minute": "0",
+          "value": "End of KT Wiz-Game 1 1st, 1 hit, 0 runs, Game tied 0-0"
+        },
+        "1": {
+          "code": "",
+          "minute": "0",
+          "value": "End of Lotte Giants-Game 1 1st, 0 hits, 0 runs, Game tied 0-0"
+        }
+      },
+      "history": {},
+      "odds": {
+        "211": {
+          "id": 211,
+          "name": "1x2 (3rd Inning)",
+          "short_name": "1x2 (3rd Inning)",
+          "suspend": "0",
+          "order": "",
+          "participants": {
+            "13622110": {
+              "id": "13622110",
+              "name": "Home",
+              "short_name": "Home",
+              "value_eu": "3.3",
+              "suspend": "0"
+            },
+            "13622111": {
+              "id": "13622111",
+              "name": "Away",
+              "short_name": "Away",
+              "value_eu": "4.2",
+              "suspend": "0"
+            },
+            "13622112": {
+              "id": "13622112",
+              "name": "Draw",
+              "short_name": "Draw",
+              "value_eu": "1.769",
+              "suspend": "0"
+            }
+          }
+        },
+        "937": {
+          "id": 937,
+          "name": "Asian Handicap (1st 7 Innings)",
+          "short_name": "Asian Handicap (1st 7 Innings)",
+          "suspend": "0",
+          "order": "",
+          "participants": {
+            "13629370": {
+              "id": "13629370",
+              "name": "Home",
+              "short_name": "Home",
+              "value_eu": "1.666",
+              "suspend": "0",
+              "handicap": "3.5"
+            },
+            "13629371": {
+              "id": "13629371",
+              "name": "Away",
+              "short_name": "Away",
+              "value_eu": "2.1",
+              "suspend": "0",
+              "handicap": "-3.5"
+            }
+          }
+        }
+      }
+    }
+  }
+}
+Request Information
+Category	Value
+Http Method	GET
+URL	{REQUEST_URL_FROM_ADMIN}
+Request Headers
+No headers required
+
+Response Headers
+Name	Value
+Content-Type	application/json
+Output Schema of request
+ NOTE:
+IF THE ROOT FIELD "updated_ts" IS NOT UPDATED FOR MORE THAN 30 SECONDS, THIS MEANS THAT ALL ODDS AND MATCHES ARE SUSPENDED AND INACTIVE DUE TO LOSS OF CONNECTION TO THE SERVER.
+
+Field	Type	Description
+updated	datetime	Last update of the feed.
+updated_ts	timestamp	Last update of the feed as Timestamp.
+events	object	Collection of sports events objects.
+events.{event_id}	numeric	Id of sport event object.
+events.{id}.core.safe		Presented for backwards compatible with old API.
+events.{id}.core.removed		Presented for backwards compatible with old API.
+events.{id}.core.stopped	numeric	Indicates whether match time is stopped or it is running, e.g. a referee stops the time while there is an injury on the pitch.
+Value 1 or 0.
+events.{id}.core.blocked	numeric	Indicates whether event blocked or not.
+events.{id}.core.finished	numeric	Indicates whether event finished or not.
+events.{id}.core.updated	datetime	Indicates when event data was updated. Format dd.MM.yyyy HH:mm:ss.
+events.{id}.core.updated_ts	timestamp	Indicates when event data was updated.
+events.{id}.info.id	numeric	Id of sport event object.
+events.{id}.info.mid	numeric	Additional Id of sport event object.
+events.{id}.info.bet365id	numeric	Bet365 Id of sport event object.
+events.{id}.info.name	string	Event name.
+events.{id}.info.sport	string	Event sport type name.
+events.{id}.info.league	string	Event league name.
+events.{id}.info.start_time	string	optional Event start time. Format HH:mm. (GMT+1)
+events.{id}.info.start_date	string	optional Event start date. Format dd.MM.yyyy. (GMT+1)
+events.{id}.info.start_ts	timestamp	optional Event start datetime. (GMT+1)
+events.{id}.info.period	string	Event current period name.
+events.{id}.info.score	string	Event current score.
+events.{id}.info.ball_pos	string	optional Ball position on field in coordinates system 'x' and 'y'.
+events.{id}.info.state	numeric	optional Event current state code.
+events.{id}.info.minute	numeric	optional Event current minute.
+events.{id}.info.seconds	string	optional Event current time. Format mm:ss.
+events.{id}.team_info.{home or away}.name	string	Player(s) name.
+events.{id}.team_info.{home or away}.score	numeric	Player(s) score.
+events.{id}.team_info.{home or away}.color		Presented for backwards compatible with old API.
+events.{id}.team_info.{home or away}.kit_color	string	Comma separated colors codes for upper part of the outfit (shirts).
+events.{id}.team_info.{home or away}.Serve		Presented for backwards compatible with old API.
+events.{id}.bonus		Presented for backwards compatible with old API.
+events.{id}.stream		Presented for backwards compatible with old API.
+events.{id}.stats.{idx}	numeric	idx - Statistics index in collection of statistics data.
+events.{id}.stats.{idx}.name
+events.{id}.stats.{idx}.home
+events.{id}.stats.{idx}.away	string
+string
+string	ITeam - Teams info.
+Home team name.
+Away team name.
+events.{id}.stats.{idx}.name
+events.{id}.stats.{idx}.home
+events.{id}.stats.{idx}.away	string
+numeric
+numeric	1 - 1st Inning teams scores statistic.
+Home team scores.
+Away team scores.
+events.{id}.stats.{idx}.name
+events.{id}.stats.{idx}.home
+events.{id}.stats.{idx}.away	string
+numeric
+numeric	2 - 2nd Inning teams scores statistic.
+Home team scores.
+Away team scores.
+events.{id}.stats.{idx}.name
+events.{id}.stats.{idx}.home
+events.{id}.stats.{idx}.away	string
+numeric
+numeric	3 - 3rd Inning teams scores statistic.
+Home team scores.
+Away team scores.
+events.{id}.stats.{idx}.name
+events.{id}.stats.{idx}.home
+events.{id}.stats.{idx}.away	string
+numeric
+numeric	4 - 4th Inning teams scores statistic.
+Home team scores.
+Away team scores.
+events.{id}.stats.{idx}.name
+events.{id}.stats.{idx}.home
+events.{id}.stats.{idx}.away	string
+numeric
+numeric	5 - 5th Inning teams scores statistic.
+Home team scores.
+Away team scores.
+events.{id}.stats.{idx}.name
+events.{id}.stats.{idx}.home
+events.{id}.stats.{idx}.away	string
+numeric
+numeric	6 - 6th Inning teams scores statistic.
+Home team scores.
+Away team scores.
+events.{id}.stats.{idx}.name
+events.{id}.stats.{idx}.home
+events.{id}.stats.{idx}.away	string
+numeric
+numeric	7 - 7th Inning teams scores statistic.
+Home team scores.
+Away team scores.
+events.{id}.stats.{idx}.name
+events.{id}.stats.{idx}.home
+events.{id}.stats.{idx}.away	string
+numeric
+numeric	8 - 8th Inning teams scores statistic.
+Home team scores.
+Away team scores.
+events.{id}.stats.{idx}.name
+events.{id}.stats.{idx}.home
+events.{id}.stats.{idx}.away	string
+numeric
+numeric	9 - 9th Inning teams scores statistic.
+Home team scores.
+Away team scores.
+events.{id}.stats.{idx}.name
+events.{id}.stats.{idx}.home
+events.{id}.stats.{idx}.away	string
+numeric
+numeric	10 - 10th Inning teams scores statistic.
+Home team scores.
+Away team scores.
+events.{id}.stats.{idx}.name
+events.{id}.stats.{idx}.home
+events.{id}.stats.{idx}.away	string
+numeric
+numeric	11 - 11th Inning teams scores statistic.
+Home team scores.
+Away team scores.
+events.{id}.stats.{idx}.name
+events.{id}.stats.{idx}.home
+events.{id}.stats.{idx}.away	string
+numeric
+numeric	12 - 12th Inning teams scores statistic.
+Home team scores.
+Away team scores.
+events.{id}.stats.{idx}.name
+events.{id}.stats.{idx}.home
+events.{id}.stats.{idx}.away	string
+numeric
+numeric	13 - 13th Inning teams scores statistic.
+Home team scores.
+Away team scores.
+events.{id}.stats.{idx}.name
+events.{id}.stats.{idx}.home
+events.{id}.stats.{idx}.away	string
+numeric
+numeric	14 - 14th Inning teams scores statistic.
+Home team scores.
+Away team scores.
+events.{id}.stats.{idx}.name
+events.{id}.stats.{idx}.home
+events.{id}.stats.{idx}.away	string
+numeric
+numeric	15 - 15th Inning teams scores statistic.
+Home team scores.
+Away team scores.
+events.{id}.stats.{idx}.name
+events.{id}.stats.{idx}.home
+events.{id}.stats.{idx}.away	string
+string
+string	R - Teams runs statistic.
+Home team runs.
+Away team runs.
+events.{id}.stats.{idx}.name
+events.{id}.stats.{idx}.home
+events.{id}.stats.{idx}.away	string
+string
+string	H - Teams hits statistic.
+Home team hits.
+Away team hits.
+events.{id}.extra.{idx}	numeric	idx - Message index in collection of event messages.
+events.{id}.extra.{idx}.code
+events.{id}.extra.{idx}.minute
+events.{id}.extra.{idx}.value	numeric
+numeric
+string	optional Message code.
+optional The minute at which the event occurred.
+Message text.
+events.{id}.history		Presented for backwards compatible with old API.
+events.{id}.odds.{m_id}	numeric	m_id - Odds Market id.
+events.{id}.odds.{m_id}.id	numeric	Odds Market id.
+events.{id}.odds.{m_id}.name	string	Odds Market name.
+events.{id}.odds.{m_id}.short_name	string	Odds Market short name.
+events.{id}.odds.{m_id}.suspend	numeric	Indicates whether market blocked or not.
+events.{id}.odds.{m_id}.order		Presented for backwards compatible with old API.
+events.{id}.odds.{m_id}.participants	object	Collection of Odds Market participants objects.
+events.{id}.odds.{m_id}.participants.{p_id}	numeric	p_id - Participant odd id.
+events.{id}.odds.{m_id}.participants.{p_id}.id	numeric	Participant odd id.
+events.{id}.odds.{m_id}.participants.{p_id}.name	string	Participant odd name.
+events.{id}.odds.{m_id}.participants.{p_id}.short_name	string	Participant odd short name.
+events.{id}.odds.{m_id}.participants.{p_id}.value_eu	numeric	Participant odd value.
+events.{id}.odds.{m_id}.participants.{p_id}.suspend	numeric	Indicates whether participant odd blocked or not.
+events.{id}.odds.{m_id}.participants.{p_id}.handicap	numeric	optional Additional argument for the participant odd - margin or handicap value.
+events.{id}.odds.{m_id}.participants.{p_id}.is_main	numeric	optional Indicates the main participant in current betting odds market.
+Hockey
+curl --request GET \\
+  --url {REQUEST_URL_FROM_ADMIN}
+Response object
+
+{
+  "updated": "10.02.2021 08:48:30",
+  "updated_ts": 1633164510817,
+  "events": {
+    "528": {
+      "core": {
+        "safe": "",
+        "removed": "",
+        "stopped": "1",
+        "blocked": "0",
+        "finished": "0",
+        "updated": "02.10.2021 08:48:21",
+        "updated_ts": "1633164501086"
+      },
+      "info": {
+        "id": "528",
+        "mid": "5097246",
+        "bet365id": "108701628",
+        "name": "Amur Khabarovsk vs Dynamo Riga",
+        "sport": "Ice Hockey",
+        "league": "KHL",
+        "start_time": null,
+        "start_date": null,
+        "start_ts": "",
+        "period": "3rd Period",
+        "score": "2:1",
+        "ball_pos": "",
+        "state": "11270",
+        "minute": "17",
+        "seconds": "16:59"
+      },
+      "team_info": {
+        "home": {
+          "name": "Amur Khabarovsk",
+          "score": "2",
+          "color": "",
+          "kit_color": "#FC7E00,#FFDF1B,#D446BA,#00C1BA,#C40010,#0046A8,#3D4A4E",
+          "Serve": ""
+        },
+        "away": {
+          "name": "Dynamo Riga",
+          "score": "1",
+          "color": "",
+          "kit_color": "#F0F0F0,#FFDF1B,#D446BA,#00C1BA,#C40010,#0046A8,#3D4A4E",
+          "Serve": ""
+        }
+      },
+      "bonus": {},
+      "stream": "",
+      "stats": {
+        "0": {
+          "name": "ITeam",
+          "home": "Amur Khabarovsk",
+          "away": "Dynamo Riga"
+        },
+        "1": {
+          "name": "P1",
+          "home": 0,
+          "away": 0
+        },
+        "2": {
+          "name": "P2",
+          "home": 2,
+          "away": 1
+        },
+        "3": {
+          "name": "P3",
+          "home": 0,
+          "away": 0
+        },
+        "4": {
+          "name": "T",
+          "home": 2,
+          "away": 1
+        }
+      },
+      "extra": {},
+      "history": {},
+      "odds": {
+        "54": {
+          "id": 54,
+          "name": "Home/Away",
+          "short_name": "Home/Away",
+          "suspend": "0",
+          "order": "",
+          "participants": {
+            "528540": {
+              "id": "528540",
+              "name": "Home",
+              "short_name": "Home",
+              "value_eu": "1.18",
+              "suspend": "0"
+            },
+            "528541": {
+              "id": "528541",
+              "name": "Away",
+              "short_name": "Away",
+              "value_eu": "5",
+              "suspend": "0"
+            }
+          }
+        },
+        "59": {
+          "id": 59,
+          "name": "1x2 (3rd Period)",
+          "short_name": "1x2 (3rd Period)",
+          "suspend": "0",
+          "order": "",
+          "participants": {
+            "528590": {
+              "id": "528590",
+              "name": "Home",
+              "short_name": "Home",
+              "value_eu": "2.35",
+              "suspend": "0"
+            },
+            "528591": {
+              "id": "528591",
+              "name": "Away",
+              "short_name": "Away",
+              "value_eu": "2.95",
+              "suspend": "0"
+            },
+            "528592": {
+              "id": "528592",
+              "name": "Draw",
+              "short_name": "Draw",
+              "value_eu": "3.1",
+              "suspend": "0"
+            }
+          }
+        }
+      }
+    },
+    "1130": {
+      "core": {
+        "safe": "",
+        "removed": "",
+        "stopped": "1",
+        "blocked": "0",
+        "finished": "0",
+        "updated": "02.10.2021 08:48:13",
+        "updated_ts": "1633164493396"
+      },
+      "info": {
+        "id": "1130",
+        "mid": "5107931",
+        "bet365id": "108759863",
+        "name": "Oji Eagles vs Nikko Ice Bucks",
+        "sport": "Ice Hockey",
+        "league": "Japan Cup",
+        "start_time": null,
+        "start_date": null,
+        "start_ts": "",
+        "period": "2nd Period",
+        "score": "1:0",
+        "ball_pos": "0.00,0.00",
+        "state": "21270",
+        "minute": "1",
+        "seconds": "01:03"
+      },
+      "team_info": {
+        "home": {
+          "name": "Oji Eagles",
+          "score": "1",
+          "color": "",
+          "kit_color": "#C40010,#FFDF1B,#D446BA,#00C1BA,#C40010,#0046A8,#3D4A4E",
+          "Serve": ""
+        },
+        "away": {
+          "name": "Nikko Ice Bucks",
+          "score": "0",
+          "color": "",
+          "kit_color": "#F0F0F0,#FFDF1B,#D446BA,#00C1BA,#C40010,#0046A8,#3D4A4E",
+          "Serve": ""
+        }
+      },
+      "bonus": {},
+      "stream": "",
+      "stats": {
+        "0": {
+          "name": "ITeam",
+          "home": "Oji Eagles",
+          "away": "Nikko Ice Bucks"
+        },
+        "1": {
+          "name": "P1",
+          "home": 1,
+          "away": 0
+        },
+        "2": {
+          "name": "P2",
+          "home": 0,
+          "away": 0
+        },
+        "3": {
+          "name": "P3",
+          "home": 0,
+          "away": 0
+        },
+        "4": {
+          "name": "T",
+          "home": 1,
+          "away": 0
+        }
+      },
+      "extra": {},
+      "history": {},
+      "odds": {
+        "54": {
+          "id": 54,
+          "name": "Home/Away",
+          "short_name": "Home/Away",
+          "suspend": "0",
+          "order": "",
+          "participants": {
+            "1130540": {
+              "id": "1130540",
+              "name": "Home",
+              "short_name": "Home",
+              "value_eu": "1.09",
+              "suspend": "0"
+            },
+            "1130541": {
+              "id": "1130541",
+              "name": "Away",
+              "short_name": "Away",
+              "value_eu": "6.75",
+              "suspend": "0"
+            }
+          }
+        },
+        "58": {
+          "id": 58,
+          "name": "1x2 (2nd Period)",
+          "short_name": "1x2 (2nd Period)",
+          "suspend": "0",
+          "order": "",
+          "participants": {
+            "1130580": {
+              "id": "1130580",
+              "name": "Home",
+              "short_name": "Home",
+              "value_eu": "1.9",
+              "suspend": "0"
+            },
+            "1130581": {
+              "id": "1130581",
+              "name": "Away",
+              "short_name": "Away",
+              "value_eu": "5",
+              "suspend": "0"
+            },
+            "1130582": {
+              "id": "1130582",
+              "name": "Draw",
+              "short_name": "Draw",
+              "value_eu": "2.7",
+              "suspend": "0"
+            }
+          }
+        }
+      }
+    }
+  }
+}
+Request Information
+Category	Value
+Http Method	GET
+URL	{REQUEST_URL_FROM_ADMIN}
+Request Headers
+No headers required
+
+Response Headers
+Name	Value
+Content-Type	application/json
+Output Schema of request
+ NOTE:
+IF THE ROOT FIELD "updated_ts" IS NOT UPDATED FOR MORE THAN 30 SECONDS, THIS MEANS THAT ALL ODDS AND MATCHES ARE SUSPENDED AND INACTIVE DUE TO LOSS OF CONNECTION TO THE SERVER.
+
+Field	Type	Description
+updated	datetime	Last update of the feed.
+updated_ts	timestamp	Last update of the feed as Timestamp.
+events	object	Collection of sports events objects.
+events.{event_id}	numeric	Id of sport event object.
+events.{id}.core.safe		Presented for backwards compatible with old API.
+events.{id}.core.removed		Presented for backwards compatible with old API.
+events.{id}.core.stopped	numeric	Indicates whether match time is stopped or it is running, e.g. a referee stops the time while there is an injury on the pitch.
+Value 1 or 0.
+events.{id}.core.blocked	numeric	Indicates whether event blocked or not.
+events.{id}.core.finished	numeric	Indicates whether event finished or not.
+events.{id}.core.updated	datetime	Indicates when event data was updated. Format dd.MM.yyyy HH:mm:ss.
+events.{id}.core.updated_ts	timestamp	Indicates when event data was updated.
+events.{id}.info.id	numeric	Id of sport event object.
+events.{id}.info.mid	numeric	Additional Id of sport event object.
+events.{id}.info.bet365id	numeric	Bet365 Id of sport event object.
+events.{id}.info.name	string	Event name.
+events.{id}.info.sport	string	Event sport type name.
+events.{id}.info.league	string	Event league name.
+events.{id}.info.start_time	string	optional Event start time. Format HH:mm. (GMT+1)
+events.{id}.info.start_date	string	optional Event start date. Format dd.MM.yyyy. (GMT+1)
+events.{id}.info.start_ts	timestamp	optional Event start datetime. (GMT+1)
+events.{id}.info.period	string	Event current period name.
+events.{id}.info.score	string	Event current score.
+events.{id}.info.ball_pos	string	optional Ball position on field in coordinates system 'x' and 'y'.
+events.{id}.info.state	numeric	optional Event current state code.
+events.{id}.info.minute	numeric	optional Event current minute.
+events.{id}.info.seconds	string	optional Event current time. Format mm:ss.
+events.{id}.team_info.{home or away}.name	string	Player(s) name.
+events.{id}.team_info.{home or away}.score	numeric	Player(s) score.
+events.{id}.team_info.{home or away}.color		Presented for backwards compatible with old API.
+events.{id}.team_info.{home or away}.kit_color	string	Comma separated colors codes for upper part of the outfit (shirts).
+events.{id}.team_info.{home or away}.Serve		Presented for backwards compatible with old API.
+events.{id}.bonus		Presented for backwards compatible with old API.
+events.{id}.stream		Presented for backwards compatible with old API.
+events.{id}.stats.{idx}	numeric	idx - Statistics index in collection of statistics data.
+events.{id}.stats.{idx}.name
+events.{id}.stats.{idx}.home
+events.{id}.stats.{idx}.away	string
+string
+string	ITeam - Teams info.
+Home team name.
+Away team name.
+events.{id}.stats.{idx}.name
+events.{id}.stats.{idx}.home
+events.{id}.stats.{idx}.away	string
+numeric
+numeric	P1 - 1st Period teams scores statistic.
+Home team scores.
+Away team scores.
+events.{id}.stats.{idx}.name
+events.{id}.stats.{idx}.home
+events.{id}.stats.{idx}.away	string
+numeric
+numeric	P2 - 2nd Period teams scores statistic.
+Home team scores.
+Away team scores.
+events.{id}.stats.{idx}.name
+events.{id}.stats.{idx}.home
+events.{id}.stats.{idx}.away	string
+numeric
+numeric	P3 - 3rd Period teams scores statistic.
+Home team scores.
+Away team scores.
+events.{id}.stats.{idx}.name
+events.{id}.stats.{idx}.home
+events.{id}.stats.{idx}.away	string
+numeric
+numeric	OT - Over Time teams scores statistic.
+Home team scores.
+Away team scores.
+events.{id}.stats.{idx}.name
+events.{id}.stats.{idx}.home
+events.{id}.stats.{idx}.away	string
+numeric
+numeric	T - Total teams scores statistic.
+Home team scores.
+Away team scores.
+events.{id}.extra.{idx}	numeric	idx - Message index in collection of event messages.
+events.{id}.extra.{idx}.code
+events.{id}.extra.{idx}.minute
+events.{id}.extra.{idx}.value	numeric
+numeric
+string	optional Message code.
+optional The minute at which the event occurred.
+Message text.
+events.{id}.history		Presented for backwards compatible with old API.
+events.{id}.odds.{m_id}	numeric	m_id - Odds Market id.
+events.{id}.odds.{m_id}.id	numeric	Odds Market id.
+events.{id}.odds.{m_id}.name	string	Odds Market name.
+events.{id}.odds.{m_id}.short_name	string	Odds Market short name.
+events.{id}.odds.{m_id}.suspend	numeric	Indicates whether market blocked or not.
+events.{id}.odds.{m_id}.order		Presented for backwards compatible with old API.
+events.{id}.odds.{m_id}.participants	object	Collection of Odds Market participants objects.
+events.{id}.odds.{m_id}.participants.{p_id}	numeric	p_id - Participant odd id.
+events.{id}.odds.{m_id}.participants.{p_id}.id	numeric	Participant odd id.
+events.{id}.odds.{m_id}.participants.{p_id}.name	string	Participant odd name.
+events.{id}.odds.{m_id}.participants.{p_id}.short_name	string	Participant odd short name.
+events.{id}.odds.{m_id}.participants.{p_id}.value_eu	numeric	Participant odd value.
+events.{id}.odds.{m_id}.participants.{p_id}.suspend	numeric	Indicates whether participant odd blocked or not.
+events.{id}.odds.{m_id}.participants.{p_id}.handicap	numeric	optional Additional argument for the participant odd - margin or handicap value.
+events.{id}.odds.{m_id}.participants.{p_id}.is_main	numeric	optional Indicates the main participant in current betting odds market.
+Volleyball
+curl --request GET \\
+  --url {REQUEST_URL_FROM_ADMIN}
+Response object
+
+{
+  "updated": "10.02.2021 08:59:46",
+  "updated_ts": 1633165186289,
+  "events": {
+    "108762464": {
+      "core": {
+        "safe": "",
+        "removed": "",
+        "stopped": "1",
+        "blocked": "0",
+        "finished": "0",
+        "updated": "02.10.2021 08:59:46",
+        "updated_ts": "1633165186274"
+      },
+      "info": {
+        "id": "108762464",
+        "mid": "5110566",
+        "bet365id": "108721153",
+        "name": "Supreme Chonburi Women vs Rebisco Women",
+        "sport": "Volleyball",
+        "league": "Asia Club Champs Women",
+        "start_time": null,
+        "start_date": null,
+        "start_ts": "",
+        "period": "Set 2",
+        "score": "1:0",
+        "ball_pos": "",
+        "state": "11248",
+        "minute": "0",
+        "seconds": "00:00"
+      },
+      "team_info": {
+        "home": {
+          "name": "Supreme Chonburi Women",
+          "score": null,
+          "color": "",
+          "kit_color": "#D446BA,#0A0A0A,#D446BA,#00C1BA,#C40010,#0046A8,#3D4A4E",
+          "Serve": ""
+        },
+        "away": {
+          "name": "Rebisco Women",
+          "score": null,
+          "color": "",
+          "kit_color": "#C40010,#0A0A0A,#D446BA,#00C1BA,#C40010,#0046A8,#3D4A4E",
+          "Serve": ""
+        }
+      },
+      "bonus": {},
+      "stream": "",
+      "stats": {
+        "0": {
+          "name": "ITeam",
+          "home": "Supreme Chonburi Women",
+          "away": "Rebisco Women"
+        },
+        "1": {
+          "name": "TURN",
+          "home": 0,
+          "away": 1
+        },
+        "2": {
+          "name": "S1",
+          "home": 25,
+          "away": 11
+        },
+        "3": {
+          "name": "S2",
+          "home": 1,
+          "away": 0
+        }
+      },
+      "extra": {
+        "0": {
+          "code": "",
+          "minute": "0",
+          "value": "Set 1 - Race to 5 points - Supreme Chonburi Women"
+        },
+        "1": {
+          "code": "",
+          "minute": "0",
+          "value": "Set 1 Lead After 10 Points - Supreme Chonburi Women"
+        }
+      },
+      "history": {},
+      "odds": {
+        "114": {
+          "id": 114,
+          "name": "Home/Away",
+          "short_name": "Home/Away",
+          "suspend": "0",
+          "order": "",
+          "participants": {
+            "1087624641140": {
+              "id": "1087624641140",
+              "name": "Home",
+              "short_name": "Home",
+              "value_eu": "1.002",
+              "suspend": "0"
+            },
+            "1087624641141": {
+              "id": "1087624641141",
+              "name": "Away",
+              "short_name": "Away",
+              "value_eu": "21",
+              "suspend": "0"
+            }
+          }
+        },
+        "117": {
+          "id": 117,
+          "name": "Over/Under (2nd Set)",
+          "short_name": "Over/Under (2nd Set)",
+          "suspend": "0",
+          "order": "",
+          "participants": {
+            "1087624641170": {
+              "id": "1087624641170",
+              "name": "Over",
+              "short_name": "Over",
+              "value_eu": "1.833",
+              "suspend": "0",
+              "handicap": "40.5"
+            },
+            "1087624641171": {
+              "id": "1087624641171",
+              "name": "Under",
+              "short_name": "Under",
+              "value_eu": "1.833",
+              "suspend": "0",
+              "handicap": "40.5"
+            }
+          }
+        }
+      }
+    },
+    "108787745": {
+      "core": {
+        "safe": "",
+        "removed": "",
+        "stopped": "1",
+        "blocked": "0",
+        "finished": "0",
+        "updated": "02.10.2021 08:59:32",
+        "updated_ts": "1633165172571"
+      },
+      "info": {
+        "id": "108787745",
+        "mid": "5111939",
+        "bet365id": "108786635",
+        "name": "Tatran Stresovice Women vs Skola Ceske Budejovice Women",
+        "sport": "Volleyball",
+        "league": "Czech 1 Liga Women",
+        "start_time": null,
+        "start_date": null,
+        "start_ts": "",
+        "period": "Set 3",
+        "score": "2:0",
+        "ball_pos": "",
+        "state": "11249",
+        "minute": "0",
+        "seconds": "00:00"
+      },
+      "team_info": {
+        "home": {
+          "name": "Tatran Stresovice Women",
+          "score": null,
+          "color": "",
+          "kit_color": "#D94B14,#D94B14,#FF00FF,#00FFFF,#FF0000,#0000FF,#3D4A4E",
+          "Serve": ""
+        },
+        "away": {
+          "name": "Skola Ceske Budejovice Women",
+          "score": null,
+          "color": "",
+          "kit_color": "#F0F0F0,#F0F0F0,#D446BA,#00C1BA,#C40010,#0046A8,#3D4A4E",
+          "Serve": ""
+        }
+      },
+      "bonus": {},
+      "stream": "",
+      "stats": {
+        "0": {
+          "name": "ITeam",
+          "home": "Tatran Stresovice Women",
+          "away": "Skola Ceske Budejovice Women"
+        },
+        "1": {
+          "name": "TURN",
+          "home": 1,
+          "away": 0
+        },
+        "2": {
+          "name": "S1",
+          "home": 25,
+          "away": 19
+        },
+        "3": {
+          "name": "S2",
+          "home": 25,
+          "away": 14
+        },
+        "4": {
+          "name": "S3",
+          "home": 14,
+          "away": 7
+        }
+      },
+      "extra": {
+        "0": {
+          "code": "",
+          "minute": "0",
+          "value": "Set 1 - Race to 5 points - Skola Ceske Budejovice Women"
+        },
+        "1": {
+          "code": "",
+          "minute": "0",
+          "value": "Set 1 Tie After 10"
+        },
+        "2": {
+          "code": "",
+          "minute": "0",
+          "value": "Technical Time Out"
+        }
+      },
+      "history": {},
+      "odds": {
+        "114": {
+          "id": 114,
+          "name": "Home/Away",
+          "short_name": "Home/Away",
+          "suspend": "1",
+          "order": "",
+          "participants": {
+            "1087877451140": {
+              "id": "1087877451140",
+              "name": "Home",
+              "short_name": "Home",
+              "value_eu": "1",
+              "suspend": "1"
+            },
+            "1087877451141": {
+              "id": "1087877451141",
+              "name": "Away",
+              "short_name": "Away",
+              "value_eu": "0",
+              "suspend": "1"
+            }
+          }
+        },
+        "127": {
+          "id": 127,
+          "name": "Total Points Odd/Even",
+          "short_name": "Total Points Odd/Even",
+          "suspend": "0",
+          "order": "",
+          "participants": {
+            "1087877451270": {
+              "id": "1087877451270",
+              "name": "Odd",
+              "short_name": "Odd",
+              "value_eu": "1.833",
+              "suspend": "0"
+            },
+            "1087877451271": {
+              "id": "1087877451271",
+              "name": "Even",
+              "short_name": "Even",
+              "value_eu": "1.833",
+              "suspend": "0"
+            }
+          }
+        }
+      }
+    }
+  }
+}
+Request Information
+Category	Value
+Http Method	GET
+URL	{REQUEST_URL_FROM_ADMIN}
+Request Headers
+No headers required
+
+Response Headers
+Name	Value
+Content-Type	application/json
+Output Schema of request
+ NOTE:
+IF THE ROOT FIELD "updated_ts" IS NOT UPDATED FOR MORE THAN 30 SECONDS, THIS MEANS THAT ALL ODDS AND MATCHES ARE SUSPENDED AND INACTIVE DUE TO LOSS OF CONNECTION TO THE SERVER.
+
+Field	Type	Description
+updated	datetime	Last update of the feed.
+updated_ts	timestamp	Last update of the feed as Timestamp.
+events	object	Collection of sports events objects.
+events.{event_id}	numeric	Id of sport event object.
+events.{id}.core.safe		Presented for backwards compatible with old API.
+events.{id}.core.removed		Presented for backwards compatible with old API.
+events.{id}.core.stopped	numeric	Indicates whether match time is stopped or it is running, e.g. a referee stops the time while there is an injury on the pitch.
+Value 1 or 0.
+events.{id}.core.blocked	numeric	Indicates whether event blocked or not.
+events.{id}.core.finished	numeric	Indicates whether event finished or not.
+events.{id}.core.updated	datetime	Indicates when event data was updated. Format dd.MM.yyyy HH:mm:ss.
+events.{id}.core.updated_ts	timestamp	Indicates when event data was updated.
+events.{id}.info.id	numeric	Id of sport event object.
+events.{id}.info.mid	numeric	Additional Id of sport event object.
+events.{id}.info.bet365id	numeric	Bet365 Id of sport event object.
+events.{id}.info.name	string	Event name.
+events.{id}.info.sport	string	Event sport type name.
+events.{id}.info.league	string	Event league name.
+events.{id}.info.start_time	string	optional Event start time. Format HH:mm. (GMT+1)
+events.{id}.info.start_date	string	optional Event start date. Format dd.MM.yyyy. (GMT+1)
+events.{id}.info.start_ts	timestamp	optional Event start datetime. (GMT+1)
+events.{id}.info.period	string	Event current period name.
+events.{id}.info.score	string	Event current score.
+events.{id}.info.ball_pos	string	optional Ball position on field in coordinates system 'x' and 'y'.
+events.{id}.info.state	numeric	optional Event current state code.
+events.{id}.info.minute	numeric	optional Event current minute.
+events.{id}.info.seconds	string	optional Event current time. Format mm:ss.
+events.{id}.team_info.{home or away}.name	string	Player(s) name.
+events.{id}.team_info.{home or away}.score	numeric	Player(s) score.
+events.{id}.team_info.{home or away}.color		Presented for backwards compatible with old API.
+events.{id}.team_info.{home or away}.kit_color	string	Comma separated colors codes for upper part of the outfit (shirts).
+events.{id}.team_info.{home or away}.Serve		Presented for backwards compatible with old API.
+events.{id}.bonus		Presented for backwards compatible with old API.
+events.{id}.stream		Presented for backwards compatible with old API.
+events.{id}.stats.{idx}	numeric	idx - Statistics index in collection of statistics data.
+events.{id}.stats.{idx}.name
+events.{id}.stats.{idx}.home
+events.{id}.stats.{idx}.away	string
+string
+string	ITeam - Teams info.
+Home team name.
+Away team name.
+events.{id}.stats.{idx}.name
+events.{id}.stats.{idx}.home
+events.{id}.stats.{idx}.away	string
+numeric
+numeric	TURN - Teams Serving statistic.
+Home team Serving.
+Away team Serving.
+events.{id}.stats.{idx}.name
+events.{id}.stats.{idx}.home
+events.{id}.stats.{idx}.away	string
+numeric
+numeric	S1 - 1st Set teams scores statistic.
+Home team scores.
+Away team scores.
+events.{id}.stats.{idx}.name
+events.{id}.stats.{idx}.home
+events.{id}.stats.{idx}.away	string
+numeric
+numeric	S2 - 2nd Set teams scores statistic.
+Home team scores.
+Away team scores.
+events.{id}.stats.{idx}.name
+events.{id}.stats.{idx}.home
+events.{id}.stats.{idx}.away	string
+numeric
+numeric	S3 - 3rd Set teams scores statistic.
+Home team scores.
+Away team scores.
+events.{id}.stats.{idx}.name
+events.{id}.stats.{idx}.home
+events.{id}.stats.{idx}.away	string
+numeric
+numeric	S4 - 4th Set teams scores statistic.
+Home team scores.
+Away team scores.
+events.{id}.stats.{idx}.name
+events.{id}.stats.{idx}.home
+events.{id}.stats.{idx}.away	string
+numeric
+numeric	S5 - 5th Set teams scores statistic.
+Home team scores.
+Away team scores.
+events.{id}.stats.{idx}.name
+events.{id}.stats.{idx}.home
+events.{id}.stats.{idx}.away	string
+numeric
+numeric	POINTS - Teams Points in Set statistic.
+Home team Points in Set.
+Away team Points in Set.
+events.{id}.extra.{idx}	numeric	idx - Message index in collection of event messages.
+events.{id}.extra.{idx}.code
+events.{id}.extra.{idx}.minute
+events.{id}.extra.{idx}.value	numeric
+numeric
+string	optional Message code.
+optional The minute at which the event occurred.
+Message text.
+events.{id}.history		Presented for backwards compatible with old API.
+events.{id}.odds.{m_id}	numeric	m_id - Odds Market id.
+events.{id}.odds.{m_id}.id	numeric	Odds Market id.
+events.{id}.odds.{m_id}.name	string	Odds Market name.
+events.{id}.odds.{m_id}.short_name	string	Odds Market short name.
+events.{id}.odds.{m_id}.suspend	numeric	Indicates whether market blocked or not.
+events.{id}.odds.{m_id}.order		Presented for backwards compatible with old API.
+events.{id}.odds.{m_id}.participants	object	Collection of Odds Market participants objects.
+events.{id}.odds.{m_id}.participants.{p_id}	numeric	p_id - Participant odd id.
+events.{id}.odds.{m_id}.participants.{p_id}.id	numeric	Participant odd id.
+events.{id}.odds.{m_id}.participants.{p_id}.name	string	Participant odd name.
+events.{id}.odds.{m_id}.participants.{p_id}.short_name	string	Participant odd short name.
+events.{id}.odds.{m_id}.participants.{p_id}.value_eu	numeric	Participant odd value.
+events.{id}.odds.{m_id}.participants.{p_id}.suspend	numeric	Indicates whether participant odd blocked or not.
+events.{id}.odds.{m_id}.participants.{p_id}.handicap	numeric	optional Additional argument for the participant odd - margin or handicap value.
+events.{id}.odds.{m_id}.participants.{p_id}.is_main	numeric	optional Indicates the main participant in current betting odds market.
+Inplay Webhooks
+API Reference documentation for Goalserve Inplay Webhooks module.
+
+Goalserve provides sports events notifications with webhooks.
+
+Goalserve uses webhooks to notify your application of changes to live sporting events using the POST method. Webhooks notify your application about events such as the start and end of matches in different sports, inside game events such as goals, violations, attacks, changes in the odds, changes in game statistics, and so on.
+
+To use Goalserve webhooks with your integration you need to acomplish just three steps:
+
+Create a webhook endpoint on your server, that will accept http method POST requests from our server.
+Make sure that you have whitelisted our server''s IP address in your firewall.
+Provide us created endpoint url.
+Receive http POST requests notifications from our server in JSON format.
+Webhook notification object
+
+{
+  "updated": "09.14.2021 11:24:08",
+  "updated_ts": 1631618648131,
+  "events": {
+    "65012526": {
+      "core": {
+        "safe": "",
+        "removed": "",
+        "stopped": "0",
+        "blocked": "0",
+        "finished": "0",
+        "updated": "14.09.2021 11:24:07",
+        "updated_ts": "1631618647262"
+      },
+      "info": {
+        "id": "65012526",
+        "mid": "5062504",
+        "bet365id": "107929286",
+        "name": "Transport United FC vs Paro FC",
+        "sport": "soccer",
+        "league": "Bhutan Premier League",
+        "start_time": "11:00",
+        "start_date": "14.09.2021",
+        "start_ts": "1631617200",
+        "period": "2nd Half",
+        "score": "1:1",
+        "ball_pos": "",
+        "state_info": null,
+        "state": "11002",
+        "minute": "64",
+        "seconds": "63:42"
+      },
+      "team_info": {
+        "home": {
+          "name": "Transport United FC",
+          "score": "1",
+          "color": "",
+          "kit_color": "#F0F0F0,#F0F0F0,#D6003D,#D6003D",
+          "Serve": ""
+        },
+        "away": {
+          "name": "Paro FC",
+          "score": "1",
+          "color": "",
+          "kit_color": "#2B72DE,#2B72DE",
+          "Serve": ""
+        }
+      },
+      "bonus": {},
+      "stream": "",
+      "stats": {
+        "0": {
+          "name": "ITeam",
+          "home": "Transport United FC",
+          "away": "Paro FC"
+        },
+        "1": {
+          "name": "IGoal",
+          "home": "1",
+          "away": "1"
+        },
+        "2": {
+          "name": "ICorner",
+          "home": "3",
+          "away": "4"
+        },
+        "3": {
+          "name": "IYellowCard",
+          "home": "1",
+          "away": "1"
+        },
+        "4": {
+          "name": "IRedCard",
+          "home": "0",
+          "away": "0"
+        },
+        "5": {
+          "name": "IThrowIn",
+          "home": "0",
+          "away": "0"
+        },
+        "6": {
+          "name": "IFreeKick",
+          "home": "0",
+          "away": "0"
+        },
+        "7": {
+          "name": "IGoalKick",
+          "home": "0",
+          "away": "0"
+        },
+        "8": {
+          "name": "IPenalty",
+          "home": "0",
+          "away": "0"
+        },
+        "9": {
+          "name": "ISubstitution",
+          "home": "1",
+          "away": "2"
+        },
+        "10": {
+          "name": "IAttacks",
+          "home": "127",
+          "away": "118"
+        },
+        "11": {
+          "name": "IDangerousAttacks",
+          "home": "70",
+          "away": "86"
+        },
+        "12": {
+          "name": "IOnTarget",
+          "home": "2",
+          "away": "3"
+        },
+        "13": {
+          "name": "IOffTarget",
+          "home": "3",
+          "away": "3"
+        },
+        "14": {
+          "name": "IPosession",
+          "home": "48",
+          "away": "52"
+        }
+      },
+      "extra": {
+        "0": {
+          "code": "252",
+          "minute": "8",
+          "value": "8' - 1st Corner - Paro FC"
+        },
+        "1": {
+          "code": "",
+          "minute": "0",
+          "value": "0:0 Goals 00:00 - 09:59"
+        },
+        "2": {
+          "code": "",
+          "minute": "0",
+          "value": "0:1 Corners 00:00 - 09:59"
+        },
+        "3": {
+          "code": "255",
+          "minute": "11",
+          "value": "11' - 1st Goal -   (Transport United FC) - "
+        },
+        "4": {
+          "code": "252",
+          "minute": "19",
+          "value": "19' - 2nd Corner - Transport United FC"
+        },
+        "5": {
+          "code": "253",
+          "minute": "20",
+          "value": "20' - 1st Yellow Card -  (Transport United FC)"
+        },
+        "6": {
+          "code": "",
+          "minute": "0",
+          "value": "1:0 Goals 10:00 - 19:59"
+        },
+        "7": {
+          "code": "",
+          "minute": "0",
+          "value": "1:0 Corners 10:00 - 19:59"
+        },
+        "8": {
+          "code": "252",
+          "minute": "21",
+          "value": "21' - 3rd Corner - Transport United FC"
+        },
+        "9": {
+          "code": "252",
+          "minute": "23",
+          "value": "23' - Race to 3 Corners - Transport United FC"
+        },
+        "10": {
+          "code": "252",
+          "minute": "23",
+          "value": "23' - 4th Corner - Transport United FC"
+        },
+        "11": {
+          "code": "",
+          "minute": "0",
+          "value": "2:0 Corners 20:00 - 29:59"
+        },
+        "12": {
+          "code": "",
+          "minute": "0",
+          "value": "0:0 Goals 20:00 - 29:59"
+        },
+        "13": {
+          "code": "",
+          "minute": "0",
+          "value": "0:0 Goals 30:00 - 39:59"
+        },
+        "14": {
+          "code": "",
+          "minute": "0",
+          "value": "0:0 Corners 30:00 - 39:59"
+        },
+        "15": {
+          "code": "252",
+          "minute": "44",
+          "value": "44' - 5th Corner - Paro FC"
+        },
+        "16": {
+          "code": "1",
+          "minute": "0",
+          "value": "Score After First Half - 1-0"
+        },
+        "17": {
+          "code": "252",
+          "minute": "48",
+          "value": "48' - 6th Corner - Paro FC"
+        },
+        "18": {
+          "code": "",
+          "minute": "0",
+          "value": "0:0 Goals 40:00 - 49:59"
+        },
+        "19": {
+          "code": "",
+          "minute": "0",
+          "value": "0:2 Corners 40:00 - 49:59"
+        },
+        "20": {
+          "code": "252",
+          "minute": "53",
+          "value": "53' - 7th Corner - Paro FC"
+        },
+        "21": {
+          "code": "255",
+          "minute": "53",
+          "value": "53' - 2nd Goal -   (Paro FC) - "
+        },
+        "22": {
+          "code": "253",
+          "minute": "58",
+          "value": "58' - 2nd Yellow Card -  (Paro FC)"
+        },
+        "23": {
+          "code": "",
+          "minute": "0",
+          "value": "0:1 Goals 50:00 - 59:59"
+        },
+        "24": {
+          "code": "",
+          "minute": "0",
+          "value": "0:1 Corners 50:00 - 59:59"
+        }
+      },
+      "history": {},
+      "odds": {
+        "1": {
+          "id": 1,
+          "name": "Home Team Goals",
+          "short_name": "Home Team Goals",
+          "suspend": "0",
+          "order": "",
+          "participants": {
+            "6501252610": {
+              "id": "6501252610",
+              "name": "Over",
+              "short_name": "Over",
+              "value_eu": "8.5",
+              "suspend": "0",
+              "handicap": "2.5"
+            },
+            "6501252611": {
+              "id": "6501252611",
+              "name": "Under",
+              "short_name": "Under",
+              "value_eu": "1.05",
+              "suspend": "0",
+              "handicap": "2.5"
+            },
+            "6501252612": {
+              "id": "6501252612",
+              "name": "Over",
+              "short_name": "Over",
+              "value_eu": "2.625",
+              "suspend": "0",
+              "handicap": "1.5"
+            },
+            "6501252613": {
+              "id": "6501252613",
+              "name": "Under",
+              "short_name": "Under",
+              "value_eu": "1.444",
+              "suspend": "0",
+              "handicap": "1.5"
+            }
+          }
+        },
+        "2": {
+          "id": 2,
+          "name": "Away Team Goals",
+          "short_name": "Away Team Goals",
+          "suspend": "0",
+          "order": "",
+          "participants": {
+            "6501252620": {
+              "id": "6501252620",
+              "name": "Over",
+              "short_name": "Over",
+              "value_eu": "1.833",
+              "suspend": "0",
+              "handicap": "1.5"
+            },
+            "6501252621": {
+              "id": "6501252621",
+              "name": "Under",
+              "short_name": "Under",
+              "value_eu": "1.833",
+              "suspend": "0",
+              "handicap": "1.5"
+            },
+            "6501252622": {
+              "id": "6501252622",
+              "name": "Over",
+              "short_name": "Over",
+              "value_eu": "5",
+              "suspend": "0",
+              "handicap": "2.5"
+            },
+            "6501252623": {
+              "id": "6501252623",
+              "name": "Under",
+              "short_name": "Under",
+              "value_eu": "1.142",
+              "suspend": "0",
+              "handicap": "2.5"
+            }
+          }
+        },
+        "11": {
+          "id": 11,
+          "name": "3-Way Handicap",
+          "short_name": "3-Way Handicap",
+          "suspend": "0",
+          "order": "",
+          "participants": {
+            "65012526110": {
+              "id": "65012526110",
+              "name": "Home",
+              "short_name": "Home",
+              "value_eu": "1.09",
+              "suspend": "0",
+              "handicap": "2",
+              "is_main": "0"
+            },
+            "65012526111": {
+              "id": "65012526111",
+              "name": "Draw",
+              "short_name": "Draw",
+              "value_eu": "9",
+              "suspend": "0",
+              "handicap": "-2",
+              "is_main": "0"
+            },
+            "65012526112": {
+              "id": "65012526112",
+              "name": "Away",
+              "short_name": "Away",
+              "value_eu": "21",
+              "suspend": "0",
+              "handicap": "-2",
+              "is_main": "0"
+            },
+            "65012526113": {
+              "id": "65012526113",
+              "name": "Home",
+              "short_name": "Home",
+              "value_eu": "1.5",
+              "suspend": "0",
+              "handicap": "1",
+              "is_main": "1"
+            },
+            "65012526114": {
+              "id": "65012526114",
+              "name": "Draw",
+              "short_name": "Draw",
+              "value_eu": "3.4",
+              "suspend": "0",
+              "handicap": "-1",
+              "is_main": "1"
+            },
+            "65012526115": {
+              "id": "65012526115",
+              "name": "Away",
+              "short_name": "Away",
+              "value_eu": "6.5",
+              "suspend": "0",
+              "handicap": "-1",
+              "is_main": "1"
+            }
+          }
+        },
+        "12": {
+          "id": 12,
+          "name": "Asian Handicap",
+          "short_name": "Asian Handicap",
+          "suspend": "0",
+          "order": "",
+          "participants": {
+            "65012526120": {
+              "id": "65012526120",
+              "name": "Home",
+              "short_name": "Home",
+              "value_eu": "1.825",
+              "suspend": "0",
+              "handicap": "0.25",
+              "is_main": "1"
+            },
+            "65012526121": {
+              "id": "65012526121",
+              "name": "Away",
+              "short_name": "Away",
+              "value_eu": "1.975",
+              "suspend": "0",
+              "handicap": "-0.25",
+              "is_main": "1"
+            },
+            "65012526122": {
+              "id": "65012526122",
+              "name": "Home",
+              "short_name": "Home",
+              "value_eu": "1.325",
+              "suspend": "0",
+              "handicap": "0.75",
+              "is_main": "0"
+            },
+            "65012526123": {
+              "id": "65012526123",
+              "name": "Away",
+              "short_name": "Away",
+              "value_eu": "3.075",
+              "suspend": "0",
+              "handicap": "-0.75",
+              "is_main": "0"
+            }
+          }
+        }
+      }
+    },
+    "65012721": {
+      "core": {
+        "safe": "",
+        "removed": "",
+        "stopped": "0",
+        "blocked": "0",
+        "finished": "0",
+        "updated": "14.09.2021 11:23:51",
+        "updated_ts": "1631618631941"
+      },
+      "info": {
+        "id": "65012721",
+        "mid": "5062898",
+        "bet365id": "107929334",
+        "name": "Viborg FF Reserves vs AaB Reserves",
+        "sport": "soccer",
+        "league": "Denmark Reserve League",
+        "start_time": "12:00",
+        "start_date": "14.09.2021",
+        "start_ts": "1631620800",
+        "period": "1st Half",
+        "score": "0:1",
+        "ball_pos": "",
+        "state_info": ",6",
+        "state": "21936",
+        "minute": "24",
+        "seconds": "24:24"
+      },
+      "team_info": {
+        "home": {
+          "name": "Viborg FF Reserves",
+          "score": "0",
+          "color": "",
+          "kit_color": "#F0F0F0,#025C17",
+          "Serve": ""
+        },
+        "away": {
+          "name": "AaB Reserves",
+          "score": "1",
+          "color": "",
+          "kit_color": "#0A0A0A,#0A0A0A,#0A0A0A,#888888",
+          "Serve": ""
+        }
+      },
+      "bonus": {},
+      "stream": "",
+      "stats": {
+        "0": {
+          "name": "ITeam",
+          "home": "Viborg FF Reserves",
+          "away": "AaB Reserves"
+        },
+        "1": {
+          "name": "IGoal",
+          "home": "0",
+          "away": "1"
+        },
+        "2": {
+          "name": "ICorner",
+          "home": "0",
+          "away": "0"
+        },
+        "3": {
+          "name": "IYellowCard",
+          "home": "0",
+          "away": "1"
+        },
+        "4": {
+          "name": "IRedCard",
+          "home": "0",
+          "away": "0"
+        },
+        "5": {
+          "name": "IThrowIn",
+          "home": "0",
+          "away": "0"
+        },
+        "6": {
+          "name": "IFreeKick",
+          "home": "0",
+          "away": "0"
+        },
+        "7": {
+          "name": "IGoalKick",
+          "home": "0",
+          "away": "0"
+        },
+        "8": {
+          "name": "IPenalty",
+          "home": "0",
+          "away": "0"
+        },
+        "9": {
+          "name": "ISubstitution",
+          "home": "0",
+          "away": "0"
+        },
+        "10": {
+          "name": "IAttacks",
+          "home": "19",
+          "away": "16"
+        },
+        "11": {
+          "name": "IDangerousAttacks",
+          "home": "8",
+          "away": "8"
+        },
+        "12": {
+          "name": "IOnTarget",
+          "home": "3",
+          "away": "2"
+        },
+        "13": {
+          "name": "IOffTarget",
+          "home": "0",
+          "away": "0"
+        },
+        "14": {
+          "name": "IPosession",
+          "home": "49",
+          "away": "51"
+        }
+      },
+      "extra": {
+        "0": {
+          "code": "255",
+          "minute": "18",
+          "value": "18' - 1st Goal -   (AaB Reserves) - "
+        },
+        "1": {
+          "code": "253",
+          "minute": "23",
+          "value": "23' - 1st Yellow Card -  (AaB Reserves)"
+        }
+      },
+      "history": {},
+      "odds": {
+        "1": {
+          "id": 1,
+          "name": "Home Team Goals",
+          "short_name": "Home Team Goals",
+          "suspend": "0",
+          "order": "",
+          "participants": {
+            "6501272110": {
+              "id": "6501272110",
+              "name": "Over",
+              "short_name": "Over",
+              "value_eu": "15",
+              "suspend": "0",
+              "handicap": "4.5"
+            },
+            "6501272111": {
+              "id": "6501272111",
+              "name": "Under",
+              "short_name": "Under",
+              "value_eu": "1.01",
+              "suspend": "0",
+              "handicap": "4.5"
+            },
+            "6501272112": {
+              "id": "6501272112",
+              "name": "Over",
+              "short_name": "Over",
+              "value_eu": "2.2",
+              "suspend": "0",
+              "handicap": "1.5"
+            },
+            "6501272113": {
+              "id": "6501272113",
+              "name": "Under",
+              "short_name": "Under",
+              "value_eu": "1.615",
+              "suspend": "0",
+              "handicap": "1.5"
+            }
+          }
+        },
+        "2": {
+          "id": 2,
+          "name": "Away Team Goals",
+          "short_name": "Away Team Goals",
+          "suspend": "0",
+          "order": "",
+          "participants": {
+            "6501272120": {
+              "id": "6501272120",
+              "name": "Over",
+              "short_name": "Over",
+              "value_eu": "2.5",
+              "suspend": "0",
+              "handicap": "2.5"
+            },
+            "6501272121": {
+              "id": "6501272121",
+              "name": "Under",
+              "short_name": "Under",
+              "value_eu": "1.5",
+              "suspend": "0",
+              "handicap": "2.5"
+            },
+            "6501272122": {
+              "id": "6501272122",
+              "name": "Over",
+              "short_name": "Over",
+              "value_eu": "9",
+              "suspend": "0",
+              "handicap": "4.5"
+            },
+            "6501272123": {
+              "id": "6501272123",
+              "name": "Under",
+              "short_name": "Under",
+              "value_eu": "1.04",
+              "suspend": "0",
+              "handicap": "4.5"
+            }
+          }
+        },
+        "11": {
+          "id": 11,
+          "name": "3-Way Handicap",
+          "short_name": "3-Way Handicap",
+          "suspend": "0",
+          "order": "",
+          "participants": {
+            "65012721110": {
+              "id": "65012721110",
+              "name": "Home",
+              "short_name": "Home",
+              "value_eu": "1.142",
+              "suspend": "0",
+              "handicap": "3",
+              "is_main": "0"
+            },
+            "65012721111": {
+              "id": "65012721111",
+              "name": "Draw",
+              "short_name": "Draw",
+              "value_eu": "7.5",
+              "suspend": "0",
+              "handicap": "-3",
+              "is_main": "0"
+            },
+            "65012721112": {
+              "id": "65012721112",
+              "name": "Away",
+              "short_name": "Away",
+              "value_eu": "10",
+              "suspend": "0",
+              "handicap": "-3",
+              "is_main": "0"
+            },
+            "65012721113": {
+              "id": "65012721113",
+              "name": "Home",
+              "short_name": "Home",
+              "value_eu": "2.25",
+              "suspend": "0",
+              "handicap": "1",
+              "is_main": "1"
+            },
+            "65012721114": {
+              "id": "65012721114",
+              "name": "Draw",
+              "short_name": "Draw",
+              "value_eu": "3.6",
+              "suspend": "0",
+              "handicap": "-1",
+              "is_main": "1"
+            },
+            "65012721115": {
+              "id": "65012721115",
+              "name": "Away",
+              "short_name": "Away",
+              "value_eu": "2.5",
+              "suspend": "0",
+              "handicap": "-1",
+              "is_main": "1"
+            }
+          }
+        },
+        "12": {
+          "id": 12,
+          "name": "Asian Handicap",
+          "short_name": "Asian Handicap",
+          "suspend": "0",
+          "order": "",
+          "participants": {
+            "65012721120": {
+              "id": "65012721120",
+              "name": "Home",
+              "short_name": "Home",
+              "value_eu": "1.475",
+              "suspend": "0",
+              "handicap": "1.5",
+              "is_main": "0"
+            },
+            "65012721121": {
+              "id": "65012721121",
+              "name": "Away",
+              "short_name": "Away",
+              "value_eu": "2.475",
+              "suspend": "0",
+              "handicap": "-1.5",
+              "is_main": "0"
+            },
+            "65012721122": {
+              "id": "65012721122",
+              "name": "Home",
+              "short_name": "Home",
+              "value_eu": "2.25",
+              "suspend": "0",
+              "handicap": "0.5",
+              "is_main": "0"
+            },
+            "65012721123": {
+              "id": "65012721123",
+              "name": "Away",
+              "short_name": "Away",
+              "value_eu": "1.575",
+              "suspend": "0",
+              "handicap": "-0.5",
+              "is_main": "0"
+            }
+          }
+        }
+      }
+    }
+  }
+}
+Your Endpoint Information
+Category	Value
+Accept Http Method	POST
+URL	{YOUR_ENDPOINT_URL}
+Webhook Request Headers
+Name	Value
+Method	POST
+Content-Type	application/json
+Content-Encoding	gzip
+GOALSERVE-SECURITY-SIGNATURE	{UNIQUE_VALIDATION_KEY}
+Webhook notification object
+The Webhook Notification object format is the same(accordingly to sport type) as in Inplay REST API.
+
+Sport	Refference
+Soccer	View Response Object
+Basketball	View Response Object
+Tennis	View Response Object
+Baseball	View Response Object
+Hockey	View Response Object
+Volleyball	View Response Object
+Inplay Dictionaries
+API Reference documentation for Goalserve Inplay Dictionaries module.
+
+Odds Markets
+Odds Markets Response Object
+
+[
+    {
+        "id": 12,
+        "name": "Asian Handicap"
+    },
+    {
+        "id": 11,
+        "name": "3-Way Handicap"
+    },
+    {
+        "id": 1777,
+        "name": "Fulltime Result"
+    }
+]
+Category	Value
+Http Method	GET
+URL	http://inplay.goalserve.com/dictionaries/odds-markets/{sport_type}
+Output Schema of responsez
+Field	Type	Description
+id	int	Id of Odds Market
+name	string	Name of Odds Market
+Event States
+Event States Response Object
+
+[
+    {
+        "code": 11000,
+        "name": "Home Team Dangerous Attack"
+    },
+    {
+        "code": 21000,
+        "name": "Away Team Dangerous Attack"
+    },
+    {
+        "code": 11001,
+        "name": "Home Team Attack"
+    },
+    {
+        "code": 21001,
+        "name": "Away Team Attack"
+    }
+]
+Category	Value
+Http Method	GET
+URL	http://inplay.goalserve.com/dictionaries/states/{sport_type}
+Output Schema of response
+Field	Type	Description
+code	int	Id of Event State
+name	string	Name of Event State
+Inplay Websockets API
+API Reference documentation for Goalserve Inplay Websockets API module.
+
+Goalserve provides sports events notifications with Websockets API.
+
+Goalserve uses websockets to notify your application of changes to live sporting events. Websockets notify your application about events such as the start and end of matches in different sports, inside game events such as goals, violations, attacks, changes in the odds, changes in game statistics, and so on.
+
+Connection to Goalserve Inplay Websockets API
+To use Goalserve Websockets API with your integration you need to acomplish these simple steps:
+
+1. You need to provide us with your static IP address so that we can grant you access.
+
+2. Make sure that you have whitelisted our server''s IP address in your firewall.
+
+3. You need to get Goalserve Inplay Websockets API Access Token from http://152.89.28.69:8765/api/v1/auth/gettoken to connect to our websockets API, with following request data :
+
+> API access token Response Object:
+{ "token": "YOUR_JWT_TOKEN" }
+Category	Value
+URL	http://152.89.28.69:8765/api/v1/auth/gettoken
+Http Method	POST
+Content-Type	application/json
+Body	{ "apiKey": "YOUR_GOALSERVE_API_KEY" }
+Output Schema of response
+Field	Type	Description
+token	string	JWT Goalserve Inplay Websockets API Access Token
+ NOTE:
+Received Access Token will be valid 60 minutes.
+
+
+4. Received token you need to send as query-string parameter in URL when connecting to our Websockets API :
+
+Category	Type	Value
+URL	string	ws://152.89.28.69:8765/ws/{SPORT_TYPE}?tkn={API_ACCESS_TOKEN}
+{SPORT_TYPE}	string	Sport type from list of available sports
+{API_ACCESS_TOKEN}	string	Goalserve Websockets API Access Token which you retrieved in step 3
+
+
+
+Goalserve Inplay Websockets API Message Types
+There 2 main types of Goalserve Websockets API messages that you receive:
+
+1. "avl" - currently available list of events/matches.
+
+2. "updt" - odds update for a specific event/match.
+
+The message tpye indicated in "mt" field (Example: "mt": "avl")
+
+Message Type "avl" Object
+Message Type "avl" Object
+
+
+{
+  "mt": "avl",
+  "sp": "soccer",
+  "dt": "07-24-2023 08:25:43",
+  "evts": [
+    {
+      "id": "92994917",
+      "mid": 6827833,
+      "cmp_id": 512,
+      "cmp_name": "Europe Friendlies",
+      "t1": {
+        "n": "Slavia Prague B",
+        "kit": {
+          "id": 13,
+          "si": "#D6003D,#D6003D,#F0F0F0,#F0F0F0,#C40010,#0046A8,#F0F0F0,#F0F0F0,#D6003D,#D6003D,#D6003D",
+          "so": null
+        }
+      },
+      "t2": {
+        "n": "Hapoel Acre",
+        "kit": {
+          "id": 16,
+          "si": "#0A0A0A,#0A0A0A,#262626,#00FFFF,#FF0000,#0000FF,#F0F0F0,#262626,#262626,#262626,#262626",
+          "so": null
+        }
+      },
+      "pc": 1,
+      "fi": "141337965"
+    },
+    {
+      "id": "92984586",
+      "mid": 6818775,
+      "cmp_id": 18076,
+      "cmp_name": "Australia Victoria NPL2 U21 League",
+      "t1": {
+        "n": "Bulleen Lions U21",
+        "kit": {
+          "id": 10,
+          "si": "#804040,#804040,#804040,#00C1BA,#C40010,#0046A8,#804040,#804040,#804040,#804040,#804040",
+          "so": null
+        }
+      },
+      "t2": {
+        "n": "Pascoe Vale U21",
+        "kit": {
+          "id": 15,
+          "si": "#F0F0F0,#F0F0F0,#D446BA,#00C1BA,#C40010,#0046A8,#3D4A4E,#0A0A0A,#0A0A0A,#0A0A0A,#0A0A0A",
+          "so": null
+        }
+      },
+      "pc": 1,
+      "fi": "140855895"
+    },
+    {
+      "id": "92854773",
+      "mid": 6728063,
+      "cmp_id": 6121,
+      "cmp_name": "Women's World Cup",
+      "t1": {
+        "n": "Germany Women",
+        "kit": {
+          "id": 18,
+          "si": "#F0F0F0,#0A0A0A,#F0F0F0,#F0F0F0,#C40010,#0046A8,#0A0A0A,#0A0A0A,#EA9C08,#0A0A0A,#0A0A0A",
+          "so": null
+        }
+      },
+      "t2": {
+        "n": "Morocco Women",
+        "kit": {
+          "id": 13,
+          "si": "#316F37,#C40010,#C40010,#007848,#C40010,#0046A8,#007848,#316F37,#0A0A0A,#0A0A0A,#007848",
+          "so": null
+        }
+      },
+      "pc": 0,
+      "fi": "139580483"
+    }
+  ],
+  "bm": "bet365"
+}
+"avl" Object Structure Description
+Field	Type	Description
+mt	string	Message Type.
+sp	string	Sport Type.
+dt	datetime	Date and Time of data update.
+evts	Array	Array of available events.
+evts[index].id	numeric	Event Id.
+evts[index].mid	numeric	Additional Id of sport event object.
+evts[index].cmp_id	numeric	Event Competition Id.
+evts[index].cmp_name	string	Event Competition Name.
+evts[index].t1	object	Team 1 Object.
+evts[index].t1.name	string	Team 1 Name.
+evts[index].t1.kit	object	Team 1 sport specific kit pattern Object.
+evts[index].t1.kit.id	numeric	Team 1 sport specific kit pattern Id.
+evts[index].t1.kit.si	string	Comma separated colors codes for upper part of the outfit (shirts).
+evts[index].t1.kit.so	string	Comma separated colors codes for lower part of the outfit (shorts).
+evts[index].t2	object	Team 2 Object.
+evts[index].t2.name	string	Team 2 Name.
+evts[index].t2.kit	object	Team 2 sport specific kit pattern Object.
+evts[index].t2.kit.id	numeric	Team 2 sport specific kit pattern Id.
+evts[index].t2.kit.si	string	Comma separated colors codes for upper part of the outfit (shirts).
+evts[index].t2.kit.so	string	Comma separated colors codes for lower part of the outfit (shorts).
+evts[index].fi	numeric	Unique provider event Id.
+bm	string	Unique Bookamker name for provided events.
+Message Type "updt" Object
+Documentation description for "updt" json structure in process of replenished...
+Message Type "updt" Object
+
+
+{
+  "mt": "updt",
+  "sp": "soccer",
+  "ctry_id": 50,
+  "bm": "bet365",
+  "uptd": "24.07.2023 08:27:44",
+  "pt": "1690187264316",
+  "id": "92994917",
+  "mid": 6827833,
+  "cmp_id": 512,
+  "cmp_name": "Europe Friendlies",
+  "t1": {
+    "n": "Slavia Prague B",
+    "kit": {
+      "id": 13,
+      "si": "#D6003D,#D6003D,#F0F0F0,#F0F0F0,#C40010,#0046A8,#F0F0F0,#F0F0F0,#D6003D,#D6003D,#D6003D",
+      "so": null
+    }
+  },
+  "t2": {
+    "n": "Hapoel Acre",
+    "kit": {
+      "id": 16,
+      "si": "#0A0A0A,#0A0A0A,#262626,#00FFFF,#FF0000,#0000FF,#F0F0F0,#262626,#262626,#262626,#262626",
+      "so": null
+    }
+  },
+  "et": 1348,
+  "stp": 1,
+  "bl": 0,
+  "xy": null,
+  "pc": 1,
+  "sc": "21024",
+  "cms": [
+    {
+      "id": "149769221",
+      "mt": "255",
+      "p": null,
+      "tm": 480,
+      "n": "8' - 1st Goal -   (Hapoel Acre) - "
+    },
+    {
+      "id": "149769688",
+      "mt": "252",
+      "p": null,
+      "tm": 780,
+      "n": "13' - 1st Corner - Slavia Prague B"
+    },
+    {
+      "id": "149769929",
+      "mt": "255",
+      "p": null,
+      "tm": 960,
+      "n": "16' - 2nd Goal -   (Slavia Prague B) - "
+    },
+    {
+      "id": "149770063",
+      "mt": "252",
+      "p": null,
+      "tm": 1080,
+      "n": "18' - 2nd Corner - Hapoel Acre"
+    }
+  ],
+  "stat": "On Target=1:1|Off Target=0:2|Attacks=22:21|Dangerous Attacks=13:9|09:00#-1=:|##-1=:|Possession %=56:44|20230724090000=:|",
+  "stats": {
+    "c": [
+      1,
+      1
+    ],
+    "f": [
+      0,
+      0
+    ],
+    "o": [
+      0,
+      0
+    ],
+    "p": [
+      0,
+      0
+    ],
+    "r": [
+      0,
+      0
+    ],
+    "t": [
+      0,
+      0
+    ],
+    "y": [
+      0,
+      0
+    ],
+    "s": [
+      0,
+      0
+    ],
+    "g": [
+      0,
+      0
+    ],
+    "a": [
+      1,
+      1
+    ],
+    "h1": [
+      1,
+      1
+    ]
+  },
+  "odds": [
+    {
+      "id": 31,
+      "bl": 0,
+      "ha": 2.5,
+      "o": [
+        {
+          "n": "Over",
+          "v": 1.666,
+          "lv": 1.615,
+          "b": 0
+        },
+        {
+          "n": "Under",
+          "v": 2.1,
+          "lv": 2.2,
+          "b": 0
+        }
+      ]
+    },
+    {
+      "id": 50246,
+      "bl": 0,
+      "o": [
+        {
+          "n": "1",
+          "v": 2.6,
+          "lv": 2.5,
+          "b": 0
+        },
+        {
+          "n": "X",
+          "v": 2.625,
+          "lv": 2.75,
+          "b": 0
+        },
+        {
+          "n": "2",
+          "v": 2.875,
+          "lv": 2.625,
+          "b": 0
+        }
+      ]
+    },
+    {
+      "id": 10563,
+      "bl": 0,
+      "o": [
+        {
+          "n": "1",
+          "v": 1.727,
+          "lv": 3.5,
+          "b": 0
+        },
+        {
+          "n": "2",
+          "v": 2,
+          "lv": 1.285,
+          "b": 0
+        }
+      ]
+    },
+    {
+      "id": 1016,
+      "bl": 0,
+      "o": [
+        {
+          "n": "1",
+          "v": 1.952,
+          "lv": 1.909,
+          "b": 0
+        },
+        {
+          "n": "No goal",
+          "v": 8.5,
+          "lv": 9,
+          "b": 0
+        },
+        {
+          "n": "2",
+          "v": 2,
+          "lv": 2.05,
+          "b": 0
+        }
+      ]
+    },
+    {
+      "id": 90008,
+      "bl": 0,
+      "ha": 4.25,
+      "o": [
+        {
+          "n": "Over",
+          "v": 1.85,
+          "lv": 1.875,
+          "b": 0
+        },
+        {
+          "n": "Under",
+          "v": 1.95,
+          "lv": 1.925,
+          "b": 0
+        }
+      ]
+    },
+    {
+      "id": 29,
+      "bl": 0,
+      "ha": 0,
+      "o": [
+        {
+          "n": "1",
+          "v": 1.725,
+          "lv": 1.7,
+          "b": 0
+        },
+        {
+          "n": "2",
+          "v": 2.075,
+          "lv": 2.1,
+          "b": 0
+        }
+      ]
+    },
+    {
+      "id": 1777,
+      "bl": 0,
+      "o": [
+        {
+          "n": "1",
+          "v": 2.4,
+          "lv": 2.375,
+          "b": 0
+        },
+        {
+          "n": "X",
+          "v": 3.5,
+          "lv": 3.6,
+          "b": 0
+        },
+        {
+          "n": "2",
+          "v": 2.75,
+          "lv": 2.625,
+          "b": 0
+        }
+      ]
+    },
+    {
+      "id": 90009,
+      "bl": 0,
+      "ha": 2.75,
+      "o": [
+        {
+          "n": "Over",
+          "v": 2.075,
+          "lv": 2.05,
+          "b": 0
+        },
+        {
+          "n": "Under",
+          "v": 1.725,
+          "lv": 1.75,
+          "b": 0
+        }
+      ]
+    },
+    {
+      "id": 10562,
+      "bl": 0,
+      "o": [
+        {
+          "n": "Odd",
+          "v": 1.833,
+          "b": 0
+        },
+        {
+          "n": "Even",
+          "v": 1.833,
+          "b": 0
+        }
+      ]
+    },
+    {
+      "id": 227,
+      "bl": 0,
+      "o": [
+        {
+          "n": "1:0",
+          "v": 4.75,
+          "b": 1
+        },
+        {
+          "n": "2:0",
+          "v": 13,
+          "lv": 12,
+          "b": 1
+        },
+        {
+          "n": "2:1",
+          "v": 4,
+          "lv": 12,
+          "b": 0
+        },
+        {
+          "n": "3:0",
+          "v": 41,
+          "lv": 34,
+          "b": 1
+        },
+        {
+          "n": "3:1",
+          "v": 15,
+          "lv": 13,
+          "b": 0
+        },
+        {
+          "n": "3:2",
+          "v": 34,
+          "lv": 29,
+          "b": 0
+        },
+        {
+          "n": "4:0",
+          "v": 126,
+          "lv": 101,
+          "b": 1
+        },
+        {
+          "n": "0:0",
+          "v": 3,
+          "lv": 3.1,
+          "b": 1
+        },
+        {
+          "n": "1:1",
+          "v": 2.1,
+          "lv": 2.2,
+          "b": 0
+        },
+        {
+          "n": "2:2",
+          "v": 10,
+          "lv": 9.5,
+          "b": 0
+        },
+        {
+          "n": "0:1",
+          "v": 2.5,
+          "lv": 2.625,
+          "b": 1
+        },
+        {
+          "n": "0:2",
+          "v": 4.75,
+          "lv": 5,
+          "b": 1
+        },
+        {
+          "n": "1:2",
+          "v": 4.75,
+          "lv": 8,
+          "b": 0
+        },
+        {
+          "n": "0:3",
+          "v": 17,
+          "lv": 15,
+          "b": 1
+        },
+        {
+          "n": "1:3",
+          "v": 21,
+          "lv": 19,
+          "b": 0
+        },
+        {
+          "n": "2:3",
+          "v": 41,
+          "lv": 34,
+          "b": 0
+        },
+        {
+          "n": "0:4",
+          "v": 51,
+          "lv": 41,
+          "b": 1
+        },
+        {
+          "n": "1:4",
+          "v": 67,
+          "lv": 51,
+          "b": 0
+        },
+        {
+          "n": "3:3",
+          "v": 81,
+          "lv": 67,
+          "b": 0
+        },
+        {
+          "n": "2:4",
+          "v": 101,
+          "lv": 81,
+          "b": 1
+        },
+        {
+          "n": "0:5",
+          "v": 126,
+          "lv": 101,
+          "b": 1
+        },
+        {
+          "n": "4:1",
+          "v": 51,
+          "lv": 41,
+          "b": 0
+        },
+        {
+          "n": "4:2",
+          "v": 101,
+          "lv": 81,
+          "b": 0
+        }
+      ]
+    },
+    {
+      "id": 27,
+      "bl": 0,
+      "o": [
+        {
+          "n": "1",
+          "v": 3.4,
+          "lv": 3.25,
+          "b": 0
+        },
+        {
+          "n": "X",
+          "v": 1.8,
+          "lv": 1.833,
+          "b": 0
+        },
+        {
+          "n": "2",
+          "v": 4,
+          "lv": 3.75,
+          "b": 0
+        }
+      ]
+    },
+    {
+      "id": 226,
+      "bl": 0,
+      "o": [
+        {
+          "n": "1/1",
+          "v": 4.5,
+          "lv": 4.333,
+          "b": 0
+        },
+        {
+          "n": "1/X",
+          "v": 15,
+          "lv": 41,
+          "b": 0
+        },
+        {
+          "n": "1/2",
+          "v": 29,
+          "lv": 26,
+          "b": 0
+        },
+        {
+          "n": "X/1",
+          "v": 4.5,
+          "lv": 4.75,
+          "b": 0
+        },
+        {
+          "n": "X/X",
+          "v": 4.75,
+          "lv": 5,
+          "b": 0
+        },
+        {
+          "n": "X/2",
+          "v": 5,
+          "lv": 5.5,
+          "b": 0
+        },
+        {
+          "n": "2/1",
+          "v": 26,
+          "lv": 23,
+          "b": 0
+        },
+        {
+          "n": "2/X",
+          "v": 17,
+          "lv": 15,
+          "b": 0
+        },
+        {
+          "n": "2/2",
+          "v": 5.5,
+          "lv": 5,
+          "b": 0
+        }
+      ]
+    },
+    {
+      "id": 12,
+      "bl": 0,
+      "ha": 0,
+      "o": [
+        {
+          "n": "1",
+          "v": 1.775,
+          "b": 0
+        },
+        {
+          "n": "2",
+          "v": 2.025,
+          "b": 0
+        }
+      ]
+    },
+    {
+      "id": 10001,
+      "bl": 0,
+      "o": [
+        {
+          "n": "1:0",
+          "v": 10,
+          "lv": 11,
+          "b": 1
+        },
+        {
+          "n": "2:0",
+          "v": 13,
+          "lv": 15,
+          "b": 1
+        },
+        {
+          "n": "2:1",
+          "v": 7,
+          "lv": 7.5,
+          "b": 0
+        },
+        {
+          "n": "3:0",
+          "v": 26,
+          "lv": 23,
+          "b": 1
+        },
+        {
+          "n": "3:1",
+          "v": 11,
+          "lv": 10,
+          "b": 0
+        },
+        {
+          "n": "3:2",
+          "v": 9.5,
+          "lv": 9,
+          "b": 0
+        },
+        {
+          "n": "4:0",
+          "v": 41,
+          "b": 1
+        },
+        {
+          "n": "4:1",
+          "v": 21,
+          "lv": 41,
+          "b": 0
+        },
+        {
+          "n": "4:2",
+          "v": 21,
+          "lv": 19,
+          "b": 0
+        },
+        {
+          "n": "4:3",
+          "v": 29,
+          "lv": 26,
+          "b": 0
+        },
+        {
+          "n": "5:0",
+          "v": 101,
+          "lv": 81,
+          "b": 1
+        },
+        {
+          "n": "5:1",
+          "v": 41,
+          "lv": 81,
+          "b": 0
+        },
+        {
+          "n": "5:2",
+          "v": 41,
+          "lv": 67,
+          "b": 0
+        },
+        {
+          "n": "0:0",
+          "v": 13,
+          "lv": 15,
+          "b": 1
+        },
+        {
+          "n": "1:1",
+          "v": 8.5,
+          "lv": 9,
+          "b": 0
+        },
+        {
+          "n": "2:2",
+          "v": 6.5,
+          "lv": 7,
+          "b": 0
+        },
+        {
+          "n": "3:3",
+          "v": 15,
+          "lv": 13,
+          "b": 0
+        },
+        {
+          "n": "4:4",
+          "v": 51,
+          "lv": 41,
+          "b": 0
+        },
+        {
+          "n": "0:1",
+          "v": 11,
+          "lv": 12,
+          "b": 1
+        },
+        {
+          "n": "0:2",
+          "v": 9.5,
+          "lv": 10,
+          "b": 1
+        },
+        {
+          "n": "1:2",
+          "v": 7.5,
+          "lv": 8,
+          "b": 0
+        },
+        {
+          "n": "0:3",
+          "v": 13,
+          "lv": 15,
+          "b": 1
+        },
+        {
+          "n": "1:3",
+          "v": 12,
+          "lv": 13,
+          "b": 0
+        },
+        {
+          "n": "2:3",
+          "v": 10,
+          "lv": 13,
+          "b": 0
+        },
+        {
+          "n": "0:4",
+          "v": 26,
+          "lv": 23,
+          "b": 1
+        },
+        {
+          "n": "1:4",
+          "v": 26,
+          "lv": 21,
+          "b": 0
+        },
+        {
+          "n": "2:4",
+          "v": 23,
+          "lv": 21,
+          "b": 0
+        },
+        {
+          "n": "3:4",
+          "v": 34,
+          "lv": 29,
+          "b": 0
+        },
+        {
+          "n": "0:5",
+          "v": 51,
+          "lv": 41,
+          "b": 1
+        },
+        {
+          "n": "1:5",
+          "v": 51,
+          "lv": 41,
+          "b": 0
+        },
+        {
+          "n": "2:5",
+          "v": 51,
+          "lv": 41,
+          "b": 0
+        },
+        {
+          "n": "3:5",
+          "v": 67,
+          "lv": 51,
+          "b": 0
+        },
+        {
+          "n": "5:3",
+          "v": 51,
+          "lv": 41,
+          "b": 0
+        },
+        {
+          "n": "4:5",
+          "v": 126,
+          "lv": 101,
+          "b": 0
+        },
+        {
+          "n": "0:6",
+          "v": 101,
+          "lv": 81,
+          "b": 1
+        },
+        {
+          "n": "1:6",
+          "v": 126,
+          "lv": 101,
+          "b": 1
+        },
+        {
+          "n": "2:6",
+          "v": 126,
+          "lv": 101,
+          "b": 0
+        },
+        {
+          "n": "5:4",
+          "v": 101,
+          "lv": 81,
+          "b": 0
+        },
+        {
+          "n": "6:1",
+          "v": 101,
+          "lv": 81,
+          "b": 0
+        },
+        {
+          "n": "6:2",
+          "v": 101,
+          "lv": 81,
+          "b": 0
+        },
+        {
+          "n": "6:3",
+          "v": 126,
+          "lv": 101,
+          "b": 1
+        },
+        {
+          "n": "3:6",
+          "v": 126,
+          "b": 1
+        }
+      ]
+    },
+    {
+      "id": 10115,
+      "bl": 0,
+      "o": [
+        {
+          "n": "1X",
+          "v": 1.4,
+          "lv": 1.444,
+          "b": 0
+        },
+        {
+          "n": "X2",
+          "v": 1.5,
+          "lv": 1.533,
+          "b": 0
+        },
+        {
+          "n": "12",
+          "v": 1.285,
+          "lv": 1.25,
+          "b": 0
+        }
+      ]
+    },
+    {
+      "id": 11,
+      "bl": 0,
+      "ha": -1,
+      "o": [
+        {
+          "n": "1",
+          "v": 4.75,
+          "lv": 4.5,
+          "b": 0
+        },
+        {
+          "n": "X",
+          "v": 4,
+          "b": 0
+        },
+        {
+          "n": "2",
+          "v": 1.5,
+          "lv": 1.533,
+          "b": 0
+        }
+      ]
+    },
+    {
+      "id": 44,
+      "bl": 0,
+      "o": [
+        {
+          "n": "1",
+          "v": 1.727,
+          "lv": 1.666,
+          "b": 0
+        },
+        {
+          "n": "No goal",
+          "v": 13,
+          "lv": 15,
+          "b": 1
+        },
+        {
+          "n": "2",
+          "v": 2,
+          "lv": 2.1,
+          "b": 0
+        }
+      ]
+    },
+    {
+      "id": 421,
+      "bl": 0,
+      "ha": 4.5,
+      "o": [
+        {
+          "n": "Over",
+          "v": 2,
+          "lv": 1.909,
+          "b": 0
+        },
+        {
+          "n": "Under",
+          "v": 1.727,
+          "lv": 1.8,
+          "b": 0
+        }
+      ]
+    }
+  ]
+}
+"updt" Object Structure Description
+Field	Type	Description
+mt	string	Message Type.
+sp	string	Sport Type.
+ctry_id	numeric	Event Country Id.
+bm	string	Unique Bookamker name for provided events.
+uptd	datetime	Date and Time of data update.
+pt	timestamp	Push time of data from servers.
+id	numeric	Event Id.
+mid	numeric	Additional Id of sport event object.
+cmp_id	numeric	Event Competition Id.
+cmp_name	string	Event Competition Name.
+t1	object	Team 1 Object.
+t1.name	string	Team 1 Name.
+t1.kit	object	Team 1 sport specific kit pattern Object.
+t1.kit.id	numeric	Team 1 sport specific kit pattern Id.
+t1.kit.si	string	Comma separated colors codes for upper part of the outfit (shirts).
+t1.kit.so	string	Comma separated colors codes for lower part of the outfit (shorts).
+t2	object	Team 2 Object.
+t2.name	string	Team 2 Name.
+t2.kit	object	Team 2 sport specific kit pattern Object.
+t2.kit.id	numeric	Team 2 sport specific kit pattern Id.
+t2.kit.si	string	Comma separated colors codes for upper part of the outfit (shirts).
+t2.kit.so	string	Comma separated colors codes for lower part of the outfit (shorts).
+et	numeric	Current time of the event (in seconds).
+stp	numeric	Indicates whether match time is stopped or it is running (ex. referee stops the time while there is an injury on the pitch).
+bl	numeric	Indicates whether event blocked or not.
+xy	string	Comma separated position of ball (if available).
+pc	numeric	Current Period Code.
+sc	numeric	Current State Code.
+cms	Array	Array of Event related messages/comments.
+cms[index].id	numeric	Message Id.
+cms[index].mt	numeric	Message type.
+cms[index].p	numeric	Message Event period.
+cms[index].tm	numeric	Message time (in seconds).
+cms[index].n	string	Message text.
+stats	Object	Statistics of the Event. Each property is Array where 1st element is stat of Team 1 and 2nd element is stat of Team 2.
+*Properties of the object depends on type of sport.
+List of Event Stats Codes
+odds	Array	Event Betting Odds Array.
+odds[index].id	numeric	Odds Market id.
+odds[index].bl	numeric	Idicates is Market with Odds blocked or not.
+odds[index].ha	numeric	If this property is presented it indicates that market is Handicap and specifies the handicap coefficient.
+odds[index].o	Array	Market Odds Array.
+odds[index].o[index].n	string	Odd name.
+odds[index].o[index].v	numeric	Current Odd value.
+odds[index].o[index].lv	numeric	Last Odd value.
+odds[index].o[index].b	numeric	Indicates whether Odd is blocked or not.
+Available Websockets Sports
+List of Sport Types available for Goalserve Websockets API:
+#	Name
+1	soccer
+2	basket
+3	tennis
+4	baseball
+5	amfootball
+6	hockey
+7	volleyball
+List of available sports is replenished...
+
+
+Event Statistics Codes
+Soccer:
+Code	Name
+c	Corner
+f	Free Kick
+o	Offside
+p	Penalty
+r	Red Card
+t	Throw In
+y	Yellow Card
+s	Substitituion
+g	Goal Kick
+a	Goal
+h1	1st Half
+Basketball:
+Code	Name
+Q1	1st Quarter
+Q2	2nd Quarter
+H1	1st Half
+Q3	3rd Quarter
+Q4	4th Quarter
+H2	2nd Half
+OT1	Over Time 1
+OT2	Over Time 2
+OT3	Over Time 3
+T	Total
+Tennis:
+Code	Name
+TURN	Serving
+S1	1st Set
+S2	2nd Set
+S3	3rd Set
+S4	4th Set
+S5	5th Set
+POINTS	Points
+TBP	Tie Break Points
+OT3	Over Time 3
+T	Total
+Baseball:
+Code	Name
+I1	Inning 1
+I2	Inning 2
+I3	Inning 3
+I4	Inning 4
+I5	Inning 5
+I6	Inning 6
+I7	Inning 7
+I8	Inning 8
+I9	Inning 9
+I10	Inning 10
+I11	Inning 11
+I12	Inning 12
+I13	Inning 13
+I14	Inning 14
+I15	Inning 15
+R	Runs
+H	Hits
+List of Statistics Codes is replenished...
+
+

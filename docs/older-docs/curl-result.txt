@@ -1,0 +1,667 @@
+curl -X GET "http://www.goalserve.com/getfeed/fd05c9e7e41044acb6b108dd7af3fbb6/baseball/mlb-scores"
+
+<?xml version="1.0" encoding="ISO-8859-1" ?>
+<scores sport="baseball">
+	<category name="USA: MLB" id="1000">
+		<match date="10.05.2025" timezone="ET" status="Bottom 9th" formatted_date="10.05.2025" time="16:05" outs="" venue_name="PNC Park, Pittsburgh, Pennsylvania" venue_id="1285" attendance="" broadcast="FDSO | FDSE | SNPT" oddsid="338211" datetime_utc="10.05.2025 20:05" id="1329181723">
+			<hometeam name="Pittsburgh Pirates" in1="" in2="" in3="" in4="" in5=""  in6="" in7="" in8="" in9="" r="" hits="8" errors="1" totalscore="2" id="1020">
+				<innings>
+					<inning number="1" score="0" hits="0" />
+					<inning number="2" score="0" hits="2" />
+					<inning number="3" score="1" hits="1" />
+					<inning number="4" score="0" hits="0" />
+					<inning number="5" score="0" hits="0" />
+					<inning number="6" score="0" hits="2" />
+					<inning number="7" score="0" hits="1" />
+					<inning number="8" score="1" hits="2" />
+					<inning number="9" score="0" hits="0" />
+				</innings>
+			</hometeam>
+			<awayteam name="Atlanta Braves" in1="" in2="" in3="" in4="" in5=""  in6="" in7="" in8="" in9="" r="" hits="5" errors="1" totalscore="2" id="1006">
+				<innings>
+					<inning number="1" score="0" hits="1" />
+					<inning number="2" score="1" hits="2" />
+					<inning number="3" score="1" hits="1" />
+					<inning number="4" score="0" hits="0" />
+					<inning number="5" score="0" hits="0" />
+					<inning number="6" score="0" hits="0" />
+					<inning number="7" score="0" hits="1" />
+					<inning number="8" score="0" hits="0" />
+					<inning number="9" score="0" hits="0" />
+				</innings>
+			</awayteam>
+			<events>
+					<event team="awayteam" inn="2" desc="Harris II doubled to right, Murphy scored." chw="0" cle="1" />
+					<event team="awayteam" inn="3" desc="Olson homered to center (431 feet)." chw="0" cle="2" />
+					<event team="hometeam" inn="3" desc="Bart singled to center, Cruz scored, McCutchen to second." chw="1" cle="2" />
+					<event team="hometeam" inn="8" desc="Gorski reached on infield single to third, Bae scored, Gorski safe at second on throwing error by third baseman Riley." chw="2" cle="2" />
+			</events>
+			<gamecast>
+				<current_batter name="Oneil Cruz" stats="0-4, R, SB, 2 K" id="39712" />
+				<current_pitcher name="Daysbel Hernandez" stats="0.1 IP, 0 ER, H, 2 BB" id="4722960" />
+				<stats balls="0" strikes="0" outs="0" />
+				<bases base1="0" base2="0" base3="0" />
+			</gamecast>
+			<stats>
+				<hitters>
+					<hometeam>
+						<player name="O. Cruz" pos="CF" at_bats="4" runs="1" hits="0" doubles="0" triples="0" home_runs="0" sac_fly="0" hit_by_pitch="0" runs_batted_in="0" walks="1" strikeouts="2" average=".238" stolen_bases="1" on_base_percentage=".369" slugging_percentage=".462" cs="0" id="39712" />
+						<player name="B. Reynolds" pos="RF" at_bats="4" runs="0" hits="0" doubles="0" triples="0" home_runs="0" sac_fly="0" hit_by_pitch="0" runs_batted_in="0" walks="0" strikeouts="2" average=".215" stolen_bases="0" on_base_percentage=".276" slugging_percentage=".342" cs="0" id="38980" />
+						<player name="T. Pham" pos="RF" at_bats="0" runs="0" hits="0" doubles="0" triples="0" home_runs="0" sac_fly="0" hit_by_pitch="0" runs_batted_in="0" walks="0" strikeouts="0" average=".183" stolen_bases="0" on_base_percentage=".259" slugging_percentage=".221" cs="0" id="31208" />
+						<player name="A. McCutchen" pos="DH" at_bats="3" runs="0" hits="0" doubles="0" triples="0" home_runs="0" sac_fly="0" hit_by_pitch="0" runs_batted_in="0" walks="1" strikeouts="0" average=".252" stolen_bases="0" on_base_percentage=".346" slugging_percentage=".396" cs="0" id="28701" />
+						<player name="J. Bart" pos="C" at_bats="4" runs="0" hits="4" doubles="0" triples="0" home_runs="0" sac_fly="0" hit_by_pitch="0" runs_batted_in="1" walks="0" strikeouts="0" average=".286" stolen_bases="0" on_base_percentage=".412" slugging_percentage=".378" cs="0" id="41168" />
+						<player name="J. Bae" pos="PR" at_bats="0" runs="1" hits="0" doubles="0" triples="0" home_runs="0" sac_fly="0" hit_by_pitch="0" runs_batted_in="0" walks="0" strikeouts="0" average=".000" stolen_bases="1" on_base_percentage=".000" slugging_percentage=".000" cs="0" id="40896" />
+						<player name="H. Davis" pos="C" at_bats="0" runs="0" hits="0" doubles="0" triples="0" home_runs="0" sac_fly="0" hit_by_pitch="0" runs_batted_in="0" walks="0" strikeouts="0" average=".133" stolen_bases="0" on_base_percentage=".212" slugging_percentage=".233" cs="0" id="4418683" />
+						<player name="K. Hayes" pos="3B" at_bats="4" runs="0" hits="1" doubles="0" triples="0" home_runs="0" sac_fly="0" hit_by_pitch="0" runs_batted_in="0" walks="0" strikeouts="1" average=".248" stolen_bases="0" on_base_percentage=".298" slugging_percentage=".305" cs="0" id="35020" />
+						<player name="M. Gorski" pos="1B" at_bats="4" runs="0" hits="2" doubles="0" triples="0" home_runs="0" sac_fly="0" hit_by_pitch="0" runs_batted_in="1" walks="0" strikeouts="1" average=".231" stolen_bases="0" on_base_percentage=".231" slugging_percentage=".423" cs="0" id="42962" />
+						<player name="A. Frazier" pos="2B" at_bats="3" runs="0" hits="0" doubles="0" triples="0" home_runs="0" sac_fly="0" hit_by_pitch="0" runs_batted_in="0" walks="1" strikeouts="2" average=".216" stolen_bases="0" on_base_percentage=".285" slugging_percentage=".297" cs="0" id="33546" />
+						<player name="A. Canario" pos="LF" at_bats="3" runs="0" hits="1" doubles="1" triples="0" home_runs="0" sac_fly="0" hit_by_pitch="0" runs_batted_in="0" walks="1" strikeouts="1" average=".149" stolen_bases="0" on_base_percentage=".231" slugging_percentage=".298" cs="0" id="41239" />
+						<player name="J. Triolo" pos="SS" at_bats="3" runs="0" hits="0" doubles="0" triples="0" home_runs="0" sac_fly="0" hit_by_pitch="0" runs_batted_in="0" walks="1" strikeouts="0" average=".143" stolen_bases="0" on_base_percentage=".214" slugging_percentage=".238" cs="0" id="42933" />
+					</hometeam>
+					<awayteam>
+						<player name="A. Verdugo" pos="LF" at_bats="4" runs="0" hits="0" doubles="0" triples="0" home_runs="0" sac_fly="0" hit_by_pitch="0" runs_batted_in="0" walks="0" strikeouts="0" average=".253" stolen_bases="0" on_base_percentage=".306" slugging_percentage=".342" cs="0" id="33786" />
+						<player name="A. Riley" pos="3B" at_bats="3" runs="0" hits="0" doubles="0" triples="0" home_runs="0" sac_fly="0" hit_by_pitch="0" runs_batted_in="0" walks="1" strikeouts="1" average=".286" stolen_bases="0" on_base_percentage=".331" slugging_percentage=".478" cs="0" id="34982" />
+						<player name="M. Ozuna" pos="DH" at_bats="4" runs="0" hits="1" doubles="1" triples="0" home_runs="0" sac_fly="0" hit_by_pitch="0" runs_batted_in="0" walks="0" strikeouts="0" average=".268" stolen_bases="0" on_base_percentage=".420" slugging_percentage=".431" cs="0" id="31668" />
+						<player name="M. Olson" pos="1B" at_bats="4" runs="1" hits="1" doubles="0" triples="0" home_runs="1" sac_fly="0" hit_by_pitch="0" runs_batted_in="1" walks="0" strikeouts="2" average=".223" stolen_bases="0" on_base_percentage=".355" slugging_percentage=".410" cs="0" id="32767" />
+						<player name="O. Albies" pos="2B" at_bats="4" runs="0" hits="0" doubles="0" triples="0" home_runs="0" sac_fly="0" hit_by_pitch="0" runs_batted_in="0" walks="0" strikeouts="1" average=".219" stolen_bases="0" on_base_percentage=".278" slugging_percentage=".342" cs="0" id="33783" />
+						<player name="S. Murphy" pos="C" at_bats="2" runs="1" hits="1" doubles="1" triples="0" home_runs="0" sac_fly="0" hit_by_pitch="1" runs_batted_in="0" walks="1" strikeouts="1" average=".224" stolen_bases="0" on_base_percentage=".333" slugging_percentage=".506" cs="0" id="33557" />
+						<player name="M. Harris II" pos="CF" at_bats="4" runs="0" hits="1" doubles="1" triples="0" home_runs="0" sac_fly="0" hit_by_pitch="0" runs_batted_in="1" walks="0" strikeouts="1" average=".227" stolen_bases="0" on_base_percentage=".245" slugging_percentage=".353" cs="0" id="42470" />
+						<player name="E. White" pos="RF" at_bats="4" runs="0" hits="1" doubles="0" triples="0" home_runs="0" sac_fly="0" hit_by_pitch="0" runs_batted_in="0" walks="0" strikeouts="0" average=".299" stolen_bases="0" on_base_percentage=".341" slugging_percentage=".532" cs="0" id="39963" />
+						<player name="N. Allen" pos="SS" at_bats="1" runs="0" hits="0" doubles="0" triples="0" home_runs="0" sac_fly="0" hit_by_pitch="0" runs_batted_in="0" walks="1" strikeouts="0" average=".258" stolen_bases="0" on_base_percentage=".314" slugging_percentage=".299" cs="0" id="40338" />
+						<player name="D. Baldwin" pos="PH" at_bats="1" runs="0" hits="0" doubles="0" triples="0" home_runs="0" sac_fly="0" hit_by_pitch="0" runs_batted_in="0" walks="0" strikeouts="0" average=".286" stolen_bases="0" on_base_percentage=".348" slugging_percentage=".460" cs="0" id="4810190" />
+						<player name="O. Arcia" pos="SS" at_bats="0" runs="0" hits="0" doubles="0" triples="0" home_runs="0" sac_fly="0" hit_by_pitch="0" runs_batted_in="0" walks="0" strikeouts="0" average=".194" stolen_bases="0" on_base_percentage=".219" slugging_percentage=".226" cs="0" id="32530" />
+					</awayteam>
+				</hitters>
+				<pitchers>
+					<hometeam>
+						<player name="A. Heaney" innings_pitched="6.0" runs="2" hits="4" earned_runs="2" walks="3" strikeouts="2" home_runs="1" pc-st="82-49" earned_runs_average="3.15" win="" loss="" holds="" saves="" hbp="1" id="32672" />
+						<player name="T. Rainey" innings_pitched="1.0" runs="0" hits="1" earned_runs="0" walks="0" strikeouts="1" home_runs="0" pc-st="19-13" earned_runs_average="0.00" win="" loss="" holds="" saves="" hbp="0" id="38582" />
+						<player name="D. Bednar" innings_pitched="1.0" runs="0" hits="0" earned_runs="0" walks="0" strikeouts="2" home_runs="0" pc-st="16-11" earned_runs_average="4.09" win="" loss="" holds="" saves="" hbp="0" id="38303" />
+						<player name="D. Santana" innings_pitched="1.0" runs="0" hits="0" earned_runs="0" walks="0" strikeouts="1" home_runs="0" pc-st="10-8" earned_runs_average="2.20" win="" loss="" holds="" saves="" hbp="0" id="39801" />
+					</hometeam>
+					<awayteam>
+						<player name="A. Smith-Shawver" innings_pitched="5.2" runs="1" hits="5" earned_runs="1" walks="2" strikeouts="7" home_runs="0" pc-st="97-59" earned_runs_average="2.76" win="" loss="" holds="" saves="" hbp="0" id="4917640" />
+						<player name="P. Johnson" innings_pitched="0.2" runs="0" hits="1" earned_runs="0" walks="0" strikeouts="0" home_runs="0" pc-st="9-6" earned_runs_average="2.45" win="" loss="" holds="" saves="" hbp="0" id="32777" />
+						<player name="D. Lee" innings_pitched="0.2" runs="0" hits="0" earned_runs="0" walks="0" strikeouts="2" home_runs="0" pc-st="9-6" earned_runs_average="2.25" win="" loss="" holds="" saves="" hbp="0" id="41455" />
+						<player name="R. Montero" innings_pitched="0.2" runs="1" hits="1" earned_runs="1" walks="0" strikeouts="0" home_runs="0" pc-st="14-8" earned_runs_average="4.73" win="" loss="" holds="" saves="" hbp="0" id="32631" />
+						<player name="D. Hernandez" innings_pitched="0.1" runs="0" hits="1" earned_runs="0" walks="3" strikeouts="0" home_runs="0" pc-st="20-10" earned_runs_average="2.12" win="" loss="" holds="" saves="" hbp="0" id="4722960" />
+					</awayteam>
+				</pitchers>
+			</stats>
+			<starting_pitchers>
+				<hometeam>
+					<player name="Heaney" id="32672" />
+				</hometeam>
+				<awayteam>
+					<player name="Smith-Shawver" id="4917640" />
+				</awayteam>
+			</starting_pitchers>
+			<umpires>
+				<umpire name="Clint  Vondrak" position="Home Plate Umpire" />
+				<umpire name="Tony Randazzo" position="First Base Umpire" />
+				<umpire name="Jacob  Metz" position="Second Base Umpire" />
+				<umpire name="Dan Bellino" position="Third Base Umpire" />
+			</umpires>
+		</match>
+		<match date="10.05.2025" timezone="ET" status="Final" formatted_date="10.05.2025" time="16:05" outs="" venue_name="Nationals Park, Washington, District of Columbia" venue_id="1343" attendance="37796" broadcast="FDMW | MASN" oddsid="338214" datetime_utc="10.05.2025 20:05" id="1329181727">
+			<hometeam name="Washington Nationals" in1="" in2="" in3="" in4="" in5=""  in6="" in7="" in8="" in9="" r="" hits="7" errors="0" totalscore="2" id="1010">
+				<innings>
+					<inning number="1" score="0" hits="1" />
+					<inning number="2" score="0" hits="0" />
+					<inning number="3" score="0" hits="0" />
+					<inning number="4" score="0" hits="0" />
+					<inning number="5" score="0" hits="2" />
+					<inning number="6" score="0" hits="0" />
+					<inning number="7" score="0" hits="0" />
+					<inning number="8" score="2" hits="3" />
+					<inning number="9" score="0" hits="1" />
+				</innings>
+			</hometeam>
+			<awayteam name="St. Louis Cardinals" in1="" in2="" in3="" in4="" in5=""  in6="" in7="" in8="" in9="" r="" hits="7" errors="0" totalscore="4" id="1021">
+				<innings>
+					<inning number="1" score="0" hits="0" />
+					<inning number="2" score="4" hits="3" />
+					<inning number="3" score="0" hits="0" />
+					<inning number="4" score="0" hits="1" />
+					<inning number="5" score="0" hits="2" />
+					<inning number="6" score="0" hits="1" />
+					<inning number="7" score="0" hits="0" />
+					<inning number="8" score="0" hits="0" />
+					<inning number="9" score="0" hits="0" />
+				</innings>
+			</awayteam>
+			<events>
+					<event team="awayteam" inn="2" desc="Pagés singled to right, Contreras scored, Gorman to second." chw="0" cle="1" />
+					<event team="awayteam" inn="2" desc="Scott II singled to left, Gorman scored, Pagés to second." chw="0" cle="2" />
+					<event team="awayteam" inn="2" desc="Nootbaar doubled to right, Scott II scored and Pagés scored, Nootbaar to third." chw="0" cle="4" />
+					<event team="hometeam" inn="8" desc="Crews homered to left (393 feet), Tena scored." chw="2" cle="4" />
+			</events>
+			<gamecast />
+			<stats>
+				<hitters>
+					<hometeam>
+						<player name="C. Abrams" pos="SS" at_bats="5" runs="0" hits="1" doubles="1" triples="0" home_runs="0" sac_fly="0" hit_by_pitch="0" runs_batted_in="0" walks="0" strikeouts="0" average=".299" stolen_bases="0" on_base_percentage=".361" slugging_percentage=".514" cs="0" id="42402" />
+						<player name="A. Call" pos="LF" at_bats="4" runs="0" hits="0" doubles="0" triples="0" home_runs="0" sac_fly="0" hit_by_pitch="0" runs_batted_in="0" walks="0" strikeouts="1" average=".329" stolen_bases="0" on_base_percentage=".435" slugging_percentage=".411" cs="0" id="38994" />
+						<player name="J. Wood" pos="DH" at_bats="3" runs="0" hits="1" doubles="0" triples="0" home_runs="0" sac_fly="0" hit_by_pitch="0" runs_batted_in="0" walks="1" strikeouts="2" average=".281" stolen_bases="0" on_base_percentage=".382" slugging_percentage=".542" cs="0" id="4918256" />
+						<player name="N. Lowe" pos="1B" at_bats="4" runs="0" hits="0" doubles="0" triples="0" home_runs="0" sac_fly="0" hit_by_pitch="0" runs_batted_in="0" walks="0" strikeouts="1" average=".242" stolen_bases="0" on_base_percentage=".323" slugging_percentage=".409" cs="0" id="40538" />
+						<player name="K. Ruiz" pos="C" at_bats="4" runs="0" hits="1" doubles="0" triples="0" home_runs="0" sac_fly="0" hit_by_pitch="0" runs_batted_in="0" walks="0" strikeouts="0" average=".292" stolen_bases="0" on_base_percentage=".343" slugging_percentage=".377" cs="0" id="38827" />
+						<player name="L. Garcia Jr." pos="2B" at_bats="4" runs="0" hits="0" doubles="0" triples="0" home_runs="0" sac_fly="0" hit_by_pitch="0" runs_batted_in="0" walks="0" strikeouts="1" average=".222" stolen_bases="0" on_base_percentage=".280" slugging_percentage=".333" cs="0" id="40459" />
+						<player name="J. Tena" pos="3B" at_bats="4" runs="1" hits="2" doubles="0" triples="0" home_runs="0" sac_fly="0" hit_by_pitch="0" runs_batted_in="0" walks="0" strikeouts="1" average=".238" stolen_bases="1" on_base_percentage=".262" slugging_percentage=".317" cs="0" id="42105" />
+						<player name="J. Young" pos="CF" at_bats="3" runs="0" hits="1" doubles="0" triples="0" home_runs="0" sac_fly="0" hit_by_pitch="0" runs_batted_in="0" walks="0" strikeouts="1" average=".216" stolen_bases="0" on_base_percentage=".309" slugging_percentage=".258" cs="0" id="4414210" />
+						<player name="J. Bell" pos="PH" at_bats="0" runs="0" hits="0" doubles="0" triples="0" home_runs="0" sac_fly="0" hit_by_pitch="0" runs_batted_in="0" walks="1" strikeouts="0" average=".130" stolen_bases="0" on_base_percentage=".225" slugging_percentage=".278" cs="0" id="32517" />
+						<player name="N. Nunez" pos="PR" at_bats="0" runs="0" hits="0" doubles="0" triples="0" home_runs="0" sac_fly="0" hit_by_pitch="0" runs_batted_in="0" walks="0" strikeouts="0" average=".167" stolen_bases="1" on_base_percentage=".242" slugging_percentage=".200" cs="0" id="4728688" />
+						<player name="D. Crews" pos="RF" at_bats="3" runs="1" hits="1" doubles="0" triples="0" home_runs="1" sac_fly="0" hit_by_pitch="0" runs_batted_in="2" walks="1" strikeouts="1" average=".187" stolen_bases="0" on_base_percentage=".243" slugging_percentage=".328" cs="0" id="4719511" />
+					</hometeam>
+					<awayteam>
+						<player name="L. Nootbaar" pos="RF" at_bats="5" runs="0" hits="1" doubles="1" triples="0" home_runs="0" sac_fly="0" hit_by_pitch="0" runs_batted_in="2" walks="0" strikeouts="0" average=".243" stolen_bases="0" on_base_percentage=".368" slugging_percentage=".401" cs="0" id="4448736" />
+						<player name="M. Winn" pos="SS" at_bats="5" runs="0" hits="1" doubles="0" triples="0" home_runs="0" sac_fly="0" hit_by_pitch="0" runs_batted_in="0" walks="0" strikeouts="1" average=".260" stolen_bases="0" on_base_percentage=".336" slugging_percentage=".410" cs="0" id="4683365" />
+						<player name="B. Donovan" pos="LF" at_bats="4" runs="0" hits="1" doubles="1" triples="0" home_runs="0" sac_fly="0" hit_by_pitch="0" runs_batted_in="0" walks="0" strikeouts="0" average=".327" stolen_bases="0" on_base_percentage=".383" slugging_percentage=".469" cs="0" id="41773" />
+						<player name="N. Arenado" pos="3B" at_bats="3" runs="0" hits="0" doubles="0" triples="0" home_runs="0" sac_fly="0" hit_by_pitch="1" runs_batted_in="0" walks="0" strikeouts="2" average=".263" stolen_bases="0" on_base_percentage=".348" slugging_percentage=".394" cs="0" id="31261" />
+						<player name="W. Contreras" pos="1B" at_bats="2" runs="1" hits="0" doubles="0" triples="0" home_runs="0" sac_fly="0" hit_by_pitch="1" runs_batted_in="0" walks="1" strikeouts="0" average=".248" stolen_bases="0" on_base_percentage=".343" slugging_percentage=".393" cs="0" id="32532" />
+						<player name="A. Burleson" pos="DH" at_bats="3" runs="0" hits="2" doubles="0" triples="0" home_runs="0" sac_fly="0" hit_by_pitch="0" runs_batted_in="0" walks="1" strikeouts="0" average=".261" stolen_bases="1" on_base_percentage=".311" slugging_percentage=".351" cs="0" id="4345070" />
+						<player name="N. Gorman" pos="2B" at_bats="4" runs="1" hits="0" doubles="0" triples="0" home_runs="0" sac_fly="0" hit_by_pitch="0" runs_batted_in="0" walks="0" strikeouts="0" average=".171" stolen_bases="0" on_base_percentage=".282" slugging_percentage=".286" cs="0" id="41174" />
+						<player name="J. Barrero" pos="2B" at_bats="0" runs="0" hits="0" doubles="0" triples="0" home_runs="0" sac_fly="0" hit_by_pitch="0" runs_batted_in="0" walks="0" strikeouts="0" average=".231" stolen_bases="0" on_base_percentage=".286" slugging_percentage=".538" cs="0" id="40951" />
+						<player name="P. Pages" pos="C" at_bats="3" runs="1" hits="1" doubles="0" triples="0" home_runs="0" sac_fly="0" hit_by_pitch="0" runs_batted_in="1" walks="1" strikeouts="1" average=".245" stolen_bases="0" on_base_percentage=".286" slugging_percentage=".388" cs="0" id="42608" />
+						<player name="V. Scott II" pos="CF" at_bats="3" runs="1" hits="1" doubles="0" triples="0" home_runs="0" sac_fly="0" hit_by_pitch="0" runs_batted_in="1" walks="0" strikeouts="1" average=".292" stolen_bases="0" on_base_percentage=".360" slugging_percentage=".408" cs="0" id="4807220" />
+					</awayteam>
+				</hitters>
+				<pitchers>
+					<hometeam>
+						<player name="T. Williams" innings_pitched="6.0" runs="4" hits="7" earned_runs="4" walks="1" strikeouts="4" home_runs="0" pc-st="96-61" earned_runs_average="5.88" win="" loss="L, 2-4" holds="" saves="" hbp="0" id="33305" />
+						<player name="C. Henry" innings_pitched="1.1" runs="0" hits="0" earned_runs="0" walks="1" strikeouts="1" home_runs="0" pc-st="20-10" earned_runs_average="3.65" win="" loss="" holds="" saves="" hbp="0" id="4414361" />
+						<player name="Z. Brzykcy" innings_pitched="0.2" runs="0" hits="0" earned_runs="0" walks="0" strikeouts="0" home_runs="0" pc-st="6-6" earned_runs_average="5.40" win="" loss="" holds="" saves="" hbp="0" id="5127801" />
+						<player name="J. Ferrer" innings_pitched="1.0" runs="0" hits="0" earned_runs="0" walks="1" strikeouts="0" home_runs="0" pc-st="18-10" earned_runs_average="7.65" win="" loss="" holds="" saves="" hbp="0" id="5119607" />
+					</hometeam>
+					<awayteam>
+						<player name="A. Pallante" innings_pitched="7.1" runs="2" hits="5" earned_runs="2" walks="0" strikeouts="7" home_runs="1" pc-st="91-61" earned_runs_average="4.36" win="W, 3-2" loss="" holds="" saves="" hbp="0" id="4109034" />
+						<player name="J. Romero" innings_pitched="0.2" runs="0" hits="1" earned_runs="0" walks="1" strikeouts="0" home_runs="0" pc-st="17-9" earned_runs_average="5.40" win="" loss="" holds="" saves="" hbp="0" id="40456" />
+						<player name="R. Helsley" innings_pitched="1.0" runs="0" hits="1" earned_runs="0" walks="2" strikeouts="1" home_runs="0" pc-st="22-11" earned_runs_average="3.21" win="" loss="" holds="" saves="S, 7" hbp="0" id="39909" />
+					</awayteam>
+				</pitchers>
+			</stats>
+			<starting_pitchers>
+				<hometeam>
+					<player name="Williams" id="33305" />
+				</hometeam>
+				<awayteam>
+					<player name="Pallante" id="4109034" />
+				</awayteam>
+			</starting_pitchers>
+			<umpires>
+				<umpire name="Laz Diaz" position="Home Plate Umpire" />
+				<umpire name="Erich  Bacchus" position="First Base Umpire" />
+				<umpire name="Brian O&apos;Nora" position="Second Base Umpire" />
+				<umpire name="Mike Estabrook" position="Third Base Umpire" />
+			</umpires>
+		</match>
+		<match date="10.05.2025" timezone="ET" status="Middle 8th" formatted_date="10.05.2025" time="16:05" outs="" venue_name="Sutter Health Park, Sacramento, California" venue_id="1487" attendance="" broadcast="YES | NSCA | MLBN" oddsid="" datetime_utc="10.05.2025 20:05" id="1329187784">
+			<hometeam name="Athletics" in1="" in2="" in3="" in4="" in5=""  in6="" in7="" in8="" in9="" r="" hits="11" errors="1" totalscore="7" id="1023">
+				<innings>
+					<inning number="1" score="0" hits="1" />
+					<inning number="2" score="1" hits="1" />
+					<inning number="3" score="3" hits="4" />
+					<inning number="4" score="0" hits="0" />
+					<inning number="5" score="0" hits="2" />
+					<inning number="6" score="0" hits="0" />
+					<inning number="7" score="3" hits="0" />
+				</innings>
+			</hometeam>
+			<awayteam name="New York Yankees" in1="" in2="" in3="" in4="" in5=""  in6="" in7="" in8="" in9="" r="" hits="8" errors="1" totalscore="6" id="1003">
+				<innings>
+					<inning number="1" score="0" hits="0" />
+					<inning number="2" score="0" hits="0" />
+					<inning number="3" score="0" hits="1" />
+					<inning number="4" score="1" hits="2" />
+					<inning number="5" score="0" hits="1" />
+					<inning number="6" score="5" hits="3" />
+					<inning number="7" score="0" hits="1" />
+					<inning number="8" score="0" hits="0" />
+				</innings>
+			</awayteam>
+			<events>
+					<event team="hometeam" inn="2" desc="Urías homered to right (345 feet)." chw="1" cle="0" />
+					<event team="hometeam" inn="3" desc="Rooker homered to left (363 feet), Pereda scored and Wilson scored." chw="4" cle="0" />
+					<event team="awayteam" inn="4" desc="Judge homered to center (399 feet)." chw="4" cle="1" />
+					<event team="awayteam" inn="6" desc="Judge homered to center (433 feet)." chw="4" cle="2" />
+					<event team="awayteam" inn="6" desc="Wells hit sacrifice fly to left, Bellinger scored." chw="4" cle="3" />
+					<event team="awayteam" inn="6" desc="Cabrera hit sacrifice fly to left, Volpe scored." chw="4" cle="4" />
+					<event team="awayteam" inn="6" desc="Peraza homered to left (354 feet), Domínguez scored." chw="4" cle="6" />
+					<event team="hometeam" inn="7" desc="Langeliers homered to center (418 feet), Rooker scored and Soderstrom scored." chw="7" cle="6" />
+			</events>
+			<gamecast>
+			</gamecast>
+			<stats>
+				<hitters>
+					<hometeam>
+						<player name="J. Wilson" pos="SS" at_bats="4" runs="1" hits="2" doubles="1" triples="0" home_runs="0" sac_fly="0" hit_by_pitch="0" runs_batted_in="0" walks="0" strikeouts="1" average=".358" stolen_bases="1" on_base_percentage=".382" slugging_percentage=".477" cs="0" id="4719300" />
+						<player name="B. Rooker" pos="RF" at_bats="4" runs="2" hits="2" doubles="0" triples="0" home_runs="1" sac_fly="0" hit_by_pitch="0" runs_batted_in="3" walks="0" strikeouts="1" average=".255" stolen_bases="0" on_base_percentage=".318" slugging_percentage=".497" cs="0" id="40926" />
+						<player name="T. Soderstrom" pos="LF" at_bats="4" runs="1" hits="1" doubles="1" triples="0" home_runs="0" sac_fly="0" hit_by_pitch="0" runs_batted_in="0" walks="0" strikeouts="1" average=".283" stolen_bases="0" on_base_percentage=".345" slugging_percentage=".507" cs="0" id="4686066" />
+						<player name="S. Langeliers" pos="DH" at_bats="4" runs="1" hits="3" doubles="0" triples="0" home_runs="1" sac_fly="0" hit_by_pitch="0" runs_batted_in="3" walks="0" strikeouts="0" average=".242" stolen_bases="0" on_base_percentage=".303" slugging_percentage=".461" cs="0" id="42598" />
+						<player name="M. Andujar" pos="3B" at_bats="4" runs="0" hits="1" doubles="1" triples="0" home_runs="0" sac_fly="0" hit_by_pitch="0" runs_batted_in="0" walks="0" strikeouts="2" average=".305" stolen_bases="0" on_base_percentage=".336" slugging_percentage=".410" cs="0" id="33743" />
+						<player name="M. Schuemann" pos="3B" at_bats="0" runs="0" hits="0" doubles="0" triples="0" home_runs="0" sac_fly="0" hit_by_pitch="0" runs_batted_in="0" walks="0" strikeouts="0" average=".250" stolen_bases="0" on_base_percentage=".294" slugging_percentage=".375" cs="0" id="3962127" />
+						<player name="L. Butler" pos="CF" at_bats="4" runs="0" hits="0" doubles="0" triples="0" home_runs="0" sac_fly="0" hit_by_pitch="0" runs_batted_in="0" walks="0" strikeouts="3" average=".234" stolen_bases="0" on_base_percentage=".298" slugging_percentage=".396" cs="0" id="4917919" />
+						<player name="L. Urias" pos="2B" at_bats="3" runs="1" hits="1" doubles="0" triples="0" home_runs="1" sac_fly="0" hit_by_pitch="0" runs_batted_in="1" walks="0" strikeouts="0" average=".260" stolen_bases="0" on_base_percentage=".344" slugging_percentage=".494" cs="0" id="35383" />
+						<player name="N. Kurtz" pos="1B" at_bats="3" runs="0" hits="0" doubles="0" triples="0" home_runs="0" sac_fly="0" hit_by_pitch="0" runs_batted_in="0" walks="0" strikeouts="2" average=".271" stolen_bases="0" on_base_percentage=".327" slugging_percentage=".333" cs="0" id="4966637" />
+						<player name="J. Pereda" pos="C" at_bats="3" runs="1" hits="1" doubles="0" triples="0" home_runs="0" sac_fly="0" hit_by_pitch="0" runs_batted_in="0" walks="0" strikeouts="2" average=".200" stolen_bases="0" on_base_percentage=".250" slugging_percentage=".233" cs="0" id="40702" />
+					</hometeam>
+					<awayteam>
+						<player name="P. Goldschmidt" pos="1B" at_bats="5" runs="0" hits="1" doubles="0" triples="0" home_runs="0" sac_fly="0" hit_by_pitch="0" runs_batted_in="0" walks="0" strikeouts="1" average=".340" stolen_bases="0" on_base_percentage=".391" slugging_percentage=".476" cs="0" id="31027" />
+						<player name="T. Grisham" pos="CF" at_bats="4" runs="0" hits="0" doubles="0" triples="0" home_runs="0" sac_fly="0" hit_by_pitch="0" runs_batted_in="0" walks="0" strikeouts="1" average=".268" stolen_bases="0" on_base_percentage=".360" slugging_percentage=".588" cs="0" id="34995" />
+						<player name="A. Judge" pos="DH" at_bats="4" runs="2" hits="2" doubles="0" triples="0" home_runs="2" sac_fly="0" hit_by_pitch="0" runs_batted_in="2" walks="0" strikeouts="2" average=".399" stolen_bases="0" on_base_percentage=".489" slugging_percentage=".777" cs="0" id="33192" />
+						<player name="C. Bellinger" pos="RF" at_bats="3" runs="1" hits="2" doubles="0" triples="0" home_runs="0" sac_fly="0" hit_by_pitch="0" runs_batted_in="0" walks="1" strikeouts="0" average=".226" stolen_bases="0" on_base_percentage=".301" slugging_percentage=".395" cs="0" id="33912" />
+						<player name="A. Volpe" pos="SS" at_bats="3" runs="1" hits="1" doubles="1" triples="0" home_runs="0" sac_fly="0" hit_by_pitch="0" runs_batted_in="0" walks="1" strikeouts="1" average=".232" stolen_bases="0" on_base_percentage=".321" slugging_percentage=".420" cs="0" id="42547" />
+						<player name="A. Wells" pos="C" at_bats="1" runs="0" hits="0" doubles="0" triples="0" home_runs="0" sac_fly="1" hit_by_pitch="1" runs_batted_in="1" walks="1" strikeouts="0" average=".211" stolen_bases="0" on_base_percentage=".271" slugging_percentage=".465" cs="0" id="4683349" />
+						<player name="J. Dominguez" pos="LF" at_bats="3" runs="1" hits="0" doubles="0" triples="0" home_runs="0" sac_fly="0" hit_by_pitch="0" runs_batted_in="0" walks="1" strikeouts="0" average=".243" stolen_bases="0" on_base_percentage=".336" slugging_percentage=".450" cs="0" id="42401" />
+						<player name="P. Reyes" pos="2B" at_bats="2" runs="0" hits="1" doubles="0" triples="0" home_runs="0" sac_fly="0" hit_by_pitch="0" runs_batted_in="0" walks="0" strikeouts="1" average=".182" stolen_bases="0" on_base_percentage=".250" slugging_percentage=".182" cs="0" id="35439" />
+						<player name="O. Cabrera" pos="3B" at_bats="1" runs="0" hits="0" doubles="0" triples="0" home_runs="0" sac_fly="1" hit_by_pitch="0" runs_batted_in="1" walks="0" strikeouts="0" average=".242" stolen_bases="0" on_base_percentage=".315" slugging_percentage=".303" cs="0" id="40835" />
+						<player name="O. Peraza" pos="2B" at_bats="3" runs="1" hits="1" doubles="0" triples="0" home_runs="1" sac_fly="0" hit_by_pitch="0" runs_batted_in="2" walks="0" strikeouts="0" average=".205" stolen_bases="0" on_base_percentage=".271" slugging_percentage=".386" cs="0" id="42479" />
+						<player name="B. Rice" pos="PH" at_bats="1" runs="0" hits="0" doubles="0" triples="0" home_runs="0" sac_fly="0" hit_by_pitch="0" runs_batted_in="0" walks="0" strikeouts="1" average=".258" stolen_bases="0" on_base_percentage=".355" slugging_percentage=".550" cs="0" id="5016968" />
+					</awayteam>
+				</hitters>
+				<pitchers>
+					<hometeam>
+						<player name="J. Sears" innings_pitched="5.0" runs="1" hits="4" earned_runs="1" walks="1" strikeouts="4" home_runs="1" pc-st="82-50" earned_runs_average="2.80" win="" loss="" holds="" saves="" hbp="1" id="39818" />
+						<player name="J. Sterner" innings_pitched="0.2" runs="5" hits="3" earned_runs="5" walks="2" strikeouts="0" home_runs="2" pc-st="28-14" earned_runs_average="2.33" win="" loss="" holds="" saves="" hbp="0" id="4307467" />
+						<player name="G. Holman" innings_pitched="1.1" runs="0" hits="1" earned_runs="0" walks="0" strikeouts="1" home_runs="0" pc-st="22-13" earned_runs_average="0.82" win="" loss="" holds="" saves="" hbp="0" id="4418343" />
+						<player name="T. Ferguson" innings_pitched="0.1" runs="0" hits="0" earned_runs="0" walks="1" strikeouts="0" home_runs="0" pc-st="15-8" earned_runs_average="1.96" win="" loss="" holds="" saves="" hbp="0" id="41612" />
+						<player name="M. Miller" innings_pitched="0.2" runs="0" hits="0" earned_runs="0" walks="0" strikeouts="2" home_runs="0" pc-st="8-6" earned_runs_average="4.40" win="" loss="" holds="" saves="" hbp="0" id="4730225" />
+					</hometeam>
+					<awayteam>
+						<player name="C. Rodon" innings_pitched="6.0" runs="4" hits="8" earned_runs="4" walks="0" strikeouts="10" home_runs="2" pc-st="98-67" earned_runs_average="3.29" win="" loss="" holds="" saves="" hbp="0" id="33696" />
+						<player name="F. Cruz" innings_pitched="0.2" runs="3" hits="3" earned_runs="3" walks="0" strikeouts="2" home_runs="1" pc-st="18-12" earned_runs_average="2.66" win="" loss="" holds="" saves="" hbp="0" id="34068" />
+						<player name="T. Hill" innings_pitched="0.1" runs="0" hits="0" earned_runs="0" walks="0" strikeouts="0" home_runs="0" pc-st="1-1" earned_runs_average="3.00" win="" loss="" holds="" saves="" hbp="0" id="37005" />
+					</awayteam>
+				</pitchers>
+			</stats>
+			<starting_pitchers>
+				<hometeam>
+					<player name="Sears" id="39818" />
+				</hometeam>
+				<awayteam>
+					<player name="Rodon" id="33696" />
+				</awayteam>
+			</starting_pitchers>
+			<umpires>
+				<umpire name="David Rackley" position="Home Plate Umpire" />
+				<umpire name="Edwin  Moscoso" position="First Base Umpire" />
+				<umpire name="Tom  Hanahan" position="Second Base Umpire" />
+				<umpire name="Chris Guccione" position="Third Base Umpire" />
+			</umpires>
+		</match>
+		<match date="10.05.2025" timezone="ET" status="End 5th" formatted_date="10.05.2025" time="16:10" outs="" venue_name="George M. Steinbrenner Field, Tampa, Florida" venue_id="1243" attendance="" broadcast="FSUN | FDWI | MLBN" oddsid="338213" datetime_utc="10.05.2025 20:10" id="1329181725">
+			<hometeam name="Tampa Bay Rays" in1="" in2="" in3="" in4="" in5=""  in6="" in7="" in8="" in9="" r="" hits="3" errors="0" totalscore="2" id="1004">
+				<innings>
+					<inning number="1" score="0" hits="0" />
+					<inning number="2" score="0" hits="1" />
+					<inning number="3" score="0" hits="0" />
+					<inning number="4" score="2" hits="2" />
+					<inning number="5" score="0" hits="0" />
+				</innings>
+			</hometeam>
+			<awayteam name="Milwaukee Brewers" in1="" in2="" in3="" in4="" in5=""  in6="" in7="" in8="" in9="" r="" hits="4" errors="0" totalscore="2" id="1019">
+				<innings>
+					<inning number="1" score="0" hits="0" />
+					<inning number="2" score="0" hits="1" />
+					<inning number="3" score="1" hits="1" />
+					<inning number="4" score="0" hits="1" />
+					<inning number="5" score="1" hits="1" />
+				</innings>
+			</awayteam>
+			<events>
+					<event team="awayteam" inn="3" desc="Chourio homered to left center (402 feet)." chw="0" cle="1" />
+					<event team="hometeam" inn="4" desc="Walls doubled to right, Aranda scored, Misner to third." chw="1" cle="1" />
+					<event team="hometeam" inn="4" desc="Jankowski hit sacrifice fly to right, Misner scored, Walls to third." chw="2" cle="1" />
+					<event team="awayteam" inn="5" desc="Ortiz homered to right (334 feet)." chw="2" cle="2" />
+			</events>
+			<gamecast>
+			</gamecast>
+			<stats>
+				<hitters>
+					<hometeam>
+						<player name="C. Simpson" pos="LF" at_bats="2" runs="0" hits="0" doubles="0" triples="0" home_runs="0" sac_fly="0" hit_by_pitch="0" runs_batted_in="0" walks="1" strikeouts="0" average=".250" stolen_bases="1" on_base_percentage=".288" slugging_percentage=".265" cs="0" id="4679983" />
+						<player name="B. Lowe" pos="2B" at_bats="3" runs="0" hits="0" doubles="0" triples="0" home_runs="0" sac_fly="0" hit_by_pitch="0" runs_batted_in="0" walks="0" strikeouts="1" average=".195" stolen_bases="0" on_base_percentage=".245" slugging_percentage=".316" cs="0" id="39961" />
+						<player name="Y. Diaz" pos="DH" at_bats="2" runs="0" hits="0" doubles="0" triples="0" home_runs="0" sac_fly="0" hit_by_pitch="0" runs_batted_in="0" walks="1" strikeouts="1" average=".245" stolen_bases="0" on_base_percentage=".300" slugging_percentage=".413" cs="0" id="33481" />
+						<player name="J. Aranda" pos="1B" at_bats="3" runs="1" hits="1" doubles="0" triples="0" home_runs="0" sac_fly="0" hit_by_pitch="0" runs_batted_in="0" walks="0" strikeouts="1" average=".330" stolen_bases="0" on_base_percentage=".422" slugging_percentage=".550" cs="0" id="40810" />
+						<player name="J. Caminero" pos="3B" at_bats="2" runs="0" hits="0" doubles="0" triples="0" home_runs="0" sac_fly="0" hit_by_pitch="0" runs_batted_in="0" walks="0" strikeouts="1" average=".248" stolen_bases="0" on_base_percentage=".278" slugging_percentage=".440" cs="0" id="4905921" />
+						<player name="K. Misner" pos="CF" at_bats="1" runs="1" hits="0" doubles="0" triples="0" home_runs="0" sac_fly="0" hit_by_pitch="0" runs_batted_in="0" walks="1" strikeouts="0" average=".257" stolen_bases="0" on_base_percentage=".306" slugging_percentage=".436" cs="0" id="42416" />
+						<player name="T. Walls" pos="SS" at_bats="1" runs="0" hits="1" doubles="1" triples="0" home_runs="0" sac_fly="0" hit_by_pitch="0" runs_batted_in="1" walks="1" strikeouts="0" average=".220" stolen_bases="0" on_base_percentage=".311" slugging_percentage=".275" cs="0" id="40576" />
+						<player name="T. Jankowski" pos="RF" at_bats="1" runs="0" hits="1" doubles="0" triples="0" home_runs="0" sac_fly="1" hit_by_pitch="0" runs_batted_in="1" walks="0" strikeouts="0" average=".273" stolen_bases="0" on_base_percentage=".306" slugging_percentage=".303" cs="0" id="32751" />
+						<player name="B. Rortvedt" pos="C" at_bats="2" runs="0" hits="0" doubles="0" triples="0" home_runs="0" sac_fly="0" hit_by_pitch="0" runs_batted_in="0" walks="0" strikeouts="0" average=".091" stolen_bases="0" on_base_percentage=".200" slugging_percentage=".114" cs="0" id="40869" />
+					</hometeam>
+					<awayteam>
+						<player name="J. Chourio" pos="CF" at_bats="3" runs="1" hits="1" doubles="0" triples="0" home_runs="1" sac_fly="0" hit_by_pitch="0" runs_batted_in="1" walks="0" strikeouts="1" average=".268" stolen_bases="0" on_base_percentage=".283" slugging_percentage=".482" cs="0" id="4917869" />
+						<player name="B. Turang" pos="2B" at_bats="1" runs="0" hits="0" doubles="0" triples="0" home_runs="0" sac_fly="0" hit_by_pitch="0" runs_batted_in="0" walks="1" strikeouts="0" average=".307" stolen_bases="0" on_base_percentage=".378" slugging_percentage=".394" cs="0" id="41179" />
+						<player name="W. Contreras" pos="C" at_bats="2" runs="0" hits="0" doubles="0" triples="0" home_runs="0" sac_fly="0" hit_by_pitch="0" runs_batted_in="0" walks="0" strikeouts="1" average=".240" stolen_bases="0" on_base_percentage=".357" slugging_percentage=".326" cs="0" id="39895" />
+						<player name="C. Yelich" pos="DH" at_bats="2" runs="0" hits="1" doubles="0" triples="0" home_runs="0" sac_fly="0" hit_by_pitch="0" runs_batted_in="0" walks="0" strikeouts="0" average=".203" stolen_bases="0" on_base_percentage=".302" slugging_percentage=".355" cs="1" id="31283" />
+						<player name="R. Hoskins" pos="1B" at_bats="2" runs="0" hits="1" doubles="1" triples="0" home_runs="0" sac_fly="0" hit_by_pitch="0" runs_batted_in="0" walks="0" strikeouts="1" average=".278" stolen_bases="0" on_base_percentage=".382" slugging_percentage=".435" cs="0" id="35291" />
+						<player name="S. Frelick" pos="RF" at_bats="2" runs="0" hits="0" doubles="0" triples="0" home_runs="0" sac_fly="0" hit_by_pitch="0" runs_batted_in="0" walks="0" strikeouts="0" average=".287" stolen_bases="0" on_base_percentage=".374" slugging_percentage=".385" cs="0" id="4417795" />
+						<player name="C. Durbin" pos="3B" at_bats="2" runs="0" hits="0" doubles="0" triples="0" home_runs="0" sac_fly="0" hit_by_pitch="0" runs_batted_in="0" walks="0" strikeouts="0" average=".219" stolen_bases="0" on_base_percentage=".301" slugging_percentage=".313" cs="0" id="5007615" />
+						<player name="I. Collins" pos="LF" at_bats="2" runs="0" hits="0" doubles="0" triples="0" home_runs="0" sac_fly="0" hit_by_pitch="0" runs_batted_in="0" walks="0" strikeouts="0" average=".241" stolen_bases="0" on_base_percentage=".343" slugging_percentage=".362" cs="0" id="42959" />
+						<player name="J. Ortiz" pos="SS" at_bats="2" runs="1" hits="1" doubles="0" triples="0" home_runs="1" sac_fly="0" hit_by_pitch="0" runs_batted_in="1" walks="0" strikeouts="0" average=".176" stolen_bases="0" on_base_percentage=".234" slugging_percentage=".229" cs="0" id="42958" />
+					</awayteam>
+				</hitters>
+				<pitchers>
+					<hometeam>
+						<player name="T. Bradley" innings_pitched="5.0" runs="2" hits="4" earned_runs="2" walks="1" strikeouts="3" home_runs="2" pc-st="75-52" earned_runs_average="4.34" win="" loss="" holds="" saves="" hbp="0" id="42480" />
+					</hometeam>
+					<awayteam>
+						<player name="T. Myers" innings_pitched="4.0" runs="2" hits="3" earned_runs="2" walks="3" strikeouts="3" home_runs="0" pc-st="75-47" earned_runs_average="3.86" win="" loss="" holds="" saves="" hbp="0" id="39716" />
+						<player name="T. Alexander" innings_pitched="1.0" runs="0" hits="0" earned_runs="0" walks="1" strikeouts="1" home_runs="0" pc-st="13-7" earned_runs_average="4.85" win="" loss="" holds="" saves="" hbp="0" id="40360" />
+					</awayteam>
+				</pitchers>
+			</stats>
+			<starting_pitchers>
+				<hometeam>
+					<player name="Bradley" id="42480" />
+				</hometeam>
+				<awayteam>
+					<player name="Myers" id="39716" />
+				</awayteam>
+			</starting_pitchers>
+			<umpires>
+				<umpire name="John Libka" position="Home Plate Umpire" />
+				<umpire name="Sean Barber" position="First Base Umpire" />
+				<umpire name="James Hoye" position="Second Base Umpire" />
+				<umpire name="D.J. Reyburn" position="Third Base Umpire" />
+			</umpires>
+		</match>
+		<match date="10.05.2025" timezone="ET" status="Top 3rd" formatted_date="10.05.2025" time="18:10" outs="" venue_name="Progressive Field, Cleveland, Ohio" venue_id="1286" attendance="" broadcast="GDTV | NSPA" oddsid="338202" datetime_utc="10.05.2025 22:10" id="1329181726">
+			<hometeam name="Cleveland Guardians" in1="" in2="" in3="" in4="" in5=""  in6="" in7="" in8="" in9="" r="" hits="1" errors="0" totalscore="0" id="1012">
+				<innings>
+					<inning number="1" score="0" hits="0" />
+					<inning number="2" score="0" hits="1" />
+				</innings>
+			</hometeam>
+			<awayteam name="Philadelphia Phillies" in1="" in2="" in3="" in4="" in5=""  in6="" in7="" in8="" in9="" r="" hits="0" errors="0" totalscore="0" id="1009">
+				<innings>
+					<inning number="1" score="0" hits="0" />
+					<inning number="2" score="0" hits="0" />
+					<inning number="3" score="0" hits="0" />
+				</innings>
+			</awayteam>
+			<events>
+			</events>
+			<gamecast>
+				<current_batter name="J.T. Realmuto" stats="0-0" id="32177" />
+				<current_pitcher name="Tanner Bibee" stats="2.0 IP, 0 ER, 0 H, 0 BB" id="4345278" />
+				<stats balls="0" strikes="0" outs="0" />
+				<bases base1="0" base2="0" base3="0" />
+			</gamecast>
+			<stats>
+				<hitters>
+					<hometeam>
+						<player name="S. Kwan" pos="LF" at_bats="1" runs="0" hits="0" doubles="0" triples="0" home_runs="0" sac_fly="0" hit_by_pitch="0" runs_batted_in="0" walks="0" strikeouts="0" average=".331" stolen_bases="0" on_base_percentage=".392" slugging_percentage=".457" cs="0" id="41996" />
+						<player name="G. Arias" pos="SS" at_bats="1" runs="0" hits="0" doubles="0" triples="0" home_runs="0" sac_fly="0" hit_by_pitch="0" runs_batted_in="0" walks="0" strikeouts="0" average=".277" stolen_bases="0" on_base_percentage=".333" slugging_percentage=".437" cs="0" id="40344" />
+						<player name="J. Ramirez" pos="3B" at_bats="0" runs="0" hits="0" doubles="0" triples="0" home_runs="0" sac_fly="0" hit_by_pitch="0" runs_batted_in="0" walks="1" strikeouts="0" average=".278" stolen_bases="0" on_base_percentage=".342" slugging_percentage=".466" cs="1" id="32801" />
+						<player name="C. Santana" pos="DH" at_bats="1" runs="0" hits="1" doubles="0" triples="0" home_runs="0" sac_fly="0" hit_by_pitch="0" runs_batted_in="0" walks="0" strikeouts="0" average=".235" stolen_bases="0" on_base_percentage=".327" slugging_percentage=".348" cs="0" id="30280" />
+						<player name="K. Manzardo" pos="1B" at_bats="1" runs="0" hits="0" doubles="0" triples="0" home_runs="0" sac_fly="0" hit_by_pitch="0" runs_batted_in="0" walks="0" strikeouts="0" average=".219" stolen_bases="0" on_base_percentage=".324" slugging_percentage=".500" cs="0" id="4917927" />
+						<player name="J. Noel" pos="RF" at_bats="1" runs="0" hits="0" doubles="0" triples="0" home_runs="0" sac_fly="0" hit_by_pitch="0" runs_batted_in="0" walks="0" strikeouts="0" average=".167" stolen_bases="0" on_base_percentage=".187" slugging_percentage=".278" cs="0" id="42548" />
+						<player name="A. Martinez" pos="CF" at_bats="0" runs="0" hits="0" doubles="0" triples="0" home_runs="0" sac_fly="0" hit_by_pitch="0" runs_batted_in="0" walks="0" strikeouts="0" average=".325" stolen_bases="0" on_base_percentage=".337" slugging_percentage=".446" cs="0" id="42497" />
+						<player name="W. Wilson" pos="2B" at_bats="0" runs="0" hits="0" doubles="0" triples="0" home_runs="0" sac_fly="0" hit_by_pitch="0" runs_batted_in="0" walks="0" strikeouts="0" average=".167" stolen_bases="0" on_base_percentage=".286" slugging_percentage=".167" cs="0" id="42375" />
+						<player name="A. Hedges" pos="C" at_bats="0" runs="0" hits="0" doubles="0" triples="0" home_runs="0" sac_fly="0" hit_by_pitch="0" runs_batted_in="0" walks="0" strikeouts="0" average=".147" stolen_bases="0" on_base_percentage=".293" slugging_percentage=".412" cs="0" id="32168" />
+					</hometeam>
+					<awayteam>
+						<player name="B. Stott" pos="2B" at_bats="1" runs="0" hits="0" doubles="0" triples="0" home_runs="0" sac_fly="0" hit_by_pitch="0" runs_batted_in="0" walks="0" strikeouts="0" average=".269" stolen_bases="0" on_base_percentage=".336" slugging_percentage=".403" cs="0" id="42417" />
+						<player name="T. Turner" pos="SS" at_bats="1" runs="0" hits="0" doubles="0" triples="0" home_runs="0" sac_fly="0" hit_by_pitch="0" runs_batted_in="0" walks="0" strikeouts="0" average=".313" stolen_bases="0" on_base_percentage=".377" slugging_percentage=".401" cs="0" id="33710" />
+						<player name="B. Harper" pos="1B" at_bats="1" runs="0" hits="0" doubles="0" triples="0" home_runs="0" sac_fly="0" hit_by_pitch="0" runs_batted_in="0" walks="0" strikeouts="0" average=".228" stolen_bases="0" on_base_percentage=".347" slugging_percentage=".400" cs="0" id="30951" />
+						<player name="K. Schwarber" pos="DH" at_bats="1" runs="0" hits="0" doubles="0" triples="0" home_runs="0" sac_fly="0" hit_by_pitch="0" runs_batted_in="0" walks="0" strikeouts="0" average=".255" stolen_bases="0" on_base_percentage=".400" slugging_percentage=".555" cs="0" id="33712" />
+						<player name="N. Castellanos" pos="RF" at_bats="1" runs="0" hits="0" doubles="0" triples="0" home_runs="0" sac_fly="0" hit_by_pitch="0" runs_batted_in="0" walks="0" strikeouts="0" average=".283" stolen_bases="0" on_base_percentage=".331" slugging_percentage=".434" cs="0" id="31187" />
+						<player name="M. Kepler" pos="LF" at_bats="1" runs="0" hits="0" doubles="0" triples="0" home_runs="0" sac_fly="0" hit_by_pitch="0" runs_batted_in="0" walks="0" strikeouts="0" average=".238" stolen_bases="0" on_base_percentage=".329" slugging_percentage=".418" cs="0" id="31870" />
+						<player name="J.T. Realmuto" pos="C" at_bats="0" runs="0" hits="0" doubles="0" triples="0" home_runs="0" sac_fly="0" hit_by_pitch="0" runs_batted_in="0" walks="0" strikeouts="0" average=".237" stolen_bases="0" on_base_percentage=".313" slugging_percentage=".373" cs="0" id="32177" />
+						<player name="B. Marsh" pos="CF" at_bats="0" runs="0" hits="0" doubles="0" triples="0" home_runs="0" sac_fly="0" hit_by_pitch="0" runs_batted_in="0" walks="0" strikeouts="0" average=".170" stolen_bases="0" on_base_percentage=".274" slugging_percentage=".264" cs="0" id="40803" />
+						<player name="E. Sosa" pos="3B" at_bats="0" runs="0" hits="0" doubles="0" triples="0" home_runs="0" sac_fly="0" hit_by_pitch="0" runs_batted_in="0" walks="0" strikeouts="0" average=".341" stolen_bases="0" on_base_percentage=".391" slugging_percentage=".439" cs="0" id="33809" />
+					</awayteam>
+				</hitters>
+				<pitchers>
+					<hometeam>
+						<player name="T. Bibee" innings_pitched="2.0" runs="0" hits="0" earned_runs="0" walks="0" strikeouts="0" home_runs="0" pc-st="24-15" earned_runs_average="4.05" win="" loss="" holds="" saves="" hbp="0" id="4345278" />
+					</hometeam>
+					<awayteam>
+						<player name="R. Suarez" innings_pitched="2.0" runs="0" hits="1" earned_runs="0" walks="1" strikeouts="0" home_runs="0" pc-st="26-13" earned_runs_average="11.12" win="" loss="" holds="" saves="" hbp="0" id="39817" />
+					</awayteam>
+				</pitchers>
+			</stats>
+			<starting_pitchers>
+				<hometeam>
+					<player name="Bibee" id="4345278" />
+				</hometeam>
+				<awayteam>
+					<player name="Suarez" id="39817" />
+				</awayteam>
+			</starting_pitchers>
+			<umpires>
+				<umpire name="Alex  Mackay" position="Home Plate Umpire" />
+				<umpire name="Alan Porter" position="First Base Umpire" />
+				<umpire name="Brian  Walsh" position="Second Base Umpire" />
+				<umpire name="John Bacon" position="Third Base Umpire" />
+			</umpires>
+		</match>
+		<match date="10.05.2025" timezone="ET" status="Middle 2nd" formatted_date="10.05.2025" time="18:10" outs="" venue_name="Comerica Park, Detroit, Michigan" venue_id="1287" attendance="" broadcast="RASN | FDDT" oddsid="338204" datetime_utc="10.05.2025 22:10" id="1329181728">
+			<hometeam name="Detroit Tigers" in1="" in2="" in3="" in4="" in5=""  in6="" in7="" in8="" in9="" r="" hits="1" errors="0" totalscore="1" id="1013">
+				<innings>
+					<inning number="1" score="1" hits="0" />
+				</innings>
+			</hometeam>
+			<awayteam name="Texas Rangers" in1="" in2="" in3="" in4="" in5=""  in6="" in7="" in8="" in9="" r="" hits="3" errors="0" totalscore="3" id="1025">
+				<innings>
+					<inning number="1" score="2" hits="2" />
+					<inning number="2" score="1" hits="1" />
+				</innings>
+			</awayteam>
+			<events>
+					<event team="awayteam" inn="1" desc="Smith homered to right (389 feet)." chw="0" cle="1" />
+					<event team="awayteam" inn="1" desc="Seager homered to right center (403 feet)." chw="0" cle="2" />
+					<event team="hometeam" inn="1" desc="Carpenter homered to right center (382 feet)." chw="1" cle="2" />
+					<event team="awayteam" inn="2" desc="Carter homered to right (390 feet)." chw="1" cle="3" />
+			</events>
+			<gamecast>
+				<current_batter name="Josh Smith" stats="1-1, HR, RBI, R" id="42884" />
+				<current_pitcher name="Jack Flaherty" stats="1.2 IP, 3 ER, 3 H, 2 K, BB" id="33837" />
+				<stats balls="0" strikes="0" outs="2" />
+				<bases base1="0" base2="0" base3="0" />
+			</gamecast>
+			<stats>
+				<hitters>
+					<hometeam>
+						<player name="K. Carpenter" pos="RF" at_bats="1" runs="1" hits="1" doubles="0" triples="0" home_runs="1" sac_fly="0" hit_by_pitch="0" runs_batted_in="1" walks="0" strikeouts="0" average=".281" stolen_bases="0" on_base_percentage=".301" slugging_percentage=".531" cs="0" id="42714" />
+						<player name="G. Torres" pos="2B" at_bats="1" runs="0" hits="0" doubles="0" triples="0" home_runs="0" sac_fly="0" hit_by_pitch="0" runs_batted_in="0" walks="0" strikeouts="1" average=".282" stolen_bases="0" on_base_percentage=".350" slugging_percentage=".447" cs="0" id="33804" />
+						<player name="C. Keith" pos="1B" at_bats="1" runs="0" hits="0" doubles="0" triples="0" home_runs="0" sac_fly="0" hit_by_pitch="0" runs_batted_in="0" walks="0" strikeouts="1" average=".227" stolen_bases="0" on_base_percentage=".353" slugging_percentage=".371" cs="0" id="4683384" />
+						<player name="R. Greene" pos="CF" at_bats="1" runs="0" hits="0" doubles="0" triples="0" home_runs="0" sac_fly="0" hit_by_pitch="0" runs_batted_in="0" walks="0" strikeouts="1" average=".252" stolen_bases="0" on_base_percentage=".308" slugging_percentage=".449" cs="0" id="42179" />
+						<player name="S. Torkelson" pos="DH" at_bats="0" runs="0" hits="0" doubles="0" triples="0" home_runs="0" sac_fly="0" hit_by_pitch="0" runs_batted_in="0" walks="0" strikeouts="0" average=".250" stolen_bases="0" on_base_percentage=".355" slugging_percentage=".543" cs="0" id="4424286" />
+						<player name="Z. McKinstry" pos="LF" at_bats="0" runs="0" hits="0" doubles="0" triples="0" home_runs="0" sac_fly="0" hit_by_pitch="0" runs_batted_in="0" walks="0" strikeouts="0" average=".280" stolen_bases="0" on_base_percentage=".374" slugging_percentage=".407" cs="0" id="38420" />
+						<player name="T. Sweeney" pos="SS" at_bats="0" runs="0" hits="0" doubles="0" triples="0" home_runs="0" sac_fly="0" hit_by_pitch="0" runs_batted_in="0" walks="0" strikeouts="0" average=".262" stolen_bases="0" on_base_percentage=".338" slugging_percentage=".377" cs="0" id="4414687" />
+						<player name="T. Nido" pos="C" at_bats="0" runs="0" hits="0" doubles="0" triples="0" home_runs="0" sac_fly="0" hit_by_pitch="0" runs_batted_in="0" walks="0" strikeouts="0" average=".345" stolen_bases="0" on_base_percentage=".367" slugging_percentage=".345" cs="0" id="36068" />
+						<player name="J. Jung" pos="3B" at_bats="0" runs="0" hits="0" doubles="0" triples="0" home_runs="0" sac_fly="0" hit_by_pitch="0" runs_batted_in="0" walks="0" strikeouts="0" average=".118" stolen_bases="0" on_base_percentage=".268" slugging_percentage=".118" cs="0" id="4721040" />
+					</hometeam>
+					<awayteam>
+						<player name="J. Smith" pos="1B" at_bats="2" runs="1" hits="1" doubles="0" triples="0" home_runs="1" sac_fly="0" hit_by_pitch="0" runs_batted_in="1" walks="0" strikeouts="0" average=".324" stolen_bases="0" on_base_percentage=".397" slugging_percentage=".491" cs="0" id="42884" />
+						<player name="W. Langford" pos="LF" at_bats="1" runs="0" hits="0" doubles="0" triples="0" home_runs="0" sac_fly="0" hit_by_pitch="0" runs_batted_in="0" walks="0" strikeouts="0" average=".266" stolen_bases="0" on_base_percentage=".339" slugging_percentage=".477" cs="0" id="4719324" />
+						<player name="C. Seager" pos="SS" at_bats="1" runs="1" hits="1" doubles="0" triples="0" home_runs="1" sac_fly="0" hit_by_pitch="0" runs_batted_in="1" walks="0" strikeouts="0" average=".289" stolen_bases="0" on_base_percentage=".337" slugging_percentage=".474" cs="0" id="32691" />
+						<player name="J. Pederson" pos="DH" at_bats="1" runs="0" hits="0" doubles="0" triples="0" home_runs="0" sac_fly="0" hit_by_pitch="0" runs_batted_in="0" walks="0" strikeouts="1" average=".129" stolen_bases="0" on_base_percentage=".236" slugging_percentage=".204" cs="0" id="31392" />
+						<player name="M. Semien" pos="2B" at_bats="0" runs="0" hits="0" doubles="0" triples="0" home_runs="0" sac_fly="0" hit_by_pitch="0" runs_batted_in="0" walks="1" strikeouts="0" average=".175" stolen_bases="0" on_base_percentage=".258" slugging_percentage=".226" cs="0" id="32146" />
+						<player name="A. García" pos="RF" at_bats="1" runs="0" hits="0" doubles="0" triples="0" home_runs="0" sac_fly="0" hit_by_pitch="0" runs_batted_in="0" walks="0" strikeouts="0" average=".224" stolen_bases="0" on_base_percentage=".277" slugging_percentage=".388" cs="0" id="35537" />
+						<player name="E. Carter" pos="CF" at_bats="1" runs="1" hits="1" doubles="0" triples="0" home_runs="1" sac_fly="0" hit_by_pitch="0" runs_batted_in="1" walks="0" strikeouts="0" average=".267" stolen_bases="0" on_base_percentage=".267" slugging_percentage=".467" cs="0" id="4917921" />
+						<player name="J. Heim" pos="C" at_bats="1" runs="0" hits="0" doubles="0" triples="0" home_runs="0" sac_fly="0" hit_by_pitch="0" runs_batted_in="0" walks="0" strikeouts="1" average=".275" stolen_bases="0" on_base_percentage=".333" slugging_percentage=".412" cs="0" id="33842" />
+						<player name="J. Jung" pos="3B" at_bats="1" runs="0" hits="0" doubles="0" triples="0" home_runs="0" sac_fly="0" hit_by_pitch="0" runs_batted_in="0" walks="0" strikeouts="0" average=".255" stolen_bases="0" on_base_percentage=".293" slugging_percentage=".409" cs="0" id="42437" />
+					</awayteam>
+				</hitters>
+				<pitchers>
+					<hometeam>
+						<player name="J. Flaherty" innings_pitched="2.0" runs="3" hits="3" earned_runs="3" walks="1" strikeouts="2" home_runs="3" pc-st="43-24" earned_runs_average="4.28" win="" loss="" holds="" saves="" hbp="0" id="33837" />
+					</hometeam>
+					<awayteam>
+						<player name="J. deGrom" innings_pitched="1.0" runs="1" hits="1" earned_runs="1" walks="0" strikeouts="3" home_runs="1" pc-st="20-15" earned_runs_average="2.77" win="" loss="" holds="" saves="" hbp="0" id="32796" />
+					</awayteam>
+				</pitchers>
+			</stats>
+			<starting_pitchers>
+				<hometeam>
+					<player name="Flaherty" id="33837" />
+				</hometeam>
+				<awayteam>
+					<player name="deGrom" id="32796" />
+				</awayteam>
+			</starting_pitchers>
+			<umpires>
+				<umpire name="Andy Fletcher" position="Home Plate Umpire" />
+				<umpire name="Jansen Visconti" position="First Base Umpire" />
+				<umpire name="Ben May" position="Second Base Umpire" />
+				<umpire name="Malachi  Moore" position="Third Base Umpire" />
+			</umpires>
+		</match>
+		<match date="10.05.2025" timezone="ET" status="Not Started" formatted_date="10.05.2025" time="19:10" outs="" venue_name="Kauffman Stadium, Kansas City, Missouri" venue_id="1284" attendance="" broadcast="NESN | FDKC" oddsid="338206" datetime_utc="10.05.2025 23:10" id="1329181729">
+			<hometeam name="Kansas City Royals" in1="-" in2="-" in3="-" in4="-" in5="-"  in6="-" in7="-" in8="-" in9="-" r="-" hits="-" errors="-" totalscore="0" id="1014" />
+			<awayteam name="Boston Red Sox" in1="-" in2="-" in3="-" in4="-" in5="-"  in6="-" in7="-" in8="-" in9="-" r="-" hits="-" errors="-" totalscore="0" id="1002" />
+			<headline />
+			<events />
+			<stats />
+			<starting_pitchers>
+				<hometeam>
+					<player name="Cole Ragans" id="41054" />
+				</hometeam>
+				<awayteam>
+					<player name="Garrett Crochet" id="4297835" />
+				</awayteam>
+			</starting_pitchers>
+			<umpires>
+			</umpires>
+		</match>
+		<match date="10.05.2025" timezone="ET" status="Not Started" formatted_date="10.05.2025" time="19:10" outs="" venue_name="Daikin Park, Houston, Texas" venue_id="1489" attendance="" broadcast="FDOH | SCHN" oddsid="338205" datetime_utc="10.05.2025 23:10" id="1329181730">
+			<hometeam name="Houston Astros" in1="-" in2="-" in3="-" in4="-" in5="-"  in6="-" in7="-" in8="-" in9="-" r="-" hits="-" errors="-" totalscore="0" id="1018" />
+			<awayteam name="Cincinnati Reds" in1="-" in2="-" in3="-" in4="-" in5="-"  in6="-" in7="-" in8="-" in9="-" r="-" hits="-" errors="-" totalscore="0" id="1017" />
+			<headline />
+			<events />
+			<stats />
+			<starting_pitchers>
+				<hometeam>
+					<player name="Lance McCullers Jr." id="32764" />
+				</hometeam>
+				<awayteam>
+					<player name="Brady Singer" id="41172" />
+				</awayteam>
+			</starting_pitchers>
+			<umpires>
+			</umpires>
+		</match>
+		<match date="10.05.2025" timezone="ET" status="Not Started" formatted_date="10.05.2025" time="19:10" outs="" venue_name="Rate Field, Chicago, Illinois" venue_id="1490" attendance="" broadcast="FDFL | CHSN" oddsid="338201" datetime_utc="10.05.2025 23:10" id="1329181731">
+			<hometeam name="Chicago White Sox" in1="-" in2="-" in3="-" in4="-" in5="-"  in6="-" in7="-" in8="-" in9="-" r="-" hits="-" errors="-" totalscore="0" id="1011" />
+			<awayteam name="Miami Marlins" in1="-" in2="-" in3="-" in4="-" in5="-"  in6="-" in7="-" in8="-" in9="-" r="-" hits="-" errors="-" totalscore="0" id="1007" />
+			<headline />
+			<events />
+			<stats />
+			<starting_pitchers>
+				<hometeam>
+					<player name="Shane Smith" id="5201814" />
+				</hometeam>
+				<awayteam>
+					<player name="Edward Cabrera" id="40944" />
+				</awayteam>
+			</starting_pitchers>
+			<umpires>
+			</umpires>
+		</match>
+		<match date="10.05.2025" timezone="ET" status="Not Started" formatted_date="10.05.2025" time="19:15" outs="" venue_name="Citi Field, Queens, New York" venue_id="1342" attendance="" broadcast="FOX" oddsid="338209" datetime_utc="10.05.2025 23:15" id="1329181724">
+			<hometeam name="New York Mets" in1="-" in2="-" in3="-" in4="-" in5="-"  in6="-" in7="-" in8="-" in9="-" r="-" hits="-" errors="-" totalscore="0" id="1008" />
+			<awayteam name="Chicago Cubs" in1="-" in2="-" in3="-" in4="-" in5="-"  in6="-" in7="-" in8="-" in9="-" r="-" hits="-" errors="-" totalscore="0" id="1016" />
+			<headline />
+			<events />
+			<stats />
+			<starting_pitchers>
+				<hometeam>
+					<player name="Tylor Megill" id="3332018" />
+				</hometeam>
+				<awayteam>
+					<player name="Brad Keller" id="35292" />
+				</awayteam>
+			</starting_pitchers>
+			<umpires>
+			</umpires>
+		</match>
+		<match date="10.05.2025" timezone="ET" status="Not Started" formatted_date="10.05.2025" time="19:15" outs="" venue_name="Target Field, Minneapolis, Minnesota" venue_id="1281" attendance="" broadcast="FOX" oddsid="338208" datetime_utc="10.05.2025 23:15" id="1329181732">
+			<hometeam name="Minnesota Twins" in1="-" in2="-" in3="-" in4="-" in5="-"  in6="-" in7="-" in8="-" in9="-" r="-" hits="-" errors="-" totalscore="0" id="1015" />
+			<awayteam name="San Francisco Giants" in1="-" in2="-" in3="-" in4="-" in5="-"  in6="-" in7="-" in8="-" in9="-" r="-" hits="-" errors="-" totalscore="0" id="1030" />
+			<headline />
+			<events />
+			<stats />
+			<starting_pitchers>
+				<hometeam>
+					<player name="Joe Ryan" id="42450" />
+				</hometeam>
+				<awayteam>
+					<player name="Logan Webb" id="41216" />
+				</awayteam>
+			</starting_pitchers>
+			<umpires>
+			</umpires>
+		</match>
+		<match date="10.05.2025" timezone="ET" status="Not Started" formatted_date="10.05.2025" time="20:10" outs="" venue_name="Coors Field, Denver, Colorado" venue_id="1292" attendance="" broadcast="ROTV | PDTV | KFMB" oddsid="338203" datetime_utc="11.05.2025 00:10" id="1329181733">
+			<hometeam name="Colorado Rockies" in1="-" in2="-" in3="-" in4="-" in5="-"  in6="-" in7="-" in8="-" in9="-" r="-" hits="-" errors="-" totalscore="0" id="1027" />
+			<awayteam name="San Diego Padres" in1="-" in2="-" in3="-" in4="-" in5="-"  in6="-" in7="-" in8="-" in9="-" r="-" hits="-" errors="-" totalscore="0" id="1029" />
+			<headline />
+			<events />
+			<stats />
+			<starting_pitchers>
+				<hometeam>
+					<player name="Bradley Blalock" id="4720860" />
+				</hometeam>
+				<awayteam>
+					<player name="Stephen Kolek" id="5190073" />
+				</awayteam>
+			</starting_pitchers>
+			<umpires>
+			</umpires>
+		</match>
+		<match date="10.05.2025" timezone="ET" status="Not Started" formatted_date="10.05.2025" time="20:10" outs="" venue_name="Chase Field, Phoenix, Arizona" venue_id="1270" attendance="" broadcast="DBTV | SNLA" oddsid="338200" datetime_utc="11.05.2025 00:10" id="1329181735">
+			<hometeam name="Arizona Diamondbacks" in1="-" in2="-" in3="-" in4="-" in5="-"  in6="-" in7="-" in8="-" in9="-" r="-" hits="-" errors="-" totalscore="0" id="1026" />
+			<awayteam name="Los Angeles Dodgers" in1="-" in2="-" in3="-" in4="-" in5="-"  in6="-" in7="-" in8="-" in9="-" r="-" hits="-" errors="-" totalscore="0" id="1028" />
+			<headline />
+			<events />
+			<stats />
+			<starting_pitchers>
+				<hometeam>
+					<player name="Corbin Burnes" id="39878" />
+				</hometeam>
+				<awayteam>
+					<player name="Dustin May" id="40937" />
+				</awayteam>
+			</starting_pitchers>
+			<umpires>
+			</umpires>
+		</match>
+		<match date="10.05.2025" timezone="ET" status="Not Started" formatted_date="10.05.2025" time="21:38" outs="" venue_name="Angel Stadium, Anaheim, California" venue_id="1322" attendance="" broadcast="MASN | FDW | MLBN" oddsid="338207" datetime_utc="11.05.2025 01:38" id="1329181734">
+			<hometeam name="Los Angeles Angels" in1="-" in2="-" in3="-" in4="-" in5="-"  in6="-" in7="-" in8="-" in9="-" r="-" hits="-" errors="-" totalscore="0" id="1022" />
+			<awayteam name="Baltimore Orioles" in1="-" in2="-" in3="-" in4="-" in5="-"  in6="-" in7="-" in8="-" in9="-" r="-" hits="-" errors="-" totalscore="0" id="1001" />
+			<headline />
+			<events />
+			<stats />
+			<starting_pitchers>
+				<hometeam>
+					<player name="Jack Kochanowicz" id="4917819" />
+				</hometeam>
+				<awayteam>
+					<player name="Kyle Gibson" id="31053" />
+				</awayteam>
+			</starting_pitchers>
+			<umpires>
+			</umpires>
+		</match>
+		<match date="10.05.2025" timezone="ET" status="Not Started" formatted_date="10.05.2025" time="21:40" outs="" venue_name="T-Mobile Park, Seattle, Washington" venue_id="1272" attendance="" broadcast="RSN1 | RTNW | MLBN" oddsid="338212" datetime_utc="11.05.2025 01:40" id="1329181737">
+			<hometeam name="Seattle Mariners" in1="-" in2="-" in3="-" in4="-" in5="-"  in6="-" in7="-" in8="-" in9="-" r="-" hits="-" errors="-" totalscore="0" id="1024" />
+			<awayteam name="Toronto Blue Jays" in1="-" in2="-" in3="-" in4="-" in5="-"  in6="-" in7="-" in8="-" in9="-" r="-" hits="-" errors="-" totalscore="0" id="1005" />
+			<headline />
+			<events />
+			<stats />
+			<starting_pitchers>
+				<hometeam>
+					<player name="Logan Evans" id="5202474" />
+				</hometeam>
+				<awayteam>
+					<player name="Bowden Francis" id="4734325" />
+				</awayteam>
+			</starting_pitchers>
+			<umpires>
+			</umpires>
+		</match>
+	</category>
+</scores>
+

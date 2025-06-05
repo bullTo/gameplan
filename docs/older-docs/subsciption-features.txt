@@ -1,0 +1,39 @@
+AI Prompts per Day
+Limit users to a set number of AI-powered prediction requests (player or team props per game).
+Track usage with a counter that resets daily.
+:bar_chart: Tracker vs Advanced Tracker
+PRO – Tracker Access
+Basic tracker showing:
+Past AI picks
+Whether they hit or missed
+Basic filters by sport/date
+ELITE – Advanced Tracker
+Everything in PRO, plus:
+Filters by player, team, bet type (over/under, spread, etc.)
+Win rate breakdowns by category (e.g., NBA props, team spreads)
+Ability to export history or favorite specific bets
+Simple graphs for user stats (e.g., "You hit 70% of overs last week")
+:crystal_ball: Advanced vs Premium Predictions
+PRO – Advanced Predictions
+AI gives:
+Confidence rating (e.g., 68% hit rate)
+Reasoning based on recent trends (e.g., "hit over in 6 of last 7 games")
+Picks limited to common player props or standard spreads
+ELITE – Premium Predictions
+Everything in PRO, plus:
+Less obvious value picks (e.g., underdog bets or alternate lines)
+Cross-trend analysis (e.g., matchup vs bad defense + recent hot streak)
+Higher precision logic using deeper historical data
+More tailored props (e.g., assists + rebounds combos)
+:hammer_and_spanner: Support Tier
+PRO: Standard email support within 48 hours
+ELITE: Priority support within 24 hours + option to ask follow-up questions on bets
+:jigsaw: Custom Recommendations (ELITE only)
+Users can ask for:
+Personalized picks (e.g., “I want safe picks for a 3-leg parlay”)
+Player-specific trend deep dives
+AI-generated betting strategies (e.g., fade high variance props)
+
+
+
+

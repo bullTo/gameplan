@@ -1,0 +1,338 @@
+<div style={{width: '100%', height: '100%', padding: 20, background: 'rgba(17.76, 18.55, 28.04, 0.50)', overflow: 'hidden', borderRadius: 15, flexDirection: 'column', justifyContent: 'flex-start', alignItems: 'flex-start', gap: 15, display: 'inline-flex'}}>
+    <div style={{alignSelf: 'stretch', justifyContent: 'center', display: 'flex', flexDirection: 'column', color: 'white', fontSize: 20, fontFamily: 'Poppins', fontWeight: '400', lineHeight: 32, letterSpacing: 1, wordWrap: 'break-word'}}>Hail Marys</div>
+    <div style={{width: 391, padding: 15, background: '#1B1C25', borderRadius: 15, outline: '1px rgba(14, 173, 171, 0.20) solid', outlineOffset: '-1px', flexDirection: 'column', justifyContent: 'flex-start', alignItems: 'flex-start', gap: 25, display: 'flex'}}>
+        <div style={{alignSelf: 'stretch', flexDirection: 'column', justifyContent: 'flex-start', alignItems: 'flex-start', gap: 8, display: 'flex'}}>
+            <div style={{alignSelf: 'stretch', justifyContent: 'space-between', alignItems: 'flex-start', display: 'inline-flex'}}>
+                <div style={{justifyContent: 'flex-start', alignItems: 'center', gap: 15, display: 'flex'}}>
+                    <div data-team="Team 1" style={{width: 39.78, height: 40, position: 'relative'}}>
+                        <img style={{width: 39.78, height: 40, left: 0, top: 0, position: 'absolute'}} src="https://placehold.co/40x40" />
+                    </div>
+                    <div style={{flexDirection: 'column', justifyContent: 'flex-start', alignItems: 'flex-start', gap: 5, display: 'inline-flex'}}>
+                        <div style={{alignSelf: 'stretch', justifyContent: 'center', display: 'flex', flexDirection: 'column'}}><span style="color: 'white', fontSize: 14, fontFamily: 'Poppins', fontWeight: '400', lineHeight: 23.80, letterSpacing: 0.60, wordWrap: 'break-word'">Player Name</span><span style="color: 'rgba(255, 255, 255, 0.50)', fontSize: 14, fontFamily: 'Poppins', fontWeight: '400', lineHeight: 23.80, letterSpacing: 0.60, wordWrap: 'break-word'"> vs LAL</span></div>
+                        <div style={{alignSelf: 'stretch', justifyContent: 'center', display: 'flex', flexDirection: 'column', color: 'white', fontSize: 12, fontFamily: 'Poppins', fontWeight: '400', lineHeight: 20.40, letterSpacing: 0.60, wordWrap: 'break-word'}}>Over 26.5 PTS+AST -111</div>
+                    </div>
+                </div>
+                <div style={{paddingLeft: 15, paddingRight: 15, paddingTop: 5, paddingBottom: 5, background: 'rgba(14, 163, 173, 0.05)', borderRadius: 97, outline: '1px #0EA3AD solid', outlineOffset: '-1px', justifyContent: 'center', alignItems: 'center', gap: 10, display: 'flex'}}>
+                    <div style={{justifyContent: 'center', display: 'flex', flexDirection: 'column', color: '#0EA3AD', fontSize: 10, fontFamily: 'Poppins', fontWeight: '400', lineHeight: 17, letterSpacing: 0.60, wordWrap: 'break-word'}}>Hail Mary</div>
+                </div>
+            </div>
+            <div style={{alignSelf: 'stretch', flexDirection: 'column', justifyContent: 'flex-start', alignItems: 'flex-start', gap: 3, display: 'flex'}}>
+                <div style={{alignSelf: 'stretch', justifyContent: 'center', display: 'flex', flexDirection: 'column', color: 'white', fontSize: 12, fontFamily: 'Poppins', fontWeight: '400', lineHeight: 20.40, letterSpacing: 0.60, wordWrap: 'break-word'}}>Match Date: 02/03/25</div>
+                <div style={{alignSelf: 'stretch', justifyContent: 'center', display: 'flex', flexDirection: 'column', color: 'rgba(255, 255, 255, 0.50)', fontSize: 12, fontFamily: 'Poppins', fontWeight: '400', lineHeight: 20.40, letterSpacing: 0.60, wordWrap: 'break-word'}}>Hit in 5 of his last 5 games
+        </div>
+            </div>
+            <div style={{alignSelf: 'stretch', height: 103, justifyContent: 'space-between', alignItems: 'center', display: 'inline-flex'}}>
+                <div style={{width: 210, alignSelf: 'stretch', justifyContent: 'space-between', alignItems: 'center', display: 'flex'}}>
+                    <div style={{width: 96, alignSelf: 'stretch', paddingLeft: 20, paddingRight: 20, paddingTop: 4, paddingBottom: 4, background: '#1B1C25', borderRadius: 12, outline: '1px rgba(14, 173, 171, 0.20) solid', outlineOffset: '-1px', flexDirection: 'column', justifyContent: 'center', alignItems: 'center', gap: 3, display: 'inline-flex'}}>
+                        <div style={{justifyContent: 'center', display: 'flex', flexDirection: 'column', color: 'white', fontSize: 24, fontFamily: 'Poppins', fontWeight: '400', lineHeight: 36, letterSpacing: 0.80, wordWrap: 'break-word'}}>+120</div>
+                        <div style={{justifyContent: 'center', display: 'flex', flexDirection: 'column', color: 'white', fontSize: 12, fontFamily: 'Poppins', fontWeight: '400', lineHeight: 20.40, letterSpacing: 0.60, wordWrap: 'break-word'}}>Odds</div>
+                    </div>
+                    <div style={{width: 105, alignSelf: 'stretch', paddingLeft: 20, paddingRight: 20, paddingTop: 4, paddingBottom: 4, background: '#1B1C25', borderRadius: 12, outline: '1px rgba(14, 173, 171, 0.20) solid', outlineOffset: '-1px', flexDirection: 'column', justifyContent: 'center', alignItems: 'center', gap: 3, display: 'inline-flex'}}>
+                        <div style={{justifyContent: 'center', display: 'flex', flexDirection: 'column', color: 'white', fontSize: 24, fontFamily: 'Poppins', fontWeight: '400', lineHeight: 36, letterSpacing: 0.80, wordWrap: 'break-word'}}>91%</div>
+                        <div style={{justifyContent: 'center', display: 'flex', flexDirection: 'column', color: 'white', fontSize: 12, fontFamily: 'Poppins', fontWeight: '400', lineHeight: 20.40, letterSpacing: 0.60, wordWrap: 'break-word'}}>Confidence</div>
+                    </div>
+                </div>
+                <div style={{width: 123, alignSelf: 'stretch', flexDirection: 'column', justifyContent: 'center', alignItems: 'flex-start', gap: 15, display: 'inline-flex'}}>
+                    <div style={{alignSelf: 'stretch', height: 25, flexDirection: 'column', justifyContent: 'center', alignItems: 'center', gap: 10, display: 'flex'}}>
+                        <div style={{alignSelf: 'stretch', height: 28, paddingLeft: 24, paddingRight: 24, paddingTop: 4, paddingBottom: 4, borderRadius: 8, justifyContent: 'center', alignItems: 'center', gap: 8, display: 'inline-flex'}}>
+                            <div style={{textAlign: 'center', justifyContent: 'center', display: 'flex', flexDirection: 'column', color: '#0EA3AD', fontSize: 12, fontFamily: 'Poppins', fontWeight: '600', lineHeight: 21, letterSpacing: 1.20, wordWrap: 'break-word'}}>View Details</div>
+                        </div>
+                    </div>
+                    <div style={{alignSelf: 'stretch', height: 28, flexDirection: 'column', justifyContent: 'center', alignItems: 'center', gap: 10, display: 'flex'}}>
+                        <div style={{alignSelf: 'stretch', flex: '1 1 0', paddingLeft: 24, paddingRight: 24, paddingTop: 4, paddingBottom: 4, background: '#389353', borderRadius: 6, outline: '1px #389353 solid', outlineOffset: '-1px', justifyContent: 'center', alignItems: 'center', gap: 8, display: 'inline-flex'}}>
+                            <div style={{textAlign: 'center', justifyContent: 'center', display: 'flex', flexDirection: 'column', color: '#1B1C25', fontSize: 12, fontFamily: 'Poppins', fontWeight: '600', lineHeight: 14, letterSpacing: 0.20, wordWrap: 'break-word'}}>Add To Tracker</div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div style={{width: 391, padding: 15, background: '#1B1C25', borderRadius: 15, outline: '1px rgba(14, 173, 171, 0.20) solid', outlineOffset: '-1px', flexDirection: 'column', justifyContent: 'flex-start', alignItems: 'flex-start', gap: 25, display: 'flex'}}>
+        <div style={{alignSelf: 'stretch', flexDirection: 'column', justifyContent: 'flex-start', alignItems: 'flex-start', gap: 8, display: 'flex'}}>
+            <div style={{alignSelf: 'stretch', justifyContent: 'space-between', alignItems: 'flex-start', display: 'inline-flex'}}>
+                <div style={{justifyContent: 'flex-start', alignItems: 'center', gap: 15, display: 'flex'}}>
+                    <div data-team="Team 2" style={{width: 40, height: 40, position: 'relative'}}>
+                        <img style={{width: 40, height: 40, left: 0, top: 0, position: 'absolute'}} src="https://placehold.co/40x40" />
+                    </div>
+                    <div style={{flexDirection: 'column', justifyContent: 'flex-start', alignItems: 'flex-start', gap: 5, display: 'inline-flex'}}>
+                        <div style={{alignSelf: 'stretch', justifyContent: 'center', display: 'flex', flexDirection: 'column'}}><span style="color: 'white', fontSize: 14, fontFamily: 'Poppins', fontWeight: '400', lineHeight: 23.80, letterSpacing: 0.60, wordWrap: 'break-word'">Player Name</span><span style="color: 'rgba(255, 255, 255, 0.50)', fontSize: 14, fontFamily: 'Poppins', fontWeight: '400', lineHeight: 23.80, letterSpacing: 0.60, wordWrap: 'break-word'"> vs LAL</span></div>
+                        <div style={{alignSelf: 'stretch', justifyContent: 'center', display: 'flex', flexDirection: 'column', color: 'white', fontSize: 12, fontFamily: 'Poppins', fontWeight: '400', lineHeight: 20.40, letterSpacing: 0.60, wordWrap: 'break-word'}}>Over 26.5 PTS+AST -111</div>
+                    </div>
+                </div>
+                <div style={{paddingLeft: 15, paddingRight: 15, paddingTop: 5, paddingBottom: 5, background: 'rgba(14, 163, 173, 0.05)', borderRadius: 97, outline: '1px #0EA3AD solid', outlineOffset: '-1px', justifyContent: 'center', alignItems: 'center', gap: 10, display: 'flex'}}>
+                    <div style={{justifyContent: 'center', display: 'flex', flexDirection: 'column', color: '#0EA3AD', fontSize: 10, fontFamily: 'Poppins', fontWeight: '400', lineHeight: 17, letterSpacing: 0.60, wordWrap: 'break-word'}}>Hail Mary</div>
+                </div>
+            </div>
+            <div style={{alignSelf: 'stretch', flexDirection: 'column', justifyContent: 'flex-start', alignItems: 'flex-start', gap: 3, display: 'flex'}}>
+                <div style={{alignSelf: 'stretch', justifyContent: 'center', display: 'flex', flexDirection: 'column', color: 'white', fontSize: 12, fontFamily: 'Poppins', fontWeight: '400', lineHeight: 20.40, letterSpacing: 0.60, wordWrap: 'break-word'}}>Match Date: 02/03/25</div>
+                <div style={{alignSelf: 'stretch', justifyContent: 'center', display: 'flex', flexDirection: 'column', color: 'rgba(255, 255, 255, 0.50)', fontSize: 12, fontFamily: 'Poppins', fontWeight: '400', lineHeight: 20.40, letterSpacing: 0.60, wordWrap: 'break-word'}}>Hit in 5 of his last 5 games
+        </div>
+            </div>
+            <div style={{alignSelf: 'stretch', height: 103, justifyContent: 'space-between', alignItems: 'center', display: 'inline-flex'}}>
+                <div style={{width: 210, alignSelf: 'stretch', justifyContent: 'space-between', alignItems: 'center', display: 'flex'}}>
+                    <div style={{width: 96, alignSelf: 'stretch', paddingLeft: 20, paddingRight: 20, paddingTop: 4, paddingBottom: 4, background: '#1B1C25', borderRadius: 12, outline: '1px rgba(14, 173, 171, 0.20) solid', outlineOffset: '-1px', flexDirection: 'column', justifyContent: 'center', alignItems: 'center', gap: 3, display: 'inline-flex'}}>
+                        <div style={{justifyContent: 'center', display: 'flex', flexDirection: 'column', color: 'white', fontSize: 24, fontFamily: 'Poppins', fontWeight: '400', lineHeight: 36, letterSpacing: 0.80, wordWrap: 'break-word'}}>+120</div>
+                        <div style={{justifyContent: 'center', display: 'flex', flexDirection: 'column', color: 'white', fontSize: 12, fontFamily: 'Poppins', fontWeight: '400', lineHeight: 20.40, letterSpacing: 0.60, wordWrap: 'break-word'}}>Odds</div>
+                    </div>
+                    <div style={{width: 105, alignSelf: 'stretch', paddingLeft: 20, paddingRight: 20, paddingTop: 4, paddingBottom: 4, background: '#1B1C25', borderRadius: 12, outline: '1px rgba(14, 173, 171, 0.20) solid', outlineOffset: '-1px', flexDirection: 'column', justifyContent: 'center', alignItems: 'center', gap: 3, display: 'inline-flex'}}>
+                        <div style={{justifyContent: 'center', display: 'flex', flexDirection: 'column', color: 'white', fontSize: 24, fontFamily: 'Poppins', fontWeight: '400', lineHeight: 36, letterSpacing: 0.80, wordWrap: 'break-word'}}>91%</div>
+                        <div style={{justifyContent: 'center', display: 'flex', flexDirection: 'column', color: 'white', fontSize: 12, fontFamily: 'Poppins', fontWeight: '400', lineHeight: 20.40, letterSpacing: 0.60, wordWrap: 'break-word'}}>Confidence</div>
+                    </div>
+                </div>
+                <div style={{width: 123, alignSelf: 'stretch', flexDirection: 'column', justifyContent: 'center', alignItems: 'flex-start', gap: 15, display: 'inline-flex'}}>
+                    <div style={{alignSelf: 'stretch', height: 25, flexDirection: 'column', justifyContent: 'center', alignItems: 'center', gap: 10, display: 'flex'}}>
+                        <div style={{alignSelf: 'stretch', height: 28, paddingLeft: 24, paddingRight: 24, paddingTop: 4, paddingBottom: 4, borderRadius: 8, justifyContent: 'center', alignItems: 'center', gap: 8, display: 'inline-flex'}}>
+                            <div style={{textAlign: 'center', justifyContent: 'center', display: 'flex', flexDirection: 'column', color: '#0EA3AD', fontSize: 12, fontFamily: 'Poppins', fontWeight: '600', lineHeight: 21, letterSpacing: 1.20, wordWrap: 'break-word'}}>View Details</div>
+                        </div>
+                    </div>
+                    <div style={{alignSelf: 'stretch', height: 28, flexDirection: 'column', justifyContent: 'center', alignItems: 'center', gap: 10, display: 'flex'}}>
+                        <div style={{alignSelf: 'stretch', flex: '1 1 0', paddingLeft: 24, paddingRight: 24, paddingTop: 4, paddingBottom: 4, background: '#389353', borderRadius: 6, outline: '1px #389353 solid', outlineOffset: '-1px', justifyContent: 'center', alignItems: 'center', gap: 8, display: 'inline-flex'}}>
+                            <div style={{textAlign: 'center', justifyContent: 'center', display: 'flex', flexDirection: 'column', color: '#1B1C25', fontSize: 12, fontFamily: 'Poppins', fontWeight: '600', lineHeight: 14, letterSpacing: 0.20, wordWrap: 'break-word'}}>Add To Tracker</div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div style={{width: 391, padding: 15, background: '#1B1C25', borderRadius: 15, outline: '1px rgba(14, 173, 171, 0.20) solid', outlineOffset: '-1px', flexDirection: 'column', justifyContent: 'flex-start', alignItems: 'flex-start', gap: 25, display: 'flex'}}>
+        <div style={{alignSelf: 'stretch', flexDirection: 'column', justifyContent: 'flex-start', alignItems: 'flex-start', gap: 8, display: 'flex'}}>
+            <div style={{alignSelf: 'stretch', justifyContent: 'space-between', alignItems: 'flex-start', display: 'inline-flex'}}>
+                <div style={{justifyContent: 'flex-start', alignItems: 'center', gap: 15, display: 'flex'}}>
+                    <div data-team="Team 3" style={{width: 40, height: 40, position: 'relative'}}>
+                        <img style={{width: 40, height: 40, left: 0, top: 0, position: 'absolute', borderRadius: 320}} src="https://placehold.co/40x40" />
+                    </div>
+                    <div style={{flexDirection: 'column', justifyContent: 'flex-start', alignItems: 'flex-start', gap: 5, display: 'inline-flex'}}>
+                        <div style={{alignSelf: 'stretch', justifyContent: 'center', display: 'flex', flexDirection: 'column'}}><span style="color: 'white', fontSize: 14, fontFamily: 'Poppins', fontWeight: '400', lineHeight: 23.80, letterSpacing: 0.60, wordWrap: 'break-word'">Player Name</span><span style="color: 'rgba(255, 255, 255, 0.50)', fontSize: 14, fontFamily: 'Poppins', fontWeight: '400', lineHeight: 23.80, letterSpacing: 0.60, wordWrap: 'break-word'"> vs LAL</span></div>
+                        <div style={{alignSelf: 'stretch', justifyContent: 'center', display: 'flex', flexDirection: 'column', color: 'white', fontSize: 12, fontFamily: 'Poppins', fontWeight: '400', lineHeight: 20.40, letterSpacing: 0.60, wordWrap: 'break-word'}}>Over 26.5 PTS+AST -111</div>
+                    </div>
+                </div>
+                <div style={{paddingLeft: 15, paddingRight: 15, paddingTop: 5, paddingBottom: 5, background: 'rgba(14, 163, 173, 0.05)', borderRadius: 97, outline: '1px #0EA3AD solid', outlineOffset: '-1px', justifyContent: 'center', alignItems: 'center', gap: 10, display: 'flex'}}>
+                    <div style={{justifyContent: 'center', display: 'flex', flexDirection: 'column', color: '#0EA3AD', fontSize: 10, fontFamily: 'Poppins', fontWeight: '400', lineHeight: 17, letterSpacing: 0.60, wordWrap: 'break-word'}}>Hail Mary</div>
+                </div>
+            </div>
+            <div style={{alignSelf: 'stretch', flexDirection: 'column', justifyContent: 'flex-start', alignItems: 'flex-start', gap: 3, display: 'flex'}}>
+                <div style={{alignSelf: 'stretch', justifyContent: 'center', display: 'flex', flexDirection: 'column', color: 'white', fontSize: 12, fontFamily: 'Poppins', fontWeight: '400', lineHeight: 20.40, letterSpacing: 0.60, wordWrap: 'break-word'}}>Match Date: 02/03/25</div>
+                <div style={{alignSelf: 'stretch', justifyContent: 'center', display: 'flex', flexDirection: 'column', color: 'rgba(255, 255, 255, 0.50)', fontSize: 12, fontFamily: 'Poppins', fontWeight: '400', lineHeight: 20.40, letterSpacing: 0.60, wordWrap: 'break-word'}}>Hit in 5 of his last 5 games
+        </div>
+            </div>
+            <div style={{alignSelf: 'stretch', height: 103, justifyContent: 'space-between', alignItems: 'center', display: 'inline-flex'}}>
+                <div style={{width: 210, alignSelf: 'stretch', justifyContent: 'space-between', alignItems: 'center', display: 'flex'}}>
+                    <div style={{width: 96, alignSelf: 'stretch', paddingLeft: 20, paddingRight: 20, paddingTop: 4, paddingBottom: 4, background: '#1B1C25', borderRadius: 12, outline: '1px rgba(14, 173, 171, 0.20) solid', outlineOffset: '-1px', flexDirection: 'column', justifyContent: 'center', alignItems: 'center', gap: 3, display: 'inline-flex'}}>
+                        <div style={{justifyContent: 'center', display: 'flex', flexDirection: 'column', color: 'white', fontSize: 24, fontFamily: 'Poppins', fontWeight: '400', lineHeight: 36, letterSpacing: 0.80, wordWrap: 'break-word'}}>+120</div>
+                        <div style={{justifyContent: 'center', display: 'flex', flexDirection: 'column', color: 'white', fontSize: 12, fontFamily: 'Poppins', fontWeight: '400', lineHeight: 20.40, letterSpacing: 0.60, wordWrap: 'break-word'}}>Odds</div>
+                    </div>
+                    <div style={{width: 105, alignSelf: 'stretch', paddingLeft: 20, paddingRight: 20, paddingTop: 4, paddingBottom: 4, background: '#1B1C25', borderRadius: 12, outline: '1px rgba(14, 173, 171, 0.20) solid', outlineOffset: '-1px', flexDirection: 'column', justifyContent: 'center', alignItems: 'center', gap: 3, display: 'inline-flex'}}>
+                        <div style={{justifyContent: 'center', display: 'flex', flexDirection: 'column', color: 'white', fontSize: 24, fontFamily: 'Poppins', fontWeight: '400', lineHeight: 36, letterSpacing: 0.80, wordWrap: 'break-word'}}>91%</div>
+                        <div style={{justifyContent: 'center', display: 'flex', flexDirection: 'column', color: 'white', fontSize: 12, fontFamily: 'Poppins', fontWeight: '400', lineHeight: 20.40, letterSpacing: 0.60, wordWrap: 'break-word'}}>Confidence</div>
+                    </div>
+                </div>
+                <div style={{width: 123, alignSelf: 'stretch', flexDirection: 'column', justifyContent: 'center', alignItems: 'flex-start', gap: 15, display: 'inline-flex'}}>
+                    <div style={{alignSelf: 'stretch', height: 25, flexDirection: 'column', justifyContent: 'center', alignItems: 'center', gap: 10, display: 'flex'}}>
+                        <div style={{alignSelf: 'stretch', height: 28, paddingLeft: 24, paddingRight: 24, paddingTop: 4, paddingBottom: 4, borderRadius: 8, justifyContent: 'center', alignItems: 'center', gap: 8, display: 'inline-flex'}}>
+                            <div style={{textAlign: 'center', justifyContent: 'center', display: 'flex', flexDirection: 'column', color: '#0EA3AD', fontSize: 12, fontFamily: 'Poppins', fontWeight: '600', lineHeight: 21, letterSpacing: 1.20, wordWrap: 'break-word'}}>View Details</div>
+                        </div>
+                    </div>
+                    <div style={{alignSelf: 'stretch', height: 28, flexDirection: 'column', justifyContent: 'center', alignItems: 'center', gap: 10, display: 'flex'}}>
+                        <div style={{alignSelf: 'stretch', flex: '1 1 0', paddingLeft: 24, paddingRight: 24, paddingTop: 4, paddingBottom: 4, background: '#389353', borderRadius: 6, outline: '1px #389353 solid', outlineOffset: '-1px', justifyContent: 'center', alignItems: 'center', gap: 8, display: 'inline-flex'}}>
+                            <div style={{textAlign: 'center', justifyContent: 'center', display: 'flex', flexDirection: 'column', color: '#1B1C25', fontSize: 12, fontFamily: 'Poppins', fontWeight: '600', lineHeight: 14, letterSpacing: 0.20, wordWrap: 'break-word'}}>Add To Tracker</div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div style={{width: 391, padding: 15, background: '#1B1C25', borderRadius: 15, outline: '1px rgba(14, 173, 171, 0.20) solid', outlineOffset: '-1px', flexDirection: 'column', justifyContent: 'flex-start', alignItems: 'flex-start', gap: 25, display: 'flex'}}>
+        <div style={{alignSelf: 'stretch', flexDirection: 'column', justifyContent: 'flex-start', alignItems: 'flex-start', gap: 8, display: 'flex'}}>
+            <div style={{alignSelf: 'stretch', justifyContent: 'space-between', alignItems: 'flex-start', display: 'inline-flex'}}>
+                <div style={{justifyContent: 'flex-start', alignItems: 'center', gap: 15, display: 'flex'}}>
+                    <div data-team="Team 4" style={{width: 40, height: 40, position: 'relative'}}>
+                        <img style={{width: 40, height: 40, left: 0, top: 0, position: 'absolute'}} src="https://placehold.co/40x40" />
+                    </div>
+                    <div style={{flexDirection: 'column', justifyContent: 'flex-start', alignItems: 'flex-start', gap: 5, display: 'inline-flex'}}>
+                        <div style={{alignSelf: 'stretch', justifyContent: 'center', display: 'flex', flexDirection: 'column'}}><span style="color: 'white', fontSize: 14, fontFamily: 'Poppins', fontWeight: '400', lineHeight: 23.80, letterSpacing: 0.60, wordWrap: 'break-word'">Player Name</span><span style="color: 'rgba(255, 255, 255, 0.50)', fontSize: 14, fontFamily: 'Poppins', fontWeight: '400', lineHeight: 23.80, letterSpacing: 0.60, wordWrap: 'break-word'"> vs LAL</span></div>
+                        <div style={{alignSelf: 'stretch', justifyContent: 'center', display: 'flex', flexDirection: 'column', color: 'white', fontSize: 12, fontFamily: 'Poppins', fontWeight: '400', lineHeight: 20.40, letterSpacing: 0.60, wordWrap: 'break-word'}}>Over 26.5 PTS+AST -111</div>
+                    </div>
+                </div>
+                <div style={{paddingLeft: 15, paddingRight: 15, paddingTop: 5, paddingBottom: 5, background: 'rgba(14, 163, 173, 0.05)', borderRadius: 97, outline: '1px #0EA3AD solid', outlineOffset: '-1px', justifyContent: 'center', alignItems: 'center', gap: 10, display: 'flex'}}>
+                    <div style={{justifyContent: 'center', display: 'flex', flexDirection: 'column', color: '#0EA3AD', fontSize: 10, fontFamily: 'Poppins', fontWeight: '400', lineHeight: 17, letterSpacing: 0.60, wordWrap: 'break-word'}}>Hail Mary</div>
+                </div>
+            </div>
+            <div style={{alignSelf: 'stretch', flexDirection: 'column', justifyContent: 'flex-start', alignItems: 'flex-start', gap: 3, display: 'flex'}}>
+                <div style={{alignSelf: 'stretch', justifyContent: 'center', display: 'flex', flexDirection: 'column', color: 'white', fontSize: 12, fontFamily: 'Poppins', fontWeight: '400', lineHeight: 20.40, letterSpacing: 0.60, wordWrap: 'break-word'}}>Match Date: 02/03/25</div>
+                <div style={{alignSelf: 'stretch', justifyContent: 'center', display: 'flex', flexDirection: 'column', color: 'rgba(255, 255, 255, 0.50)', fontSize: 12, fontFamily: 'Poppins', fontWeight: '400', lineHeight: 20.40, letterSpacing: 0.60, wordWrap: 'break-word'}}>Hit in 5 of his last 5 games
+        </div>
+            </div>
+            <div style={{alignSelf: 'stretch', height: 103, justifyContent: 'space-between', alignItems: 'center', display: 'inline-flex'}}>
+                <div style={{width: 210, alignSelf: 'stretch', justifyContent: 'space-between', alignItems: 'center', display: 'flex'}}>
+                    <div style={{width: 96, alignSelf: 'stretch', paddingLeft: 20, paddingRight: 20, paddingTop: 4, paddingBottom: 4, background: '#1B1C25', borderRadius: 12, outline: '1px rgba(14, 173, 171, 0.20) solid', outlineOffset: '-1px', flexDirection: 'column', justifyContent: 'center', alignItems: 'center', gap: 3, display: 'inline-flex'}}>
+                        <div style={{justifyContent: 'center', display: 'flex', flexDirection: 'column', color: 'white', fontSize: 24, fontFamily: 'Poppins', fontWeight: '400', lineHeight: 36, letterSpacing: 0.80, wordWrap: 'break-word'}}>+120</div>
+                        <div style={{justifyContent: 'center', display: 'flex', flexDirection: 'column', color: 'white', fontSize: 12, fontFamily: 'Poppins', fontWeight: '400', lineHeight: 20.40, letterSpacing: 0.60, wordWrap: 'break-word'}}>Odds</div>
+                    </div>
+                    <div style={{width: 105, alignSelf: 'stretch', paddingLeft: 20, paddingRight: 20, paddingTop: 4, paddingBottom: 4, background: '#1B1C25', borderRadius: 12, outline: '1px rgba(14, 173, 171, 0.20) solid', outlineOffset: '-1px', flexDirection: 'column', justifyContent: 'center', alignItems: 'center', gap: 3, display: 'inline-flex'}}>
+                        <div style={{justifyContent: 'center', display: 'flex', flexDirection: 'column', color: 'white', fontSize: 24, fontFamily: 'Poppins', fontWeight: '400', lineHeight: 36, letterSpacing: 0.80, wordWrap: 'break-word'}}>91%</div>
+                        <div style={{justifyContent: 'center', display: 'flex', flexDirection: 'column', color: 'white', fontSize: 12, fontFamily: 'Poppins', fontWeight: '400', lineHeight: 20.40, letterSpacing: 0.60, wordWrap: 'break-word'}}>Confidence</div>
+                    </div>
+                </div>
+                <div style={{width: 123, alignSelf: 'stretch', flexDirection: 'column', justifyContent: 'center', alignItems: 'flex-start', gap: 15, display: 'inline-flex'}}>
+                    <div style={{alignSelf: 'stretch', height: 25, flexDirection: 'column', justifyContent: 'center', alignItems: 'center', gap: 10, display: 'flex'}}>
+                        <div style={{alignSelf: 'stretch', height: 28, paddingLeft: 24, paddingRight: 24, paddingTop: 4, paddingBottom: 4, borderRadius: 8, justifyContent: 'center', alignItems: 'center', gap: 8, display: 'inline-flex'}}>
+                            <div style={{textAlign: 'center', justifyContent: 'center', display: 'flex', flexDirection: 'column', color: '#0EA3AD', fontSize: 12, fontFamily: 'Poppins', fontWeight: '600', lineHeight: 21, letterSpacing: 1.20, wordWrap: 'break-word'}}>View Details</div>
+                        </div>
+                    </div>
+                    <div style={{alignSelf: 'stretch', height: 28, flexDirection: 'column', justifyContent: 'center', alignItems: 'center', gap: 10, display: 'flex'}}>
+                        <div style={{alignSelf: 'stretch', flex: '1 1 0', paddingLeft: 24, paddingRight: 24, paddingTop: 4, paddingBottom: 4, background: '#389353', borderRadius: 6, outline: '1px #389353 solid', outlineOffset: '-1px', justifyContent: 'center', alignItems: 'center', gap: 8, display: 'inline-flex'}}>
+                            <div style={{textAlign: 'center', justifyContent: 'center', display: 'flex', flexDirection: 'column', color: '#1B1C25', fontSize: 12, fontFamily: 'Poppins', fontWeight: '600', lineHeight: 14, letterSpacing: 0.20, wordWrap: 'break-word'}}>Add To Tracker</div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+// Hail Marys
+color: 'white', fontSize: 20, fontFamily: 'Poppins', fontWeight: '400', lineHeight: 32, letterSpacing: 1, wordWrap: 'break-word'
+---
+// Player Name
+color: 'white', fontSize: 14, fontFamily: 'Poppins', fontWeight: '400', lineHeight: 23.80, letterSpacing: 0.60, wordWrap: 'break-word'
+---
+//  vs LAL
+color: 'rgba(255, 255, 255, 0.50)', fontSize: 14, fontFamily: 'Poppins', fontWeight: '400', lineHeight: 23.80, letterSpacing: 0.60, wordWrap: 'break-word'
+---
+// Over 26.5 PTS+AST -111
+color: 'white', fontSize: 12, fontFamily: 'Poppins', fontWeight: '400', lineHeight: 20.40, letterSpacing: 0.60, wordWrap: 'break-word'
+---
+// Hail Mary
+color: '#0EA3AD', fontSize: 10, fontFamily: 'Poppins', fontWeight: '400', lineHeight: 17, letterSpacing: 0.60, wordWrap: 'break-word'
+---
+// Match Date: 02/03/25
+color: 'white', fontSize: 12, fontFamily: 'Poppins', fontWeight: '400', lineHeight: 20.40, letterSpacing: 0.60, wordWrap: 'break-word'
+---
+// Hit in 5 of his last 5 games
+color: 'rgba(255, 255, 255, 0.50)', fontSize: 12, fontFamily: 'Poppins', fontWeight: '400', lineHeight: 20.40, letterSpacing: 0.60, wordWrap: 'break-word'
+---
+// +120
+color: 'white', fontSize: 24, fontFamily: 'Poppins', fontWeight: '400', lineHeight: 36, letterSpacing: 0.80, wordWrap: 'break-word'
+---
+// Odds
+color: 'white', fontSize: 12, fontFamily: 'Poppins', fontWeight: '400', lineHeight: 20.40, letterSpacing: 0.60, wordWrap: 'break-word'
+---
+// 91%
+color: 'white', fontSize: 24, fontFamily: 'Poppins', fontWeight: '400', lineHeight: 36, letterSpacing: 0.80, wordWrap: 'break-word'
+---
+// Confidence
+color: 'white', fontSize: 12, fontFamily: 'Poppins', fontWeight: '400', lineHeight: 20.40, letterSpacing: 0.60, wordWrap: 'break-word'
+---
+// View Details
+color: '#0EA3AD', fontSize: 12, fontFamily: 'Poppins', fontWeight: '600', lineHeight: 21, letterSpacing: 1.20, wordWrap: 'break-word'
+---
+// Add To Tracker
+color: '#1B1C25', fontSize: 12, fontFamily: 'Poppins', fontWeight: '600', lineHeight: 14, letterSpacing: 0.20, wordWrap: 'break-word'
+---
+// Player Name
+color: 'white', fontSize: 14, fontFamily: 'Poppins', fontWeight: '400', lineHeight: 23.80, letterSpacing: 0.60, wordWrap: 'break-word'
+---
+//  vs LAL
+color: 'rgba(255, 255, 255, 0.50)', fontSize: 14, fontFamily: 'Poppins', fontWeight: '400', lineHeight: 23.80, letterSpacing: 0.60, wordWrap: 'break-word'
+---
+// Over 26.5 PTS+AST -111
+color: 'white', fontSize: 12, fontFamily: 'Poppins', fontWeight: '400', lineHeight: 20.40, letterSpacing: 0.60, wordWrap: 'break-word'
+---
+// Hail Mary
+color: '#0EA3AD', fontSize: 10, fontFamily: 'Poppins', fontWeight: '400', lineHeight: 17, letterSpacing: 0.60, wordWrap: 'break-word'
+---
+// Match Date: 02/03/25
+color: 'white', fontSize: 12, fontFamily: 'Poppins', fontWeight: '400', lineHeight: 20.40, letterSpacing: 0.60, wordWrap: 'break-word'
+---
+// Hit in 5 of his last 5 games
+color: 'rgba(255, 255, 255, 0.50)', fontSize: 12, fontFamily: 'Poppins', fontWeight: '400', lineHeight: 20.40, letterSpacing: 0.60, wordWrap: 'break-word'
+---
+// +120
+color: 'white', fontSize: 24, fontFamily: 'Poppins', fontWeight: '400', lineHeight: 36, letterSpacing: 0.80, wordWrap: 'break-word'
+---
+// Odds
+color: 'white', fontSize: 12, fontFamily: 'Poppins', fontWeight: '400', lineHeight: 20.40, letterSpacing: 0.60, wordWrap: 'break-word'
+---
+// 91%
+color: 'white', fontSize: 24, fontFamily: 'Poppins', fontWeight: '400', lineHeight: 36, letterSpacing: 0.80, wordWrap: 'break-word'
+---
+// Confidence
+color: 'white', fontSize: 12, fontFamily: 'Poppins', fontWeight: '400', lineHeight: 20.40, letterSpacing: 0.60, wordWrap: 'break-word'
+---
+// View Details
+color: '#0EA3AD', fontSize: 12, fontFamily: 'Poppins', fontWeight: '600', lineHeight: 21, letterSpacing: 1.20, wordWrap: 'break-word'
+---
+// Add To Tracker
+color: '#1B1C25', fontSize: 12, fontFamily: 'Poppins', fontWeight: '600', lineHeight: 14, letterSpacing: 0.20, wordWrap: 'break-word'
+---
+// Player Name
+color: 'white', fontSize: 14, fontFamily: 'Poppins', fontWeight: '400', lineHeight: 23.80, letterSpacing: 0.60, wordWrap: 'break-word'
+---
+//  vs LAL
+color: 'rgba(255, 255, 255, 0.50)', fontSize: 14, fontFamily: 'Poppins', fontWeight: '400', lineHeight: 23.80, letterSpacing: 0.60, wordWrap: 'break-word'
+---
+// Over 26.5 PTS+AST -111
+color: 'white', fontSize: 12, fontFamily: 'Poppins', fontWeight: '400', lineHeight: 20.40, letterSpacing: 0.60, wordWrap: 'break-word'
+---
+// Hail Mary
+color: '#0EA3AD', fontSize: 10, fontFamily: 'Poppins', fontWeight: '400', lineHeight: 17, letterSpacing: 0.60, wordWrap: 'break-word'
+---
+// Match Date: 02/03/25
+color: 'white', fontSize: 12, fontFamily: 'Poppins', fontWeight: '400', lineHeight: 20.40, letterSpacing: 0.60, wordWrap: 'break-word'
+---
+// Hit in 5 of his last 5 games
+color: 'rgba(255, 255, 255, 0.50)', fontSize: 12, fontFamily: 'Poppins', fontWeight: '400', lineHeight: 20.40, letterSpacing: 0.60, wordWrap: 'break-word'
+---
+// +120
+color: 'white', fontSize: 24, fontFamily: 'Poppins', fontWeight: '400', lineHeight: 36, letterSpacing: 0.80, wordWrap: 'break-word'
+---
+// Odds
+color: 'white', fontSize: 12, fontFamily: 'Poppins', fontWeight: '400', lineHeight: 20.40, letterSpacing: 0.60, wordWrap: 'break-word'
+---
+// 91%
+color: 'white', fontSize: 24, fontFamily: 'Poppins', fontWeight: '400', lineHeight: 36, letterSpacing: 0.80, wordWrap: 'break-word'
+---
+// Confidence
+color: 'white', fontSize: 12, fontFamily: 'Poppins', fontWeight: '400', lineHeight: 20.40, letterSpacing: 0.60, wordWrap: 'break-word'
+---
+// View Details
+color: '#0EA3AD', fontSize: 12, fontFamily: 'Poppins', fontWeight: '600', lineHeight: 21, letterSpacing: 1.20, wordWrap: 'break-word'
+---
+// Add To Tracker
+color: '#1B1C25', fontSize: 12, fontFamily: 'Poppins', fontWeight: '600', lineHeight: 14, letterSpacing: 0.20, wordWrap: 'break-word'
+---
+// Player Name
+color: 'white', fontSize: 14, fontFamily: 'Poppins', fontWeight: '400', lineHeight: 23.80, letterSpacing: 0.60, wordWrap: 'break-word'
+---
+//  vs LAL
+color: 'rgba(255, 255, 255, 0.50)', fontSize: 14, fontFamily: 'Poppins', fontWeight: '400', lineHeight: 23.80, letterSpacing: 0.60, wordWrap: 'break-word'
+---
+// Over 26.5 PTS+AST -111
+color: 'white', fontSize: 12, fontFamily: 'Poppins', fontWeight: '400', lineHeight: 20.40, letterSpacing: 0.60, wordWrap: 'break-word'
+---
+// Hail Mary
+color: '#0EA3AD', fontSize: 10, fontFamily: 'Poppins', fontWeight: '400', lineHeight: 17, letterSpacing: 0.60, wordWrap: 'break-word'
+---
+// Match Date: 02/03/25
+color: 'white', fontSize: 12, fontFamily: 'Poppins', fontWeight: '400', lineHeight: 20.40, letterSpacing: 0.60, wordWrap: 'break-word'
+---
+// Hit in 5 of his last 5 games
+color: 'rgba(255, 255, 255, 0.50)', fontSize: 12, fontFamily: 'Poppins', fontWeight: '400', lineHeight: 20.40, letterSpacing: 0.60, wordWrap: 'break-word'
+---
+// +120
+color: 'white', fontSize: 24, fontFamily: 'Poppins', fontWeight: '400', lineHeight: 36, letterSpacing: 0.80, wordWrap: 'break-word'
+---
+// Odds
+color: 'white', fontSize: 12, fontFamily: 'Poppins', fontWeight: '400', lineHeight: 20.40, letterSpacing: 0.60, wordWrap: 'break-word'
+---
+// 91%
+color: 'white', fontSize: 24, fontFamily: 'Poppins', fontWeight: '400', lineHeight: 36, letterSpacing: 0.80, wordWrap: 'break-word'
+---
+// Confidence
+color: 'white', fontSize: 12, fontFamily: 'Poppins', fontWeight: '400', lineHeight: 20.40, letterSpacing: 0.60, wordWrap: 'break-word'
+---
+// View Details
+color: '#0EA3AD', fontSize: 12, fontFamily: 'Poppins', fontWeight: '600', lineHeight: 21, letterSpacing: 1.20, wordWrap: 'break-word'
+---
+// Add To Tracker
+color: '#1B1C25', fontSize: 12, fontFamily: 'Poppins', fontWeight: '600', lineHeight: 14, letterSpacing: 0.20, wordWrap: 'break-word'

@@ -1,0 +1,386 @@
+for JSON output please add "?json=1" to the feed URL
+
+
+NFL scores/standings and schedule
+http://www.goalserve.com/getfeed/fd05c9e7e41044acb6b108dd7af3fbb6/football/nfl-scores  - NFL livescore
+http://www.goalserve.com/getfeed/fd05c9e7e41044acb6b108dd7af3fbb6/football/nfl-scores?date=dd.MM.yyyy   - past boxscores since 2010
+http://www.goalserve.com/getfeed/fd05c9e7e41044acb6b108dd7af3fbb6/football/nfl-playbyplay-scores  - NFL live play by play
+http://www.goalserve.com/getfeed/fd05c9e7e41044acb6b108dd7af3fbb6/football/nfl-shedule  - NFL schedule
+http://www.goalserve.com/getfeed/fd05c9e7e41044acb6b108dd7af3fbb6/football/nfl-standings  - NFL standings
+http://www.goalserve.com/getfeed/fd05c9e7e41044acb6b108dd7af3fbb6/football/nfl-shedule?date1=18.05.2018&date2=18.05.2018&showodds=1  - BOOKmaker ODDS schedule by date period (date1 and date2)
+
+Team rosters, injures and season stats. Team logos are available in team roster file
+NFL teams by id
+http://www.goalserve.com/getfeed/fd05c9e7e41044acb6b108dd7af3fbb6/football/1691_rosters
+http://www.goalserve.com/getfeed/fd05c9e7e41044acb6b108dd7af3fbb6/football/1691_injuries
+http://www.goalserve.com/getfeed/fd05c9e7e41044acb6b108dd7af3fbb6/football/1691_player_stats
+http://www.goalserve.com/getfeed/fd05c9e7e41044acb6b108dd7af3fbb6/football/usa?playerimage=15826  - player images
+
+
+
+Basketball:
+http://www.goalserve.com/getfeed/fd05c9e7e41044acb6b108dd7af3fbb6/bsktbl/nba-scores
+http://www.goalserve.com/getfeed/fd05c9e7e41044acb6b108dd7af3fbb6/bsktbl/nba-shedule
+http://www.goalserve.com/getfeed/fd05c9e7e41044acb6b108dd7af3fbb6/bsktbl/nba-standings
+http://www.goalserve.com/getfeed/fd05c9e7e41044acb6b108dd7af3fbb6/bsktbl/ncaa-scores
+http://www.goalserve.com/getfeed/fd05c9e7e41044acb6b108dd7af3fbb6/bsktbl/ncaa-shedule
+http://www.goalserve.com/getfeed/fd05c9e7e41044acb6b108dd7af3fbb6/bsktbl/ncaa-standings
+http://www.goalserve.com/getfeed/fd05c9e7e41044acb6b108dd7af3fbb6/bsktbl/1985_rosters      - NCAA team profile where 1985 is a team id
+http://www.goalserve.com/getfeed/fd05c9e7e41044acb6b108dd7af3fbb6/bsktbl/1985_stats
+http://www.goalserve.com/getfeed/fd05c9e7e41044acb6b108dd7af3fbb6/bsktbl/ap-rankings
+http://www.goalserve.com/getfeed/fd05c9e7e41044acb6b108dd7af3fbb6/bsktbl/atl_rosters
+http://www.goalserve.com/getfeed/fd05c9e7e41044acb6b108dd7af3fbb6/bsktbl/atl_stats
+http://www.goalserve.com/getfeed/fd05c9e7e41044acb6b108dd7af3fbb6/bsktbl/atl_injuries
+http://www.goalserve.com/getfeed/fd05c9e7e41044acb6b108dd7af3fbb6/bsktbl/bos_rosters
+http://www.goalserve.com/getfeed/fd05c9e7e41044acb6b108dd7af3fbb6/bsktbl/bos_stats
+http://www.goalserve.com/getfeed/fd05c9e7e41044acb6b108dd7af3fbb6/bsktbl/bos_injuries
+http://www.goalserve.com/getfeed/fd05c9e7e41044acb6b108dd7af3fbb6/bsktbl/cha_rosters
+http://www.goalserve.com/getfeed/fd05c9e7e41044acb6b108dd7af3fbb6/bsktbl/cha_stats
+http://www.goalserve.com/getfeed/fd05c9e7e41044acb6b108dd7af3fbb6/bsktbl/cha_injuries
+http://www.goalserve.com/getfeed/fd05c9e7e41044acb6b108dd7af3fbb6/bsktbl/chi_rosters
+http://www.goalserve.com/getfeed/fd05c9e7e41044acb6b108dd7af3fbb6/bsktbl/chi_stats
+http://www.goalserve.com/getfeed/fd05c9e7e41044acb6b108dd7af3fbb6/bsktbl/chi_injuries
+http://www.goalserve.com/getfeed/fd05c9e7e41044acb6b108dd7af3fbb6/bsktbl/cle_rosters
+http://www.goalserve.com/getfeed/fd05c9e7e41044acb6b108dd7af3fbb6/bsktbl/cle_stats
+http://www.goalserve.com/getfeed/fd05c9e7e41044acb6b108dd7af3fbb6/bsktbl/cle_injuries
+http://www.goalserve.com/getfeed/fd05c9e7e41044acb6b108dd7af3fbb6/bsktbl/coaches-rankings
+http://www.goalserve.com/getfeed/fd05c9e7e41044acb6b108dd7af3fbb6/bsktbl/dal_rosters
+http://www.goalserve.com/getfeed/fd05c9e7e41044acb6b108dd7af3fbb6/bsktbl/dal_stats
+http://www.goalserve.com/getfeed/fd05c9e7e41044acb6b108dd7af3fbb6/bsktbl/dal_injuries
+http://www.goalserve.com/getfeed/fd05c9e7e41044acb6b108dd7af3fbb6/bsktbl/den_rosters
+http://www.goalserve.com/getfeed/fd05c9e7e41044acb6b108dd7af3fbb6/bsktbl/den_stats
+http://www.goalserve.com/getfeed/fd05c9e7e41044acb6b108dd7af3fbb6/bsktbl/den_injuries
+http://www.goalserve.com/getfeed/fd05c9e7e41044acb6b108dd7af3fbb6/bsktbl/det_rosters
+http://www.goalserve.com/getfeed/fd05c9e7e41044acb6b108dd7af3fbb6/bsktbl/det_stats
+http://www.goalserve.com/getfeed/fd05c9e7e41044acb6b108dd7af3fbb6/bsktbl/det_injuries
+http://www.goalserve.com/getfeed/fd05c9e7e41044acb6b108dd7af3fbb6/bsktbl/gs_rosters
+http://www.goalserve.com/getfeed/fd05c9e7e41044acb6b108dd7af3fbb6/bsktbl/gs_stats
+http://www.goalserve.com/getfeed/fd05c9e7e41044acb6b108dd7af3fbb6/bsktbl/gs_injuries
+http://www.goalserve.com/getfeed/fd05c9e7e41044acb6b108dd7af3fbb6/bsktbl/hou_rosters
+http://www.goalserve.com/getfeed/fd05c9e7e41044acb6b108dd7af3fbb6/bsktbl/hou_stats
+http://www.goalserve.com/getfeed/fd05c9e7e41044acb6b108dd7af3fbb6/bsktbl/hou_injuries
+http://www.goalserve.com/getfeed/fd05c9e7e41044acb6b108dd7af3fbb6/bsktbl/ind_rosters
+http://www.goalserve.com/getfeed/fd05c9e7e41044acb6b108dd7af3fbb6/bsktbl/ind_stats
+http://www.goalserve.com/getfeed/fd05c9e7e41044acb6b108dd7af3fbb6/bsktbl/ind_injuries
+http://www.goalserve.com/getfeed/fd05c9e7e41044acb6b108dd7af3fbb6/bsktbl/lac_rosters
+http://www.goalserve.com/getfeed/fd05c9e7e41044acb6b108dd7af3fbb6/bsktbl/lac_stats
+http://www.goalserve.com/getfeed/fd05c9e7e41044acb6b108dd7af3fbb6/bsktbl/lac_injuries
+http://www.goalserve.com/getfeed/fd05c9e7e41044acb6b108dd7af3fbb6/bsktbl/lal_rosters
+http://www.goalserve.com/getfeed/fd05c9e7e41044acb6b108dd7af3fbb6/bsktbl/lal_stats
+http://www.goalserve.com/getfeed/fd05c9e7e41044acb6b108dd7af3fbb6/bsktbl/lal_injuries
+http://www.goalserve.com/getfeed/fd05c9e7e41044acb6b108dd7af3fbb6/bsktbl/mem_rosters
+http://www.goalserve.com/getfeed/fd05c9e7e41044acb6b108dd7af3fbb6/bsktbl/mem_stats
+http://www.goalserve.com/getfeed/fd05c9e7e41044acb6b108dd7af3fbb6/bsktbl/mem_injuries
+http://www.goalserve.com/getfeed/fd05c9e7e41044acb6b108dd7af3fbb6/bsktbl/mia_rosters
+http://www.goalserve.com/getfeed/fd05c9e7e41044acb6b108dd7af3fbb6/bsktbl/mia_stats
+http://www.goalserve.com/getfeed/fd05c9e7e41044acb6b108dd7af3fbb6/bsktbl/mia_injuries
+http://www.goalserve.com/getfeed/fd05c9e7e41044acb6b108dd7af3fbb6/bsktbl/mil_rosters
+http://www.goalserve.com/getfeed/fd05c9e7e41044acb6b108dd7af3fbb6/bsktbl/mil_stats
+http://www.goalserve.com/getfeed/fd05c9e7e41044acb6b108dd7af3fbb6/bsktbl/mil_injuries
+http://www.goalserve.com/getfeed/fd05c9e7e41044acb6b108dd7af3fbb6/bsktbl/min_rosters
+http://www.goalserve.com/getfeed/fd05c9e7e41044acb6b108dd7af3fbb6/bsktbl/min_stats
+http://www.goalserve.com/getfeed/fd05c9e7e41044acb6b108dd7af3fbb6/bsktbl/min_injuries
+http://www.goalserve.com/getfeed/fd05c9e7e41044acb6b108dd7af3fbb6/bsktbl/nba-scores   - NBA livescore
+http://www.goalserve.com/getfeed/fd05c9e7e41044acb6b108dd7af3fbb6/bsktbl/nba-scores?date=dd.MM.yyyy    - past boxscores since 2010
+http://www.goalserve.com/getfeed/fd05c9e7e41044acb6b108dd7af3fbb6/bsktbl/nba-playbyplay  - NBA live commentaries
+http://www.goalserve.com/getfeed/fd05c9e7e41044acb6b108dd7af3fbb6/bsktbl/nba-shedule   - NBA schedule
+http://www.goalserve.com/getfeed/fd05c9e7e41044acb6b108dd7af3fbb6/bsktbl/nba-shedule?date1=18.05.2018&date2=18.05.2018&showodds=1  - BOOKmaker ODDS schedule by date period (date1 and date2)
+http://www.goalserve.com/getfeed/fd05c9e7e41044acb6b108dd7af3fbb6/bsktbl/nba-standings  - NBA standings
+http://www.goalserve.com/getfeed/fd05c9e7e41044acb6b108dd7af3fbb6/bsktbl/ncaa-scores   - NCAA livescore
+http://www.goalserve.com/getfeed/fd05c9e7e41044acb6b108dd7af3fbb6/bsktbl/ncaa-playbyplay   - NCAA live commentaries
+http://www.goalserve.com/getfeed/fd05c9e7e41044acb6b108dd7af3fbb6/bsktbl/ncaa-shedule   - NCAA schedule
+http://www.goalserve.com/getfeed/fd05c9e7e41044acb6b108dd7af3fbb6/bsktbl/ncaa-shedule?date1=18.05.2018&date2=18.05.2018&showodds=1  - BOOKmaker ODDS schedule by date period (date1 and date2)
+http://www.goalserve.com/getfeed/fd05c9e7e41044acb6b108dd7af3fbb6/bsktbl/ncaa-standings   - NCAA standings
+http://www.goalserve.com/getfeed/fd05c9e7e41044acb6b108dd7af3fbb6/bsktbl/nj_rosters
+http://www.goalserve.com/getfeed/fd05c9e7e41044acb6b108dd7af3fbb6/bsktbl/nj_injuries
+http://www.goalserve.com/getfeed/fd05c9e7e41044acb6b108dd7af3fbb6/bsktbl/nj_stats
+http://www.goalserve.com/getfeed/fd05c9e7e41044acb6b108dd7af3fbb6/bsktbl/no_rosters
+http://www.goalserve.com/getfeed/fd05c9e7e41044acb6b108dd7af3fbb6/bsktbl/no_stats
+http://www.goalserve.com/getfeed/fd05c9e7e41044acb6b108dd7af3fbb6/bsktbl/no_injuries
+http://www.goalserve.com/getfeed/fd05c9e7e41044acb6b108dd7af3fbb6/bsktbl/ny_rosters
+http://www.goalserve.com/getfeed/fd05c9e7e41044acb6b108dd7af3fbb6/bsktbl/ny_stats
+http://www.goalserve.com/getfeed/fd05c9e7e41044acb6b108dd7af3fbb6/bsktbl/ny_injuries
+http://www.goalserve.com/getfeed/fd05c9e7e41044acb6b108dd7af3fbb6/bsktbl/okc_rosters
+http://www.goalserve.com/getfeed/fd05c9e7e41044acb6b108dd7af3fbb6/bsktbl/okc_stats
+http://www.goalserve.com/getfeed/fd05c9e7e41044acb6b108dd7af3fbb6/bsktbl/okc_injuries
+http://www.goalserve.com/getfeed/fd05c9e7e41044acb6b108dd7af3fbb6/bsktbl/orl_rosters
+http://www.goalserve.com/getfeed/fd05c9e7e41044acb6b108dd7af3fbb6/bsktbl/orl_stats
+http://www.goalserve.com/getfeed/fd05c9e7e41044acb6b108dd7af3fbb6/bsktbl/orl_injuries
+http://www.goalserve.com/getfeed/fd05c9e7e41044acb6b108dd7af3fbb6/bsktbl/phi_rosters
+http://www.goalserve.com/getfeed/fd05c9e7e41044acb6b108dd7af3fbb6/bsktbl/phi_stats
+http://www.goalserve.com/getfeed/fd05c9e7e41044acb6b108dd7af3fbb6/bsktbl/phi_injuries
+http://www.goalserve.com/getfeed/fd05c9e7e41044acb6b108dd7af3fbb6/bsktbl/phx_rosters
+http://www.goalserve.com/getfeed/fd05c9e7e41044acb6b108dd7af3fbb6/bsktbl/phx_stats
+http://www.goalserve.com/getfeed/fd05c9e7e41044acb6b108dd7af3fbb6/bsktbl/phx_injuries
+http://www.goalserve.com/getfeed/fd05c9e7e41044acb6b108dd7af3fbb6/bsktbl/por_rosters
+http://www.goalserve.com/getfeed/fd05c9e7e41044acb6b108dd7af3fbb6/bsktbl/por_stats
+http://www.goalserve.com/getfeed/fd05c9e7e41044acb6b108dd7af3fbb6/bsktbl/por_injuries
+http://www.goalserve.com/getfeed/fd05c9e7e41044acb6b108dd7af3fbb6/bsktbl/sac_rosters
+http://www.goalserve.com/getfeed/fd05c9e7e41044acb6b108dd7af3fbb6/bsktbl/sac_stats
+http://www.goalserve.com/getfeed/fd05c9e7e41044acb6b108dd7af3fbb6/bsktbl/sac_injuries
+http://www.goalserve.com/getfeed/fd05c9e7e41044acb6b108dd7af3fbb6/bsktbl/sa_rosters
+http://www.goalserve.com/getfeed/fd05c9e7e41044acb6b108dd7af3fbb6/bsktbl/sa_stats
+http://www.goalserve.com/getfeed/fd05c9e7e41044acb6b108dd7af3fbb6/bsktbl/sa_injuries
+http://www.goalserve.com/getfeed/fd05c9e7e41044acb6b108dd7af3fbb6/bsktbl/tor_rosters
+http://www.goalserve.com/getfeed/fd05c9e7e41044acb6b108dd7af3fbb6/bsktbl/tor_stats
+http://www.goalserve.com/getfeed/fd05c9e7e41044acb6b108dd7af3fbb6/bsktbl/tor_injuries
+http://www.goalserve.com/getfeed/fd05c9e7e41044acb6b108dd7af3fbb6/bsktbl/utah_rosters
+http://www.goalserve.com/getfeed/fd05c9e7e41044acb6b108dd7af3fbb6/bsktbl/utah_stats
+http://www.goalserve.com/getfeed/fd05c9e7e41044acb6b108dd7af3fbb6/bsktbl/urah_injuries
+http://www.goalserve.com/getfeed/fd05c9e7e41044acb6b108dd7af3fbb6/bsktbl/wsh_rosters
+http://www.goalserve.com/getfeed/fd05c9e7e41044acb6b108dd7af3fbb6/bsktbl/wsh_stats
+http://www.goalserve.com/getfeed/fd05c9e7e41044acb6b108dd7af3fbb6/bsktbl/wsh_injuries
+http://www.goalserve.com/getfeed/fd05c9e7e41044acb6b108dd7af3fbb6/bsktbl/usa?playerimage=2011
+http://www.goalserve.com/getfeed/fd05c9e7e41044acb6b108dd7af3fbb6/bsktbl/wnba-shedule   - WNBA schedule
+http://www.goalserve.com/getfeed/fd05c9e7e41044acb6b108dd7af3fbb6/bsktbl/wnba-standings  - WNBA standings
+http://www.goalserve.com/getfeed/fd05c9e7e41044acb6b108dd7af3fbb6/bsktbl/wnba-scores   - WNBA livescore
+http://www.goalserve.com/getfeed/fd05c9e7e41044acb6b108dd7af3fbb6/bsktbl/wnba-scores?date=dd.MM.yyyy - old scores by date
+http://www.goalserve.com/getfeed/fd05c9e7e41044acb6b108dd7af3fbb6/bsktbl/w_atl_rosters
+http://www.goalserve.com/getfeed/fd05c9e7e41044acb6b108dd7af3fbb6/bsktbl/w_atl_stats
+http://www.goalserve.com/getfeed/fd05c9e7e41044acb6b108dd7af3fbb6/bsktbl/w_chi_rosters
+http://www.goalserve.com/getfeed/fd05c9e7e41044acb6b108dd7af3fbb6/bsktbl/w_chi_stats
+http://www.goalserve.com/getfeed/fd05c9e7e41044acb6b108dd7af3fbb6/bsktbl/w_con_rosters
+http://www.goalserve.com/getfeed/fd05c9e7e41044acb6b108dd7af3fbb6/bsktbl/w_con_stats
+http://www.goalserve.com/getfeed/fd05c9e7e41044acb6b108dd7af3fbb6/bsktbl/w_ind_rosters
+http://www.goalserve.com/getfeed/fd05c9e7e41044acb6b108dd7af3fbb6/bsktbl/w_ind_stats
+http://www.goalserve.com/getfeed/fd05c9e7e41044acb6b108dd7af3fbb6/bsktbl/w_nyl_rosters
+http://www.goalserve.com/getfeed/fd05c9e7e41044acb6b108dd7af3fbb6/bsktbl/w_nyl_stats
+http://www.goalserve.com/getfeed/fd05c9e7e41044acb6b108dd7af3fbb6/bsktbl/w_was_rosters
+http://www.goalserve.com/getfeed/fd05c9e7e41044acb6b108dd7af3fbb6/bsktbl/w_was_stats
+http://www.goalserve.com/getfeed/fd05c9e7e41044acb6b108dd7af3fbb6/bsktbl/w_dal_rosters
+http://www.goalserve.com/getfeed/fd05c9e7e41044acb6b108dd7af3fbb6/bsktbl/w_dal_stats
+http://www.goalserve.com/getfeed/fd05c9e7e41044acb6b108dd7af3fbb6/bsktbl/w_lva_rosters
+http://www.goalserve.com/getfeed/fd05c9e7e41044acb6b108dd7af3fbb6/bsktbl/w_lva_stats
+http://www.goalserve.com/getfeed/fd05c9e7e41044acb6b108dd7af3fbb6/bsktbl/w_las_rosters
+http://www.goalserve.com/getfeed/fd05c9e7e41044acb6b108dd7af3fbb6/bsktbl/w_las_stats
+http://www.goalserve.com/getfeed/fd05c9e7e41044acb6b108dd7af3fbb6/bsktbl/w_min_rosters
+http://www.goalserve.com/getfeed/fd05c9e7e41044acb6b108dd7af3fbb6/bsktbl/w_min_stats
+http://www.goalserve.com/getfeed/fd05c9e7e41044acb6b108dd7af3fbb6/bsktbl/w_pho_rosters
+http://www.goalserve.com/getfeed/fd05c9e7e41044acb6b108dd7af3fbb6/bsktbl/w_pho_stats
+http://www.goalserve.com/getfeed/fd05c9e7e41044acb6b108dd7af3fbb6/bsktbl/w_sea_rosters
+http://www.goalserve.com/getfeed/fd05c9e7e41044acb6b108dd7af3fbb6/bsktbl/w_sea_stats
+
+Baseball:
+http://www.goalserve.com/getfeed/fd05c9e7e41044acb6b108dd7af3fbb6/baseball/mlb_shedule   - MLB schedule
+http://www.goalserve.com/getfeed/fd05c9e7e41044acb6b108dd7af3fbb6/baseball/usa      - MLB livescore
+http://www.goalserve.com/getfeed/fd05c9e7e41044acb6b108dd7af3fbb6/baseball/mlb_standings   - MLB standings
+http://www.goalserve.com/getfeed/fd05c9e7e41044acb6b108dd7af3fbb6/baseball/usa?date=dd.MM.yyyy    - past boxscores since 2010
+http://www.goalserve.com/getfeed/fd05c9e7e41044acb6b108dd7af3fbb6/baseball/mlb_shedule?date1=18.05.2018&date2=18.05.2018&showodds=1  - BOOKmaker ODDS by date (date format dd.MM.yyyy) 
+http://www.goalserve.com/getfeed/fd05c9e7e41044acb6b108dd7af3fbb6/baseball/al_player_batting
+http://www.goalserve.com/getfeed/fd05c9e7e41044acb6b108dd7af3fbb6/baseball/al_player_fielding
+http://www.goalserve.com/getfeed/fd05c9e7e41044acb6b108dd7af3fbb6/baseball/al_player_pitching
+http://www.goalserve.com/getfeed/fd05c9e7e41044acb6b108dd7af3fbb6/baseball/al_team_batting
+http://www.goalserve.com/getfeed/fd05c9e7e41044acb6b108dd7af3fbb6/baseball/al_team_fielding
+http://www.goalserve.com/getfeed/fd05c9e7e41044acb6b108dd7af3fbb6/baseball/al_team_pitching
+http://www.goalserve.com/getfeed/fd05c9e7e41044acb6b108dd7af3fbb6/baseball/ari_stats
+http://www.goalserve.com/getfeed/fd05c9e7e41044acb6b108dd7af3fbb6/baseball/ari_rosters
+http://www.goalserve.com/getfeed/fd05c9e7e41044acb6b108dd7af3fbb6/baseball/ari_injuries
+http://www.goalserve.com/getfeed/fd05c9e7e41044acb6b108dd7af3fbb6/baseball/atl_rosters
+http://www.goalserve.com/getfeed/fd05c9e7e41044acb6b108dd7af3fbb6/baseball/atl_injuries
+http://www.goalserve.com/getfeed/fd05c9e7e41044acb6b108dd7af3fbb6/baseball/atl_stats
+http://www.goalserve.com/getfeed/fd05c9e7e41044acb6b108dd7af3fbb6/baseball/bal_stats
+http://www.goalserve.com/getfeed/fd05c9e7e41044acb6b108dd7af3fbb6/baseball/bal_rosters
+http://www.goalserve.com/getfeed/fd05c9e7e41044acb6b108dd7af3fbb6/baseball/bal_injuries
+http://www.goalserve.com/getfeed/fd05c9e7e41044acb6b108dd7af3fbb6/baseball/bos_stats
+http://www.goalserve.com/getfeed/fd05c9e7e41044acb6b108dd7af3fbb6/baseball/bos_rosters
+http://www.goalserve.com/getfeed/fd05c9e7e41044acb6b108dd7af3fbb6/baseball/bos_injuries
+http://www.goalserve.com/getfeed/fd05c9e7e41044acb6b108dd7af3fbb6/baseball/career_leader_batting
+http://www.goalserve.com/getfeed/fd05c9e7e41044acb6b108dd7af3fbb6/baseball/career_leader_pitching
+http://www.goalserve.com/getfeed/fd05c9e7e41044acb6b108dd7af3fbb6/baseball/chc_stats
+http://www.goalserve.com/getfeed/fd05c9e7e41044acb6b108dd7af3fbb6/baseball/chc_rosters
+http://www.goalserve.com/getfeed/fd05c9e7e41044acb6b108dd7af3fbb6/baseball/chc_injuries
+http://www.goalserve.com/getfeed/fd05c9e7e41044acb6b108dd7af3fbb6/baseball/chw_stats
+http://www.goalserve.com/getfeed/fd05c9e7e41044acb6b108dd7af3fbb6/baseball/chw_rosters
+http://www.goalserve.com/getfeed/fd05c9e7e41044acb6b108dd7af3fbb6/baseball/chw_injuries
+http://www.goalserve.com/getfeed/fd05c9e7e41044acb6b108dd7af3fbb6/baseball/cin_stats
+http://www.goalserve.com/getfeed/fd05c9e7e41044acb6b108dd7af3fbb6/baseball/cin_rosters
+http://www.goalserve.com/getfeed/fd05c9e7e41044acb6b108dd7af3fbb6/baseball/cin_injuries
+http://www.goalserve.com/getfeed/fd05c9e7e41044acb6b108dd7af3fbb6/baseball/cle_stats
+http://www.goalserve.com/getfeed/fd05c9e7e41044acb6b108dd7af3fbb6/baseball/cle_rosters
+http://www.goalserve.com/getfeed/fd05c9e7e41044acb6b108dd7af3fbb6/baseball/cle_injuries
+http://www.goalserve.com/getfeed/fd05c9e7e41044acb6b108dd7af3fbb6/baseball/col_stats
+http://www.goalserve.com/getfeed/fd05c9e7e41044acb6b108dd7af3fbb6/baseball/col_rosters
+http://www.goalserve.com/getfeed/fd05c9e7e41044acb6b108dd7af3fbb6/baseball/col_injuries
+http://www.goalserve.com/getfeed/fd05c9e7e41044acb6b108dd7af3fbb6/baseball/det_stats
+http://www.goalserve.com/getfeed/fd05c9e7e41044acb6b108dd7af3fbb6/baseball/det_rosters
+http://www.goalserve.com/getfeed/fd05c9e7e41044acb6b108dd7af3fbb6/baseball/det_injuries
+http://www.goalserve.com/getfeed/fd05c9e7e41044acb6b108dd7af3fbb6/baseball/fla_stats
+http://www.goalserve.com/getfeed/fd05c9e7e41044acb6b108dd7af3fbb6/baseball/fla_rosters
+http://www.goalserve.com/getfeed/fd05c9e7e41044acb6b108dd7af3fbb6/baseball/fla_injuries
+http://www.goalserve.com/getfeed/fd05c9e7e41044acb6b108dd7af3fbb6/baseball/hou_stats
+http://www.goalserve.com/getfeed/fd05c9e7e41044acb6b108dd7af3fbb6/baseball/hou_rosters
+http://www.goalserve.com/getfeed/fd05c9e7e41044acb6b108dd7af3fbb6/baseball/hou_injuries
+http://www.goalserve.com/getfeed/fd05c9e7e41044acb6b108dd7af3fbb6/baseball/kan_stats
+http://www.goalserve.com/getfeed/fd05c9e7e41044acb6b108dd7af3fbb6/baseball/kan_rosters
+http://www.goalserve.com/getfeed/fd05c9e7e41044acb6b108dd7af3fbb6/baseball/kan_injuries
+http://www.goalserve.com/getfeed/fd05c9e7e41044acb6b108dd7af3fbb6/baseball/laa_stats
+http://www.goalserve.com/getfeed/fd05c9e7e41044acb6b108dd7af3fbb6/baseball/laa_rosters
+http://www.goalserve.com/getfeed/fd05c9e7e41044acb6b108dd7af3fbb6/baseball/laa_injuries
+http://www.goalserve.com/getfeed/fd05c9e7e41044acb6b108dd7af3fbb6/baseball/lad_stats
+http://www.goalserve.com/getfeed/fd05c9e7e41044acb6b108dd7af3fbb6/baseball/lad_rosters
+http://www.goalserve.com/getfeed/fd05c9e7e41044acb6b108dd7af3fbb6/baseball/lad_injuries
+http://www.goalserve.com/getfeed/fd05c9e7e41044acb6b108dd7af3fbb6/baseball/mil_stats
+http://www.goalserve.com/getfeed/fd05c9e7e41044acb6b108dd7af3fbb6/baseball/mil_rosters
+http://www.goalserve.com/getfeed/fd05c9e7e41044acb6b108dd7af3fbb6/baseball/mil_injuries
+http://www.goalserve.com/getfeed/fd05c9e7e41044acb6b108dd7af3fbb6/baseball/min_stats
+http://www.goalserve.com/getfeed/fd05c9e7e41044acb6b108dd7af3fbb6/baseball/min_rosters
+http://www.goalserve.com/getfeed/fd05c9e7e41044acb6b108dd7af3fbb6/baseball/min_injuries
+http://www.goalserve.com/getfeed/fd05c9e7e41044acb6b108dd7af3fbb6/baseball/mlb_player_batting
+http://www.goalserve.com/getfeed/fd05c9e7e41044acb6b108dd7af3fbb6/baseball/mlb_player_fielding
+http://www.goalserve.com/getfeed/fd05c9e7e41044acb6b108dd7af3fbb6/baseball/mlb_player_pitching
+http://www.goalserve.com/getfeed/fd05c9e7e41044acb6b108dd7af3fbb6/baseball/mlb_team_batting
+http://www.goalserve.com/getfeed/fd05c9e7e41044acb6b108dd7af3fbb6/baseball/mlb_team_fielding
+http://www.goalserve.com/getfeed/fd05c9e7e41044acb6b108dd7af3fbb6/baseball/mlb_team_pitching
+http://www.goalserve.com/getfeed/fd05c9e7e41044acb6b108dd7af3fbb6/baseball/nl_player_batting
+http://www.goalserve.com/getfeed/fd05c9e7e41044acb6b108dd7af3fbb6/baseball/nl_player_fielding
+http://www.goalserve.com/getfeed/fd05c9e7e41044acb6b108dd7af3fbb6/baseball/nl_player_pitching
+http://www.goalserve.com/getfeed/fd05c9e7e41044acb6b108dd7af3fbb6/baseball/nl_team_batting
+http://www.goalserve.com/getfeed/fd05c9e7e41044acb6b108dd7af3fbb6/baseball/nl_team_fielding
+http://www.goalserve.com/getfeed/fd05c9e7e41044acb6b108dd7af3fbb6/baseball/nl_team_pitching
+http://www.goalserve.com/getfeed/fd05c9e7e41044acb6b108dd7af3fbb6/baseball/nym_stats
+http://www.goalserve.com/getfeed/fd05c9e7e41044acb6b108dd7af3fbb6/baseball/nym_injuries
+http://www.goalserve.com/getfeed/fd05c9e7e41044acb6b108dd7af3fbb6/baseball/nym_rosters
+http://www.goalserve.com/getfeed/fd05c9e7e41044acb6b108dd7af3fbb6/baseball/nyy_stats
+http://www.goalserve.com/getfeed/fd05c9e7e41044acb6b108dd7af3fbb6/baseball/nyy_rosters
+http://www.goalserve.com/getfeed/fd05c9e7e41044acb6b108dd7af3fbb6/baseball/nyy_injuries
+http://www.goalserve.com/getfeed/fd05c9e7e41044acb6b108dd7af3fbb6/baseball/oak_stats
+http://www.goalserve.com/getfeed/fd05c9e7e41044acb6b108dd7af3fbb6/baseball/oak_rosters
+http://www.goalserve.com/getfeed/fd05c9e7e41044acb6b108dd7af3fbb6/baseball/oak_injuries
+http://www.goalserve.com/getfeed/fd05c9e7e41044acb6b108dd7af3fbb6/baseball/phi_stats
+http://www.goalserve.com/getfeed/fd05c9e7e41044acb6b108dd7af3fbb6/baseball/phi_rosters
+http://www.goalserve.com/getfeed/fd05c9e7e41044acb6b108dd7af3fbb6/baseball/phi_injuries
+http://www.goalserve.com/getfeed/fd05c9e7e41044acb6b108dd7af3fbb6/baseball/pit_stats
+http://www.goalserve.com/getfeed/fd05c9e7e41044acb6b108dd7af3fbb6/baseball/pit_rosters
+http://www.goalserve.com/getfeed/fd05c9e7e41044acb6b108dd7af3fbb6/baseball/pit_injuries
+http://www.goalserve.com/getfeed/fd05c9e7e41044acb6b108dd7af3fbb6/baseball/sdg_stats
+http://www.goalserve.com/getfeed/fd05c9e7e41044acb6b108dd7af3fbb6/baseball/sdg_rosters
+http://www.goalserve.com/getfeed/fd05c9e7e41044acb6b108dd7af3fbb6/baseball/sdg_injuries
+http://www.goalserve.com/getfeed/fd05c9e7e41044acb6b108dd7af3fbb6/baseball/sea_stats
+http://www.goalserve.com/getfeed/fd05c9e7e41044acb6b108dd7af3fbb6/baseball/sea_rosters
+http://www.goalserve.com/getfeed/fd05c9e7e41044acb6b108dd7af3fbb6/baseball/sea_injuries
+http://www.goalserve.com/getfeed/fd05c9e7e41044acb6b108dd7af3fbb6/baseball/sfo_stats
+http://www.goalserve.com/getfeed/fd05c9e7e41044acb6b108dd7af3fbb6/baseball/sfo_rosters
+http://www.goalserve.com/getfeed/fd05c9e7e41044acb6b108dd7af3fbb6/baseball/sfo_injuries
+http://www.goalserve.com/getfeed/fd05c9e7e41044acb6b108dd7af3fbb6/baseball/stl_stats
+http://www.goalserve.com/getfeed/fd05c9e7e41044acb6b108dd7af3fbb6/baseball/stl_rosters
+http://www.goalserve.com/getfeed/fd05c9e7e41044acb6b108dd7af3fbb6/baseball/stl_injuries
+http://www.goalserve.com/getfeed/fd05c9e7e41044acb6b108dd7af3fbb6/baseball/tam_stats
+http://www.goalserve.com/getfeed/fd05c9e7e41044acb6b108dd7af3fbb6/baseball/tam_rosters
+http://www.goalserve.com/getfeed/fd05c9e7e41044acb6b108dd7af3fbb6/baseball/tam_injuries
+http://www.goalserve.com/getfeed/fd05c9e7e41044acb6b108dd7af3fbb6/baseball/tex_stats
+http://www.goalserve.com/getfeed/fd05c9e7e41044acb6b108dd7af3fbb6/baseball/tex_rosters
+http://www.goalserve.com/getfeed/fd05c9e7e41044acb6b108dd7af3fbb6/baseball/tex_injuries
+http://www.goalserve.com/getfeed/fd05c9e7e41044acb6b108dd7af3fbb6/baseball/tor_stats
+http://www.goalserve.com/getfeed/fd05c9e7e41044acb6b108dd7af3fbb6/baseball/tor_rosters
+http://www.goalserve.com/getfeed/fd05c9e7e41044acb6b108dd7af3fbb6/baseball/tor_injuries
+http://www.goalserve.com/getfeed/fd05c9e7e41044acb6b108dd7af3fbb6/baseball/was_stats
+http://www.goalserve.com/getfeed/fd05c9e7e41044acb6b108dd7af3fbb6/baseball/was_rosters
+http://www.goalserve.com/getfeed/fd05c9e7e41044acb6b108dd7af3fbb6/baseball/was_injuries
+http://www.goalserve.com/getfeed/fd05c9e7e41044acb6b108dd7af3fbb6/baseball/usa?playerimage=15826  - player images
+
+Hockey:
+http://www.goalserve.com/getfeed/fd05c9e7e41044acb6b108dd7af3fbb6/hockey/ana_rosters
+http://www.goalserve.com/getfeed/fd05c9e7e41044acb6b108dd7af3fbb6/hockey/ana_stats
+http://www.goalserve.com/getfeed/fd05c9e7e41044acb6b108dd7af3fbb6/hockey/ana_injuries
+http://www.goalserve.com/getfeed/fd05c9e7e41044acb6b108dd7af3fbb6/hockey/atl_rosters
+http://www.goalserve.com/getfeed/fd05c9e7e41044acb6b108dd7af3fbb6/hockey/atl_stats
+http://www.goalserve.com/getfeed/fd05c9e7e41044acb6b108dd7af3fbb6/hockey/atl_injuries
+http://www.goalserve.com/getfeed/fd05c9e7e41044acb6b108dd7af3fbb6/hockey/bos_rosters
+http://www.goalserve.com/getfeed/fd05c9e7e41044acb6b108dd7af3fbb6/hockey/bos_stats
+http://www.goalserve.com/getfeed/fd05c9e7e41044acb6b108dd7af3fbb6/hockey/bos_injuries
+http://www.goalserve.com/getfeed/fd05c9e7e41044acb6b108dd7af3fbb6/hockey/buf_rosters
+http://www.goalserve.com/getfeed/fd05c9e7e41044acb6b108dd7af3fbb6/hockey/buf_stats
+http://www.goalserve.com/getfeed/fd05c9e7e41044acb6b108dd7af3fbb6/hockey/buf_injuries
+http://www.goalserve.com/getfeed/fd05c9e7e41044acb6b108dd7af3fbb6/hockey/car_rosters
+http://www.goalserve.com/getfeed/fd05c9e7e41044acb6b108dd7af3fbb6/hockey/car_stats
+http://www.goalserve.com/getfeed/fd05c9e7e41044acb6b108dd7af3fbb6/hockey/car_injuries
+http://www.goalserve.com/getfeed/fd05c9e7e41044acb6b108dd7af3fbb6/hockey/cbj_rosters
+http://www.goalserve.com/getfeed/fd05c9e7e41044acb6b108dd7af3fbb6/hockey/cbj_stats
+http://www.goalserve.com/getfeed/fd05c9e7e41044acb6b108dd7af3fbb6/hockey/cgj_injuries
+http://www.goalserve.com/getfeed/fd05c9e7e41044acb6b108dd7af3fbb6/hockey/cgy_rosters
+http://www.goalserve.com/getfeed/fd05c9e7e41044acb6b108dd7af3fbb6/hockey/cgy_stats
+http://www.goalserve.com/getfeed/fd05c9e7e41044acb6b108dd7af3fbb6/hockey/cgy_injuries
+http://www.goalserve.com/getfeed/fd05c9e7e41044acb6b108dd7af3fbb6/hockey/chi_rosters
+http://www.goalserve.com/getfeed/fd05c9e7e41044acb6b108dd7af3fbb6/hockey/chi_stats
+http://www.goalserve.com/getfeed/fd05c9e7e41044acb6b108dd7af3fbb6/hockey/chi_injuries
+http://www.goalserve.com/getfeed/fd05c9e7e41044acb6b108dd7af3fbb6/hockey/col_rosters
+http://www.goalserve.com/getfeed/fd05c9e7e41044acb6b108dd7af3fbb6/hockey/col_stats
+http://www.goalserve.com/getfeed/fd05c9e7e41044acb6b108dd7af3fbb6/hockey/col_injuries
+http://www.goalserve.com/getfeed/fd05c9e7e41044acb6b108dd7af3fbb6/hockey/dal_rosters
+http://www.goalserve.com/getfeed/fd05c9e7e41044acb6b108dd7af3fbb6/hockey/dal_stats
+http://www.goalserve.com/getfeed/fd05c9e7e41044acb6b108dd7af3fbb6/hockey/dal_injuries
+http://www.goalserve.com/getfeed/fd05c9e7e41044acb6b108dd7af3fbb6/hockey/det_rosters
+http://www.goalserve.com/getfeed/fd05c9e7e41044acb6b108dd7af3fbb6/hockey/det_stats
+http://www.goalserve.com/getfeed/fd05c9e7e41044acb6b108dd7af3fbb6/hockey/det_injuries
+http://www.goalserve.com/getfeed/fd05c9e7e41044acb6b108dd7af3fbb6/hockey/edm_rosters
+http://www.goalserve.com/getfeed/fd05c9e7e41044acb6b108dd7af3fbb6/hockey/edm_stats
+http://www.goalserve.com/getfeed/fd05c9e7e41044acb6b108dd7af3fbb6/hockey/edm_injuries
+http://www.goalserve.com/getfeed/fd05c9e7e41044acb6b108dd7af3fbb6/hockey/fla_rosters
+http://www.goalserve.com/getfeed/fd05c9e7e41044acb6b108dd7af3fbb6/hockey/fla_stats
+http://www.goalserve.com/getfeed/fd05c9e7e41044acb6b108dd7af3fbb6/hockey/fla_injuries
+http://www.goalserve.com/getfeed/fd05c9e7e41044acb6b108dd7af3fbb6/hockey/la_rosters
+http://www.goalserve.com/getfeed/fd05c9e7e41044acb6b108dd7af3fbb6/hockey/la_stats
+http://www.goalserve.com/getfeed/fd05c9e7e41044acb6b108dd7af3fbb6/hockey/la_injuries
+http://www.goalserve.com/getfeed/fd05c9e7e41044acb6b108dd7af3fbb6/hockey/min_rosters
+http://www.goalserve.com/getfeed/fd05c9e7e41044acb6b108dd7af3fbb6/hockey/min_stats
+http://www.goalserve.com/getfeed/fd05c9e7e41044acb6b108dd7af3fbb6/hockey/min_injuries
+http://www.goalserve.com/getfeed/fd05c9e7e41044acb6b108dd7af3fbb6/hockey/mtl_rosters
+http://www.goalserve.com/getfeed/fd05c9e7e41044acb6b108dd7af3fbb6/hockey/mtl_stats
+http://www.goalserve.com/getfeed/fd05c9e7e41044acb6b108dd7af3fbb6/hockey/mtl_injuries
+http://www.goalserve.com/getfeed/fd05c9e7e41044acb6b108dd7af3fbb6/hockey/nhl-scores  - NHL livescore
+http://www.goalserve.com/getfeed/fd05c9e7e41044acb6b108dd7af3fbb6/hockey/nhl-shedule?date1=18.05.2018&date2=18.05.2018&showodds=1  - BOOKmaker ODDS schedule by date period (date1 and date2)
+http://www.goalserve.com/getfeed/fd05c9e7e41044acb6b108dd7af3fbb6/hockey/nhl-scores?date=dd.MM.yyyy  - past boxscores since 2010
+http://www.goalserve.com/getfeed/fd05c9e7e41044acb6b108dd7af3fbb6/hockey/nhl-shedule   - NHL schedule
+http://www.goalserve.com/getfeed/fd05c9e7e41044acb6b108dd7af3fbb6/hockey/nhl-standings  - NHL standings
+http://www.goalserve.com/getfeed/fd05c9e7e41044acb6b108dd7af3fbb6/hockey/nj_rosters
+http://www.goalserve.com/getfeed/fd05c9e7e41044acb6b108dd7af3fbb6/hockey/nj_stats
+http://www.goalserve.com/getfeed/fd05c9e7e41044acb6b108dd7af3fbb6/hockey/nh_injuries
+http://www.goalserve.com/getfeed/fd05c9e7e41044acb6b108dd7af3fbb6/hockey/nsh_rosters
+http://www.goalserve.com/getfeed/fd05c9e7e41044acb6b108dd7af3fbb6/hockey/nsh_stats
+http://www.goalserve.com/getfeed/fd05c9e7e41044acb6b108dd7af3fbb6/hockey/msh_injuries
+http://www.goalserve.com/getfeed/fd05c9e7e41044acb6b108dd7af3fbb6/hockey/nyi_rosters
+http://www.goalserve.com/getfeed/fd05c9e7e41044acb6b108dd7af3fbb6/hockey/nyi_stats
+http://www.goalserve.com/getfeed/fd05c9e7e41044acb6b108dd7af3fbb6/hockey/nyi_injuries
+http://www.goalserve.com/getfeed/fd05c9e7e41044acb6b108dd7af3fbb6/hockey/nyr_rosters
+http://www.goalserve.com/getfeed/fd05c9e7e41044acb6b108dd7af3fbb6/hockey/nyr_stats
+http://www.goalserve.com/getfeed/fd05c9e7e41044acb6b108dd7af3fbb6/hockey/nyr_injuries
+http://www.goalserve.com/getfeed/fd05c9e7e41044acb6b108dd7af3fbb6/hockey/ott_rosters
+http://www.goalserve.com/getfeed/fd05c9e7e41044acb6b108dd7af3fbb6/hockey/ott_stats
+http://www.goalserve.com/getfeed/fd05c9e7e41044acb6b108dd7af3fbb6/hockey/ott_injuries
+http://www.goalserve.com/getfeed/fd05c9e7e41044acb6b108dd7af3fbb6/hockey/phi_rosters
+http://www.goalserve.com/getfeed/fd05c9e7e41044acb6b108dd7af3fbb6/hockey/phi_stats
+http://www.goalserve.com/getfeed/fd05c9e7e41044acb6b108dd7af3fbb6/hockey/phi_injuries
+http://www.goalserve.com/getfeed/fd05c9e7e41044acb6b108dd7af3fbb6/hockey/phx_rosters
+http://www.goalserve.com/getfeed/fd05c9e7e41044acb6b108dd7af3fbb6/hockey/phx_stats
+http://www.goalserve.com/getfeed/fd05c9e7e41044acb6b108dd7af3fbb6/hockey/phx_injuries
+http://www.goalserve.com/getfeed/fd05c9e7e41044acb6b108dd7af3fbb6/hockey/pit_rosters
+http://www.goalserve.com/getfeed/fd05c9e7e41044acb6b108dd7af3fbb6/hockey/pit_stats
+http://www.goalserve.com/getfeed/fd05c9e7e41044acb6b108dd7af3fbb6/hockey/pit_injuries
+http://www.goalserve.com/getfeed/fd05c9e7e41044acb6b108dd7af3fbb6/hockey/sj_rosters
+http://www.goalserve.com/getfeed/fd05c9e7e41044acb6b108dd7af3fbb6/hockey/sj_stats
+http://www.goalserve.com/getfeed/fd05c9e7e41044acb6b108dd7af3fbb6/hockey/sj_injuries
+http://www.goalserve.com/getfeed/fd05c9e7e41044acb6b108dd7af3fbb6/hockey/stl_rosters
+http://www.goalserve.com/getfeed/fd05c9e7e41044acb6b108dd7af3fbb6/hockey/stl_stats
+http://www.goalserve.com/getfeed/fd05c9e7e41044acb6b108dd7af3fbb6/hockey/stl_injuries
+http://www.goalserve.com/getfeed/fd05c9e7e41044acb6b108dd7af3fbb6/hockey/tb_rosters
+http://www.goalserve.com/getfeed/fd05c9e7e41044acb6b108dd7af3fbb6/hockey/tb_injuries
+http://www.goalserve.com/getfeed/fd05c9e7e41044acb6b108dd7af3fbb6/hockey/tb_stats
+http://www.goalserve.com/getfeed/fd05c9e7e41044acb6b108dd7af3fbb6/hockey/tor_rosters
+http://www.goalserve.com/getfeed/fd05c9e7e41044acb6b108dd7af3fbb6/hockey/tor_stats
+http://www.goalserve.com/getfeed/fd05c9e7e41044acb6b108dd7af3fbb6/hockey/van_rosters
+http://www.goalserve.com/getfeed/fd05c9e7e41044acb6b108dd7af3fbb6/hockey/van_stats
+http://www.goalserve.com/getfeed/fd05c9e7e41044acb6b108dd7af3fbb6/hockey/van_injuries
+http://www.goalserve.com/getfeed/fd05c9e7e41044acb6b108dd7af3fbb6/hockey/wsh_rosters
+http://www.goalserve.com/getfeed/fd05c9e7e41044acb6b108dd7af3fbb6/hockey/wsh_injuries
+http://www.goalserve.com/getfeed/fd05c9e7e41044acb6b108dd7af3fbb6/hockey/wsh_stats
+
+Soccer MLS:
+http://www.goalserve.com/getfeed/fd05c9e7e41044acb6b108dd7af3fbb6/soccerfixtures/usa/mls
+http://www.goalserve.com/getfeed/fd05c9e7e41044acb6b108dd7af3fbb6/commentaries/1440.xml - livescore
+http://www.goalserve.com/getfeed/fd05c9e7e41044acb6b108dd7af3fbb6/commentaries/1440?date=dd.MM.yyyy
+http://www.goalserve.com/getfeed/fd05c9e7e41044acb6b108dd7af3fbb6/standings/usa.xml
+http://www.goalserve.com/getfeed/fd05c9e7e41044acb6b108dd7af3fbb6/getodds/soccer?cat=usa  - BOOKmaker odds
+http://www.goalserve.com/getfeed/fd05c9e7e41044acb6b108dd7af3fbb6/soccerstats/team/17364 - team profile by id
+http://www.goalserve.com/getfeed/fd05c9e7e41044acb6b108dd7af3fbb6/soccerstats/player/77843 - player profile by id
+
+

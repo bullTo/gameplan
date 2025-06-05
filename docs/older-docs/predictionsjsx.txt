@@ -1,0 +1,642 @@
+<div className="p-6" style={{ background: 'rgba(17.76, 18.55, 28.04, 0.50)', minHeight: '100vh' }}>
+      <div className="flex flex-col gap-6">
+        {/* Header and Filters */}
+        <div className="flex flex-col md:flex-row justify-between items-start md:items-center gap-4">
+          <h1 className="text-2xl font-bold" style={{ color: '#0EADAB' }}>Predictions</h1>
+
+          <div className="flex flex-wrap gap-4">
+            {/* Sport Filter Dropdown */}
+            <div className="relative">
+              <button
+                onClick={toggleSportDropdown}
+                className="flex items-center justify-between gap-2 px-4 py-2 bg-[#272830] text-white border border-white/20 rounded-md min-w-[120px]"
+              >
+                <span>{selectedSport}</span>
+                <ChevronDown size={16} />
+              </button>
+
+              {sportDropdownOpen && (
+                <div className="absolute z-10 mt-1 w-full bg-[#272830] border border-white/20 rounded-md shadow-lg">
+                  {sportOptions.map((sport) => (
+                    <div
+                      key={sport}
+                      className="px-4 py-2 text-white hover:bg-[#1B1C25] cursor-pointer"
+                      onClick={() => handleSportSelect(sport)}
+                    >
+                      {sport}
+                    </div>
+                  ))}
+                </div>
+              )}
+            </div>
+
+            {/* Type Filter Dropdown */}
+            <div className="relative">
+              <button
+                onClick={toggleTypeDropdown}
+                className="flex items-center justify-between gap-2 px-4 py-2 bg-[#272830] text-white border border-white/20 rounded-md min-w-[120px]"
+              >
+                <span>{selectedType}</span>
+                <ChevronDown size={16} />
+              </button>
+
+              {typeDropdownOpen && (
+                <div className="absolute z-10 mt-1 w-full bg-[#272830] border border-white/20 rounded-md shadow-lg">
+                  {typeOptions.map((type) => (
+                    <div
+                      key={type}
+                      className="px-4 py-2 text-white hover:bg-[#1B1C25] cursor-pointer"
+                      onClick={() => handleTypeSelect(type)}
+                    >
+                      {type}
+                    </div>
+                  ))}
+                </div>
+              )}
+            </div>
+          </div>
+        </div>
+
+        {/* Content Area - Three Columns */}
+        <div className="flex flex-col lg:flex-row gap-6">
+          {/* Safe Bets Column */}
+          <div className="w-full lg:w-1/3 flex flex-col gap-4">
+            <h2 className="text-white text-xl font-normal tracking-wider">Safe Bets</h2>
+
+            {/* Safe Bet Card 1 */}
+            <div className="bg-[#1B1C25] p-4 rounded-xl border border-[rgba(14,173,171,0.2)]">
+              <div className="flex justify-between items-start mb-2">
+                <div className="flex items-center gap-4">
+                  <img src="/home/badges/NBA Teams.png" alt="Team Logo" className="w-10 h-10 rounded-full object-cover" />
+                  <div className="flex flex-col">
+                    <div>
+                      <span className="text-white text-sm">Player Name</span>
+                      <span className="text-white/50 text-sm"> vs LAL</span>
+                    </div>
+                    <div className="text-white text-xs">Over 26.5 PTS+AST -111</div>
+                  </div>
+                </div>
+                <div className="px-4 py-1 bg-[#0EADAB]/5 border border-[#0EADAB] rounded-full">
+                  <span className="text-[#0EADAB] text-xs">Safe Bet</span>
+                </div>
+              </div>
+
+              <div className="mb-4">
+                <p className="text-white text-xs">Match Date: 02/03/25</p>
+                <p className="text-white/50 text-xs">Hit in 5 of his last 5 games</p>
+              </div>
+
+              <div className="flex justify-between items-center">
+                <div className="flex gap-4">
+                  <div className="bg-[#1B1C25] p-2 rounded-xl border border-[rgba(14,173,171,0.2)] flex flex-col items-center">
+                    <span className="text-white text-2xl">+120</span>
+                    <span className="text-white text-xs">Odds</span>
+                  </div>
+                  <div className="bg-[#1B1C25] p-2 rounded-xl border border-[rgba(14,173,171,0.2)] flex flex-col items-center">
+                    <span className="text-white text-2xl">91%</span>
+                    <span className="text-white text-xs">Confidence</span>
+                  </div>
+                </div>
+                <div className="flex flex-col gap-4">
+                  <div>
+                    <Link to="/account/predictions/1" className="text-[#0EADAB] text-xs font-semibold cursor-pointer hover:underline">
+                      View Details
+                    </Link>
+                  </div>
+                  <div className="bg-[#389353] rounded-md px-6 py-1 cursor-pointer">
+                    <span className="text-[#1B1C25] text-xs font-semibold">Add To Tracker</span>
+                  </div>
+                </div>
+              </div>
+            </div>
+
+            {/* Safe Bet Card 2 */}
+            <div className="bg-[#1B1C25] p-4 rounded-xl border border-[rgba(14,173,171,0.2)]">
+              <div className="flex justify-between items-start mb-2">
+                <div className="flex items-center gap-4">
+                  <img src="/home/badges/image 10.png" alt="Team Logo" className="w-10 h-10 rounded-full object-cover" />
+                  <div className="flex flex-col">
+                    <div>
+                      <span className="text-white text-sm">Player Name</span>
+                      <span className="text-white/50 text-sm"> vs LAL</span>
+                    </div>
+                    <div className="text-white text-xs">Over 26.5 PTS+AST -111</div>
+                  </div>
+                </div>
+                <div className="px-4 py-1 bg-[#0EADAB]/5 border border-[#0EADAB] rounded-full">
+                  <span className="text-[#0EADAB] text-xs">Safe Bet</span>
+                </div>
+              </div>
+
+              <div className="mb-4">
+                <p className="text-white text-xs">Match Date: 02/03/25</p>
+                <p className="text-white/50 text-xs">Hit in 5 of his last 5 games</p>
+              </div>
+
+              <div className="flex justify-between items-center">
+                <div className="flex gap-4">
+                  <div className="bg-[#1B1C25] p-2 rounded-xl border border-[rgba(14,173,171,0.2)] flex flex-col items-center">
+                    <span className="text-white text-2xl">+120</span>
+                    <span className="text-white text-xs">Odds</span>
+                  </div>
+                  <div className="bg-[#1B1C25] p-2 rounded-xl border border-[rgba(14,173,171,0.2)] flex flex-col items-center">
+                    <span className="text-white text-2xl">91%</span>
+                    <span className="text-white text-xs">Confidence</span>
+                  </div>
+                </div>
+                <div className="flex flex-col gap-4">
+                  <div>
+                    <Link to="/account/predictions/2" className="text-[#0EADAB] text-xs font-semibold cursor-pointer hover:underline">
+                      View Details
+                    </Link>
+                  </div>
+                  <div className="bg-[#389353] rounded-md px-6 py-1 cursor-pointer">
+                    <span className="text-[#1B1C25] text-xs font-semibold">Add To Tracker</span>
+                  </div>
+                </div>
+              </div>
+            </div>
+
+            {/* Safe Bet Card 3 */}
+            <div className="bg-[#1B1C25] p-4 rounded-xl border border-[rgba(14,173,171,0.2)]">
+              <div className="flex justify-between items-start mb-2">
+                <div className="flex items-center gap-4">
+                  <img src="/home/badges/image 3.png" alt="Team Logo" className="w-10 h-10 rounded-full object-cover" />
+                  <div className="flex flex-col">
+                    <div>
+                      <span className="text-white text-sm">Player Name</span>
+                      <span className="text-white/50 text-sm"> vs LAL</span>
+                    </div>
+                    <div className="text-white text-xs">Over 26.5 PTS+AST -111</div>
+                  </div>
+                </div>
+                <div className="px-4 py-1 bg-[#0EADAB]/5 border border-[#0EADAB] rounded-full">
+                  <span className="text-[#0EADAB] text-xs">Safe Bet</span>
+                </div>
+              </div>
+
+              <div className="mb-4">
+                <p className="text-white text-xs">Match Date: 02/03/25</p>
+                <p className="text-white/50 text-xs">Hit in 5 of his last 5 games</p>
+              </div>
+
+              <div className="flex justify-between items-center">
+                <div className="flex gap-4">
+                  <div className="bg-[#1B1C25] p-2 rounded-xl border border-[rgba(14,173,171,0.2)] flex flex-col items-center">
+                    <span className="text-white text-2xl">+120</span>
+                    <span className="text-white text-xs">Odds</span>
+                  </div>
+                  <div className="bg-[#1B1C25] p-2 rounded-xl border border-[rgba(14,173,171,0.2)] flex flex-col items-center">
+                    <span className="text-white text-2xl">91%</span>
+                    <span className="text-white text-xs">Confidence</span>
+                  </div>
+                </div>
+                <div className="flex flex-col gap-4">
+                  <div>
+                    <Link to="/account/predictions/3" className="text-[#0EADAB] text-xs font-semibold cursor-pointer hover:underline">
+                      View Details
+                    </Link>
+                  </div>
+                  <div className="bg-[#389353] rounded-md px-6 py-1 cursor-pointer">
+                    <span className="text-[#1B1C25] text-xs font-semibold">Add To Tracker</span>
+                  </div>
+                </div>
+              </div>
+            </div>
+
+            {/* Safe Bet Card 4 */}
+            <div className="bg-[#1B1C25] p-4 rounded-xl border border-[rgba(14,173,171,0.2)]">
+              <div className="flex justify-between items-start mb-2">
+                <div className="flex items-center gap-4">
+                  <img src="/home/badges/NBA Teams.png" alt="Team Logo" className="w-10 h-10 rounded-full object-cover" />
+                  <div className="flex flex-col">
+                    <div>
+                      <span className="text-white text-sm">BRO</span>
+                      <span className="text-white/50 text-sm"> vs LAL</span>
+                    </div>
+                    <div className="text-white text-xs">Over 206.5 Game Total -111</div>
+                  </div>
+                </div>
+                <div className="px-4 py-1 bg-[#0EADAB]/5 border border-[#0EADAB] rounded-full">
+                  <span className="text-[#0EADAB] text-xs">Safe Bet</span>
+                </div>
+              </div>
+
+              <div className="mb-4">
+                <p className="text-white text-xs">Match Date: 02/03/25</p>
+                <p className="text-white/50 text-xs">Hit in 5 of his last 5 games</p>
+              </div>
+
+              <div className="flex justify-between items-center">
+                <div className="flex gap-4">
+                  <div className="bg-[#1B1C25] p-2 rounded-xl border border-[rgba(14,173,171,0.2)] flex flex-col items-center">
+                    <span className="text-white text-2xl">+120</span>
+                    <span className="text-white text-xs">Odds</span>
+                  </div>
+                  <div className="bg-[#1B1C25] p-2 rounded-xl border border-[rgba(14,173,171,0.2)] flex flex-col items-center">
+                    <span className="text-white text-2xl">91%</span>
+                    <span className="text-white text-xs">Confidence</span>
+                  </div>
+                </div>
+                <div className="flex flex-col gap-4">
+                  <div>
+                    <Link to="/account/predictions/4" className="text-[#0EADAB] text-xs font-semibold cursor-pointer hover:underline">
+                      View Details
+                    </Link>
+                  </div>
+                  <div className="bg-[#389353] rounded-md px-6 py-1 cursor-pointer">
+                    <span className="text-[#1B1C25] text-xs font-semibold">Add To Tracker</span>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+
+          {/* Hail Marys Column */}
+          <div className="w-full lg:w-1/3 flex flex-col gap-4">
+            <h2 className="text-white text-xl font-normal tracking-wider">Hail Marys</h2>
+
+            {/* Hail Mary Card 1 */}
+            <div className="bg-[#1B1C25] p-4 rounded-xl border border-[rgba(14,173,171,0.2)]">
+              <div className="flex justify-between items-start mb-2">
+                <div className="flex items-center gap-4">
+                  <img src="/home/badges/NBA Teams.png" alt="Team Logo" className="w-10 h-10 rounded-full object-cover" />
+                  <div className="flex flex-col">
+                    <div>
+                      <span className="text-white text-sm">LAL</span>
+                      <span className="text-white/50 text-sm"> vs HOU</span>
+                    </div>
+                    <div className="text-white text-xs">Over 206.5 Game Total -111</div>
+                  </div>
+                </div>
+                <div className="px-4 py-1 bg-[#0EADAB]/5 border border-[#0EADAB] rounded-full">
+                  <span className="text-[#0EADAB] text-xs">Hail Mary</span>
+                </div>
+              </div>
+
+              <div className="mb-4">
+                <p className="text-white text-xs">Match Date: 02/03/25</p>
+                <p className="text-white/50 text-xs">Hit in 2 of his last 5 games</p>
+              </div>
+
+              <div className="flex justify-between items-center">
+                <div className="flex gap-4">
+                  <div className="bg-[#1B1C25] p-2 rounded-xl border border-[rgba(14,173,171,0.2)] flex flex-col items-center">
+                    <span className="text-white text-2xl">+350</span>
+                    <span className="text-white text-xs">Odds</span>
+                  </div>
+                  <div className="bg-[#1B1C25] p-2 rounded-xl border border-[rgba(14,173,171,0.2)] flex flex-col items-center">
+                    <span className="text-white text-2xl">45%</span>
+                    <span className="text-white text-xs">Confidence</span>
+                  </div>
+                </div>
+                <div className="flex flex-col gap-4">
+                  <div>
+                    <Link to="/account/predictions/5" className="text-[#0EADAB] text-xs font-semibold cursor-pointer hover:underline">
+                      View Details
+                    </Link>
+                  </div>
+                  <div className="bg-[#389353] rounded-md px-6 py-1 cursor-pointer">
+                    <span className="text-[#1B1C25] text-xs font-semibold">Add To Tracker</span>
+                  </div>
+                </div>
+              </div>
+            </div>
+
+            {/* Hail Mary Card 2 */}
+            <div className="bg-[#1B1C25] p-4 rounded-xl border border-[rgba(14,173,171,0.2)]">
+              <div className="flex justify-between items-start mb-2">
+                <div className="flex items-center gap-4">
+                  <img src="/home/badges/image 10.png" alt="Team Logo" className="w-10 h-10 rounded-full object-cover" />
+                  <div className="flex flex-col">
+                    <div>
+                      <span className="text-white text-sm">Player Name</span>
+                      <span className="text-white/50 text-sm"> vs LAL</span>
+                    </div>
+                    <div className="text-white text-xs">Over 30.5 PTS -120</div>
+                  </div>
+                </div>
+                <div className="px-4 py-1 bg-[#0EADAB]/5 border border-[#0EADAB] rounded-full">
+                  <span className="text-[#0EADAB] text-xs">Hail Mary</span>
+                </div>
+              </div>
+
+              <div className="mb-4">
+                <p className="text-white text-xs">Match Date: 02/03/25</p>
+                <p className="text-white/50 text-xs">Hit in 1 of his last 5 games</p>
+              </div>
+
+              <div className="flex justify-between items-center">
+                <div className="flex gap-4">
+                  <div className="bg-[#1B1C25] p-2 rounded-xl border border-[rgba(14,173,171,0.2)] flex flex-col items-center">
+                    <span className="text-white text-2xl">+450</span>
+                    <span className="text-white text-xs">Odds</span>
+                  </div>
+                  <div className="bg-[#1B1C25] p-2 rounded-xl border border-[rgba(14,173,171,0.2)] flex flex-col items-center">
+                    <span className="text-white text-2xl">38%</span>
+                    <span className="text-white text-xs">Confidence</span>
+                  </div>
+                </div>
+                <div className="flex flex-col gap-4">
+                  <div>
+                    <Link to="/account/predictions/6" className="text-[#0EADAB] text-xs font-semibold cursor-pointer hover:underline">
+                      View Details
+                    </Link>
+                  </div>
+                  <div className="bg-[#389353] rounded-md px-6 py-1 cursor-pointer">
+                    <span className="text-[#1B1C25] text-xs font-semibold">Add To Tracker</span>
+                  </div>
+                </div>
+              </div>
+            </div>
+
+            {/* Hail Mary Card 3 */}
+            <div className="bg-[#1B1C25] p-4 rounded-xl border border-[rgba(14,173,171,0.2)]">
+              <div className="flex justify-between items-start mb-2">
+                <div className="flex items-center gap-4">
+                  <div className="w-10 h-10 bg-white rounded-full flex items-center justify-center">
+                    <img src="/home/badges/image 3.png" alt="Team Logo" className="w-8 h-8 object-cover" />
+                  </div>
+                  <div className="flex flex-col">
+                    <div>
+                      <span className="text-white text-sm">BRO</span>
+                      <span className="text-white/50 text-sm"> vs HOU</span>
+                    </div>
+                    <div className="text-white text-xs">Over 206.5 Game Total -111</div>
+                  </div>
+                </div>
+                <div className="px-4 py-1 bg-[#0EADAB]/5 border border-[#0EADAB] rounded-full">
+                  <span className="text-[#0EADAB] text-xs">Hail Mary</span>
+                </div>
+              </div>
+
+              <div className="mb-4">
+                <p className="text-white text-xs">Match Date: 02/03/25</p>
+                <p className="text-white/50 text-xs">Hit in 2 of his last 8 games</p>
+              </div>
+
+              <div className="flex justify-between items-center">
+                <div className="flex gap-4">
+                  <div className="bg-[#1B1C25] p-2 rounded-xl border border-[rgba(14,173,171,0.2)] flex flex-col items-center">
+                    <span className="text-white text-2xl">+550</span>
+                    <span className="text-white text-xs">Odds</span>
+                  </div>
+                  <div className="bg-[#1B1C25] p-2 rounded-xl border border-[rgba(14,173,171,0.2)] flex flex-col items-center">
+                    <span className="text-white text-2xl">32%</span>
+                    <span className="text-white text-xs">Confidence</span>
+                  </div>
+                </div>
+                <div className="flex flex-col gap-4">
+                  <div>
+                    <Link to="/account/predictions/7" className="text-[#0EADAB] text-xs font-semibold cursor-pointer hover:underline">
+                      View Details
+                    </Link>
+                  </div>
+                  <div className="bg-[#389353] rounded-md px-6 py-1 cursor-pointer">
+                    <span className="text-[#1B1C25] text-xs font-semibold">Add To Tracker</span>
+                  </div>
+                </div>
+              </div>
+            </div>
+
+            {/* Hail Mary Card 4 */}
+            <div className="bg-[#1B1C25] p-4 rounded-xl border border-[rgba(14,173,171,0.2)]">
+              <div className="flex justify-between items-start mb-2">
+                <div className="flex items-center gap-4">
+                  <img src="/home/badges/NBA Teams.png" alt="Team Logo" className="w-10 h-10 rounded-full object-cover" />
+                  <div className="flex flex-col">
+                    <div>
+                      <span className="text-white text-sm">Player Name</span>
+                      <span className="text-white/50 text-sm"> vs LAL</span>
+                    </div>
+                    <div className="text-white text-xs">Triple Double +800</div>
+                  </div>
+                </div>
+                <div className="px-4 py-1 bg-[#0EADAB]/5 border border-[#0EADAB] rounded-full">
+                  <span className="text-[#0EADAB] text-xs">Hail Mary</span>
+                </div>
+              </div>
+
+              <div className="mb-4">
+                <p className="text-white text-xs">Match Date: 02/03/25</p>
+                <p className="text-white/50 text-xs">Hit in 1 of his last 10 games</p>
+              </div>
+
+              <div className="flex justify-between items-center">
+                <div className="flex gap-4">
+                  <div className="bg-[#1B1C25] p-2 rounded-xl border border-[rgba(14,173,171,0.2)] flex flex-col items-center">
+                    <span className="text-white text-2xl">+800</span>
+                    <span className="text-white text-xs">Odds</span>
+                  </div>
+                  <div className="bg-[#1B1C25] p-2 rounded-xl border border-[rgba(14,173,171,0.2)] flex flex-col items-center">
+                    <span className="text-white text-2xl">25%</span>
+                    <span className="text-white text-xs">Confidence</span>
+                  </div>
+                </div>
+                <div className="flex flex-col gap-4">
+                  <div>
+                    <Link to="/account/predictions/8" className="text-[#0EADAB] text-xs font-semibold cursor-pointer hover:underline">
+                      View Details
+                    </Link>
+                  </div>
+                  <div className="bg-[#389353] rounded-md px-6 py-1 cursor-pointer">
+                    <span className="text-[#1B1C25] text-xs font-semibold">Add To Tracker</span>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+
+          {/* Parleys Column */}
+          <div className="w-full lg:w-1/3 flex flex-col gap-4">
+            <h2 className="text-white text-xl font-normal tracking-wider">Parleys</h2>
+
+            {/* Parlay Card 1 */}
+            <div className="bg-[#1B1C25] p-4 rounded-xl border border-[rgba(14,173,171,0.2)]">
+              <div className="flex justify-between items-start mb-2">
+                <div className="flex items-center gap-4">
+                  <div className="w-10 h-10 bg-[#0B162A] rounded-full flex items-center justify-center">
+                    <img src="/home/badges/NBA Teams.png" alt="Team Logo" className="w-6 h-6 object-cover" />
+                  </div>
+                  <div>
+                    <span className="text-white text-sm">LAL vs DAL</span>
+                  </div>
+                </div>
+                <div className="px-4 py-1 bg-[#0EADAB]/5 border border-[#0EADAB] rounded-full">
+                  <span className="text-[#0EADAB] text-xs">Parley</span>
+                </div>
+              </div>
+
+              <div className="mb-4 space-y-1">
+                <p className="text-white text-xs">Match Date: 02/03/25</p>
+
+                <div className="flex justify-between">
+                  <p className="text-white text-xs">Player Name: Over 5.5 Assists</p>
+                  <p className="text-white/50 text-xs">-200</p>
+                </div>
+                <p className="text-white/50 text-xs">Parlay hit in 5 of last 6 games</p>
+
+                <div className="flex justify-between">
+                  <p className="text-white text-xs">Team Name: Over 17.5 Assists</p>
+                  <p className="text-white/50 text-xs">+113</p>
+                </div>
+                <p className="text-white/50 text-xs">Parlay hit in 4 of last 4 games vs DAL</p>
+
+                <div className="flex justify-between">
+                  <p className="text-white text-xs">Player Name: Over 2.5 Assists</p>
+                  <p className="text-white/50 text-xs">-110</p>
+                </div>
+                <p className="text-white/50 text-xs">Parlay hit in 3 of last 4 home games</p>
+              </div>
+
+              <div className="flex justify-between items-center">
+                <div className="flex gap-4">
+                  <div className="bg-[#1B1C25] p-2 rounded-xl border border-[rgba(14,173,171,0.2)] flex flex-col items-center">
+                    <span className="text-white text-2xl">+650</span>
+                    <span className="text-white text-xs">Odds</span>
+                  </div>
+                  <div className="bg-[#1B1C25] p-2 rounded-xl border border-[rgba(14,173,171,0.2)] flex flex-col items-center">
+                    <span className="text-white text-2xl">65%</span>
+                    <span className="text-white text-xs">Confidence</span>
+                  </div>
+                </div>
+                <div className="flex flex-col gap-4">
+                  <div>
+                    <Link to="/account/predictions/9" className="text-[#0EADAB] text-xs font-semibold cursor-pointer hover:underline">
+                      View Details
+                    </Link>
+                  </div>
+                  <div className="bg-[#389353] rounded-md px-6 py-1 cursor-pointer">
+                    <span className="text-[#1B1C25] text-xs font-semibold">Add To Tracker</span>
+                  </div>
+                </div>
+              </div>
+            </div>
+
+            {/* Parlay Card 2 */}
+            <div className="bg-[#1B1C25] p-4 rounded-xl border border-[rgba(14,173,171,0.2)]">
+              <div className="flex justify-between items-start mb-2">
+                <div className="flex items-center gap-4">
+                  <div className="w-10 h-10 bg-[#203732] rounded-full flex items-center justify-center">
+                    <img src="/home/badges/image 10.png" alt="Team Logo" className="w-8 h-8 object-cover" />
+                  </div>
+                  <div>
+                    <span className="text-white text-sm">LAL vs DAL</span>
+                  </div>
+                </div>
+                <div className="px-4 py-1 bg-[#0EADAB]/5 border border-[#0EADAB] rounded-full">
+                  <span className="text-[#0EADAB] text-xs">Parley</span>
+                </div>
+              </div>
+
+              <div className="mb-4 space-y-1">
+                <p className="text-white text-xs">Match Date: 02/03/25</p>
+
+                <div className="flex justify-between">
+                  <p className="text-white text-xs">Player Name: Over 5.5 Assists</p>
+                  <p className="text-white/50 text-xs">-200</p>
+                </div>
+                <p className="text-white/50 text-xs">Parlay hit in 5 of last 6 games</p>
+
+                <div className="flex justify-between">
+                  <p className="text-white text-xs">Team Name: Over 17.5 Assists</p>
+                  <p className="text-white/50 text-xs">+113</p>
+                </div>
+                <p className="text-white/50 text-xs">Parlay hit in 4 of last 4 games vs DAL</p>
+
+                <div className="flex justify-between">
+                  <p className="text-white text-xs">Player Name: Over 2.5 Assists</p>
+                  <p className="text-white/50 text-xs">-110</p>
+                </div>
+                <p className="text-white/50 text-xs">Parlay hit in 3 of last 4 home games</p>
+              </div>
+
+              <div className="flex justify-between items-center">
+                <div className="flex gap-4">
+                  <div className="bg-[#1B1C25] p-2 rounded-xl border border-[rgba(14,173,171,0.2)] flex flex-col items-center">
+                    <span className="text-white text-2xl">+750</span>
+                    <span className="text-white text-xs">Odds</span>
+                  </div>
+                  <div className="bg-[#1B1C25] p-2 rounded-xl border border-[rgba(14,173,171,0.2)] flex flex-col items-center">
+                    <span className="text-white text-2xl">58%</span>
+                    <span className="text-white text-xs">Confidence</span>
+                  </div>
+                </div>
+                <div className="flex flex-col gap-4">
+                  <div>
+                    <Link to="/account/predictions/10" className="text-[#0EADAB] text-xs font-semibold cursor-pointer hover:underline">
+                      View Details
+                    </Link>
+                  </div>
+                  <div className="bg-[#389353] rounded-md px-6 py-1 cursor-pointer">
+                    <span className="text-[#1B1C25] text-xs font-semibold">Add To Tracker</span>
+                  </div>
+                </div>
+              </div>
+            </div>
+
+            {/* Parlay Card 3 */}
+            <div className="bg-[#1B1C25] p-4 rounded-xl border border-[rgba(14,173,171,0.2)]">
+              <div className="flex justify-between items-start mb-2">
+                <div className="flex items-center gap-4">
+                  <div className="w-10 h-10 bg-[#0B162A] rounded-full flex items-center justify-center">
+                    <img src="/home/badges/image 3.png" alt="Team Logo" className="w-6 h-6 object-cover" />
+                  </div>
+                  <div>
+                    <span className="text-white text-sm">LAL vs DAL</span>
+                  </div>
+                </div>
+                <div className="px-4 py-1 bg-[#0EADAB]/5 border border-[#0EADAB] rounded-full">
+                  <span className="text-[#0EADAB] text-xs">Parley</span>
+                </div>
+              </div>
+
+              <div className="mb-4 space-y-1">
+                <p className="text-white text-xs">Match Date: 02/03/25</p>
+
+                <div className="flex justify-between">
+                  <p className="text-white text-xs">Player Name: Over 5.5 Assists</p>
+                  <p className="text-white/50 text-xs">-200</p>
+                </div>
+                <p className="text-white/50 text-xs">Parlay hit in 5 of last 6 games</p>
+
+                <div className="flex justify-between">
+                  <p className="text-white text-xs">Team Name: Over 17.5 Assists</p>
+                  <p className="text-white/50 text-xs">+113</p>
+                </div>
+                <p className="text-white/50 text-xs">Parlay hit in 4 of last 4 games vs DAL</p>
+
+                <div className="flex justify-between">
+                  <p className="text-white text-xs">Player Name: Over 2.5 Assists</p>
+                  <p className="text-white/50 text-xs">-110</p>
+                </div>
+                <p className="text-white/50 text-xs">Parlay hit in 3 of last 4 home games</p>
+              </div>
+
+              <div className="flex justify-between items-center">
+                <div className="flex gap-4">
+                  <div className="bg-[#1B1C25] p-2 rounded-xl border border-[rgba(14,173,171,0.2)] flex flex-col items-center">
+                    <span className="text-white text-2xl">+850</span>
+                    <span className="text-white text-xs">Odds</span>
+                  </div>
+                  <div className="bg-[#1B1C25] p-2 rounded-xl border border-[rgba(14,173,171,0.2)] flex flex-col items-center">
+                    <span className="text-white text-2xl">52%</span>
+                    <span className="text-white text-xs">Confidence</span>
+                  </div>
+                </div>
+                <div className="flex flex-col gap-4">
+                  <div>
+                    <Link to="/account/predictions/11" className="text-[#0EADAB] text-xs font-semibold cursor-pointer hover:underline">
+                      View Details
+                    </Link>
+                  </div>
+                  <div className="bg-[#389353] rounded-md px-6 py-1 cursor-pointer">
+                    <span className="text-[#1B1C25] text-xs font-semibold">Add To Tracker</span>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>

@@ -1,0 +1,26 @@
+Sports Data Collection System Test URLs
+
+NFL Data - NFL isn’t currently in season ONLY GETTING 2 COLS STANDINGS AND SCHEDULES, WILL GET SCORES IN SEASON.
+http://localhost:8888/.netlify/functions/get-sports-data?sports=nfl&date=12.05.2025
+http://localhost:8888/.netlify/functions/update-nfl-data?dataType=standings
+http://localhost:8888/.netlify/functions/update-nfl-data?dataType=schedule
+
+NBA Data  - STORING DATA OK
+http://localhost:8888/.netlify/functions/get-sports-data?sports=nba&date=12.05.2025
+http://localhost:8888/.netlify/functions/update-nba-data?dataType=standings
+http://localhost:8888/.netlify/functions/update-nba-data?dataType=schedule
+
+NHL Data - STORING DATA OK
+http://localhost:8888/.netlify/functions/get-sports-data?sports=nhl&date=10.05.2025
+http://localhost:8888/.netlify/functions/update-nhl-data?dataType=standings
+http://localhost:8888/.netlify/functions/update-nhl-data?dataType=schedule
+
+MLB Data  XML - NOT IMPLEMENTED YET
+http://localhost:8888/.netlify/functions/get-sports-data?sports=mlb&date=12.05.2025
+http://localhost:8888/.netlify/functions/update-mlb-data?dataType=standings
+http://localhost:8888/.netlify/functions/update-mlb-data?dataType=schedule
+
+MLS Data - XML: NOT IMPLEMENTED YET
+http://localhost:8888/.netlify/functions/get-sports-data?sports=mls&date=12.05.2025
+http://localhost:8888/.netlify/functions/update-mls-data?dataType=standings
+http://localhost:8888/.netlify/functions/update-mls-data?dataType=schedule

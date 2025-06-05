@@ -1,0 +1,182 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>GoalServe API Test</title>
+  <style>
+    body {
+      font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+      max-width: 1200px;
+      margin: 0 auto;
+      padding: 20px;
+      background-color: #f5f5f5;
+    }
+    h1 {
+      color: #333;
+      text-align: center;
+    }
+    .container {
+      background-color: white;
+      border-radius: 8px;
+      padding: 20px;
+      box-shadow: 0 2px 4px rgba(0,0,0,0.1);
+    }
+    .form-group {
+      margin-bottom: 15px;
+    }
+    label {
+      display: block;
+      margin-bottom: 5px;
+      font-weight: bold;
+    }
+    input, select {
+      width: 100%;
+      padding: 8px;
+      border: 1px solid #ddd;
+      border-radius: 4px;
+      box-sizing: border-box;
+    }
+    button {
+      background-color: #0EADAB;
+      color: white;
+      border: none;
+      padding: 10px 15px;
+      border-radius: 4px;
+      cursor: pointer;
+      font-size: 16px;
+    }
+    button:hover {
+      background-color: #0a8c8a;
+    }
+    .result {
+      margin-top: 20px;
+      padding: 15px;
+      border: 1px solid #ddd;
+      border-radius: 4px;
+      background-color: #f9f9f9;
+      white-space: pre-wrap;
+      overflow-x: auto;
+    }
+    .loading {
+      text-align: center;
+      margin: 20px 0;
+      display: none;
+    }
+    .error {
+      color: red;
+      font-weight: bold;
+    }
+  </style>
+</head>
+<body>
+  <h1>GoalServe API Test</h1>
+  
+  <div class="container">
+    <div class="form-group">
+      <label for="sport">Sport:</label>
+      <select id="sport">
+        <option value="baseball">Baseball (MLB)</option>
+        <option value="bsktbl">Basketball (NBA)</option>
+        <option value="hockey">Hockey (NHL)</option>
+        <option value="football">Football (NFL)</option>
+      </select>
+    </div>
+    
+    <div class="form-group">
+      <label for="endpoint">Endpoint:</label>
+      <select id="endpoint">
+        <option value="mlb-scores">MLB Scores</option>
+        <option value="mlb_standings">MLB Standings</option>
+        <option value="nba-scores">NBA Scores</option>
+        <option value="nba_standings">NBA Standings</option>
+        <option value="nhl-scores">NHL Scores</option>
+        <option value="nhl_standings">NHL Standings</option>
+        <option value="nfl-scores">NFL Scores</option>
+        <option value="nfl_standings">NFL Standings</option>
+      </select>
+    </div>
+    
+    <div class="form-group">
+      <label for="date">Date (DD.MM.YYYY):</label>
+      <input type="text" id="date" placeholder="10.05.2023">
+    </div>
+    
+    <button id="testBtn">Test API</button>
+    
+    <div class="loading" id="loading">Loading...</div>
+    
+    <div class="result" id="result"></div>
+  </div>
+  
+  <script>
+    document.addEventListener('DOMContentLoaded', function() {
+      // Set default date to today
+      const today = new Date();
+      const day = String(today.getDate()).padStart(2, '0');
+      const month = String(today.getMonth() + 1).padStart(2, '0');
+      const year = today.getFullYear();
+      document.getElementById('date').value = `${day}.${month}.${year}`;
+      
+      // Update endpoint options when sport changes
+      document.getElementById('sport').addEventListener('change', function() {
+        const sport = this.value;
+        const endpoint = document.getElementById('endpoint');
+        
+        // Clear existing options
+        endpoint.innerHTML = '';
+        
+        // Add new options based on selected sport
+        if (sport === 'baseball') {
+          addOption(endpoint, 'mlb-scores', 'MLB Scores');
+          addOption(endpoint, 'mlb_standings', 'MLB Standings');
+        } else if (sport === 'bsktbl') {
+          addOption(endpoint, 'nba-scores', 'NBA Scores');
+          addOption(endpoint, 'nba_standings', 'NBA Standings');
+        } else if (sport === 'hockey') {
+          addOption(endpoint, 'nhl-scores', 'NHL Scores');
+          addOption(endpoint, 'nhl_standings', 'NHL Standings');
+        } else if (sport === 'football') {
+          addOption(endpoint, 'nfl-scores', 'NFL Scores');
+          addOption(endpoint, 'nfl_standings', 'NFL Standings');
+        }
+      });
+      
+      // Test button click handler
+      document.getElementById('testBtn').addEventListener('click', async function() {
+        const sport = document.getElementById('sport').value;
+        const endpoint = document.getElementById('endpoint').value;
+        const date = document.getElementById('date').value;
+        const resultDiv = document.getElementById('result');
+        const loading = document.getElementById('loading');
+        
+        // Show loading indicator
+        loading.style.display = 'block';
+        resultDiv.textContent = '';
+        
+        try {
+          // Call the test function
+          const response = await fetch(`/.netlify/functions/test-goalserve?sport=${sport}&endpoint=${endpoint}&date=${date}`);
+          const data = await response.json();
+          
+          // Display the result
+          resultDiv.textContent = JSON.stringify(data, null, 2);
+        } catch (error) {
+          resultDiv.innerHTML = `<div class="error">Error: ${error.message}</div>`;
+        } finally {
+          // Hide loading indicator
+          loading.style.display = 'none';
+        }
+      });
+      
+      // Helper function to add options to select
+      function addOption(select, value, text) {
+        const option = document.createElement('option');
+        option.value = value;
+        option.textContent = text;
+        select.appendChild(option);
+      }
+    });
+  </script>
+</body>
+</html>

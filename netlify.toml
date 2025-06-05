@@ -1,0 +1,28 @@
+[build]
+  command = "npm run build"
+  publish = "dist"
+  functions = "netlify/functions"
+
+[dev]
+  functions = "netlify/functions"
+  publish = "dist"
+  port = 8888
+  targetPort = 5173
+
+[functions]
+  node_bundler = "esbuild"
+  external_node_modules = ["pg", "fast-xml-parser", "node-fetch", "openai", "jsonwebtoken", "stripe"]
+
+# Schedule the sports data update to run daily at 6am US Eastern Time (11am UTC)
+[functions.scheduled-sports-update]
+  schedule = "0 11 * * *"
+
+[[redirects]]
+  from = "/stripe-webhook"
+  to = "/.netlify/functions/stripe-webhook"
+  status = 200
+
+[[redirects]]
+  from = "/*"
+  to = "/index.html"
+  status = 200

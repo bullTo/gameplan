@@ -1,0 +1,3638 @@
+/* Frame 1304517187 */
+
+box-sizing: border-box;
+
+/* Auto layout */
+display: flex;
+flex-direction: column;
+align-items: flex-start;
+padding: 20px;
+gap: 25px;
+
+width: 897px;
+height: 752px;
+
+background: #1B1C25;
+border: 1px solid rgba(14, 173, 171, 0.2);
+border-radius: 15px;
+
+/* Inside auto layout */
+flex: none;
+order: 1;
+align-self: stretch;
+flex-grow: 1;
+
+
+/* Game History */
+
+width: 857px;
+height: 16px;
+
+/* Title L */
+font-family: 'Poppins';
+font-style: normal;
+font-weight: 400;
+font-size: 20px;
+line-height: 160%;
+/* or 32px */
+display: flex;
+align-items: center;
+letter-spacing: 1px;
+
+color: #FFFFFF;
+
+
+/* Inside auto layout */
+flex: none;
+order: 0;
+align-self: stretch;
+flex-grow: 0;
+
+
+/* Frame 1304517185 */
+
+/* Auto layout */
+display: flex;
+flex-direction: row;
+justify-content: space-between;
+align-items: flex-start;
+padding: 0px;
+gap: 139px;
+
+width: 857px;
+height: 21px;
+
+
+/* Inside auto layout */
+flex: none;
+order: 1;
+align-self: stretch;
+flex-grow: 0;
+
+
+/* Opponent */
+
+margin: 0 auto;
+width: 73px;
+height: 21px;
+
+font-family: 'Poppins';
+font-style: normal;
+font-weight: 275;
+font-size: 12px;
+line-height: 175%;
+/* identical to box height, or 21px */
+display: flex;
+align-items: center;
+letter-spacing: 1.8px;
+
+color: #FFFFFF;
+
+
+/* Inside auto layout */
+flex: none;
+order: 0;
+flex-grow: 0;
+
+
+/* Date */
+
+margin: 0 auto;
+width: 79px;
+height: 21px;
+
+font-family: 'Poppins';
+font-style: normal;
+font-weight: 275;
+font-size: 12px;
+line-height: 175%;
+/* identical to box height, or 21px */
+display: flex;
+align-items: center;
+letter-spacing: 1.8px;
+
+color: #FFFFFF;
+
+
+/* Inside auto layout */
+flex: none;
+order: 1;
+flex-grow: 0;
+
+
+/* Result */
+
+margin: 0 auto;
+width: 79px;
+height: 21px;
+
+font-family: 'Poppins';
+font-style: normal;
+font-weight: 275;
+font-size: 12px;
+line-height: 175%;
+/* identical to box height, or 21px */
+display: flex;
+align-items: center;
+letter-spacing: 1.8px;
+
+color: #FFFFFF;
+
+
+/* Inside auto layout */
+flex: none;
+order: 2;
+flex-grow: 0;
+
+
+/* Hit */
+
+margin: 0 auto;
+width: 30px;
+height: 21px;
+
+font-family: 'Poppins';
+font-style: normal;
+font-weight: 275;
+font-size: 12px;
+line-height: 175%;
+/* identical to box height, or 21px */
+display: flex;
+align-items: center;
+letter-spacing: 1.8px;
+
+color: #FFFFFF;
+
+
+/* Inside auto layout */
+flex: none;
+order: 3;
+flex-grow: 0;
+
+
+/* PTS */
+
+margin: 0 auto;
+width: 23px;
+height: 21px;
+
+font-family: 'Poppins';
+font-style: normal;
+font-weight: 275;
+font-size: 12px;
+line-height: 175%;
+/* identical to box height, or 21px */
+display: flex;
+align-items: center;
+letter-spacing: 1.8px;
+
+color: #FFFFFF;
+
+
+/* Inside auto layout */
+flex: none;
+order: 4;
+flex-grow: 0;
+
+
+/* AST */
+
+margin: 0 auto;
+width: 24px;
+height: 21px;
+
+font-family: 'Poppins';
+font-style: normal;
+font-weight: 275;
+font-size: 12px;
+line-height: 175%;
+/* identical to box height, or 21px */
+display: flex;
+align-items: center;
+letter-spacing: 1.8px;
+
+color: #FFFFFF;
+
+
+/* Inside auto layout */
+flex: none;
+order: 5;
+flex-grow: 0;
+
+
+/* MIN */
+
+margin: 0 auto;
+width: 35px;
+height: 21px;
+
+font-family: 'Poppins';
+font-style: normal;
+font-weight: 275;
+font-size: 12px;
+line-height: 175%;
+/* identical to box height, or 21px */
+display: flex;
+align-items: center;
+letter-spacing: 1.8px;
+
+color: #FFFFFF;
+
+
+/* Inside auto layout */
+flex: none;
+order: 6;
+flex-grow: 0;
+
+
+/* MIN */
+
+margin: 0 auto;
+width: 35px;
+height: 21px;
+
+font-family: 'Poppins';
+font-style: normal;
+font-weight: 275;
+font-size: 12px;
+line-height: 175%;
+/* identical to box height, or 21px */
+display: flex;
+align-items: center;
+letter-spacing: 1.8px;
+
+color: #FFFFFF;
+
+
+/* Inside auto layout */
+flex: none;
+order: 7;
+flex-grow: 0;
+
+
+/* MIN */
+
+margin: 0 auto;
+width: 35px;
+height: 21px;
+
+font-family: 'Poppins';
+font-style: normal;
+font-weight: 275;
+font-size: 12px;
+line-height: 175%;
+/* identical to box height, or 21px */
+display: flex;
+align-items: center;
+letter-spacing: 1.8px;
+
+color: #FFFFFF;
+
+
+/* Inside auto layout */
+flex: none;
+order: 8;
+flex-grow: 0;
+
+
+/* MIN */
+
+margin: 0 auto;
+width: 35px;
+height: 21px;
+
+font-family: 'Poppins';
+font-style: normal;
+font-weight: 275;
+font-size: 12px;
+line-height: 175%;
+/* identical to box height, or 21px */
+display: flex;
+align-items: center;
+letter-spacing: 1.8px;
+
+color: #FFFFFF;
+
+
+/* Inside auto layout */
+flex: none;
+order: 9;
+flex-grow: 0;
+
+
+/* MIN */
+
+margin: 0 auto;
+width: 35px;
+height: 21px;
+
+font-family: 'Poppins';
+font-style: normal;
+font-weight: 275;
+font-size: 12px;
+line-height: 175%;
+/* identical to box height, or 21px */
+display: flex;
+align-items: center;
+letter-spacing: 1.8px;
+
+color: #FFFFFF;
+
+
+/* Inside auto layout */
+flex: none;
+order: 10;
+flex-grow: 0;
+
+
+/* Frame 1304517195 */
+
+/* Auto layout */
+display: flex;
+flex-direction: row;
+justify-content: space-between;
+align-items: center;
+padding: 0px;
+gap: 139px;
+
+width: 857px;
+height: 40px;
+
+
+/* Inside auto layout */
+flex: none;
+order: 2;
+align-self: stretch;
+flex-grow: 0;
+
+
+/* Frame 1304517284 */
+
+/* Auto layout */
+display: flex;
+flex-direction: row;
+align-items: center;
+padding: 0px;
+gap: 10px;
+
+margin: 0 auto;
+width: 73px;
+height: 40px;
+
+
+/* Inside auto layout */
+flex: none;
+order: 0;
+flex-grow: 0;
+
+
+/* NBA Teams */
+
+width: 40px;
+height: 40px;
+
+
+/* Inside auto layout */
+flex: none;
+order: 0;
+flex-grow: 0;
+
+
+/* image 16 */
+
+position: absolute;
+left: 0%;
+right: 0%;
+top: 0%;
+bottom: 0%;
+
+background: url(image.png);
+
+
+/* 15/01/2025 */
+
+margin: 0 auto;
+width: 79px;
+height: 24px;
+
+font-family: 'Poppins';
+font-style: normal;
+font-weight: 400;
+font-size: 14px;
+line-height: 170%;
+/* identical to box height, or 24px */
+display: flex;
+align-items: center;
+letter-spacing: 0.6px;
+
+color: #FFFFFF;
+
+
+/* Inside auto layout */
+flex: none;
+order: 1;
+flex-grow: 0;
+
+
+/* W • 123-95 */
+
+margin: 0 auto;
+width: 79px;
+height: 24px;
+
+font-family: 'Poppins';
+font-style: normal;
+font-weight: 400;
+font-size: 14px;
+line-height: 170%;
+/* identical to box height, or 24px */
+display: flex;
+align-items: center;
+letter-spacing: 0.6px;
+
+color: #FFFFFF;
+
+
+/* Inside auto layout */
+flex: none;
+order: 2;
+flex-grow: 0;
+
+
+/* close */
+
+box-sizing: border-box;
+
+/* Auto layout */
+display: flex;
+flex-direction: row;
+justify-content: center;
+align-items: center;
+padding: 5px;
+gap: 10px;
+
+margin: 0 auto;
+width: 30px;
+height: 30px;
+
+/* Success */
+border: 2px solid #389353;
+border-radius: 69px;
+
+/* Inside auto layout */
+flex: none;
+order: 3;
+flex-grow: 0;
+
+
+/* Vector */
+
+width: 17.59px;
+height: 13.41px;
+
+/* Success */
+background: #389353;
+
+/* Inside auto layout */
+flex: none;
+order: 0;
+flex-grow: 0;
+
+
+/* 32 */
+
+margin: 0 auto;
+width: 23px;
+height: 24px;
+
+font-family: 'Poppins';
+font-style: normal;
+font-weight: 400;
+font-size: 14px;
+line-height: 170%;
+/* identical to box height, or 24px */
+display: flex;
+align-items: center;
+letter-spacing: 0.6px;
+
+color: #FFFFFF;
+
+
+/* Inside auto layout */
+flex: none;
+order: 4;
+flex-grow: 0;
+
+
+/* 3 */
+
+margin: 0 auto;
+width: 24px;
+height: 24px;
+
+font-family: 'Poppins';
+font-style: normal;
+font-weight: 400;
+font-size: 14px;
+line-height: 170%;
+/* identical to box height, or 24px */
+display: flex;
+align-items: center;
+letter-spacing: 0.6px;
+
+color: #FFFFFF;
+
+
+/* Inside auto layout */
+flex: none;
+order: 5;
+flex-grow: 0;
+
+
+/* 23:12 */
+
+margin: 0 auto;
+width: 35px;
+height: 24px;
+
+font-family: 'Poppins';
+font-style: normal;
+font-weight: 400;
+font-size: 14px;
+line-height: 170%;
+/* identical to box height, or 24px */
+display: flex;
+align-items: center;
+letter-spacing: 0.6px;
+
+color: #FFFFFF;
+
+
+/* Inside auto layout */
+flex: none;
+order: 6;
+flex-grow: 0;
+
+
+/* 23:12 */
+
+margin: 0 auto;
+width: 35px;
+height: 24px;
+
+font-family: 'Poppins';
+font-style: normal;
+font-weight: 400;
+font-size: 14px;
+line-height: 170%;
+/* identical to box height, or 24px */
+display: flex;
+align-items: center;
+letter-spacing: 0.6px;
+
+color: #FFFFFF;
+
+
+/* Inside auto layout */
+flex: none;
+order: 7;
+flex-grow: 0;
+
+
+/* 23:12 */
+
+margin: 0 auto;
+width: 35px;
+height: 24px;
+
+font-family: 'Poppins';
+font-style: normal;
+font-weight: 400;
+font-size: 14px;
+line-height: 170%;
+/* identical to box height, or 24px */
+display: flex;
+align-items: center;
+letter-spacing: 0.6px;
+
+color: #FFFFFF;
+
+
+/* Inside auto layout */
+flex: none;
+order: 8;
+flex-grow: 0;
+
+
+/* 23:12 */
+
+margin: 0 auto;
+width: 35px;
+height: 24px;
+
+font-family: 'Poppins';
+font-style: normal;
+font-weight: 400;
+font-size: 14px;
+line-height: 170%;
+/* identical to box height, or 24px */
+display: flex;
+align-items: center;
+letter-spacing: 0.6px;
+
+color: #FFFFFF;
+
+
+/* Inside auto layout */
+flex: none;
+order: 9;
+flex-grow: 0;
+
+
+/* 23:12 */
+
+margin: 0 auto;
+width: 35px;
+height: 24px;
+
+font-family: 'Poppins';
+font-style: normal;
+font-weight: 400;
+font-size: 14px;
+line-height: 170%;
+/* identical to box height, or 24px */
+display: flex;
+align-items: center;
+letter-spacing: 0.6px;
+
+color: #FFFFFF;
+
+
+/* Inside auto layout */
+flex: none;
+order: 10;
+flex-grow: 0;
+
+
+/* Frame 1304517196 */
+
+/* Auto layout */
+display: flex;
+flex-direction: row;
+justify-content: space-between;
+align-items: center;
+padding: 0px;
+gap: 139px;
+
+width: 857px;
+height: 40px;
+
+
+/* Inside auto layout */
+flex: none;
+order: 3;
+align-self: stretch;
+flex-grow: 0;
+
+
+/* Frame 1304517284 */
+
+/* Auto layout */
+display: flex;
+flex-direction: row;
+align-items: center;
+padding: 0px;
+gap: 10px;
+
+margin: 0 auto;
+width: 73px;
+height: 40px;
+
+
+/* Inside auto layout */
+flex: none;
+order: 0;
+flex-grow: 0;
+
+
+/* NBA Teams */
+
+width: 40px;
+height: 40px;
+
+
+/* Inside auto layout */
+flex: none;
+order: 0;
+flex-grow: 0;
+
+
+/* image 3 */
+
+position: absolute;
+left: 0%;
+right: 0%;
+top: 0%;
+bottom: 0%;
+
+background: url(image.png);
+border-radius: 320px;
+
+
+/* 15/01/2025 */
+
+margin: 0 auto;
+width: 79px;
+height: 24px;
+
+font-family: 'Poppins';
+font-style: normal;
+font-weight: 400;
+font-size: 14px;
+line-height: 170%;
+/* identical to box height, or 24px */
+display: flex;
+align-items: center;
+letter-spacing: 0.6px;
+
+color: #FFFFFF;
+
+
+/* Inside auto layout */
+flex: none;
+order: 1;
+flex-grow: 0;
+
+
+/* W • 123-95 */
+
+margin: 0 auto;
+width: 79px;
+height: 24px;
+
+font-family: 'Poppins';
+font-style: normal;
+font-weight: 400;
+font-size: 14px;
+line-height: 170%;
+/* identical to box height, or 24px */
+display: flex;
+align-items: center;
+letter-spacing: 0.6px;
+
+color: #FFFFFF;
+
+
+/* Inside auto layout */
+flex: none;
+order: 2;
+flex-grow: 0;
+
+
+/* close */
+
+box-sizing: border-box;
+
+/* Auto layout */
+display: flex;
+flex-direction: row;
+justify-content: center;
+align-items: center;
+padding: 5px;
+gap: 10px;
+
+margin: 0 auto;
+width: 30px;
+height: 30px;
+
+/* Failure */
+border: 2px solid #D03E35;
+border-radius: 69px;
+
+/* Inside auto layout */
+flex: none;
+order: 3;
+flex-grow: 0;
+
+
+/* Vector */
+
+width: 14px;
+height: 14px;
+
+/* Failure */
+background: #D03E35;
+
+/* Inside auto layout */
+flex: none;
+order: 0;
+flex-grow: 0;
+
+
+/* 42 */
+
+margin: 0 auto;
+width: 23px;
+height: 24px;
+
+font-family: 'Poppins';
+font-style: normal;
+font-weight: 400;
+font-size: 14px;
+line-height: 170%;
+/* identical to box height, or 24px */
+display: flex;
+align-items: center;
+letter-spacing: 0.6px;
+
+color: #FFFFFF;
+
+
+/* Inside auto layout */
+flex: none;
+order: 4;
+flex-grow: 0;
+
+
+/* 6 */
+
+margin: 0 auto;
+width: 24px;
+height: 24px;
+
+font-family: 'Poppins';
+font-style: normal;
+font-weight: 400;
+font-size: 14px;
+line-height: 170%;
+/* identical to box height, or 24px */
+display: flex;
+align-items: center;
+letter-spacing: 0.6px;
+
+color: #FFFFFF;
+
+
+/* Inside auto layout */
+flex: none;
+order: 5;
+flex-grow: 0;
+
+
+/* 23:12 */
+
+margin: 0 auto;
+width: 35px;
+height: 24px;
+
+font-family: 'Poppins';
+font-style: normal;
+font-weight: 400;
+font-size: 14px;
+line-height: 170%;
+/* identical to box height, or 24px */
+display: flex;
+align-items: center;
+letter-spacing: 0.6px;
+
+color: #FFFFFF;
+
+
+/* Inside auto layout */
+flex: none;
+order: 6;
+flex-grow: 0;
+
+
+/* 23:12 */
+
+margin: 0 auto;
+width: 35px;
+height: 24px;
+
+font-family: 'Poppins';
+font-style: normal;
+font-weight: 400;
+font-size: 14px;
+line-height: 170%;
+/* identical to box height, or 24px */
+display: flex;
+align-items: center;
+letter-spacing: 0.6px;
+
+color: #FFFFFF;
+
+
+/* Inside auto layout */
+flex: none;
+order: 7;
+flex-grow: 0;
+
+
+/* 23:12 */
+
+margin: 0 auto;
+width: 35px;
+height: 24px;
+
+font-family: 'Poppins';
+font-style: normal;
+font-weight: 400;
+font-size: 14px;
+line-height: 170%;
+/* identical to box height, or 24px */
+display: flex;
+align-items: center;
+letter-spacing: 0.6px;
+
+color: #FFFFFF;
+
+
+/* Inside auto layout */
+flex: none;
+order: 8;
+flex-grow: 0;
+
+
+/* 23:12 */
+
+margin: 0 auto;
+width: 35px;
+height: 24px;
+
+font-family: 'Poppins';
+font-style: normal;
+font-weight: 400;
+font-size: 14px;
+line-height: 170%;
+/* identical to box height, or 24px */
+display: flex;
+align-items: center;
+letter-spacing: 0.6px;
+
+color: #FFFFFF;
+
+
+/* Inside auto layout */
+flex: none;
+order: 9;
+flex-grow: 0;
+
+
+/* 23:12 */
+
+margin: 0 auto;
+width: 35px;
+height: 24px;
+
+font-family: 'Poppins';
+font-style: normal;
+font-weight: 400;
+font-size: 14px;
+line-height: 170%;
+/* identical to box height, or 24px */
+display: flex;
+align-items: center;
+letter-spacing: 0.6px;
+
+color: #FFFFFF;
+
+
+/* Inside auto layout */
+flex: none;
+order: 10;
+flex-grow: 0;
+
+
+/* Frame 1304517207 */
+
+/* Auto layout */
+display: flex;
+flex-direction: row;
+justify-content: space-between;
+align-items: center;
+padding: 0px;
+gap: 139px;
+
+width: 857px;
+height: 40px;
+
+
+/* Inside auto layout */
+flex: none;
+order: 4;
+align-self: stretch;
+flex-grow: 0;
+
+
+/* Frame 1304517284 */
+
+/* Auto layout */
+display: flex;
+flex-direction: row;
+align-items: center;
+padding: 0px;
+gap: 10px;
+
+margin: 0 auto;
+width: 73px;
+height: 40px;
+
+
+/* Inside auto layout */
+flex: none;
+order: 0;
+flex-grow: 0;
+
+
+/* NBA Teams */
+
+width: 40px;
+height: 40px;
+
+
+/* Inside auto layout */
+flex: none;
+order: 0;
+flex-grow: 0;
+
+
+/* image 2 */
+
+position: absolute;
+left: 0%;
+right: 0%;
+top: 0%;
+bottom: 0%;
+
+background: url(image.png);
+
+
+/* 15/01/2025 */
+
+margin: 0 auto;
+width: 79px;
+height: 24px;
+
+font-family: 'Poppins';
+font-style: normal;
+font-weight: 400;
+font-size: 14px;
+line-height: 170%;
+/* identical to box height, or 24px */
+display: flex;
+align-items: center;
+letter-spacing: 0.6px;
+
+color: #FFFFFF;
+
+
+/* Inside auto layout */
+flex: none;
+order: 1;
+flex-grow: 0;
+
+
+/* W • 123-95 */
+
+margin: 0 auto;
+width: 79px;
+height: 24px;
+
+font-family: 'Poppins';
+font-style: normal;
+font-weight: 400;
+font-size: 14px;
+line-height: 170%;
+/* identical to box height, or 24px */
+display: flex;
+align-items: center;
+letter-spacing: 0.6px;
+
+color: #FFFFFF;
+
+
+/* Inside auto layout */
+flex: none;
+order: 2;
+flex-grow: 0;
+
+
+/* close */
+
+box-sizing: border-box;
+
+/* Auto layout */
+display: flex;
+flex-direction: row;
+justify-content: center;
+align-items: center;
+padding: 5px;
+gap: 10px;
+
+margin: 0 auto;
+width: 30px;
+height: 30px;
+
+/* Success */
+border: 2px solid #389353;
+border-radius: 69px;
+
+/* Inside auto layout */
+flex: none;
+order: 3;
+flex-grow: 0;
+
+
+/* Vector */
+
+width: 17.59px;
+height: 13.41px;
+
+/* Success */
+background: #389353;
+
+/* Inside auto layout */
+flex: none;
+order: 0;
+flex-grow: 0;
+
+
+/* 12 */
+
+margin: 0 auto;
+width: 23px;
+height: 24px;
+
+font-family: 'Poppins';
+font-style: normal;
+font-weight: 400;
+font-size: 14px;
+line-height: 170%;
+/* identical to box height, or 24px */
+display: flex;
+align-items: center;
+letter-spacing: 0.6px;
+
+color: #FFFFFF;
+
+
+/* Inside auto layout */
+flex: none;
+order: 4;
+flex-grow: 0;
+
+
+/* 9 */
+
+margin: 0 auto;
+width: 24px;
+height: 24px;
+
+font-family: 'Poppins';
+font-style: normal;
+font-weight: 400;
+font-size: 14px;
+line-height: 170%;
+/* identical to box height, or 24px */
+display: flex;
+align-items: center;
+letter-spacing: 0.6px;
+
+color: #FFFFFF;
+
+
+/* Inside auto layout */
+flex: none;
+order: 5;
+flex-grow: 0;
+
+
+/* 23:12 */
+
+margin: 0 auto;
+width: 35px;
+height: 24px;
+
+font-family: 'Poppins';
+font-style: normal;
+font-weight: 400;
+font-size: 14px;
+line-height: 170%;
+/* identical to box height, or 24px */
+display: flex;
+align-items: center;
+letter-spacing: 0.6px;
+
+color: #FFFFFF;
+
+
+/* Inside auto layout */
+flex: none;
+order: 6;
+flex-grow: 0;
+
+
+/* 23:12 */
+
+margin: 0 auto;
+width: 35px;
+height: 24px;
+
+font-family: 'Poppins';
+font-style: normal;
+font-weight: 400;
+font-size: 14px;
+line-height: 170%;
+/* identical to box height, or 24px */
+display: flex;
+align-items: center;
+letter-spacing: 0.6px;
+
+color: #FFFFFF;
+
+
+/* Inside auto layout */
+flex: none;
+order: 7;
+flex-grow: 0;
+
+
+/* 23:12 */
+
+margin: 0 auto;
+width: 35px;
+height: 24px;
+
+font-family: 'Poppins';
+font-style: normal;
+font-weight: 400;
+font-size: 14px;
+line-height: 170%;
+/* identical to box height, or 24px */
+display: flex;
+align-items: center;
+letter-spacing: 0.6px;
+
+color: #FFFFFF;
+
+
+/* Inside auto layout */
+flex: none;
+order: 8;
+flex-grow: 0;
+
+
+/* 23:12 */
+
+margin: 0 auto;
+width: 35px;
+height: 24px;
+
+font-family: 'Poppins';
+font-style: normal;
+font-weight: 400;
+font-size: 14px;
+line-height: 170%;
+/* identical to box height, or 24px */
+display: flex;
+align-items: center;
+letter-spacing: 0.6px;
+
+color: #FFFFFF;
+
+
+/* Inside auto layout */
+flex: none;
+order: 9;
+flex-grow: 0;
+
+
+/* 23:12 */
+
+margin: 0 auto;
+width: 35px;
+height: 24px;
+
+font-family: 'Poppins';
+font-style: normal;
+font-weight: 400;
+font-size: 14px;
+line-height: 170%;
+/* identical to box height, or 24px */
+display: flex;
+align-items: center;
+letter-spacing: 0.6px;
+
+color: #FFFFFF;
+
+
+/* Inside auto layout */
+flex: none;
+order: 10;
+flex-grow: 0;
+
+
+/* Frame 1304517206 */
+
+/* Auto layout */
+display: flex;
+flex-direction: row;
+justify-content: space-between;
+align-items: center;
+padding: 0px;
+gap: 139px;
+
+width: 857px;
+height: 40px;
+
+
+/* Inside auto layout */
+flex: none;
+order: 5;
+align-self: stretch;
+flex-grow: 0;
+
+
+/* Frame 1304517284 */
+
+/* Auto layout */
+display: flex;
+flex-direction: row;
+align-items: center;
+padding: 0px;
+gap: 10px;
+
+margin: 0 auto;
+width: 73px;
+height: 40px;
+
+
+/* Inside auto layout */
+flex: none;
+order: 0;
+flex-grow: 0;
+
+
+/* NBA Teams */
+
+width: 40px;
+height: 40px;
+
+
+/* Inside auto layout */
+flex: none;
+order: 0;
+flex-grow: 0;
+
+
+/* image 16 */
+
+position: absolute;
+left: 0%;
+right: 0%;
+top: 0%;
+bottom: 0%;
+
+background: url(image.png);
+
+
+/* 15/01/2025 */
+
+margin: 0 auto;
+width: 79px;
+height: 24px;
+
+font-family: 'Poppins';
+font-style: normal;
+font-weight: 400;
+font-size: 14px;
+line-height: 170%;
+/* identical to box height, or 24px */
+display: flex;
+align-items: center;
+letter-spacing: 0.6px;
+
+color: #FFFFFF;
+
+
+/* Inside auto layout */
+flex: none;
+order: 1;
+flex-grow: 0;
+
+
+/* W • 123-95 */
+
+margin: 0 auto;
+width: 79px;
+height: 24px;
+
+font-family: 'Poppins';
+font-style: normal;
+font-weight: 400;
+font-size: 14px;
+line-height: 170%;
+/* identical to box height, or 24px */
+display: flex;
+align-items: center;
+letter-spacing: 0.6px;
+
+color: #FFFFFF;
+
+
+/* Inside auto layout */
+flex: none;
+order: 2;
+flex-grow: 0;
+
+
+/* close */
+
+box-sizing: border-box;
+
+/* Auto layout */
+display: flex;
+flex-direction: row;
+justify-content: center;
+align-items: center;
+padding: 5px;
+gap: 10px;
+
+margin: 0 auto;
+width: 30px;
+height: 30px;
+
+/* Failure */
+border: 2px solid #D03E35;
+border-radius: 69px;
+
+/* Inside auto layout */
+flex: none;
+order: 3;
+flex-grow: 0;
+
+
+/* Vector */
+
+width: 14px;
+height: 14px;
+
+/* Failure */
+background: #D03E35;
+
+/* Inside auto layout */
+flex: none;
+order: 0;
+flex-grow: 0;
+
+
+/* 31 */
+
+margin: 0 auto;
+width: 23px;
+height: 24px;
+
+font-family: 'Poppins';
+font-style: normal;
+font-weight: 400;
+font-size: 14px;
+line-height: 170%;
+/* identical to box height, or 24px */
+display: flex;
+align-items: center;
+letter-spacing: 0.6px;
+
+color: #FFFFFF;
+
+
+/* Inside auto layout */
+flex: none;
+order: 4;
+flex-grow: 0;
+
+
+/* 3 */
+
+margin: 0 auto;
+width: 24px;
+height: 24px;
+
+font-family: 'Poppins';
+font-style: normal;
+font-weight: 400;
+font-size: 14px;
+line-height: 170%;
+/* identical to box height, or 24px */
+display: flex;
+align-items: center;
+letter-spacing: 0.6px;
+
+color: #FFFFFF;
+
+
+/* Inside auto layout */
+flex: none;
+order: 5;
+flex-grow: 0;
+
+
+/* 23:12 */
+
+margin: 0 auto;
+width: 35px;
+height: 24px;
+
+font-family: 'Poppins';
+font-style: normal;
+font-weight: 400;
+font-size: 14px;
+line-height: 170%;
+/* identical to box height, or 24px */
+display: flex;
+align-items: center;
+letter-spacing: 0.6px;
+
+color: #FFFFFF;
+
+
+/* Inside auto layout */
+flex: none;
+order: 6;
+flex-grow: 0;
+
+
+/* 23:12 */
+
+margin: 0 auto;
+width: 35px;
+height: 24px;
+
+font-family: 'Poppins';
+font-style: normal;
+font-weight: 400;
+font-size: 14px;
+line-height: 170%;
+/* identical to box height, or 24px */
+display: flex;
+align-items: center;
+letter-spacing: 0.6px;
+
+color: #FFFFFF;
+
+
+/* Inside auto layout */
+flex: none;
+order: 7;
+flex-grow: 0;
+
+
+/* 23:12 */
+
+margin: 0 auto;
+width: 35px;
+height: 24px;
+
+font-family: 'Poppins';
+font-style: normal;
+font-weight: 400;
+font-size: 14px;
+line-height: 170%;
+/* identical to box height, or 24px */
+display: flex;
+align-items: center;
+letter-spacing: 0.6px;
+
+color: #FFFFFF;
+
+
+/* Inside auto layout */
+flex: none;
+order: 8;
+flex-grow: 0;
+
+
+/* 23:12 */
+
+margin: 0 auto;
+width: 35px;
+height: 24px;
+
+font-family: 'Poppins';
+font-style: normal;
+font-weight: 400;
+font-size: 14px;
+line-height: 170%;
+/* identical to box height, or 24px */
+display: flex;
+align-items: center;
+letter-spacing: 0.6px;
+
+color: #FFFFFF;
+
+
+/* Inside auto layout */
+flex: none;
+order: 9;
+flex-grow: 0;
+
+
+/* 23:12 */
+
+margin: 0 auto;
+width: 35px;
+height: 24px;
+
+font-family: 'Poppins';
+font-style: normal;
+font-weight: 400;
+font-size: 14px;
+line-height: 170%;
+/* identical to box height, or 24px */
+display: flex;
+align-items: center;
+letter-spacing: 0.6px;
+
+color: #FFFFFF;
+
+
+/* Inside auto layout */
+flex: none;
+order: 10;
+flex-grow: 0;
+
+
+/* Frame 1304517208 */
+
+/* Auto layout */
+display: flex;
+flex-direction: row;
+justify-content: space-between;
+align-items: center;
+padding: 0px;
+gap: 139px;
+
+width: 857px;
+height: 40px;
+
+
+/* Inside auto layout */
+flex: none;
+order: 6;
+align-self: stretch;
+flex-grow: 0;
+
+
+/* Frame 1304517284 */
+
+/* Auto layout */
+display: flex;
+flex-direction: row;
+align-items: center;
+padding: 0px;
+gap: 10px;
+
+margin: 0 auto;
+width: 73px;
+height: 40px;
+
+
+/* Inside auto layout */
+flex: none;
+order: 0;
+flex-grow: 0;
+
+
+/* NBA Teams */
+
+width: 40px;
+height: 40px;
+
+
+/* Inside auto layout */
+flex: none;
+order: 0;
+flex-grow: 0;
+
+
+/* image 3 */
+
+position: absolute;
+left: 0%;
+right: 0%;
+top: 0%;
+bottom: 0%;
+
+background: url(image.png);
+border-radius: 320px;
+
+
+/* 15/01/2025 */
+
+margin: 0 auto;
+width: 79px;
+height: 24px;
+
+font-family: 'Poppins';
+font-style: normal;
+font-weight: 400;
+font-size: 14px;
+line-height: 170%;
+/* identical to box height, or 24px */
+display: flex;
+align-items: center;
+letter-spacing: 0.6px;
+
+color: #FFFFFF;
+
+
+/* Inside auto layout */
+flex: none;
+order: 1;
+flex-grow: 0;
+
+
+/* W • 123-95 */
+
+margin: 0 auto;
+width: 79px;
+height: 24px;
+
+font-family: 'Poppins';
+font-style: normal;
+font-weight: 400;
+font-size: 14px;
+line-height: 170%;
+/* identical to box height, or 24px */
+display: flex;
+align-items: center;
+letter-spacing: 0.6px;
+
+color: #FFFFFF;
+
+
+/* Inside auto layout */
+flex: none;
+order: 2;
+flex-grow: 0;
+
+
+/* close */
+
+box-sizing: border-box;
+
+/* Auto layout */
+display: flex;
+flex-direction: row;
+justify-content: center;
+align-items: center;
+padding: 5px;
+gap: 10px;
+
+margin: 0 auto;
+width: 30px;
+height: 30px;
+
+/* Success */
+border: 2px solid #389353;
+border-radius: 69px;
+
+/* Inside auto layout */
+flex: none;
+order: 3;
+flex-grow: 0;
+
+
+/* Vector */
+
+width: 17.59px;
+height: 13.41px;
+
+/* Success */
+background: #389353;
+
+/* Inside auto layout */
+flex: none;
+order: 0;
+flex-grow: 0;
+
+
+/* 32 */
+
+margin: 0 auto;
+width: 23px;
+height: 24px;
+
+font-family: 'Poppins';
+font-style: normal;
+font-weight: 400;
+font-size: 14px;
+line-height: 170%;
+/* identical to box height, or 24px */
+display: flex;
+align-items: center;
+letter-spacing: 0.6px;
+
+color: #FFFFFF;
+
+
+/* Inside auto layout */
+flex: none;
+order: 4;
+flex-grow: 0;
+
+
+/* 3 */
+
+margin: 0 auto;
+width: 24px;
+height: 24px;
+
+font-family: 'Poppins';
+font-style: normal;
+font-weight: 400;
+font-size: 14px;
+line-height: 170%;
+/* identical to box height, or 24px */
+display: flex;
+align-items: center;
+letter-spacing: 0.6px;
+
+color: #FFFFFF;
+
+
+/* Inside auto layout */
+flex: none;
+order: 5;
+flex-grow: 0;
+
+
+/* 23:12 */
+
+margin: 0 auto;
+width: 35px;
+height: 24px;
+
+font-family: 'Poppins';
+font-style: normal;
+font-weight: 400;
+font-size: 14px;
+line-height: 170%;
+/* identical to box height, or 24px */
+display: flex;
+align-items: center;
+letter-spacing: 0.6px;
+
+color: #FFFFFF;
+
+
+/* Inside auto layout */
+flex: none;
+order: 6;
+flex-grow: 0;
+
+
+/* 23:12 */
+
+margin: 0 auto;
+width: 35px;
+height: 24px;
+
+font-family: 'Poppins';
+font-style: normal;
+font-weight: 400;
+font-size: 14px;
+line-height: 170%;
+/* identical to box height, or 24px */
+display: flex;
+align-items: center;
+letter-spacing: 0.6px;
+
+color: #FFFFFF;
+
+
+/* Inside auto layout */
+flex: none;
+order: 7;
+flex-grow: 0;
+
+
+/* 23:12 */
+
+margin: 0 auto;
+width: 35px;
+height: 24px;
+
+font-family: 'Poppins';
+font-style: normal;
+font-weight: 400;
+font-size: 14px;
+line-height: 170%;
+/* identical to box height, or 24px */
+display: flex;
+align-items: center;
+letter-spacing: 0.6px;
+
+color: #FFFFFF;
+
+
+/* Inside auto layout */
+flex: none;
+order: 8;
+flex-grow: 0;
+
+
+/* 23:12 */
+
+margin: 0 auto;
+width: 35px;
+height: 24px;
+
+font-family: 'Poppins';
+font-style: normal;
+font-weight: 400;
+font-size: 14px;
+line-height: 170%;
+/* identical to box height, or 24px */
+display: flex;
+align-items: center;
+letter-spacing: 0.6px;
+
+color: #FFFFFF;
+
+
+/* Inside auto layout */
+flex: none;
+order: 9;
+flex-grow: 0;
+
+
+/* 23:12 */
+
+margin: 0 auto;
+width: 35px;
+height: 24px;
+
+font-family: 'Poppins';
+font-style: normal;
+font-weight: 400;
+font-size: 14px;
+line-height: 170%;
+/* identical to box height, or 24px */
+display: flex;
+align-items: center;
+letter-spacing: 0.6px;
+
+color: #FFFFFF;
+
+
+/* Inside auto layout */
+flex: none;
+order: 10;
+flex-grow: 0;
+
+
+/* Frame 1304517209 */
+
+/* Auto layout */
+display: flex;
+flex-direction: row;
+justify-content: space-between;
+align-items: center;
+padding: 0px;
+gap: 139px;
+
+width: 857px;
+height: 40px;
+
+
+/* Inside auto layout */
+flex: none;
+order: 7;
+align-self: stretch;
+flex-grow: 0;
+
+
+/* Frame 1304517284 */
+
+/* Auto layout */
+display: flex;
+flex-direction: row;
+align-items: center;
+padding: 0px;
+gap: 10px;
+
+margin: 0 auto;
+width: 73px;
+height: 40px;
+
+
+/* Inside auto layout */
+flex: none;
+order: 0;
+flex-grow: 0;
+
+
+/* NBA Teams */
+
+width: 40px;
+height: 40px;
+
+
+/* Inside auto layout */
+flex: none;
+order: 0;
+flex-grow: 0;
+
+
+/* image 2 */
+
+position: absolute;
+left: 0%;
+right: 0%;
+top: 0%;
+bottom: 0%;
+
+background: url(image.png);
+
+
+/* 15/01/2025 */
+
+margin: 0 auto;
+width: 79px;
+height: 24px;
+
+font-family: 'Poppins';
+font-style: normal;
+font-weight: 400;
+font-size: 14px;
+line-height: 170%;
+/* identical to box height, or 24px */
+display: flex;
+align-items: center;
+letter-spacing: 0.6px;
+
+color: #FFFFFF;
+
+
+/* Inside auto layout */
+flex: none;
+order: 1;
+flex-grow: 0;
+
+
+/* W • 123-95 */
+
+margin: 0 auto;
+width: 79px;
+height: 24px;
+
+font-family: 'Poppins';
+font-style: normal;
+font-weight: 400;
+font-size: 14px;
+line-height: 170%;
+/* identical to box height, or 24px */
+display: flex;
+align-items: center;
+letter-spacing: 0.6px;
+
+color: #FFFFFF;
+
+
+/* Inside auto layout */
+flex: none;
+order: 2;
+flex-grow: 0;
+
+
+/* close */
+
+box-sizing: border-box;
+
+/* Auto layout */
+display: flex;
+flex-direction: row;
+justify-content: center;
+align-items: center;
+padding: 5px;
+gap: 10px;
+
+margin: 0 auto;
+width: 30px;
+height: 30px;
+
+/* Failure */
+border: 2px solid #D03E35;
+border-radius: 69px;
+
+/* Inside auto layout */
+flex: none;
+order: 3;
+flex-grow: 0;
+
+
+/* Vector */
+
+width: 14px;
+height: 14px;
+
+/* Failure */
+background: #D03E35;
+
+/* Inside auto layout */
+flex: none;
+order: 0;
+flex-grow: 0;
+
+
+/* 42 */
+
+margin: 0 auto;
+width: 23px;
+height: 24px;
+
+font-family: 'Poppins';
+font-style: normal;
+font-weight: 400;
+font-size: 14px;
+line-height: 170%;
+/* identical to box height, or 24px */
+display: flex;
+align-items: center;
+letter-spacing: 0.6px;
+
+color: #FFFFFF;
+
+
+/* Inside auto layout */
+flex: none;
+order: 4;
+flex-grow: 0;
+
+
+/* 6 */
+
+margin: 0 auto;
+width: 24px;
+height: 24px;
+
+font-family: 'Poppins';
+font-style: normal;
+font-weight: 400;
+font-size: 14px;
+line-height: 170%;
+/* identical to box height, or 24px */
+display: flex;
+align-items: center;
+letter-spacing: 0.6px;
+
+color: #FFFFFF;
+
+
+/* Inside auto layout */
+flex: none;
+order: 5;
+flex-grow: 0;
+
+
+/* 23:12 */
+
+margin: 0 auto;
+width: 35px;
+height: 24px;
+
+font-family: 'Poppins';
+font-style: normal;
+font-weight: 400;
+font-size: 14px;
+line-height: 170%;
+/* identical to box height, or 24px */
+display: flex;
+align-items: center;
+letter-spacing: 0.6px;
+
+color: #FFFFFF;
+
+
+/* Inside auto layout */
+flex: none;
+order: 6;
+flex-grow: 0;
+
+
+/* 23:12 */
+
+margin: 0 auto;
+width: 35px;
+height: 24px;
+
+font-family: 'Poppins';
+font-style: normal;
+font-weight: 400;
+font-size: 14px;
+line-height: 170%;
+/* identical to box height, or 24px */
+display: flex;
+align-items: center;
+letter-spacing: 0.6px;
+
+color: #FFFFFF;
+
+
+/* Inside auto layout */
+flex: none;
+order: 7;
+flex-grow: 0;
+
+
+/* 23:12 */
+
+margin: 0 auto;
+width: 35px;
+height: 24px;
+
+font-family: 'Poppins';
+font-style: normal;
+font-weight: 400;
+font-size: 14px;
+line-height: 170%;
+/* identical to box height, or 24px */
+display: flex;
+align-items: center;
+letter-spacing: 0.6px;
+
+color: #FFFFFF;
+
+
+/* Inside auto layout */
+flex: none;
+order: 8;
+flex-grow: 0;
+
+
+/* 23:12 */
+
+margin: 0 auto;
+width: 35px;
+height: 24px;
+
+font-family: 'Poppins';
+font-style: normal;
+font-weight: 400;
+font-size: 14px;
+line-height: 170%;
+/* identical to box height, or 24px */
+display: flex;
+align-items: center;
+letter-spacing: 0.6px;
+
+color: #FFFFFF;
+
+
+/* Inside auto layout */
+flex: none;
+order: 9;
+flex-grow: 0;
+
+
+/* 23:12 */
+
+margin: 0 auto;
+width: 35px;
+height: 24px;
+
+font-family: 'Poppins';
+font-style: normal;
+font-weight: 400;
+font-size: 14px;
+line-height: 170%;
+/* identical to box height, or 24px */
+display: flex;
+align-items: center;
+letter-spacing: 0.6px;
+
+color: #FFFFFF;
+
+
+/* Inside auto layout */
+flex: none;
+order: 10;
+flex-grow: 0;
+
+
+/* Frame 1304517210 */
+
+/* Auto layout */
+display: flex;
+flex-direction: row;
+justify-content: space-between;
+align-items: center;
+padding: 0px;
+gap: 139px;
+
+width: 857px;
+height: 40px;
+
+
+/* Inside auto layout */
+flex: none;
+order: 8;
+align-self: stretch;
+flex-grow: 0;
+
+
+/* Frame 1304517284 */
+
+/* Auto layout */
+display: flex;
+flex-direction: row;
+align-items: center;
+padding: 0px;
+gap: 10px;
+
+margin: 0 auto;
+width: 73px;
+height: 40px;
+
+
+/* Inside auto layout */
+flex: none;
+order: 0;
+flex-grow: 0;
+
+
+/* NBA Teams */
+
+width: 40px;
+height: 40px;
+
+
+/* Inside auto layout */
+flex: none;
+order: 0;
+flex-grow: 0;
+
+
+/* image 16 */
+
+position: absolute;
+left: 0%;
+right: 0%;
+top: 0%;
+bottom: 0%;
+
+background: url(image.png);
+
+
+/* 15/01/2025 */
+
+margin: 0 auto;
+width: 79px;
+height: 24px;
+
+font-family: 'Poppins';
+font-style: normal;
+font-weight: 400;
+font-size: 14px;
+line-height: 170%;
+/* identical to box height, or 24px */
+display: flex;
+align-items: center;
+letter-spacing: 0.6px;
+
+color: #FFFFFF;
+
+
+/* Inside auto layout */
+flex: none;
+order: 1;
+flex-grow: 0;
+
+
+/* W • 123-95 */
+
+margin: 0 auto;
+width: 79px;
+height: 24px;
+
+font-family: 'Poppins';
+font-style: normal;
+font-weight: 400;
+font-size: 14px;
+line-height: 170%;
+/* identical to box height, or 24px */
+display: flex;
+align-items: center;
+letter-spacing: 0.6px;
+
+color: #FFFFFF;
+
+
+/* Inside auto layout */
+flex: none;
+order: 2;
+flex-grow: 0;
+
+
+/* close */
+
+box-sizing: border-box;
+
+/* Auto layout */
+display: flex;
+flex-direction: row;
+justify-content: center;
+align-items: center;
+padding: 5px;
+gap: 10px;
+
+margin: 0 auto;
+width: 30px;
+height: 30px;
+
+/* Success */
+border: 2px solid #389353;
+border-radius: 69px;
+
+/* Inside auto layout */
+flex: none;
+order: 3;
+flex-grow: 0;
+
+
+/* Vector */
+
+width: 17.59px;
+height: 13.41px;
+
+/* Success */
+background: #389353;
+
+/* Inside auto layout */
+flex: none;
+order: 0;
+flex-grow: 0;
+
+
+/* 12 */
+
+margin: 0 auto;
+width: 23px;
+height: 24px;
+
+font-family: 'Poppins';
+font-style: normal;
+font-weight: 400;
+font-size: 14px;
+line-height: 170%;
+/* identical to box height, or 24px */
+display: flex;
+align-items: center;
+letter-spacing: 0.6px;
+
+color: #FFFFFF;
+
+
+/* Inside auto layout */
+flex: none;
+order: 4;
+flex-grow: 0;
+
+
+/* 9 */
+
+margin: 0 auto;
+width: 24px;
+height: 24px;
+
+font-family: 'Poppins';
+font-style: normal;
+font-weight: 400;
+font-size: 14px;
+line-height: 170%;
+/* identical to box height, or 24px */
+display: flex;
+align-items: center;
+letter-spacing: 0.6px;
+
+color: #FFFFFF;
+
+
+/* Inside auto layout */
+flex: none;
+order: 5;
+flex-grow: 0;
+
+
+/* 23:12 */
+
+margin: 0 auto;
+width: 35px;
+height: 24px;
+
+font-family: 'Poppins';
+font-style: normal;
+font-weight: 400;
+font-size: 14px;
+line-height: 170%;
+/* identical to box height, or 24px */
+display: flex;
+align-items: center;
+letter-spacing: 0.6px;
+
+color: #FFFFFF;
+
+
+/* Inside auto layout */
+flex: none;
+order: 6;
+flex-grow: 0;
+
+
+/* 23:12 */
+
+margin: 0 auto;
+width: 35px;
+height: 24px;
+
+font-family: 'Poppins';
+font-style: normal;
+font-weight: 400;
+font-size: 14px;
+line-height: 170%;
+/* identical to box height, or 24px */
+display: flex;
+align-items: center;
+letter-spacing: 0.6px;
+
+color: #FFFFFF;
+
+
+/* Inside auto layout */
+flex: none;
+order: 7;
+flex-grow: 0;
+
+
+/* 23:12 */
+
+margin: 0 auto;
+width: 35px;
+height: 24px;
+
+font-family: 'Poppins';
+font-style: normal;
+font-weight: 400;
+font-size: 14px;
+line-height: 170%;
+/* identical to box height, or 24px */
+display: flex;
+align-items: center;
+letter-spacing: 0.6px;
+
+color: #FFFFFF;
+
+
+/* Inside auto layout */
+flex: none;
+order: 8;
+flex-grow: 0;
+
+
+/* 23:12 */
+
+margin: 0 auto;
+width: 35px;
+height: 24px;
+
+font-family: 'Poppins';
+font-style: normal;
+font-weight: 400;
+font-size: 14px;
+line-height: 170%;
+/* identical to box height, or 24px */
+display: flex;
+align-items: center;
+letter-spacing: 0.6px;
+
+color: #FFFFFF;
+
+
+/* Inside auto layout */
+flex: none;
+order: 9;
+flex-grow: 0;
+
+
+/* 23:12 */
+
+margin: 0 auto;
+width: 35px;
+height: 24px;
+
+font-family: 'Poppins';
+font-style: normal;
+font-weight: 400;
+font-size: 14px;
+line-height: 170%;
+/* identical to box height, or 24px */
+display: flex;
+align-items: center;
+letter-spacing: 0.6px;
+
+color: #FFFFFF;
+
+
+/* Inside auto layout */
+flex: none;
+order: 10;
+flex-grow: 0;
+
+
+/* Frame 1304517211 */
+
+/* Auto layout */
+display: flex;
+flex-direction: row;
+justify-content: space-between;
+align-items: center;
+padding: 0px;
+gap: 139px;
+
+width: 857px;
+height: 40px;
+
+
+/* Inside auto layout */
+flex: none;
+order: 9;
+align-self: stretch;
+flex-grow: 0;
+
+
+/* Frame 1304517284 */
+
+/* Auto layout */
+display: flex;
+flex-direction: row;
+align-items: center;
+padding: 0px;
+gap: 10px;
+
+margin: 0 auto;
+width: 73px;
+height: 40px;
+
+
+/* Inside auto layout */
+flex: none;
+order: 0;
+flex-grow: 0;
+
+
+/* NBA Teams */
+
+width: 40px;
+height: 40px;
+
+
+/* Inside auto layout */
+flex: none;
+order: 0;
+flex-grow: 0;
+
+
+/* image 3 */
+
+position: absolute;
+left: 0%;
+right: 0%;
+top: 0%;
+bottom: 0%;
+
+background: url(image.png);
+border-radius: 320px;
+
+
+/* 15/01/2025 */
+
+margin: 0 auto;
+width: 79px;
+height: 24px;
+
+font-family: 'Poppins';
+font-style: normal;
+font-weight: 400;
+font-size: 14px;
+line-height: 170%;
+/* identical to box height, or 24px */
+display: flex;
+align-items: center;
+letter-spacing: 0.6px;
+
+color: #FFFFFF;
+
+
+/* Inside auto layout */
+flex: none;
+order: 1;
+flex-grow: 0;
+
+
+/* W • 123-95 */
+
+margin: 0 auto;
+width: 79px;
+height: 24px;
+
+font-family: 'Poppins';
+font-style: normal;
+font-weight: 400;
+font-size: 14px;
+line-height: 170%;
+/* identical to box height, or 24px */
+display: flex;
+align-items: center;
+letter-spacing: 0.6px;
+
+color: #FFFFFF;
+
+
+/* Inside auto layout */
+flex: none;
+order: 2;
+flex-grow: 0;
+
+
+/* close */
+
+box-sizing: border-box;
+
+/* Auto layout */
+display: flex;
+flex-direction: row;
+justify-content: center;
+align-items: center;
+padding: 5px;
+gap: 10px;
+
+margin: 0 auto;
+width: 30px;
+height: 30px;
+
+/* Failure */
+border: 2px solid #D03E35;
+border-radius: 69px;
+
+/* Inside auto layout */
+flex: none;
+order: 3;
+flex-grow: 0;
+
+
+/* Vector */
+
+width: 14px;
+height: 14px;
+
+/* Failure */
+background: #D03E35;
+
+/* Inside auto layout */
+flex: none;
+order: 0;
+flex-grow: 0;
+
+
+/* 31 */
+
+margin: 0 auto;
+width: 23px;
+height: 24px;
+
+font-family: 'Poppins';
+font-style: normal;
+font-weight: 400;
+font-size: 14px;
+line-height: 170%;
+/* identical to box height, or 24px */
+display: flex;
+align-items: center;
+letter-spacing: 0.6px;
+
+color: #FFFFFF;
+
+
+/* Inside auto layout */
+flex: none;
+order: 4;
+flex-grow: 0;
+
+
+/* 3 */
+
+margin: 0 auto;
+width: 24px;
+height: 24px;
+
+font-family: 'Poppins';
+font-style: normal;
+font-weight: 400;
+font-size: 14px;
+line-height: 170%;
+/* identical to box height, or 24px */
+display: flex;
+align-items: center;
+letter-spacing: 0.6px;
+
+color: #FFFFFF;
+
+
+/* Inside auto layout */
+flex: none;
+order: 5;
+flex-grow: 0;
+
+
+/* 23:12 */
+
+margin: 0 auto;
+width: 35px;
+height: 24px;
+
+font-family: 'Poppins';
+font-style: normal;
+font-weight: 400;
+font-size: 14px;
+line-height: 170%;
+/* identical to box height, or 24px */
+display: flex;
+align-items: center;
+letter-spacing: 0.6px;
+
+color: #FFFFFF;
+
+
+/* Inside auto layout */
+flex: none;
+order: 6;
+flex-grow: 0;
+
+
+/* 23:12 */
+
+margin: 0 auto;
+width: 35px;
+height: 24px;
+
+font-family: 'Poppins';
+font-style: normal;
+font-weight: 400;
+font-size: 14px;
+line-height: 170%;
+/* identical to box height, or 24px */
+display: flex;
+align-items: center;
+letter-spacing: 0.6px;
+
+color: #FFFFFF;
+
+
+/* Inside auto layout */
+flex: none;
+order: 7;
+flex-grow: 0;
+
+
+/* 23:12 */
+
+margin: 0 auto;
+width: 35px;
+height: 24px;
+
+font-family: 'Poppins';
+font-style: normal;
+font-weight: 400;
+font-size: 14px;
+line-height: 170%;
+/* identical to box height, or 24px */
+display: flex;
+align-items: center;
+letter-spacing: 0.6px;
+
+color: #FFFFFF;
+
+
+/* Inside auto layout */
+flex: none;
+order: 8;
+flex-grow: 0;
+
+
+/* 23:12 */
+
+margin: 0 auto;
+width: 35px;
+height: 24px;
+
+font-family: 'Poppins';
+font-style: normal;
+font-weight: 400;
+font-size: 14px;
+line-height: 170%;
+/* identical to box height, or 24px */
+display: flex;
+align-items: center;
+letter-spacing: 0.6px;
+
+color: #FFFFFF;
+
+
+/* Inside auto layout */
+flex: none;
+order: 9;
+flex-grow: 0;
+
+
+/* 23:12 */
+
+margin: 0 auto;
+width: 35px;
+height: 24px;
+
+font-family: 'Poppins';
+font-style: normal;
+font-weight: 400;
+font-size: 14px;
+line-height: 170%;
+/* identical to box height, or 24px */
+display: flex;
+align-items: center;
+letter-spacing: 0.6px;
+
+color: #FFFFFF;
+
+
+/* Inside auto layout */
+flex: none;
+order: 10;
+flex-grow: 0;
+
+
+/* Frame 1304517212 */
+
+/* Auto layout */
+display: flex;
+flex-direction: row;
+justify-content: space-between;
+align-items: center;
+padding: 0px;
+gap: 139px;
+
+width: 857px;
+height: 40px;
+
+
+/* Inside auto layout */
+flex: none;
+order: 10;
+align-self: stretch;
+flex-grow: 0;
+
+
+/* Frame 1304517284 */
+
+/* Auto layout */
+display: flex;
+flex-direction: row;
+align-items: center;
+padding: 0px;
+gap: 10px;
+
+margin: 0 auto;
+width: 73px;
+height: 40px;
+
+
+/* Inside auto layout */
+flex: none;
+order: 0;
+flex-grow: 0;
+
+
+/* NBA Teams */
+
+width: 40px;
+height: 40px;
+
+
+/* Inside auto layout */
+flex: none;
+order: 0;
+flex-grow: 0;
+
+
+/* image 2 */
+
+position: absolute;
+left: 0%;
+right: 0%;
+top: 0%;
+bottom: 0%;
+
+background: url(image.png);
+
+
+/* 15/01/2025 */
+
+margin: 0 auto;
+width: 79px;
+height: 24px;
+
+font-family: 'Poppins';
+font-style: normal;
+font-weight: 400;
+font-size: 14px;
+line-height: 170%;
+/* identical to box height, or 24px */
+display: flex;
+align-items: center;
+letter-spacing: 0.6px;
+
+color: #FFFFFF;
+
+
+/* Inside auto layout */
+flex: none;
+order: 1;
+flex-grow: 0;
+
+
+/* W • 123-95 */
+
+margin: 0 auto;
+width: 79px;
+height: 24px;
+
+font-family: 'Poppins';
+font-style: normal;
+font-weight: 400;
+font-size: 14px;
+line-height: 170%;
+/* identical to box height, or 24px */
+display: flex;
+align-items: center;
+letter-spacing: 0.6px;
+
+color: #FFFFFF;
+
+
+/* Inside auto layout */
+flex: none;
+order: 2;
+flex-grow: 0;
+
+
+/* close */
+
+box-sizing: border-box;
+
+/* Auto layout */
+display: flex;
+flex-direction: row;
+justify-content: center;
+align-items: center;
+padding: 5px;
+gap: 10px;
+
+margin: 0 auto;
+width: 30px;
+height: 30px;
+
+/* Success */
+border: 2px solid #389353;
+border-radius: 69px;
+
+/* Inside auto layout */
+flex: none;
+order: 3;
+flex-grow: 0;
+
+
+/* Vector */
+
+width: 17.59px;
+height: 13.41px;
+
+/* Success */
+background: #389353;
+
+/* Inside auto layout */
+flex: none;
+order: 0;
+flex-grow: 0;
+
+
+/* 32 */
+
+margin: 0 auto;
+width: 23px;
+height: 24px;
+
+font-family: 'Poppins';
+font-style: normal;
+font-weight: 400;
+font-size: 14px;
+line-height: 170%;
+/* identical to box height, or 24px */
+display: flex;
+align-items: center;
+letter-spacing: 0.6px;
+
+color: #FFFFFF;
+
+
+/* Inside auto layout */
+flex: none;
+order: 4;
+flex-grow: 0;
+
+
+/* 3 */
+
+margin: 0 auto;
+width: 24px;
+height: 24px;
+
+font-family: 'Poppins';
+font-style: normal;
+font-weight: 400;
+font-size: 14px;
+line-height: 170%;
+/* identical to box height, or 24px */
+display: flex;
+align-items: center;
+letter-spacing: 0.6px;
+
+color: #FFFFFF;
+
+
+/* Inside auto layout */
+flex: none;
+order: 5;
+flex-grow: 0;
+
+
+/* 23:12 */
+
+margin: 0 auto;
+width: 35px;
+height: 24px;
+
+font-family: 'Poppins';
+font-style: normal;
+font-weight: 400;
+font-size: 14px;
+line-height: 170%;
+/* identical to box height, or 24px */
+display: flex;
+align-items: center;
+letter-spacing: 0.6px;
+
+color: #FFFFFF;
+
+
+/* Inside auto layout */
+flex: none;
+order: 6;
+flex-grow: 0;
+
+
+/* 23:12 */
+
+margin: 0 auto;
+width: 35px;
+height: 24px;
+
+font-family: 'Poppins';
+font-style: normal;
+font-weight: 400;
+font-size: 14px;
+line-height: 170%;
+/* identical to box height, or 24px */
+display: flex;
+align-items: center;
+letter-spacing: 0.6px;
+
+color: #FFFFFF;
+
+
+/* Inside auto layout */
+flex: none;
+order: 7;
+flex-grow: 0;
+
+
+/* 23:12 */
+
+margin: 0 auto;
+width: 35px;
+height: 24px;
+
+font-family: 'Poppins';
+font-style: normal;
+font-weight: 400;
+font-size: 14px;
+line-height: 170%;
+/* identical to box height, or 24px */
+display: flex;
+align-items: center;
+letter-spacing: 0.6px;
+
+color: #FFFFFF;
+
+
+/* Inside auto layout */
+flex: none;
+order: 8;
+flex-grow: 0;
+
+
+/* 23:12 */
+
+margin: 0 auto;
+width: 35px;
+height: 24px;
+
+font-family: 'Poppins';
+font-style: normal;
+font-weight: 400;
+font-size: 14px;
+line-height: 170%;
+/* identical to box height, or 24px */
+display: flex;
+align-items: center;
+letter-spacing: 0.6px;
+
+color: #FFFFFF;
+
+
+/* Inside auto layout */
+flex: none;
+order: 9;
+flex-grow: 0;
+
+
+/* 23:12 */
+
+margin: 0 auto;
+width: 35px;
+height: 24px;
+
+font-family: 'Poppins';
+font-style: normal;
+font-weight: 400;
+font-size: 14px;
+line-height: 170%;
+/* identical to box height, or 24px */
+display: flex;
+align-items: center;
+letter-spacing: 0.6px;
+
+color: #FFFFFF;
+
+
+/* Inside auto layout */
+flex: none;
+order: 10;
+flex-grow: 0;
+
+
+/* Frame 1304517213 */
+
+/* Auto layout */
+display: flex;
+flex-direction: row;
+justify-content: space-between;
+align-items: center;
+padding: 0px;
+gap: 139px;
+
+width: 857px;
+height: 40px;
+
+
+/* Inside auto layout */
+flex: none;
+order: 11;
+align-self: stretch;
+flex-grow: 0;
+
+
+/* Frame 1304517284 */
+
+/* Auto layout */
+display: flex;
+flex-direction: row;
+align-items: center;
+padding: 0px;
+gap: 10px;
+
+margin: 0 auto;
+width: 73px;
+height: 40px;
+
+
+/* Inside auto layout */
+flex: none;
+order: 0;
+flex-grow: 0;
+
+
+/* NBA Teams */
+
+width: 40px;
+height: 40px;
+
+
+/* Inside auto layout */
+flex: none;
+order: 0;
+flex-grow: 0;
+
+
+/* image 16 */
+
+position: absolute;
+left: 0%;
+right: 0%;
+top: 0%;
+bottom: 0%;
+
+background: url(image.png);
+
+
+/* 15/01/2025 */
+
+margin: 0 auto;
+width: 79px;
+height: 24px;
+
+font-family: 'Poppins';
+font-style: normal;
+font-weight: 400;
+font-size: 14px;
+line-height: 170%;
+/* identical to box height, or 24px */
+display: flex;
+align-items: center;
+letter-spacing: 0.6px;
+
+color: #FFFFFF;
+
+
+/* Inside auto layout */
+flex: none;
+order: 1;
+flex-grow: 0;
+
+
+/* W • 123-95 */
+
+margin: 0 auto;
+width: 79px;
+height: 24px;
+
+font-family: 'Poppins';
+font-style: normal;
+font-weight: 400;
+font-size: 14px;
+line-height: 170%;
+/* identical to box height, or 24px */
+display: flex;
+align-items: center;
+letter-spacing: 0.6px;
+
+color: #FFFFFF;
+
+
+/* Inside auto layout */
+flex: none;
+order: 2;
+flex-grow: 0;
+
+
+/* close */
+
+box-sizing: border-box;
+
+/* Auto layout */
+display: flex;
+flex-direction: row;
+justify-content: center;
+align-items: center;
+padding: 5px;
+gap: 10px;
+
+margin: 0 auto;
+width: 30px;
+height: 30px;
+
+/* Failure */
+border: 2px solid #D03E35;
+border-radius: 69px;
+
+/* Inside auto layout */
+flex: none;
+order: 3;
+flex-grow: 0;
+
+
+/* Vector */
+
+width: 14px;
+height: 14px;
+
+/* Failure */
+background: #D03E35;
+
+/* Inside auto layout */
+flex: none;
+order: 0;
+flex-grow: 0;
+
+
+/* 42 */
+
+margin: 0 auto;
+width: 23px;
+height: 24px;
+
+font-family: 'Poppins';
+font-style: normal;
+font-weight: 400;
+font-size: 14px;
+line-height: 170%;
+/* identical to box height, or 24px */
+display: flex;
+align-items: center;
+letter-spacing: 0.6px;
+
+color: #FFFFFF;
+
+
+/* Inside auto layout */
+flex: none;
+order: 4;
+flex-grow: 0;
+
+
+/* 6 */
+
+margin: 0 auto;
+width: 24px;
+height: 24px;
+
+font-family: 'Poppins';
+font-style: normal;
+font-weight: 400;
+font-size: 14px;
+line-height: 170%;
+/* identical to box height, or 24px */
+display: flex;
+align-items: center;
+letter-spacing: 0.6px;
+
+color: #FFFFFF;
+
+
+/* Inside auto layout */
+flex: none;
+order: 5;
+flex-grow: 0;
+
+
+/* 23:12 */
+
+margin: 0 auto;
+width: 35px;
+height: 24px;
+
+font-family: 'Poppins';
+font-style: normal;
+font-weight: 400;
+font-size: 14px;
+line-height: 170%;
+/* identical to box height, or 24px */
+display: flex;
+align-items: center;
+letter-spacing: 0.6px;
+
+color: #FFFFFF;
+
+
+/* Inside auto layout */
+flex: none;
+order: 6;
+flex-grow: 0;
+
+
+/* 23:12 */
+
+margin: 0 auto;
+width: 35px;
+height: 24px;
+
+font-family: 'Poppins';
+font-style: normal;
+font-weight: 400;
+font-size: 14px;
+line-height: 170%;
+/* identical to box height, or 24px */
+display: flex;
+align-items: center;
+letter-spacing: 0.6px;
+
+color: #FFFFFF;
+
+
+/* Inside auto layout */
+flex: none;
+order: 7;
+flex-grow: 0;
+
+
+/* 23:12 */
+
+margin: 0 auto;
+width: 35px;
+height: 24px;
+
+font-family: 'Poppins';
+font-style: normal;
+font-weight: 400;
+font-size: 14px;
+line-height: 170%;
+/* identical to box height, or 24px */
+display: flex;
+align-items: center;
+letter-spacing: 0.6px;
+
+color: #FFFFFF;
+
+
+/* Inside auto layout */
+flex: none;
+order: 8;
+flex-grow: 0;
+
+
+/* 23:12 */
+
+margin: 0 auto;
+width: 35px;
+height: 24px;
+
+font-family: 'Poppins';
+font-style: normal;
+font-weight: 400;
+font-size: 14px;
+line-height: 170%;
+/* identical to box height, or 24px */
+display: flex;
+align-items: center;
+letter-spacing: 0.6px;
+
+color: #FFFFFF;
+
+
+/* Inside auto layout */
+flex: none;
+order: 9;
+flex-grow: 0;
+
+
+/* 23:12 */
+
+margin: 0 auto;
+width: 35px;
+height: 24px;
+
+font-family: 'Poppins';
+font-style: normal;
+font-weight: 400;
+font-size: 14px;
+line-height: 170%;
+/* identical to box height, or 24px */
+display: flex;
+align-items: center;
+letter-spacing: 0.6px;
+
+color: #FFFFFF;
+
+
+/* Inside auto layout */
+flex: none;
+order: 10;
+flex-grow: 0;
