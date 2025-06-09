@@ -45,6 +45,9 @@ const handleResponse = async (response: Response) => {
   return data;
 };
 
+// API base URL for serverless functions
+const API_BASE_URL = import.meta.env.VITE_APP_DOMAIN || '';
+
 // Login user
 export async function loginUser(credentials: LoginCredentials): Promise<User> {
   try {
@@ -70,7 +73,7 @@ export async function loginUser(credentials: LoginCredentials): Promise<User> {
     }
 
     // Real API call
-    const response = await fetch('/.netlify/functions/auth', {
+    const response = await fetch(`${API_BASE_URL}/.netlify/functions/auth`, {
       method: 'POST',
       headers: {
         'Content-Type': 'application/json',
@@ -148,7 +151,7 @@ export async function registerUser(data: RegisterData): Promise<User> {
     const { confirmPassword, ...registerData } = data;
 
     // Real API call
-    const response = await fetch('/.netlify/functions/auth', {
+    const response = await fetch(`${API_BASE_URL}/.netlify/functions/auth`, {
       method: 'POST',
       headers: {
         'Content-Type': 'application/json',
@@ -195,7 +198,7 @@ export async function requestPasswordReset(email: string): Promise<{ message: st
     }
 
     // Real API call
-    const response = await fetch('/.netlify/functions/auth-reset-password', {
+    const response = await fetch(`${API_BASE_URL}/.netlify/functions/auth-reset-password`, {
       method: 'POST',
       headers: {
         'Content-Type': 'application/json',
@@ -234,7 +237,7 @@ export async function verifyResetToken(token: string): Promise<{ message: string
     }
 
     // Real API call
-    const response = await fetch('/.netlify/functions/auth-reset-password', {
+    const response = await fetch(`${API_BASE_URL}/.netlify/functions/auth-reset-password`, {
       method: 'POST',
       headers: {
         'Content-Type': 'application/json',
@@ -272,7 +275,7 @@ export async function resetPassword(token: string, password: string): Promise<{ 
     }
 
     // Real API call
-    const response = await fetch('/.netlify/functions/auth-reset-password', {
+    const response = await fetch(`${API_BASE_URL}/.netlify/functions/auth-reset-password`, {
       method: 'POST',
       headers: {
         'Content-Type': 'application/json',
