@@ -47,6 +47,7 @@ const handleResponse = async (response: Response) => {
 
 // API base URL for serverless functions
 const API_BASE_URL = import.meta.env.VITE_APP_DOMAIN || '';
+const FUNCTIONS_PATH_PREFIX = import.meta.env.VITE_FUNCTIONS_PATH_PREFIX || '/.netlify/functions';
 
 // Login user
 export async function loginUser(credentials: LoginCredentials): Promise<User> {
@@ -73,7 +74,7 @@ export async function loginUser(credentials: LoginCredentials): Promise<User> {
     }
 
     // Real API call
-    const response = await fetch(`${API_BASE_URL}/.netlify/functions/auth`, {
+    const response = await fetch(`${API_BASE_URL}${FUNCTIONS_PATH_PREFIX}/auth`, {
       method: 'POST',
       headers: {
         'Content-Type': 'application/json',
