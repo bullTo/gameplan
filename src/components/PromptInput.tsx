@@ -93,6 +93,7 @@ export function PromptInput({ onPromptProcessed }: PromptInputProps) {
 
       const result = await processPrompt(prompt);
 
+      console.log("=============,,",result);
       console.timeEnd('processPrompt API call');
       console.log('✅ API call successful, received result:', result);
 
@@ -108,6 +109,8 @@ export function PromptInput({ onPromptProcessed }: PromptInputProps) {
         setError('The AI did not provide a response. Please try again.');
       }
 
+      
+      console.log('📊 Setting state with API result:', result.promptAnalysis)
       setPromptAnalysis(result.promptAnalysis);
       setPromptLogId(result.promptLogId);
       setRemainingPrompts(result.remainingPrompts);
@@ -135,7 +138,7 @@ export function PromptInput({ onPromptProcessed }: PromptInputProps) {
         promptLogId,
         reasoning: prompt,
         sport: promptAnalysis?.sport || null,
-        betType: promptAnalysis?.betType || null,
+        betType: promptAnalysis?.bet_type || null,
         metadata: promptAnalysis
       });
 
@@ -267,8 +270,8 @@ export function PromptInput({ onPromptProcessed }: PromptInputProps) {
                 {promptAnalysis && (
                   <CardDescription className="text-gray-300">
                     {promptAnalysis.sport && `Sport: ${promptAnalysis.sport}`}
-                    {promptAnalysis.betType && ` • Type: ${promptAnalysis.betType}`}
-                    {promptAnalysis.riskProfile && ` • Risk: ${promptAnalysis.riskProfile}`}
+                    {promptAnalysis.bet_type && ` • Type: ${promptAnalysis.bet_type}`}
+                    {promptAnalysis.risk_profile && ` • Risk: ${promptAnalysis.risk_profile}`}
                   </CardDescription>
                 )}
               </CardHeader>

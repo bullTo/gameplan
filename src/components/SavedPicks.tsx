@@ -41,7 +41,8 @@ export function SavedPicks() {
         offset: (page - 1) * limit
       });
 
-      setPicks(result.picks);
+      console.log("savedPickes===", result.savedPicks)
+      setPicks(result.savedPicks);
       setTotal(result.total);
     } catch (err) {
       setError(err instanceof Error ? err.message : 'Failed to load saved picks');
@@ -120,15 +121,15 @@ export function SavedPicks() {
                       }`} />
                       <CardHeader className="pb-2">
                         <div className="flex justify-between items-start">
-                          <CardTitle className="text-base">{pick.play_text}</CardTitle>
+                          <CardTitle className="text-base">{pick.reasoning}</CardTitle>
                           <div className="flex items-center text-xs text-muted-foreground">
                             {pick.sport && <span className="mr-2">{pick.sport}</span>}
                             <span>{format(new Date(pick.created_at), 'MMM d, yyyy')}</span>
                           </div>
                         </div>
-                        {pick.reasoning && (
+                        {pick.play_text && (
                           <CardDescription className="mt-1 line-clamp-2">
-                            {pick.reasoning}
+                            {pick.play_text}
                           </CardDescription>
                         )}
                       </CardHeader>

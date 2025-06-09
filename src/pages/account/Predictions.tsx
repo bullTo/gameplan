@@ -9,17 +9,26 @@ import { useToast } from '../../components/ui/use-toast'
 interface Prediction {
   id: number;
   sport: string;
-  team_name?: string;
-  player_name?: string;
-  opponent?: string;
   bet_type: string;
-  description: string;
-  match_date?: string;
-  odds?: string;
-  confidence: number;
-  risk_level: string;
-  hit_rate?: string;
-  logo_url?: string;
+  response: string;
+  prompt_text: string;
+  pickSaved: boolean;
+  parsed_entities: {
+    team_name?: string;
+    player_name?: string;
+    opponent?: string;
+    sport: string;
+    bet_type: string;
+    description: string;
+    date1?: string;
+    date2?: string;
+    // match_date?: string;
+    // odds?: string;
+    // confidence: number;
+    risk_profile: string;
+    hit_rate?: string;
+    logo_url?: string;
+  }
 }
 
 const Predictions = () => {
@@ -34,15 +43,16 @@ const Predictions = () => {
 
   // State for predictions data
   const [loading, setLoading] = useState(true);
-  const [safeBets, setSafeBets] = useState<Prediction[]>([]);
-  const [hailMarys, setHailMarys] = useState<Prediction[]>([]);
-  const [parlays, setParlays] = useState<Prediction[]>([]);
+  const [predictions, setPredictions] = useState<Prediction[]>([]);
+  // const [safeBets, setSafeBets] = useState<Prediction[]>([]);
+  // const [hailMarys, setHailMarys] = useState<Prediction[]>([]);
+  // const [parlays, setParlays] = useState<Prediction[]>([]);
 
   // Sports options
-  const sportOptions = ['All', 'NBA', 'NHL', 'MLB', 'NFL', 'Soccer'];
+  const sportOptions = ['All', 'NBA', 'NFL', 'NHL', 'MLB', 'CFL', 'MLS'];
 
   // Prediction type options
-  const typeOptions = ['All', 'Player', 'Sports', 'Team'];
+  const typeOptions = ['All', 'moneyline', 'spread', 'over/under', 'prop', 'parlay'];
 
   // Toggle dropdown visibility
   const toggleSportDropdown = () => setSportDropdownOpen(!sportDropdownOpen);
@@ -76,26 +86,29 @@ const Predictions = () => {
       // Fetch all predictions
       const response = await getPredictions(params);
 
-      if (response && response.recommendations) {
+      console.log(response.predictions)
+      if (response && response.predictions) {
+        setPredictions(response.predictions);
         // Filter predictions by risk level
-        const safe = response.recommendations.filter((pred: any) =>
-          pred.risk_level === 'Safe Bet' ||
-          pred.confidence >= 0.7
-        );
+        // const safe = response.predictions.filter((pred: any) =>
+        //   pred.parsed_entities.risk_profile?.toLowerCase() === 'safe bet'
+        // );
 
-        const hailMary = response.recommendations.filter((pred: any) =>
-          pred.risk_level === 'Hail Mary' ||
-          (pred.confidence < 0.7 && pred.confidence >= 0.3)
-        );
+        // const hailMary = response.predictions.filter((pred: any) =>
+        //   pred.parsed_entities.risk_profile?.toLowerCase() === 'hail mary'
+        // );
 
-        const parlay = response.recommendations.filter((pred: any) =>
-          pred.risk_level === 'Parlay' ||
-          pred.bet_type === 'parlay'
-        );
+        // const parlay = response.predictions.filter((pred: any) =>
+        //   pred.parsed_entities.risk_profile?.toLowerCase() === 'moderate' ||
+        //   pred.bet_type?.toLowerCase() === 'parlay'
+        // );
 
-        setSafeBets(safe);
-        setHailMarys(hailMary);
-        setParlays(parlay);
+        // console.log("safe====", safe)
+        // console.log("hailMary====", hailMary)
+        // console.log("parlay====", parlay)
+        // setSafeBets(safe);
+        // setHailMarys(hailMary);
+        // setParlays(parlay);
       }
     } catch (error) {
       console.error('Error fetching predictions:', error);
@@ -182,51 +195,17 @@ const Predictions = () => {
           </div>
         ) : (
           /* Content Area - Three Columns */
-          <div className="flex flex-col lg:flex-row gap-6">
+          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
             {/* Safe Bets Column */}
-            <div className="w-full lg:w-1/3 flex flex-col gap-4">
-              <h2 className="text-white text-xl font-normal tracking-wider">Safe Bets</h2>
-
-              {safeBets.length > 0 ? (
-                safeBets.map((prediction) => (
-                  <PredictionCard key={prediction.id} prediction={prediction} />
-                ))
-              ) : (
-                <div className="bg-[#1B1C25] p-4 rounded-xl border border-[rgba(14,173,171,0.2)] text-center">
-                  <p className="text-white">No safe bets available</p>
-                </div>
-              )}
-            </div>
-
-            {/* Hail Marys Column */}
-            <div className="w-full lg:w-1/3 flex flex-col gap-4">
-              <h2 className="text-white text-xl font-normal tracking-wider">Hail Marys</h2>
-
-              {hailMarys.length > 0 ? (
-                hailMarys.map((prediction) => (
-                  <PredictionCard key={prediction.id} prediction={prediction} />
-                ))
-              ) : (
-                <div className="bg-[#1B1C25] p-4 rounded-xl border border-[rgba(14,173,171,0.2)] text-center">
-                  <p className="text-white">No hail marys available</p>
-                </div>
-              )}
-            </div>
-
-            {/* Parlays Column */}
-            <div className="w-full lg:w-1/3 flex flex-col gap-4">
-              <h2 className="text-white text-xl font-normal tracking-wider">Parlays</h2>
-
-              {parlays.length > 0 ? (
-                parlays.map((prediction) => (
-                  <PredictionCard key={prediction.id} prediction={prediction} />
-                ))
-              ) : (
-                <div className="bg-[#1B1C25] p-4 rounded-xl border border-[rgba(14,173,171,0.2)] text-center">
-                  <p className="text-white">No parlays available</p>
-                </div>
-              )}
-            </div>
+            {predictions.length > 0 ? (
+              predictions.map((prediction) => (
+                <PredictionCard key={prediction.id} prediction={prediction} />
+              ))
+            ) : (
+              <div className="bg-[#1B1C25] p-4 rounded-xl border border-[rgba(14,173,171,0.2)] text-center">
+                <p className="text-white">No safe bets available</p>
+              </div>
+            )}
           </div>
         )}
       </div>
