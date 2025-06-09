@@ -1,3 +1,5 @@
+require('dotenv').config();
+
 // Utility functions for sports data collection
 const { Pool } = require('pg');
 const fetch = require('node-fetch');

@@ -1,3 +1,5 @@
+require('dotenv').config();
+
 // Function to test the sports database tables
 const { Pool } = require('pg');
 

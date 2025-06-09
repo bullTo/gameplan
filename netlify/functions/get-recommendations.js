@@ -1,3 +1,5 @@
+require('dotenv').config();
+
 // Netlify function to get user recommendations
 const { Pool } = require('pg');
 const jwt = require('jsonwebtoken');

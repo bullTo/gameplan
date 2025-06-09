@@ -1,3 +1,4 @@
+require('dotenv').config();
 // Netlify function for processing user prompts
 const fetch = require('node-fetch');
 const { Pool } = require('pg');

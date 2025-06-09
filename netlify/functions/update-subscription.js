@@ -1,3 +1,4 @@
+require('dotenv').config();
 // Netlify function to update user subscription plan
 const { Pool } = require('pg');
 const jwt = require('jsonwebtoken');

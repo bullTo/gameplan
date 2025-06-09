@@ -1,7 +1,7 @@
 // Netlify function to save a pick to the saved_picks table
 const { Pool } = require('pg');
 const jwt = require('jsonwebtoken');
-
+require('dotenv').config();
 // Initialize PostgreSQL connection pool
 const pool = new Pool({
   connectionString: process.env.DATABASE_URL,

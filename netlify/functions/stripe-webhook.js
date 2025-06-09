@@ -1,3 +1,5 @@
+require('dotenv').config();
+
 // Netlify function to handle Stripe webhook events
 const { Pool } = require('pg');
 const stripe = require('stripe')(process.env.STRIPE_SECRET_KEY);

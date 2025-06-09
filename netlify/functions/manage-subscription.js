@@ -1,3 +1,5 @@
+require('dotenv').config();
+
 // Netlify function to manage user subscriptions (cancel, update, etc.)
 const { Pool } = require('pg');
 const stripe = require('stripe')(process.env.STRIPE_SECRET_KEY);

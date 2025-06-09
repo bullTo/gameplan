@@ -1,3 +1,5 @@
+require('dotenv').config();
+
 // Netlify function for admin subscription management
 const { Pool } = require('pg');
 const jwt = require('jsonwebtoken');
