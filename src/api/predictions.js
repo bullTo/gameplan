@@ -18,6 +18,10 @@ export async function getPredictions(params = {}) {
       throw new Error('Authentication required');
     }
 
+
+    // API base URL for serverless functions
+    const API_BASE_URL = import.meta.env.VITE_APP_DOMAIN || '';
+    const FUNCTIONS_PATH_PREFIX = import.meta.env.VITE_FUNCTIONS_PATH_PREFIX || '/.netlify/functions';
     // Build query string
     const queryParams = new URLSearchParams();
     if (params.sport) queryParams.append('sport', params.sport);
@@ -27,7 +31,7 @@ export async function getPredictions(params = {}) {
 
     const queryString = queryParams.toString() ? `?${queryParams.toString()}` : '';
 
-    const response = await fetch(`/.netlify/functions/get-predictions${queryString}`, {
+    const response = await fetch(`${API_BASE_URL}${FUNCTIONS_PATH_PREFIX}/get-predictions${queryString}`, {
       method: 'GET',
       headers: {
         'Authorization': `Bearer ${token}`
@@ -54,7 +58,7 @@ export async function getPredictionById(id) {
       throw new Error('Authentication required');
     }
 
-    const response = await fetch(`/.netlify/functions/get-recommendations?id=${id}`, {
+    const response = await fetch(`${API_BASE_URL}${FUNCTIONS_PATH_PREFIX}/get-recommendations?id=${id}`, {
       method: 'GET',
       headers: {
         'Authorization': `Bearer ${token}`

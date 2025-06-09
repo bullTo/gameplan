@@ -53,9 +53,7 @@ const FUNCTIONS_PATH_PREFIX = import.meta.env.VITE_FUNCTIONS_PATH_PREFIX || '/.n
 // Login user
 export async function loginUser(credentials: LoginCredentials): Promise<User> {
   try {
-
-    console.log('API_BASE_URL:', API_BASE_URL);
-    console.log('FUNCTIONS_PATH_PREFIX:', FUNCTIONS_PATH_PREFIX);
+    
     // For development/testing, use mock data
     if (import.meta.env.DEV && !import.meta.env.VITE_USE_REAL_API) {
       console.log('Using mock login:', credentials);
@@ -156,7 +154,7 @@ export async function registerUser(data: RegisterData): Promise<User> {
     const { confirmPassword, ...registerData } = data;
 
     // Real API call
-    const response = await fetch(`${API_BASE_URL}/.netlify/functions/auth`, {
+    const response = await fetch(`${API_BASE_URL}${FUNCTIONS_PATH_PREFIX}/auth`, {
       method: 'POST',
       headers: {
         'Content-Type': 'application/json',
@@ -203,7 +201,7 @@ export async function requestPasswordReset(email: string): Promise<{ message: st
     }
 
     // Real API call
-    const response = await fetch(`${API_BASE_URL}/.netlify/functions/auth-reset-password`, {
+    const response = await fetch(`${API_BASE_URL}${FUNCTIONS_PATH_PREFIX}/auth-reset-password`, {
       method: 'POST',
       headers: {
         'Content-Type': 'application/json',
@@ -242,7 +240,7 @@ export async function verifyResetToken(token: string): Promise<{ message: string
     }
 
     // Real API call
-    const response = await fetch(`${API_BASE_URL}/.netlify/functions/auth-reset-password`, {
+    const response = await fetch(`${API_BASE_URL}${FUNCTIONS_PATH_PREFIX}/auth-reset-password`, {
       method: 'POST',
       headers: {
         'Content-Type': 'application/json',
@@ -280,7 +278,7 @@ export async function resetPassword(token: string, password: string): Promise<{ 
     }
 
     // Real API call
-    const response = await fetch(`${API_BASE_URL}/.netlify/functions/auth-reset-password`, {
+    const response = await fetch(`${API_BASE_URL}${FUNCTIONS_PATH_PREFIX}/auth-reset-password`, {
       method: 'POST',
       headers: {
         'Content-Type': 'application/json',
