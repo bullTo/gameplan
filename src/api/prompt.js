@@ -7,11 +7,11 @@
  */
 const handleResponse = async (response) => {
   const data = await response.json();
-  
+
   if (!response.ok) {
     throw new Error(data.error || 'API request failed');
   }
-  
+
   return data;
 };
 
@@ -31,12 +31,12 @@ const getAuthToken = () => {
 export async function processPrompt(prompt) {
   try {
     const token = getAuthToken();
-    
+
     if (!token) {
       throw new Error('Authentication required');
     }
-    
-    const response = await fetch('/.netlify/functions/prompt-process', {
+
+    const response = await fetch('${API_BASE_URL}${FUNCTIONS_PATH_PREFIX}/prompt-process', {
       method: 'POST',
       headers: {
         'Content-Type': 'application/json',
@@ -44,7 +44,7 @@ export async function processPrompt(prompt) {
       },
       body: JSON.stringify({ prompt })
     });
-    
+
     return handleResponse(response);
   } catch (error) {
     console.error('Prompt processing error:', error);
@@ -66,12 +66,12 @@ export async function processPrompt(prompt) {
 export async function savePick(pickData) {
   try {
     const token = getAuthToken();
-    
+
     if (!token) {
       throw new Error('Authentication required');
     }
-    
-    const response = await fetch('/.netlify/functions/tracker-save', {
+
+    const response = await fetch(`${API_BASE_URL}${FUNCTIONS_PATH_PREFIX}/tracker-save`, {
       method: 'POST',
       headers: {
         'Content-Type': 'application/json',
@@ -79,7 +79,7 @@ export async function savePick(pickData) {
       },
       body: JSON.stringify(pickData)
     });
-    
+
     return handleResponse(response);
   } catch (error) {
     console.error('Save pick error:', error);
@@ -99,27 +99,32 @@ export async function savePick(pickData) {
 export async function getSavedPicks(params = {}) {
   try {
     const token = getAuthToken();
-    
+
     if (!token) {
       throw new Error('Authentication required');
     }
-    
+
     // Build query string
     const queryParams = new URLSearchParams();
     if (params.status) queryParams.append('status', params.status);
     if (params.sport) queryParams.append('sport', params.sport);
     if (params.limit) queryParams.append('limit', params.limit.toString());
     if (params.offset) queryParams.append('offset', params.offset.toString());
-    
+
     const queryString = queryParams.toString() ? `?${queryParams.toString()}` : '';
+
+
+    // API base URL for serverless functions
+    const API_BASE_URL = import.meta.env.VITE_APP_DOMAIN || '';
+    const FUNCTIONS_PATH_PREFIX = import.meta.env.VITE_FUNCTIONS_PATH_PREFIX || '/.netlify/functions';
     
-    const response = await fetch(`/.netlify/functions/tracker-get${queryString}`, {
+    const response = await fetch(`${API_BASE_URL}${FUNCTIONS_PATH_PREFIX}/tracker-get${queryString}`, {
       method: 'GET',
       headers: {
         'Authorization': `Bearer ${token}`
       }
     });
-    
+
     return handleResponse(response);
   } catch (error) {
     console.error('Get saved picks error:', error);
@@ -136,12 +141,12 @@ export async function getSavedPicks(params = {}) {
 export async function updatePickStatus(pickId, status) {
   try {
     const token = getAuthToken();
-    
+
     if (!token) {
       throw new Error('Authentication required');
     }
-    
-    const response = await fetch('/.netlify/functions/tracker-update', {
+
+    const response = await fetch(`${API_BASE_URL}${FUNCTIONS_PATH_PREFIX}/tracker-update`, {
       method: 'PUT',
       headers: {
         'Content-Type': 'application/json',
@@ -149,7 +154,7 @@ export async function updatePickStatus(pickId, status) {
       },
       body: JSON.stringify({ pickId, status })
     });
-    
+
     return handleResponse(response);
   } catch (error) {
     console.error('Update pick status error:', error);
