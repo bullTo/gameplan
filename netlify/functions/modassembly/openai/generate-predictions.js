@@ -50,7 +50,21 @@ async function generatePredictions(prompt, extractedData, sportsData) {
   
           Remember that you are providing suggestions for informational purposes only, not encouraging gambling.
   
-          IMPORTANT: Base your analysis ONLY on the data provided. Do not reference real-world events, current team performance, or player information that is not included in the provided data.`
+          IMPORTANT: Base your analysis ONLY on the data provided. Do not reference real-world events, current team performance, or player information that is not included in the provided data.
+
+          After your main response, extract and return the following JSON object based on your suggestion and reasoning:
+          {
+            "sport": "nba, mlb, nhl, nfl",
+            "betType": "prop, parlay, moneyline, spread, over/under, etc.",
+            "timeFrame": "day.month.year" or null,
+            "team_name": "main team mentioned or null",
+            "player_name": "main player mentioned or null",
+            "opponent": "opposing team or player or null",
+            "risk_profile": "safe bet, moderate, hail mary, etc.",
+            "odds": "betting odds mentioned or predict",
+            "confidence": "predict from the risk assessment as numeric value(%)"
+          }
+          Respond with your suggestion, then the JSON object on a new line. If a field is not applicable, use null. If odds or confidence are not explicitly mentioned, predict them based on your reasoning and risk assessment.`
             },
             {
                 role: 'user',

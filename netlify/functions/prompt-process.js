@@ -118,7 +118,7 @@ exports.handler = async (event) => {
       statusCode: 200,
       body: JSON.stringify({
         response: predictionsText.content,
-        extractedData,
+        promptAnalysis: extractedData,
         promptLogId,
         remainingPrompts: promptLimit - (user.daily_prompt_count + 1)
       }),
@@ -287,7 +287,7 @@ async function logPrompt(userId, promptText, response, parsedEntities) {
     // Insert the prompt log
     // Extract sport and bet_type from parsed entities with correct case handling
     const sport = parsedEntities.Sport || parsedEntities.sport || null;
-    const betType = parsedEntities["Bet type"] || parsedEntities.betType || null;
+    const betType = parsedEntities["Bet type"] || parsedEntities.bet_type || null;
 
     console.log(`📝 Logging prompt with sport: ${sport}, bet_type: ${betType}`);
 
@@ -316,6 +316,7 @@ async function logPrompt(userId, promptText, response, parsedEntities) {
 // Increment the user's daily prompt count
 async function incrementPromptCount(userId) {
   try {
+    console.log("increment_daily_prompt_count::", userId)
     await pool.query(
       `UPDATE users SET daily_prompt_count = daily_prompt_count + 1
        WHERE id = $1`,

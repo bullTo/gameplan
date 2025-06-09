@@ -24,7 +24,10 @@ async function extractDataFromQuery(prompt) {
                 "bet_type": "prop, parlay, moneyline, spread, over/under, etc.",
                 "date1": "day.month.year" or null,
                 "date2": "day.month.year" or null,
-                "risk_profile": "safe bet, long shot, etc."
+                "risk_profile": "safe bet, long shot, etc.",
+                "team_name": "main team mentioned or null",
+                "player_name": "main player mentioned or null",
+                "opponent": "opposing team or player or null",
               }
   
               date1 and date2 represent a date range. Example: tonight, today, tomorrow should be the same date. Next week should be the range of next week. Today's date is ${formattedDate}. IMPORTANT: If no time is mentioned in the prompt, use null for both.

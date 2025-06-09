@@ -27,7 +27,7 @@ export async function getPredictions(params = {}) {
 
     const queryString = queryParams.toString() ? `?${queryParams.toString()}` : '';
 
-    const response = await fetch(`/.netlify/functions/get-recommendations${queryString}`, {
+    const response = await fetch(`/.netlify/functions/get-predictions${queryString}`, {
       method: 'GET',
       headers: {
         'Authorization': `Bearer ${token}`

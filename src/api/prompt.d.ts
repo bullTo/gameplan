@@ -63,7 +63,7 @@ export interface SavePickResponse {
 }
 
 export interface GetSavedPicksResponse {
-  picks: SavedPick[];
+  savedPicks: SavedPick[];
   total: number;
   limit: number;
   offset: number;
