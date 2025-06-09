@@ -1,3 +1,4 @@
+require('dotenv').config();
 // Netlify function for LLM API integration (OpenAI and OpenRouter)
 const { OpenAI } = require('openai');
 const fetch = require('node-fetch');

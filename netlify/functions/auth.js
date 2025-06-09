@@ -1,3 +1,5 @@
+require('dotenv').config();
+
 // Netlify function for authentication (login and registration)
 const { Pool } = require('pg');
 const bcrypt = require('bcryptjs');

@@ -1,3 +1,5 @@
+require('dotenv').config();
+
 // Netlify function to get subscription plans
 const { Pool } = require('pg');
 const jwt = require('jsonwebtoken');

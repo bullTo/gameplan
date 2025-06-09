@@ -1,3 +1,5 @@
+require('dotenv').config();
+
 // Netlify function to get users
 const { Pool } = require('pg');
 const jwt = require('jsonwebtoken');

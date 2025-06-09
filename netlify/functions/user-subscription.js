@@ -1,3 +1,4 @@
+require('dotenv').config();
 // Netlify function to get user's subscription details
 const { Pool } = require('pg');
 const jwt = require('jsonwebtoken');

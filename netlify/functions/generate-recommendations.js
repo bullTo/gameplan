@@ -1,3 +1,5 @@
+require('dotenv').config();
+
 // Netlify function to generate betting recommendations
 const { Pool } = require('pg');
 const fetch = require('node-fetch');

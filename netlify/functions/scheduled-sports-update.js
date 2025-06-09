@@ -1,3 +1,5 @@
+require('dotenv').config();
+
 // Netlify scheduled function to update sports data daily
 const fetch = require('node-fetch');
 

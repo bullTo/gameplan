@@ -1,3 +1,5 @@
+require('dotenv').config();
+
 // Netlify function to create a Stripe checkout session for subscription purchases
 const { Pool } = require('pg');
 const stripe = require('stripe')(process.env.STRIPE_SECRET_KEY);

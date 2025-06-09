@@ -1,3 +1,4 @@
+require('dotenv').config();
 // Simple function to fetch sports data and send it directly to Claude 3 Opus
 const { Pool } = require('pg');
 const fetch = require('node-fetch');

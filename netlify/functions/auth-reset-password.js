@@ -1,3 +1,4 @@
+require('dotenv').config();
 // Netlify function for password reset
 import pkg from 'pg';
 const { Pool } = pkg;

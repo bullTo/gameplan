@@ -1,3 +1,4 @@
+require('dotenv').config();
 // Netlify function to get saved picks from the saved_picks table
 const { Pool } = require('pg');
 const jwt = require('jsonwebtoken');

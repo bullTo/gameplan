@@ -1,3 +1,5 @@
+require('dotenv').config();
+
 // Netlify function to get predictions from the prompt_logs table
 const { Pool } = require('pg');
 const jwt = require('jsonwebtoken');

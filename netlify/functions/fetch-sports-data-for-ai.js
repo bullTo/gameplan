@@ -1,3 +1,5 @@
+require('dotenv').config();
+
 // Function to fetch sports data from our JSONB tables for AI analysis
 const { Pool } = require('pg');
 

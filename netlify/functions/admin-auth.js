@@ -1,3 +1,5 @@
+require('dotenv').config();
+
 // Netlify function for admin authentication
 const { Pool } = require('pg');
 const bcrypt = require('bcryptjs');
