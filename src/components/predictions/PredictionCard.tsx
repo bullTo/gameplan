@@ -34,7 +34,7 @@ interface PredictionCardProps {
 const PredictionCard = ({ prediction }: PredictionCardProps) => {
   const [savingPick, setSavingPick] = useState(false);
   const [pickSaved, setPickSaved] = useState(prediction.pickSaved);
-  const [error, setError] = useState<string | null>(null);
+  // const [error, setError] = useState<string | null>(null);
   // Format the confidence as a percentage
   const confidencePercent = prediction.parsed_entities.risk_profile === 'safe bet' ? 85 
   : prediction.parsed_entities.risk_profile === 'Moderate' ? 65 : 45;
@@ -62,7 +62,7 @@ const PredictionCard = ({ prediction }: PredictionCardProps) => {
 
       setPickSaved(true);
     } catch (err) {
-      setError(err instanceof Error ? err.message : 'Failed to save pick');
+      // setError(err instanceof Error ? err.message : 'Failed to save pick');
     } finally {
       setSavingPick(false);
     }
