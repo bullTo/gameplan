@@ -49,9 +49,13 @@ const handleResponse = async (response: Response) => {
 const API_BASE_URL = import.meta.env.VITE_APP_DOMAIN || '';
 const FUNCTIONS_PATH_PREFIX = import.meta.env.VITE_FUNCTIONS_PATH_PREFIX || '/.netlify/functions';
 
+
 // Login user
 export async function loginUser(credentials: LoginCredentials): Promise<User> {
   try {
+
+    console.log('API_BASE_URL:', API_BASE_URL);
+    console.log('FUNCTIONS_PATH_PREFIX:', FUNCTIONS_PATH_PREFIX);
     // For development/testing, use mock data
     if (import.meta.env.DEV && !import.meta.env.VITE_USE_REAL_API) {
       console.log('Using mock login:', credentials);
