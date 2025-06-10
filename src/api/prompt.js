@@ -96,6 +96,10 @@ export async function savePick(pickData) {
  * @param {number} [params.offset] - Offset for pagination
  * @returns {Promise<SavedPicksResponse>} The saved picks response
  */
+
+const API_BASE_URL = import.meta.env.VITE_APP_DOMAIN || '';
+const FUNCTIONS_PATH_PREFIX = import.meta.env.VITE_FUNCTIONS_PATH_PREFIX || '/.netlify/functions';
+
 export async function getSavedPicks(params = {}) {
   try {
     const token = getAuthToken();
@@ -111,14 +115,12 @@ export async function getSavedPicks(params = {}) {
     if (params.limit) queryParams.append('limit', params.limit.toString());
     if (params.offset) queryParams.append('offset', params.offset.toString());
 
-    const API_BASE_URL = import.meta.env.VITE_APP_DOMAIN || '';
-    const FUNCTIONS_PATH_PREFIX = import.meta.env.VITE_FUNCTIONS_PATH_PREFIX || '/.netlify/functions';
-    
+
     const queryString = queryParams.toString() ? `?${queryParams.toString()}` : '';
 
 
     // API base URL for serverless functions
-    
+
     const response = await fetch(`${API_BASE_URL}${FUNCTIONS_PATH_PREFIX}/tracker-get${queryString}`, {
       method: 'GET',
       headers: {
