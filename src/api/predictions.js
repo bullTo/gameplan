@@ -10,6 +10,10 @@ import { getAuthToken, handleResponse } from './utils';
  * @param {number} [params.limit] - Limit the number of results
  * @returns {Promise<any>} The predictions response
  */
+// API base URL for serverless functions
+const API_BASE_URL = import.meta.env.VITE_APP_DOMAIN || '';
+const FUNCTIONS_PATH_PREFIX = import.meta.env.VITE_FUNCTIONS_PATH_PREFIX || '/.netlify/functions';
+
 export async function getPredictions(params = {}) {
   try {
     const token = getAuthToken();
@@ -18,10 +22,6 @@ export async function getPredictions(params = {}) {
       throw new Error('Authentication required');
     }
 
-
-    // API base URL for serverless functions
-    const API_BASE_URL = import.meta.env.VITE_APP_DOMAIN || '';
-    const FUNCTIONS_PATH_PREFIX = import.meta.env.VITE_FUNCTIONS_PATH_PREFIX || '/.netlify/functions';
     // Build query string
     const queryParams = new URLSearchParams();
     if (params.sport) queryParams.append('sport', params.sport);

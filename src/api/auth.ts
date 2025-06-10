@@ -34,6 +34,11 @@ interface User {
   subscription_plan?: string;
 }
 
+// API base URL for serverless functions
+const API_BASE_URL = import.meta.env.VITE_APP_DOMAIN || '';
+const FUNCTIONS_PATH_PREFIX = import.meta.env.VITE_FUNCTIONS_PATH_PREFIX || '/.netlify/functions';
+
+
 // Helper function to handle API responses
 const handleResponse = async (response: Response) => {
   const data = await response.json();
@@ -44,10 +49,6 @@ const handleResponse = async (response: Response) => {
 
   return data;
 };
-
-// API base URL for serverless functions
-const API_BASE_URL = import.meta.env.VITE_APP_DOMAIN || '';
-const FUNCTIONS_PATH_PREFIX = import.meta.env.VITE_FUNCTIONS_PATH_PREFIX || '/.netlify/functions';
 
 
 // Login user
