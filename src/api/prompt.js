@@ -36,7 +36,7 @@ export async function processPrompt(prompt) {
       throw new Error('Authentication required');
     }
 
-    const response = await fetch('${API_BASE_URL}${FUNCTIONS_PATH_PREFIX}/prompt-process', {
+    const response = await fetch(`${API_BASE_URL}${FUNCTIONS_PATH_PREFIX}/prompt-process`, {
       method: 'POST',
       headers: {
         'Content-Type': 'application/json',
@@ -111,12 +111,13 @@ export async function getSavedPicks(params = {}) {
     if (params.limit) queryParams.append('limit', params.limit.toString());
     if (params.offset) queryParams.append('offset', params.offset.toString());
 
+    const API_BASE_URL = import.meta.env.VITE_APP_DOMAIN || '';
+    const FUNCTIONS_PATH_PREFIX = import.meta.env.VITE_FUNCTIONS_PATH_PREFIX || '/.netlify/functions';
+    
     const queryString = queryParams.toString() ? `?${queryParams.toString()}` : '';
 
 
     // API base URL for serverless functions
-    const API_BASE_URL = import.meta.env.VITE_APP_DOMAIN || '';
-    const FUNCTIONS_PATH_PREFIX = import.meta.env.VITE_FUNCTIONS_PATH_PREFIX || '/.netlify/functions';
     
     const response = await fetch(`${API_BASE_URL}${FUNCTIONS_PATH_PREFIX}/tracker-get${queryString}`, {
       method: 'GET',
