@@ -19,11 +19,9 @@ interface PredictionCardProps {
       sport: string;
       bet_type: string;
       description: string;
-      date1?: string;
-      date2?: string;
-      // match_date?: string;
-      // odds?: string;
-      // confidence: number;
+      match_date?: string;
+      odds?: string;
+      confidence: number;
       risk_profile: string;
       hit_rate?: string;
       logo_url?: string;
@@ -39,7 +37,7 @@ const PredictionCard = ({ prediction }: PredictionCardProps) => {
   const confidencePercent = prediction.parsed_entities.risk_profile === 'safe bet' ? 85 
   : prediction.parsed_entities.risk_profile === 'Moderate' ? 65 : 45;
 
-  const match_date = prediction.parsed_entities.date1;
+  const match_date = prediction.parsed_entities.match_date;
   // Determine the display name (team or player)
   const displayName = prediction.parsed_entities.player_name || prediction.parsed_entities.team_name || '';
 

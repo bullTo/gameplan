@@ -47,7 +47,7 @@ export interface SavePickRequest {
     opponent?: string;
     line?: number;
     type?: string;
-    odds?: number;
+    odds?: string;
     [key: string]: any;
   };
 }
