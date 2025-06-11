@@ -22,7 +22,7 @@ exports.handler = async (event) => {
       };
     }
 
-    const { messages, model = "gpt-4.1", temperature = 0.7, max_tokens = 1500, use_claude = true } = JSON.parse(event.body);
+    const { messages, model = "gpt-4.1", temperature = 0.7, max_tokens = 800, use_claude = true } = JSON.parse(event.body);
 
     if (!messages || !Array.isArray(messages)) {
       return {
