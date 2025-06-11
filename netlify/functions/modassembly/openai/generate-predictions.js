@@ -52,7 +52,19 @@ async function generatePredictions(prompt, extractedData, sportsData) {
   
           IMPORTANT: Base your analysis ONLY on the data provided. Do not reference real-world events, current team performance, or player information that is not included in the provided data.
 
-         `
+          After your main response, extract and return the following JSON object based on your suggestion and reasoning:
+          {
+            "sport": "nba, mlb, nhl, nfl",
+            "bet_type": "prop, parlay, moneyline, spread, over/under, etc.",
+            "match_date": "day.month.year" or null,
+            "team_name": "main team mentioned or null",
+            "player_name": "main player mentioned or null",
+            "opponent": "opposing team or player or null",
+            "risk_profile": "safe bet, moderate, hail mary",
+            "odds": "betting odds mentioned or predict, not null",
+            "confidence": "predict from the risk assessment as numeric value(%)"
+          }
+          Respond with your suggestion, then the JSON object on a new line. If a field is not applicable, use null. If odds or confidence are not explicitly mentioned, predict them based on your reasoning and risk assessment.`
             },
             {
                 role: 'user',
@@ -66,7 +78,7 @@ async function generatePredictions(prompt, extractedData, sportsData) {
             body: JSON.stringify({
                 messages,
                 use_claude: false,  // Use OpenAI
-                max_tokens: 1000   // Increase max tokens for more detailed response
+                max_tokens: 800   // Increase max tokens for more detailed response
             })
         });
         console.log(`📥 OpenAI response status: ${response.status}`);
