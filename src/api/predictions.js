@@ -11,7 +11,7 @@ import { getAuthToken, handleResponse } from './utils';
  * @returns {Promise<any>} The predictions response
  */
 // API base URL for serverless functions
-const API_BASE_URL = import.meta.env.VITE_APP_DOMAIN || '';
+const API_BASE_URL = import.meta.env.VITE_API_BASE_URL || '';
 const FUNCTIONS_PATH_PREFIX = import.meta.env.VITE_FUNCTIONS_PATH_PREFIX || '/.netlify/functions';
 
 export async function getPredictions(params = {}) {

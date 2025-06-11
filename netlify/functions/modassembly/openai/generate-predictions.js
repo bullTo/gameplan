@@ -62,11 +62,12 @@ async function generatePredictions(prompt, extractedData, sportsData) {
 
         const baseUrl = process.env.URL || process.env.DEPLOY_URL || 'http://localhost:8888';
         const response = await fetch(`${baseUrl}/.netlify/functions/openai`, {
-            method: 'POST',
+            method: 'POST', // Increase max tokens for more detailed response
             body: JSON.stringify({
                 messages,
                 use_claude: false,  // Use OpenAI
                 max_tokens: 500   // Increase max tokens for more detailed response
+
             })
         });
         console.log(`📥 OpenAI response status: ${response.status}`);
