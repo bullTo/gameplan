@@ -52,19 +52,7 @@ async function generatePredictions(prompt, extractedData, sportsData) {
   
           IMPORTANT: Base your analysis ONLY on the data provided. Do not reference real-world events, current team performance, or player information that is not included in the provided data.
 
-          After your main response, extract and return the following JSON object based on your suggestion and reasoning:
-          {
-            "sport": "nba, mlb, nhl, nfl",
-            "betType": "prop, parlay, moneyline, spread, over/under, etc.",
-            "match_date": "day.month.year" or null,
-            "team_name": "main team mentioned or null",
-            "player_name": "main player mentioned or null",
-            "opponent": "opposing team or player or null",
-            "risk_profile": "safe bet, moderate, hail mary",
-            "odds": "betting odds mentioned or predict",
-            "confidence": "predict from the risk assessment as numeric value(%)"
-          }
-          Respond with your suggestion, then the JSON object on a new line. If a field is not applicable, use null. If odds or confidence are not explicitly mentioned, predict them based on your reasoning and risk assessment.`
+         `
             },
             {
                 role: 'user',
@@ -78,7 +66,7 @@ async function generatePredictions(prompt, extractedData, sportsData) {
             body: JSON.stringify({
                 messages,
                 use_claude: false,  // Use OpenAI
-                max_tokens: 2000   // Increase max tokens for more detailed response
+                max_tokens: 1000   // Increase max tokens for more detailed response
             })
         });
         console.log(`📥 OpenAI response status: ${response.status}`);
@@ -88,31 +76,14 @@ async function generatePredictions(prompt, extractedData, sportsData) {
             throw new Error('Failed to generate response');
         }
 
-        // Extract JSON object or array from the model's response
+        // Extract JSON object from the model's response
         function extractJsonFromResponse(responseText) {
             const firstBrace = responseText.indexOf('{');
-            const firstBracket = responseText.indexOf('[');
-            let jsonStart = -1;
-            let jsonEnd = -1;
-            let isArray = false;
-            if (firstBracket !== -1 && (firstBracket < firstBrace || firstBrace === -1)) {
-                // JSON array appears first
-                jsonStart = firstBracket;
-                jsonEnd = responseText.lastIndexOf(']');
-                isArray = true;
-            } else if (firstBrace !== -1) {
-                // JSON object appears first
-                jsonStart = firstBrace;
-                jsonEnd = responseText.lastIndexOf('}');
-            }
-            if (jsonStart !== -1 && jsonEnd !== -1 && jsonEnd > jsonStart) {
-                const jsonString = responseText.substring(jsonStart, jsonEnd + 1);
+            const lastBrace = responseText.indexOf('}');
+            if (firstBrace !== -1 && lastBrace !== -1 && lastBrace > firstBrace) {
+                const jsonString = responseText.substring(firstBrace, lastBrace + 1);
                 try {
-                    const parsed = JSON.parse(jsonString);
-                    if (Array.isArray(parsed)) {
-                        return parsed[0] || null;
-                    }
-                    return parsed;
+                    return JSON.parse(jsonString);
                 } catch (e) {
                     console.error('Failed to parse JSON from model response:', e, jsonString);
                     return null;
@@ -124,17 +95,10 @@ async function generatePredictions(prompt, extractedData, sportsData) {
         const predictionJson = extractJsonFromResponse(data.message.content || data.message);
         let predictionsText = data.message.content || data.message;
         if (predictionJson) {
-            // Remove the JSON object/array from the prediction text
+            // Remove the JSON object from the prediction text
             const firstBrace = predictionsText.indexOf('{');
-            const firstBracket = predictionsText.indexOf('[');
-            let jsonStart = -1;
-            if (firstBracket !== -1 && (firstBracket < firstBrace || firstBrace === -1)) {
-                jsonStart = firstBracket;
-            } else if (firstBrace !== -1) {
-                jsonStart = firstBrace;
-            }
-            if (jsonStart !== -1) {
-                predictionsText = predictionsText.substring(0, jsonStart).trim();
+            if (firstBrace !== -1) {
+                predictionsText = predictionsText.substring(0, firstBrace).trim();
             }
         }
         return {
