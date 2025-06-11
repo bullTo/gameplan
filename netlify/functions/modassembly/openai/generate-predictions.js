@@ -36,10 +36,15 @@ async function generatePredictions(prompt, extractedData, sportsData) {
           The current time in New York City is ${nycTime}.
   
           Format your response in the following way:
-          1. A clear, concise betting suggestion with specific teams, players, and bet types
-          2. Supporting reasoning with relevant statistics from the provided data
-          3. Risk assessment that explains the confidence level and potential factors that could affect the outcome
-  
+          ○ Example output:
+            Parlay Suggestion:
+            ■ Giannis over 27.5 points
+            ■ Bucks moneyline
+            ■ Brook Lopez over 1.5 blocks
+            Why: Giannis has hit 28+ in 4 of last 5, Lopez is seeing more minutes,
+            and Bucks are on a 3-game win streak at home.
+          
+
           Analyze the available data thoroughly, looking at:
           - Team performance based on recent games
           - Team standings and records
@@ -49,7 +54,7 @@ async function generatePredictions(prompt, extractedData, sportsData) {
           If the sports data is insufficient, explain what specific data would be needed to make a better recommendation.
   
           Remember that you are providing suggestions for informational purposes only, not encouraging gambling.
-  
+          All answers should be clear, and brief. 
           IMPORTANT: Base your analysis ONLY on the data provided. Do not reference real-world events, current team performance, or player information that is not included in the provided data.
 
          `
