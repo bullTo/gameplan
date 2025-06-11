@@ -52,19 +52,7 @@ async function generatePredictions(prompt, extractedData, sportsData) {
   
           IMPORTANT: Base your analysis ONLY on the data provided. Do not reference real-world events, current team performance, or player information that is not included in the provided data.
 
-          After your main response, extract and return the following JSON object based on your suggestion and reasoning:
-          {
-            "sport": "nba, mlb, nhl, nfl",
-            "bet_type": "prop, parlay, moneyline, spread, over/under, etc.",
-            "match_date": "day.month.year" or null,
-            "team_name": "main team mentioned or null",
-            "player_name": "main player mentioned or null",
-            "opponent": "opposing team or player or null",
-            "risk_profile": "safe bet, moderate, hail mary",
-            "odds": "betting odds mentioned or predict, not null",
-            "confidence": "predict from the risk assessment as numeric value(%)"
-          }
-          Respond with your suggestion, then the JSON object on a new line. If a field is not applicable, use null. If odds or confidence are not explicitly mentioned, predict them based on your reasoning and risk assessment.`
+         `
             },
             {
                 role: 'user',
@@ -78,7 +66,7 @@ async function generatePredictions(prompt, extractedData, sportsData) {
             body: JSON.stringify({
                 messages,
                 use_claude: false,  // Use OpenAI
-                max_tokens: 800   // Increase max tokens for more detailed response
+                max_tokens: 1000   // Increase max tokens for more detailed response
             })
         });
         console.log(`📥 OpenAI response status: ${response.status}`);
@@ -88,34 +76,8 @@ async function generatePredictions(prompt, extractedData, sportsData) {
             throw new Error('Failed to generate response');
         }
 
-        // Extract JSON object from the model's response
-        function extractJsonFromResponse(responseText) {
-            const firstBrace = responseText.indexOf('{');
-            const lastBrace = responseText.indexOf('}');
-            if (firstBrace !== -1 && lastBrace !== -1 && lastBrace > firstBrace) {
-                const jsonString = responseText.substring(firstBrace, lastBrace + 1);
-                try {
-                    return JSON.parse(jsonString);
-                } catch (e) {
-                    console.error('Failed to parse JSON from model response:', e, jsonString);
-                    return null;
-                }
-            }
-            return null;
-        }
-
-        const predictionJson = extractJsonFromResponse(data.message.content || data.message);
-        let predictionsText = data.message.content || data.message;
-        if (predictionJson) {
-            // Remove the JSON object from the prediction text
-            const firstBrace = predictionsText.indexOf('{');
-            if (firstBrace !== -1) {
-                predictionsText = predictionsText.substring(0, firstBrace).trim();
-            }
-        }
         return {
-            predictionsText,
-            predictionJson
+            predictionsText: data.message.content,
         };
     } catch (error) {
         console.error('Error generating response:', error);
