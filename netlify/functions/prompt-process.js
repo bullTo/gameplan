@@ -107,10 +107,10 @@ exports.handler = async (event) => {
     const formattedData = formatData(sportsData);
 
     // Step 4: Generate predictions using OpenAI
-    const predictionsText = await generatePredictions(prompt, extractedData, formattedData);
+    const {predictionsText, predictionJson} = await generatePredictions(prompt, extractedData, formattedData);
 
     // Step 5: Log the prompt and response
-    const promptLogId = await logPrompt(userId, prompt, predictionsText, extractedData);
+    const promptLogId = await logPrompt(userId, prompt, predictionsText, predictionJson);
 
     // Step 5: Increment the user's daily prompt count
     await incrementPromptCount(userId);
@@ -118,8 +118,8 @@ exports.handler = async (event) => {
     return {
       statusCode: 200,
       body: JSON.stringify({
-        response: predictionsText.content,
-        promptAnalysis: extractedData,
+        response: predictionsText,
+        promptAnalysis: predictionJson,
         promptLogId,
         remainingPrompts: promptLimit - (user.daily_prompt_count + 1)
       }),
@@ -299,7 +299,7 @@ async function logPrompt(userId, promptText, response, parsedEntities) {
       [
         userId,
         promptText,
-        response.content,
+        response,
         sport,
         betType,
         JSON.stringify(parsedEntities)

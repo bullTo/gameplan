@@ -56,11 +56,11 @@ async function generatePredictions(prompt, extractedData, sportsData) {
           {
             "sport": "nba, mlb, nhl, nfl",
             "betType": "prop, parlay, moneyline, spread, over/under, etc.",
-            "timeFrame": "day.month.year" or null,
+            "match_date": "day.month.year" or null,
             "team_name": "main team mentioned or null",
             "player_name": "main player mentioned or null",
             "opponent": "opposing team or player or null",
-            "risk_profile": "safe bet, moderate, hail mary, etc.",
+            "risk_profile": "safe bet, moderate, hail mary",
             "odds": "betting odds mentioned or predict",
             "confidence": "predict from the risk assessment as numeric value(%)"
           }
@@ -87,7 +87,60 @@ async function generatePredictions(prompt, extractedData, sportsData) {
         if (!data.message) {
             throw new Error('Failed to generate response');
         }
-        return data.message;
+
+        // Extract JSON object or array from the model's response
+        function extractJsonFromResponse(responseText) {
+            const firstBrace = responseText.indexOf('{');
+            const firstBracket = responseText.indexOf('[');
+            let jsonStart = -1;
+            let jsonEnd = -1;
+            let isArray = false;
+            if (firstBracket !== -1 && (firstBracket < firstBrace || firstBrace === -1)) {
+                // JSON array appears first
+                jsonStart = firstBracket;
+                jsonEnd = responseText.lastIndexOf(']');
+                isArray = true;
+            } else if (firstBrace !== -1) {
+                // JSON object appears first
+                jsonStart = firstBrace;
+                jsonEnd = responseText.lastIndexOf('}');
+            }
+            if (jsonStart !== -1 && jsonEnd !== -1 && jsonEnd > jsonStart) {
+                const jsonString = responseText.substring(jsonStart, jsonEnd + 1);
+                try {
+                    const parsed = JSON.parse(jsonString);
+                    if (Array.isArray(parsed)) {
+                        return parsed[0] || null;
+                    }
+                    return parsed;
+                } catch (e) {
+                    console.error('Failed to parse JSON from model response:', e, jsonString);
+                    return null;
+                }
+            }
+            return null;
+        }
+
+        const predictionJson = extractJsonFromResponse(data.message.content || data.message);
+        let predictionsText = data.message.content || data.message;
+        if (predictionJson) {
+            // Remove the JSON object/array from the prediction text
+            const firstBrace = predictionsText.indexOf('{');
+            const firstBracket = predictionsText.indexOf('[');
+            let jsonStart = -1;
+            if (firstBracket !== -1 && (firstBracket < firstBrace || firstBrace === -1)) {
+                jsonStart = firstBracket;
+            } else if (firstBrace !== -1) {
+                jsonStart = firstBrace;
+            }
+            if (jsonStart !== -1) {
+                predictionsText = predictionsText.substring(0, jsonStart).trim();
+            }
+        }
+        return {
+            predictionsText,
+            predictionJson
+        };
     } catch (error) {
         console.error('Error generating response:', error);
         throw error;

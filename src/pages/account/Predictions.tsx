@@ -20,11 +20,9 @@ interface Prediction {
     sport: string;
     bet_type: string;
     description: string;
-    date1?: string;
-    date2?: string;
-    // match_date?: string;
-    // odds?: string;
-    // confidence: number;
+    match_date?: string;
+    odds?: string;
+    confidence: number;
     risk_profile: string;
     hit_rate?: string;
     logo_url?: string;
