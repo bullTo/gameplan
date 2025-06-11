@@ -65,7 +65,9 @@ async function generatePredictions(prompt, extractedData, sportsData) {
             method: 'POST', // Increase max tokens for more detailed response
             body: JSON.stringify({
                 messages,
-                max_tokens: 800  
+                use_claude: false,  // Use OpenAI
+                max_tokens: 500   // Increase max tokens for more detailed response
+
             })
         });
         console.log(`📥 OpenAI response status: ${response.status}`);
