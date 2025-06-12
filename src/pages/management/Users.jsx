@@ -195,7 +195,7 @@ export default function UsersPage() {
           {/* Filters */}
           <div className="flex flex-col md:flex-row gap-4 mb-6">
             <form onSubmit={handleSearchSubmit} className="flex-1">
-              <div className="relative">
+              <div className="relative text-black">
                 <Search className="absolute left-3 top-1/2 transform -translate-y-1/2 text-muted-foreground h-4 w-4" />
                 <Input
                   placeholder="Search by name or email"
@@ -213,7 +213,9 @@ export default function UsersPage() {
               <SelectTrigger className="w-[180px]">
                 <SelectValue placeholder="All Plans" />
               </SelectTrigger>
-              <SelectContent>
+              <SelectContent
+              className="bg-[white] text-[black]"
+              >
                 <SelectItem value="all">All Plans</SelectItem>
                 <SelectItem value="free">Free</SelectItem>
                 <SelectItem value="core">Core</SelectItem>
@@ -228,7 +230,9 @@ export default function UsersPage() {
               <SelectTrigger className="w-[180px]">
                 <SelectValue placeholder="Sort By" />
               </SelectTrigger>
-              <SelectContent>
+              <SelectContent
+              className="bg-[white] text-[black]"
+              >
                 <SelectItem value="created_at">Registration Date</SelectItem>
                 <SelectItem value="last_login">Last Login</SelectItem>
                 <SelectItem value="name">Name</SelectItem>
@@ -243,7 +247,9 @@ export default function UsersPage() {
               <SelectTrigger className="w-[120px]">
                 <SelectValue placeholder="Order" />
               </SelectTrigger>
-              <SelectContent>
+              <SelectContent
+                className="bg-[white] text-[black]"
+              >
                 <SelectItem value="asc">Ascending</SelectItem>
                 <SelectItem value="desc">Descending</SelectItem>
               </SelectContent>
@@ -374,6 +380,7 @@ export default function UsersPage() {
                 <Input
                   id="name"
                   name="name"
+                  className="text-black"
                   value={formData.name}
                   onChange={handleFormChange}
                   required
@@ -386,6 +393,7 @@ export default function UsersPage() {
                   id="email"
                   name="email"
                   type="email"
+                  className="text-black"
                   value={formData.email}
                   onChange={handleFormChange}
                   required
@@ -400,6 +408,7 @@ export default function UsersPage() {
                   id="password"
                   name="password"
                   type="password"
+                  className="text-black"
                   value={formData.password}
                   onChange={handleFormChange}
                   required={!userToEdit}
@@ -415,7 +424,8 @@ export default function UsersPage() {
                   <SelectTrigger>
                     <SelectValue placeholder="Select a plan" />
                   </SelectTrigger>
-                  <SelectContent>
+                  <SelectContent
+                  >
                     <SelectItem value="free">Free</SelectItem>
                     <SelectItem value="core">Pro</SelectItem>
                     <SelectItem value="pro">Elite</SelectItem>

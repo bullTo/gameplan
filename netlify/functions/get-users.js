@@ -75,9 +75,12 @@ async function handleGetUsers(event, adminId) {
 
     // Parse query parameters
     const queryParams = event.queryStringParameters || {};
-    const subscriptionOnly = queryParams.subscription_only === 'true';
     const limit = parseInt(queryParams.limit) || 100;
     const offset = parseInt(queryParams.offset) || 0;
+    const page = parseInt(queryParams.page) || 1;
+    const search = queryParams.search ? queryParams.search.trim() : '';
+    const subscriptionPlan = queryParams.subscription_plan || '';
+
 
     // Build the query
     let query = `
@@ -86,23 +89,34 @@ async function handleGetUsers(event, adminId) {
         email,
         name,
         created_at,
-        updated_at,
         last_login,
         subscription_plan,
-        subscription_status,
-        subscription_end_date,
         daily_prompt_count,
         prompt_count_reset_date
       FROM users
     `;
 
+    const whereClauses = [];
     const params = [];
+    let paramIndex = 1;
 
-    // Add filter for subscription_only if specified
-    if (subscriptionOnly) {
-      query += ` WHERE subscription_plan != 'free' AND subscription_status = 'active'`;
+    // Add search filter
+    if (search) {
+      whereClauses.push(`(LOWER(name) LIKE $${paramIndex} OR LOWER(email) LIKE $${paramIndex})`);
+      params.push(`%${search.toLowerCase()}%`);
+      paramIndex++;
     }
 
+    // Add subscription_plan filter
+    if (subscriptionPlan && subscriptionPlan != 'all') {
+      whereClauses.push(`subscription_plan = $${paramIndex}`);
+      params.push(subscriptionPlan);
+      paramIndex++;
+    }
+
+    if (whereClauses.length > 0) {
+      query += ' WHERE ' + whereClauses.join(' AND ');
+    }
     // Add ordering and pagination
     const sortBy = queryParams.sort_by || 'created_at';
     const sortOrder = queryParams.sort_order === 'asc' ? 'ASC' : 'DESC';
@@ -111,18 +125,33 @@ async function handleGetUsers(event, adminId) {
     const validSortColumns = ['created_at', 'name', 'email', 'last_login', 'subscription_plan'];
     const safeSort = validSortColumns.includes(sortBy) ? sortBy : 'created_at';
 
-    query += ` ORDER BY ${safeSort} ${sortOrder} LIMIT $1 OFFSET $2`;
+    query += ` ORDER BY ${safeSort} ${sortOrder} LIMIT $${paramIndex} OFFSET $${paramIndex + 1}`;
     params.push(limit, offset);
 
     // Execute the query
     const result = await pool.query(query, params);
 
-    // Get total count
+    // Get total count with the same filters
     let countQuery = 'SELECT COUNT(*) as total FROM users';
-    if (subscriptionOnly) {
-      countQuery += ` WHERE subscription_plan != 'free' AND subscription_status = 'active'`;
+    const countParams = [];
+    let countParamIndex = 1;
+    const countWhereClauses = [];
+
+    if (search) {
+      countWhereClauses.push(`(LOWER(name) LIKE $${countParamIndex} OR LOWER(email) LIKE $${countParamIndex})`);
+      countParams.push(`%${search.toLowerCase()}%`);
+      countParamIndex++;
     }
-    const countResult = await pool.query(countQuery);
+    if (subscriptionPlan && subscriptionPlan != "all") {
+      countWhereClauses.push(`(LOWER(name) LIKE $${countParamIndex} OR LOWER(email) LIKE $${countParamIndex})`);
+      countParams.push(`%${search.toLowerCase()}%`);
+      countParamIndex++;
+    }
+
+    if (countWhereClauses.length > 0) {
+      countQuery += ' WHERE ' + countWhereClauses.join(' AND ');
+    }
+    const countResult = await pool.query(countQuery, countParams);
     const total = parseInt(countResult.rows[0].total);
 
     console.log(`Found ${result.rows.length} users`);
@@ -136,9 +165,9 @@ async function handleGetUsers(event, adminId) {
           users: result.rows,
           pagination: {
             total,
-            page: parseInt(queryParams.page) || 1,
-            limit: parseInt(queryParams.limit) || 10,
-            pages: Math.ceil(total / (parseInt(queryParams.limit) || 10))
+            page,
+            limit,
+            pages: Math.ceil(total / limit)
           }
         }),
         headers: { 'Content-Type': 'application/json' }

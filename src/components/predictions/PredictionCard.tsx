@@ -34,12 +34,14 @@ const PredictionCard = ({ prediction }: PredictionCardProps) => {
   const [pickSaved, setPickSaved] = useState(prediction.pickSaved);
   // const [error, setError] = useState<string | null>(null);
   // Format the confidence as a percentage
-  const confidencePercent = prediction.parsed_entities.risk_profile === 'safe bet' ? 85 
-  : prediction.parsed_entities.risk_profile === 'Moderate' ? 65 : 45;
 
   const match_date = prediction.parsed_entities.match_date;
   // Determine the display name (team or player)
-  const displayName = prediction.parsed_entities.player_name || prediction.parsed_entities.team_name || '';
+  const rawName = prediction.parsed_entities.player_name || prediction.parsed_entities.team_name || '';
+  const displayName = rawName.split(',')[0].trim();
+
+   const rawOppName = prediction.parsed_entities.opponent || '';
+  const opponent = rawOppName.split(',')[0].trim();
 
   // Default logo if none provided
   const logoUrl = prediction.parsed_entities.logo_url || `/home/badges/${prediction.sport}.png`;
@@ -82,8 +84,8 @@ const PredictionCard = ({ prediction }: PredictionCardProps) => {
           <div className="flex flex-col">
             <div>
               <span className="text-white text-sm">{displayName}</span>
-              {prediction.parsed_entities.opponent && (
-                <span className="text-white/50 text-sm"> vs {prediction.parsed_entities.opponent}</span>
+              {opponent && (
+                <span className="text-white/50 text-sm"> vs {opponent}</span>
               )}
             </div>
             
@@ -107,11 +109,12 @@ const PredictionCard = ({ prediction }: PredictionCardProps) => {
       <div className="flex justify-between items-center">
         <div className="flex gap-4">
           <div className="bg-[#1B1C25] p-2 rounded-xl border border-[rgba(14,173,171,0.2)] flex flex-col items-center">
-            <span className="text-white text-2xl">{ '+120' }</span>
+            <span className="text-white text-2xl">{ prediction.parsed_entities.odds}</span>
             <span className="text-white text-xs">Odds</span>
           </div>
           <div className="bg-[#1B1C25] p-2 rounded-xl border border-[rgba(14,173,171,0.2)] flex flex-col items-center">
-            <span className="text-white text-2xl">{confidencePercent}</span>
+            <span className="text-white text-2xl">{prediction.parsed_entities.confidence+
+              '%'}</span>
             <span className="text-white text-xs">Confidence</span>
           </div>
         </div>

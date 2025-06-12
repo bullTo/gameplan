@@ -140,6 +140,7 @@ export async function getUsers(params = {}) {
 
     const queryString = queryParams.toString() ? `?${queryParams.toString()}` : '';
 
+    console.log("querysromg:::", queryString);
     const response = await fetch(`/.netlify/functions/get-users${queryString}`, {
       method: 'GET',
       headers: {
