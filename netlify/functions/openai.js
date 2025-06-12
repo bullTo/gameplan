@@ -34,6 +34,7 @@ exports.handler = async (event) => {
 
     let completion;
 
+    console.log("use_claude__open_router_api_key::", use_claude, OPEN_ROUTER_API_KEY)
     // Use Claude 3 Opus via OpenRouter if specified and API key is available
     if (use_claude && OPEN_ROUTER_API_KEY) {
       console.log(`Sending request to Claude 3 Opus via OpenRouter with ${messages.length} messages`);

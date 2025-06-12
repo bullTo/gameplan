@@ -7,6 +7,7 @@ const { fetchMLBData } = require('./modassembly/goalserve/mlb/run');
 const { formatData } = require('./modassembly/goalserve/mlb/format');
 const { extractDataFromQuery } = require('./modassembly/openai/extract-from-query');
 const { generatePredictions } = require('./modassembly/openai/generate-predictions');
+const { extractPredictionJson } = require('./modassembly/openai/extract-from-prediction');
 
 // Initialize PostgreSQL connection pool
 const pool = new Pool({
@@ -109,8 +110,13 @@ exports.handler = async (event) => {
     // Step 4: Generate predictions using OpenAI
     const {predictionsText} = await generatePredictions(prompt, extractedData, formattedData);
 
+     // Step 4.5: Extract prediction JSON from the predictionsText
+    const predictedJson = await extractPredictionJson(predictionsText);
+
+
+    console.log(predictedJson)
     // Step 5: Log the prompt and response
-    const promptLogId = await logPrompt(userId, prompt, predictionsText, extractedData);
+    const promptLogId = await logPrompt(userId, prompt, predictionsText, predictedJson);
 
     // Step 5: Increment the user's daily prompt count
     await incrementPromptCount(userId);
@@ -119,7 +125,7 @@ exports.handler = async (event) => {
       statusCode: 200,
       body: JSON.stringify({
         response: predictionsText,
-        promptAnalysis: extractedData,
+        promptAnalysis: predictedJson,
         promptLogId,
         remainingPrompts: promptLimit - (user.daily_prompt_count + 1)
       }),
@@ -282,13 +288,28 @@ function formatDateForDisplay(dateObj) {
   return `${day}.${month}.${year}`;
 }
 
+function parseLooseObjectArray(str) {
+  // Wrap in brackets if not already
+  let jsonStr = `[${str}]`;
+  // Replace single quotes with double quotes
+  jsonStr = jsonStr.replace(/'/g, '"');
+  // Add quotes around property names (simple version)
+  jsonStr = jsonStr.replace(/([{,]\s*)([a-zA-Z0-9_]+)\s*:/g, '$1"$2":');
+  try {
+    return JSON.parse(jsonStr);
+  } catch (e) {
+    console.error('Failed to parse:', e);
+    return null;
+  }
+}
 // Log the prompt and response to the database
 async function logPrompt(userId, promptText, response, parsedEntities) {
   try {
     // Insert the prompt log
     // Extract sport and bet_type from parsed entities with correct case handling
-    const sport = parsedEntities.Sport || parsedEntities.sport || null;
-    const betType = parsedEntities["Bet type"] || parsedEntities.bet_type || null;
+    const arr = parseLooseObjectArray(parsedEntities);
+    const sport = arr[0].Sport || arr[0].sport || null;
+    const betType = arr[0]["Bet type"] || arr[0].bet_type || null;
 
     console.log(`📝 Logging prompt with sport: ${sport}, bet_type: ${betType}`);
 
@@ -302,7 +323,7 @@ async function logPrompt(userId, promptText, response, parsedEntities) {
         response,
         sport,
         betType,
-        JSON.stringify(parsedEntities)
+        JSON.stringify(arr[0])
       ]
     );
 

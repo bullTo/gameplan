@@ -14,7 +14,7 @@ async function extractDataFromQuery(prompt) {
     const response = await fetch(`${baseUrl}/.netlify/functions/openai`, {
         method: 'POST',
         body: JSON.stringify({
-            use_claude: false,  // Use OpenAI
+            use_claude: true,  // Use OpenAI
             messages: [
                 {
                     role: 'system',

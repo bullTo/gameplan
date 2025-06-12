@@ -137,8 +137,8 @@ async function handleRegister(data) {
 
     // Insert new user
     const result = await pool.query(
-      `INSERT INTO users (name, email, password_hash, subscription_plan, created_at)
-       VALUES ($1, $2, $3, $4, NOW())
+      `INSERT INTO users (name, email, password_hash, subscription_plan, created_at, last_login)
+       VALUES ($1, $2, $3, $4, NOW(), NOW())
        RETURNING id, email, subscription_plan`,
       [name, email, hashedPassword, 'free']
     );
