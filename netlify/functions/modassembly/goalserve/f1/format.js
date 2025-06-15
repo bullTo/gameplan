@@ -4,45 +4,40 @@
  */
 
 function formatScheduleData(rawData) {
-    if (!rawData) {
+    if (!rawData || !rawData.scores || !rawData.scores.category) {
         return { error: "Invalid or missing data structure" };
     }
 
     const scheduleData = {
-        league: rawData['@sport'],
-        season: rawData.category['@season'],
+        league: "CFL",
         upcoming_games: []
     };
 
-    const upcomingGamesLimit = 10;
-    
-    // Check if matches exists
-    if (rawData.category.matches) {
-        // Handle both array of match days and single match day object
-        const matchDays = Array.isArray(rawData.category.matches) 
-            ? rawData.category.matches 
-            : [rawData.category.matches];
-        
-        // Process each match day
-        matchDays.forEach(matchDay => {
-            if (matchDay.match && Array.isArray(matchDay.match)) {
-                // Process all matches for a given day
-                matchDay.match.forEach(match => {
-                    // Only include upcoming games (status "Not Started")
-                    // And limit to first 10 games
-                    if (match['@status'] === "Not Started" && scheduleData.upcoming_games.length < upcomingGamesLimit) {
-                        scheduleData.upcoming_games.push({
-                            date: match['@formatted_date'],
-                            time: match['@time'],
-                            home_team: match.hometeam['@name'],
-                            away_team: match.awayteam['@name'],
-                            tournament_name: rawData.category['@name'],
-                            venue: match['@venue_name'],
-                        });
-                    }
-                });
+    const MAX_GAMES = 10;
+    let gamesCount = 0;
+
+    // category can be array or single object
+    const categories = Array.isArray(rawData.scores.category)
+        ? rawData.scores.category
+        : [rawData.scores.category];
+
+    for (const category of categories) {
+        if (category.match && Array.isArray(category.match)) {
+            for (const match of category.match) {
+                if (gamesCount >= MAX_GAMES) break;
+                if (match.status === "Not Started") {
+                    scheduleData.upcoming_games.push({
+                        date: match.date || null,
+                        time: match.time || null,
+                        home_team: match.localteam?.name || null,
+                        away_team: match.awayteam?.name || null,
+                        match_id: match.id || null,
+                        venue: match.venue_name || null
+                    });
+                    gamesCount++;
+                }
             }
-        });
+        }
     }
 
     return scheduleData;
@@ -104,158 +99,72 @@ function formatStandingsData(rawData) {
 }
 
 function formatScoresData(rawData) {
-    if (!rawData || !rawData.scores) {
-        return { error: "Invalid or missing scores data structure" };
+     if (!rawData || !rawData.scores || !rawData.scores.category) {
+        return { error: "Invalid or missing data structure" };
     }
 
-    // Initialize results
-    const scoresData = {
-        teams: {},
-        players: {}
+    const scheduleData = {
+        league: rawData.scores.sport || "football",
+        upcoming_games: []
+    };
+
+    const MAX_GAMES = 10;
+    let gamesCount = 0;
+
+    // category can be array or single object
+    const categories = Array.isArray(rawData.scores.category)
+        ? rawData.scores.category
+        : [rawData.scores.category];
+
+    for (const category of categories) {
+        // match can be array or single object
+        if (category.match) {
+            const matches = Array.isArray(category.match)
+                ? category.match
+                : [category.match];
+
+            for (const match of matches) {
+                if (gamesCount >= MAX_GAMES) break;
+                if (match.status === "Not Started") {
+                    scheduleData.upcoming_games.push({
+                        date: match.date || null,
+                        time: match.time || null,
+                        home_team: match.localteam?.name || null,
+                        away_team: match.awayteam?.name || null,
+                        match_id: match.id || null,
+                        league_name: category.name || null
+                    });
+                    gamesCount++;
+                }
+            }
+        }
     }
 
-    // Handle both array and single match cases
-    const matches = rawData.scores.category && rawData.scores.category.match 
-        ? (Array.isArray(rawData.scores.category.match) 
-            ? rawData.scores.category.match 
-            : [rawData.scores.category.match])
-        : [];
-
-    for (const match of matches) {
-        // Compute home team
-        if (match.hometeam) {
-            const homeTeamId = match.hometeam['@id'];
-            if (!scoresData.teams[homeTeamId]) {
-                scoresData.teams[homeTeamId] = {
-                    name: match.hometeam['@name'],
-                    stats: {
-                        hits: 0,
-                        errors: 0,
-                        totalscore: 0,
-                        innings: {}
-                    }
-                };
-            }
-            
-            const homeTeam = scoresData.teams[homeTeamId];
-            homeTeam.stats.hits = parseInt(match.hometeam['@hits']) || 0;
-            homeTeam.stats.errors = parseInt(match.hometeam['@errors']) || 0;
-            homeTeam.stats.totalscore = parseInt(match.hometeam['@totalscore']) || 0;
-            
-            // Process innings
-            if (match.hometeam.innings && match.hometeam.innings.inning) {
-                const innings = Array.isArray(match.hometeam.innings.inning) 
-                    ? match.hometeam.innings.inning 
-                    : [match.hometeam.innings.inning];
-                    
-                innings.forEach(inning => {
-                    homeTeam.stats.innings[inning['@number']] = {
-                        hits: parseInt(inning['@hits']) || 0,
-                        score: parseInt(inning['@score']) || 0
-                    };
-                });
-            }
-        }
-        
-        // Compute away team
-        if (match.awayteam) {
-            const awayTeamId = match.awayteam['@id'];
-            if (!scoresData.teams[awayTeamId]) {
-                scoresData.teams[awayTeamId] = {
-                    name: match.awayteam['@name'],
-                    stats: {
-                        hits: 0,
-                        errors: 0,
-                        totalscore: 0,
-                        innings: {}
-                    }
-                };
-            }
-            
-            const awayTeam = scoresData.teams[awayTeamId];
-            awayTeam.stats.hits = parseInt(match.awayteam['@hits']) || 0;
-            awayTeam.stats.errors = parseInt(match.awayteam['@errors']) || 0;
-            awayTeam.stats.totalscore = parseInt(match.awayteam['@totalscore']) || 0;
-            
-            // Process innings
-            if (match.awayteam.innings && match.awayteam.innings.inning) {
-                const innings = Array.isArray(match.awayteam.innings.inning) 
-                    ? match.awayteam.innings.inning 
-                    : [match.awayteam.innings.inning];
-                    
-                innings.forEach(inning => {
-                    awayTeam.stats.innings[inning['@number']] = {
-                        hits: parseInt(inning['@hits']) || 0,
-                        score: parseInt(inning['@score']) || 0
-                    };
-                });
-            }
-        }
-
-        if (match.events) {
-            // Process baseball events
-            const processEvents = (events) => {
-                if (!events) return;
-                
-                // Handle both single events and arrays of events
-                const eventArray = Array.isArray(events.event) ? events.event : [events.event];
-                
-                eventArray.forEach(evt => {
-                    if (!evt || !evt['@desc']) return;
-                    
-                    // Extract player name from event description
-                    const playerMatch = evt['@desc'].match(/^([A-Za-z\-]+)\s/);
-                    const playerId = playerMatch ? playerMatch[1].toLowerCase() : null;
-                    
-                    if (playerId) {
-                        // Initialize player if not exists
-                        if (!scoresData.players[playerId]) {
-                            scoresData.players[playerId] = {
-                                name: playerMatch[1],
-                                stats: {
-                                    home_runs: 0,
-                                    singles: 0,
-                                    doubles: 0,
-                                    rbi: 0
-                                }
-                            };
-                        }
-                        
-                        // Update player statistics based on event description
-                        if (evt['@desc'].includes('homered')) {
-                            scoresData.players[playerId].stats.home_runs++;
-                        } else if (evt['@desc'].includes('doubled')) {
-                            scoresData.players[playerId].stats.doubles++;
-                        } else if (evt['@desc'].includes('singled')) {
-                            scoresData.players[playerId].stats.singles++;
-                        }
-                        
-                        // Count RBIs
-                        const rbiMatch = evt['@desc'].match(/scored(?: and [A-Za-z\-]+ scored)*(?:,|\.)/);
-                        if (rbiMatch) {
-                            const scorers = (rbiMatch[0].match(/[A-Za-z\-]+/g) || []).length;
-                            scoresData.players[playerId].stats.rbi += scorers;
-                        }
-                    }
-                });
-            };
-
-            processEvents(match.events);
+    // Limit the stringified scheduleData to 25,000 characters (cut from the beginning)
+    const MAX_SCHEDULE_LENGTH = 25000;
+    let scheduleStr = JSON.stringify(scheduleData);
+    if (scheduleStr.length > MAX_SCHEDULE_LENGTH) {
+        scheduleStr = scheduleStr.slice(scheduleStr.length - MAX_SCHEDULE_LENGTH);
+        try {
+            return JSON.parse(scheduleStr);
+        } catch (e) {
+            return { error: "Schedule data truncated and could not be parsed as JSON." };
         }
     }
-    return scoresData;
+
+    return scheduleData;
 }
 
 
-function formatMLBData(rawData) {
+function formatCFLData(rawData) {
     console.log(rawData)
     return {
         schedule: formatScheduleData(rawData.schedule),
-        standings: formatStandingsData(rawData.standings),
+        standings: '',
         scores: formatScoresData(rawData.scores)
     }
 }
 
 module.exports = {
-    formatMLBData
+    formatCFLData
 };

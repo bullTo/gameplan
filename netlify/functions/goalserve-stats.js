@@ -1,16 +1,14 @@
 const { fetchMLBData } = require('./modassembly/goalserve/mlb/run');
 const { fetchMLSData } = require('./modassembly/goalserve/mls/run');
 const { fetchGOLFData } = require('./modassembly/goalserve/golf/run');
-const { fetchF1Data } = require('./modassembly/goalserve/f1/run');
+const { fetchCFLData } = require('./modassembly/goalserve/f1/run');
 const { fetchNHLData } = require('./modassembly/goalserve/nhl/run');
 const { fetchNBAData } = require('./modassembly/goalserve/nba/run');
 const { formatMLBData } = require('./modassembly/goalserve/mlb/format');
-const { extractDataFromQuery } = require('./modassembly/openai/extract-from-query');
-const { generatePredictions } = require('./modassembly/openai/generate-predictions');
-const { extractPredictionJson } = require('./modassembly/openai/extract-from-prediction');
 const { formatMLSData } = require('./modassembly/goalserve/mls/format');
 const { formatGOLFData } = require('./modassembly/goalserve/golf/format');
 const { formatNBAData } = require('./modassembly/goalserve/nba/format');
+const { formatCFLData } = require('./modassembly/goalserve/f1/format');
 // Helper to fetch raw stats from GoalServe
 async function fetchGoalServeRaw({ sport, player, team, opponent }) {
     // Example: build the correct GoalServe URL for your sport and team/player
@@ -24,27 +22,28 @@ async function fetchGoalServeRaw({ sport, player, team, opponent }) {
         player_name: player,
         opponent: opponent
     }
+
     let formattedData;
-    
-    switch ((sport || '').toLowerCase()) {
+    switch ((extractedData.sport || '').toLowerCase()) {
         case 'mls':
-            const sportsMLBData = await fetchMLSData(extractedData.sport, extractedData);
-            formattedData = formatMLBData(sportsMLBData);
+            const sportsMLSData = await fetchMLSData(extractedData.sport, extractedData);
+            formattedData = formatMLSData(sportsMLSData);
             break;
         case 'mlb':
-            sportsData = await fetchMLBData(extractedData.sport, extractedData);
+            const sportsMLBData = await fetchMLBData(extractedData.sport, extractedData);
+            formattedData = formatMLBData(sportsMLBData);
             break;
         case 'golf':
-            sportsData = await fetchGOLFData(extractedData.sport, extractedData);
+            const sportsGOLFData = await fetchGOLFData(extractedData.sport, extractedData);
+            formattedData = formatGOLFData(sportsGOLFData);
             break;
-        case 'f1':
-            sportsData = await fetchF1Data(extractedData.sport, extractedData);
-            break;
-        case 'nhl':
-            sportsData = await fetchNHLData(extractedData.sport, extractedData);
+        case 'CFL':
+            const sportsCFLData = await fetchCFLData(extractedData.sport, extractedData);
+            formattedData = formatCFLData(sportsCFLData);
             break;
         case 'nba':
-            sportsData = await fetchNBAData(extractedData.sport, extractedData);
+            const sportsNBAData = await fetchNBAData(extractedData.sport, extractedData);
+            formattedData = formatNBAData(sportsNBAData);
             break;
         default:
             return {
