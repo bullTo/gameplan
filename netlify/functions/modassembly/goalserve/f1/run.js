@@ -11,7 +11,7 @@ function scoresURLs(baseDate = new Date()) {
     const today = new Date(baseDate);
 
     const urls = [];
-    urls.push(`https://www.goalserve.com/getfeed/${API_KEY}/baseball/usa?json=1`);
+    urls.push(`https://www.goalserve.com/getfeed/${API_KEY}/football/home?json=1`);
 
     // Get valid MLB season dates for the past year
     const currentYear = today.getFullYear();
@@ -70,15 +70,15 @@ async function fetchWithErrorHandling(url) {
     }
 }
 
-async function fetchF1Data(sport, extractedData) {
+async function fetchCFLData(sport, extractedData) {
     const sportLower = sport.toLowerCase();
-    if (sportLower !== 'f1') {
-        throw new Error('Only F1 is valid for now');
+    if (sportLower !== 'cfl') {
+        throw new Error('Only CFL is valid for now');
     }
 
     const scoreUrls = scoresURLs();
-    const standingsUrl = `https://www.goalserve.com/getfeed/${API_KEY}/baseball/f1_standings?json=1`;
-    let scheduleUrl = `https://www.goalserve.com/getfeed/${API_KEY}/baseball/f1_shedule?json=1`;
+    const standingsUrl = `https://www.goalserve.com/getfeed/${API_KEY}/football/home?json=1`;
+    let scheduleUrl = `https://www.goalserve.com/getfeed/${API_KEY}/football/canada_schedule?json=1`;
 
     // Add dates for scheduled games
     if (extractedData.date1) {
@@ -93,43 +93,42 @@ async function fetchF1Data(sport, extractedData) {
     const schedulePromise = fetchWithErrorHandling(scheduleUrl);
 
     // Fetch scores (first 10 successful)
-    const scoresResults = [];
-    let successfulFetches = 0;
-    const fetchesLimit = 10;
-    const batchSize = 10;
-    // Process in batches
-    for (let i = 0; i < scoreUrls.length && successfulFetches < fetchesLimit; i += batchSize) {
-        const batch = scoreUrls.slice(i, i + batchSize);
-        // Fetch all URLs in the batch in parallel
-        const batchResults = await Promise.all(
-            batch.map(url => fetchWithErrorHandling(url))
-        );
-        // Process results from this batch
-        for (const result of batchResults) {
-            if (result && successfulFetches < fetchesLimit) {
-                scoresResults.push(result);
-                successfulFetches++;
-            }
-        }
-    }
+    // const scoresResults = [];
+    // let successfulFetches = 0;
+    // const fetchesLimit = 10;
+    // const batchSize = 10;
+    // // Process in batches
+    // for (let i = 0; i < scoreUrls.length && successfulFetches < fetchesLimit; i += batchSize) {
+    //     const batch = scoreUrls.slice(i, i + batchSize);
+    //     // Fetch all URLs in the batch in parallel
+    //     const batchResults = await Promise.all(
+    //         batch.map(url => fetchWithErrorHandling(url))
+    //     );
+    //     // Process results from this batch
+    //     for (const result of batchResults) {
+    //         if (result && successfulFetches < fetchesLimit) {
+    //             scoresResults.push(result);
+    //             successfulFetches++;
+    //         }
+    //     }
+    // }
     console.log(`Collected ${successfulFetches} scores`);
 
     // Wait for all promises to resolve
-    const [standingsData, scheduleData] = await Promise.all([
+    const [scoreData, scheduleData] = await Promise.all([
         standingsPromise,
         schedulePromise
     ]);
     // Return structured data
     return {
         sport,
-        scores: scoresResults[0],
-        standings: standingsData.standings,
-        schedule: scheduleData.fixtures
+        scores: scoreData,
+        schedule: scheduleData
     };
 }
 
 module.exports = {
-    fetchF1Data,
+    fetchCFLData,
 };
 
 

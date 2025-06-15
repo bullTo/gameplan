@@ -6,8 +6,7 @@ const jwt = require('jsonwebtoken');
 const { fetchMLBData } = require('./modassembly/goalserve/mlb/run');
 const { fetchMLSData } = require('./modassembly/goalserve/mls/run');
 const { fetchGOLFData } = require('./modassembly/goalserve/golf/run');
-const { fetchF1Data } = require('./modassembly/goalserve/f1/run');
-const { fetchNHLData } = require('./modassembly/goalserve/nhl/run');
+const { fetchCFLData } = require('./modassembly/goalserve/f1/run');
 const { fetchNBAData } = require('./modassembly/goalserve/nba/run');
 const { formatMLBData } = require('./modassembly/goalserve/mlb/format');
 const { extractDataFromQuery } = require('./modassembly/openai/extract-from-query');
@@ -16,6 +15,7 @@ const { extractPredictionJson } = require('./modassembly/openai/extract-from-pre
 const { formatMLSData } = require('./modassembly/goalserve/mls/format');
 const { formatGOLFData } = require('./modassembly/goalserve/golf/format');
 const { formatNBAData } = require('./modassembly/goalserve/nba/format');
+const { formatCFLData } = require('./modassembly/goalserve/f1/format');
 
 // Initialize PostgreSQL connection pool
 const pool = new Pool({
@@ -124,8 +124,9 @@ exports.handler = async (event) => {
         const sportsGOLFData = await fetchGOLFData(extractedData.sport, extractedData);
         formattedData = formatGOLFData(sportsGOLFData);
         break;
-      case 'f1':
-        const sportsF1Data = await fetchF1Data(extractedData.sport, extractedData);
+      case 'CFL':
+        const sportsCFLData = await fetchCFLData(extractedData.sport, extractedData);
+        formattedData = formatCFLData(sportsCFLData);
         break;
       case 'nba':
         const sportsNBAData = await fetchNBAData(extractedData.sport, extractedData);

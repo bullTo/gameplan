@@ -22,7 +22,7 @@ const SPORTS = [
   { id: 'MLB', name: 'MLB – Major League Baseball' },
   { id: 'MLS', name: 'MLS – Major League Soccer' },
   { id: 'GOLF', name: 'GOLF – GOLF' },
-  { id: 'F1', name: 'F1 – F1' }
+  { id: 'CFL', name: 'CFL – Canadian Football League' }
 ];
 
 // Prompt suggestions by sport - updated to be more generic and not reference specific dates
@@ -55,12 +55,12 @@ const PROMPT_SUGGESTIONS = {
     "Give me a safe GOLF moneyline bet based on pitching matchups",
     "What's a good GOLF run line bet with the best value?"
   ],
-  F1: [
-    "Give me a 3-leg F1 parlay based on the available data",
-    "What are the top 3 F1 player prop bets for today's games?",
-    "Suggest an over/under F1 for total runs in the Yankees game",
-    "Give me a safe F1 moneyline bet based on pitching matchups",
-    "What's a good F1 run line bet with the best value?"
+  CFL: [
+    "Give me a 3-leg CFL parlay based on the available data",
+    "What are the top 3 CFL player prop bets for today's games?",
+    "Suggest an over/under CFL for total runs in the Yankees game",
+    "Give me a safe CFL moneyline bet based on pitching matchups",
+    "What's a good CFL run line bet with the best value?"
   ]
 };
 
