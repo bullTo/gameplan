@@ -4,10 +4,18 @@ const fetch = require('node-fetch');
 const { Pool } = require('pg');
 const jwt = require('jsonwebtoken');
 const { fetchMLBData } = require('./modassembly/goalserve/mlb/run');
-const { formatData } = require('./modassembly/goalserve/mlb/format');
+const { fetchMLSData } = require('./modassembly/goalserve/mls/run');
+const { fetchGOLFData } = require('./modassembly/goalserve/golf/run');
+const { fetchF1Data } = require('./modassembly/goalserve/f1/run');
+const { fetchNHLData } = require('./modassembly/goalserve/nhl/run');
+const { fetchNBAData } = require('./modassembly/goalserve/nba/run');
+const { formatMLBData } = require('./modassembly/goalserve/mlb/format');
 const { extractDataFromQuery } = require('./modassembly/openai/extract-from-query');
 const { generatePredictions } = require('./modassembly/openai/generate-predictions');
 const { extractPredictionJson } = require('./modassembly/openai/extract-from-prediction');
+const { formatMLSData } = require('./modassembly/goalserve/mls/format');
+const { formatGOLFData } = require('./modassembly/goalserve/golf/format');
+const { formatNBAData } = require('./modassembly/goalserve/nba/format');
 
 // Initialize PostgreSQL connection pool
 const pool = new Pool({
@@ -102,17 +110,42 @@ exports.handler = async (event) => {
     const extractedData = await extractDataFromQuery(prompt);
 
     // Step 2: Fetch relevant data from GoalServe based on the prompt analysis
-    const sportsData = await fetchMLBData(extractedData.sport, extractedData);
+    let formattedData;
+    switch ((extractedData.sport || '').toLowerCase()) {
+      case 'mls':
+        const sportsMLSData = await fetchMLSData(extractedData.sport, extractedData);
+        formattedData = formatMLSData(sportsMLSData);
+        break;
+      case 'mlb':
+        const sportsMLBData = await fetchMLBData(extractedData.sport, extractedData);
+        formattedData = formatMLBData(sportsMLBData);
+        break;
+      case 'golf':
+        const sportsGOLFData = await fetchGOLFData(extractedData.sport, extractedData);
+        formattedData = formatGOLFData(sportsGOLFData);
+        break;
+      case 'f1':
+        const sportsF1Data = await fetchF1Data(extractedData.sport, extractedData);
+        break;
+      case 'nba':
+        const sportsNBAData = await fetchNBAData(extractedData.sport, extractedData);
+        formattedData = formatNBAData(sportsNBAData);
+        break;
+      default:
+        return {
+          statusCode: 400,
+          body: JSON.stringify({ error: `Unsupported sport: ${extractedData.sport}` }),
+          headers: { 'Content-Type': 'application/json' }
+        };
+    }
 
     // Step 3: Filter sports data based on the extracted data
-    const formattedData = formatData(sportsData);
 
     // Step 4: Generate predictions using OpenAI
-    const {predictionsText} = await generatePredictions(prompt, extractedData, formattedData);
+    const { predictionsText } = await generatePredictions(prompt, extractedData, formattedData);
 
-     // Step 4.5: Extract prediction JSON from the predictionsText
+    // Step 4.5: Extract prediction JSON from the predictionsText
     const predictedJson = await extractPredictionJson(predictionsText);
-
 
     console.log(predictedJson)
     // Step 5: Log the prompt and response

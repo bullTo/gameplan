@@ -91,7 +91,7 @@ const PredictionCard = ({ prediction }: PredictionCardProps) => {
             
           </div>
         </div>
-        {prediction.parsed_entities.risk_profile && (<div className="px-4 py-1 bg-[#0EADAB]/5 border border-[#0EADAB] rounded-full">
+        {prediction.parsed_entities.risk_profile && (<div className="px-4 py-1 w-full max-w-[92px] bg-[#0EADAB]/5 border border-[#0EADAB] rounded-full">
           <span className="text-[#0EADAB] text-xs">{prediction.parsed_entities.risk_profile}</span>
         </div>)}
       </div>
@@ -109,12 +109,11 @@ const PredictionCard = ({ prediction }: PredictionCardProps) => {
       <div className="flex justify-between items-center">
         <div className="flex gap-4">
           <div className="bg-[#1B1C25] p-2 rounded-xl border border-[rgba(14,173,171,0.2)] flex flex-col items-center">
-            <span className="text-white text-2xl">{ prediction.parsed_entities.odds}</span>
+            <span className="text-white text-2xl">{ prediction.parsed_entities.odds?prediction.parsed_entities.odds:'-'}</span>
             <span className="text-white text-xs">Odds</span>
           </div>
           <div className="bg-[#1B1C25] p-2 rounded-xl border border-[rgba(14,173,171,0.2)] flex flex-col items-center">
-            <span className="text-white text-2xl">{prediction.parsed_entities.confidence+
-              '%'}</span>
+            <span className="text-white text-2xl">{prediction.parsed_entities.confidence ? prediction.parsed_entities.confidence+'%':'-'}</span>
             <span className="text-white text-xs">Confidence</span>
           </div>
         </div>

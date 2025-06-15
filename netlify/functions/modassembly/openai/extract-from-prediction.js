@@ -24,16 +24,19 @@ Return only the JSON object, nothing else.
 
 JSON format:
 {
-  "sport": "nba, mlb, nhl, nfl",
+  "sport": "nba, mlb, mls, f1, golf",
   "bet_type": "prop, parlay, moneyline, spread, over/under, etc.",
   "match_date": "day.month.year" or null,
   "team_name": "main team mentioned or null",
   "player_name": "main player mentioned or null",
   "opponent": "opposing team or player or null",
   "risk_profile": "safe bet, moderate, hail mary",
-  "odds": "betting odds mentioned or predict like +120, -110, not null",
+  "odds": "betting odds mentioned or predict like +120, -110, null",
   "confidence": "predict from the risk assessment as numeric value(%)"
 }
+
+confidence includes only number, not %
+No need to include text for explanation in odds field. and null is not string.
 
 Text:
 ${predictionText}

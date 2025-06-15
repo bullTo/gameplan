@@ -32,14 +32,7 @@ exports.handler = async (event) => {
       };
     }
 
-    // Helper to add a timeout to OpenAI API calls
-    async function callOpenAIWithTimeout(params, timeoutMs = 9000) {
-      return Promise.race([
-        openai.chat.completions.create(params),
-        new Promise((_, reject) => setTimeout(() => reject(new Error('OpenAI API timed out')), timeoutMs))
-      ]);
-    }
-
+    let completion;
 
     console.log("use_claude__open_router_api_key::", use_claude, OPEN_ROUTER_API_KEY)
 
@@ -86,7 +79,7 @@ exports.handler = async (event) => {
         console.error('Error using Claude 3 Opus:', error);
         console.log('Falling back to OpenAI...');
         // Fall back to OpenAI if Claude fails
-        completion = await callOpenAIWithTimeout({
+        completion = await openai.chat.completions.create({
           model: model,
           messages: messages,
           temperature: temperature,
@@ -96,7 +89,7 @@ exports.handler = async (event) => {
     } else {
       // Use OpenAI as usual
       console.log(`Sending request to OpenAI with ${messages.length} messages`);
-      completion = await callOpenAIWithTimeout({
+      completion = await openai.chat.completions.create({
         model: model,
         messages: messages,
         temperature: temperature,

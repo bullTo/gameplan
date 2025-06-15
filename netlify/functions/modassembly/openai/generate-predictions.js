@@ -7,6 +7,7 @@ async function generatePredictions(prompt, extractedData, sportsData) {
     try {
         console.log(`🤖 Generating response with OpenAI for prompt: "${prompt}"`);
 
+        const MAX_PROMPT_LENGTH = 25000;
         const sport = extractedData.sport;
         const betType = extractedData.bet_type || 'general';
         const riskProfile = extractedData.risk_profile || 'moderate';
@@ -18,7 +19,11 @@ async function generatePredictions(prompt, extractedData, sportsData) {
             minute: 'numeric',
             hour12: true
         });
-
+        // Limit the sportsData stringified length as well
+        let sportsDataString = JSON.stringify(sportsData, null, 2);
+        if (sportsDataString.length > MAX_PROMPT_LENGTH) {
+            sportsDataString = sportsDataString.slice(0, MAX_PROMPT_LENGTH) + '\n... [truncated]';
+        }
         const messages = [
             {
                 role: 'system',
@@ -30,7 +35,8 @@ async function generatePredictions(prompt, extractedData, sportsData) {
           1. Scores - Recent game results with basic information about teams and scores
           2. Standings - Current team rankings in divisions/conferences
           3. Schedule - Upcoming games information
-  
+                
+         But if There are no Sandings or Scores, You should anaylze the schedule information and predict the trend and who we will win.
           This data is from our database of ${sport} information. The data is from May 2025 and is being used for testing purposes.
 
           The current time in New York City is ${nycTime}.
@@ -42,8 +48,9 @@ async function generatePredictions(prompt, extractedData, sportsData) {
             ■brief team (or palyer) and opponent prop.
             Why: clear and concise reason for the suggestion.
             Risk Assesment.
-          
-        Here, the suggested match must be the upcoming one, not a current or past one.
+            
+          Here, the suggested match must be the upcoming one, not a current or past one.
+
 
           Analyze the available data thoroughly, looking at:
           - Team performance based on recent games
@@ -61,7 +68,7 @@ async function generatePredictions(prompt, extractedData, sportsData) {
             },
             {
                 role: 'user',
-                content: `My prompt: ${prompt}\n\nHere's the relevant sports data:\n${JSON.stringify(sportsData, null, 2)}`
+                content: `My prompt: ${prompt}\n\nHere's the relevant sports data:\n${sportsDataString}`
             }
         ];
 
@@ -72,7 +79,6 @@ async function generatePredictions(prompt, extractedData, sportsData) {
                 messages,
                 use_claude: true,  // Use OpenAI
                 max_tokens: 500   // Increase max tokens for more detailed response
-
             })
         });
         console.log(`📥 OpenAI response status: ${response.status}`);

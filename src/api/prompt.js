@@ -97,7 +97,7 @@ export async function savePick(pickData) {
  * @returns {Promise<SavedPicksResponse>} The saved picks response
  */
 
-const API_BASE_URL = import.meta.env.VITE_API_BASE_URL || '';
+const API_BASE_URL = import.meta.env.VITE_APP_DOMAIN || '';
 const FUNCTIONS_PATH_PREFIX = import.meta.env.VITE_FUNCTIONS_PATH_PREFIX || '/.netlify/functions';
 
 export async function getSavedPicks(params = {}) {

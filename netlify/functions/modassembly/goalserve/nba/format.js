@@ -4,45 +4,41 @@
  */
 
 function formatScheduleData(rawData) {
-    if (!rawData) {
+   if (!rawData || !rawData.shedules || !rawData.shedules.matches) {
         return { error: "Invalid or missing data structure" };
     }
 
     const scheduleData = {
-        league: rawData['@sport'],
-        season: rawData.category['@season'],
+        league: rawData.shedules.league || null,
+        season_id: rawData.shedules.id || null,
         upcoming_games: []
     };
 
     const upcomingGamesLimit = 10;
-    
-    // Check if matches exists
-    if (rawData.category.matches) {
-        // Handle both array of match days and single match day object
-        const matchDays = Array.isArray(rawData.category.matches) 
-            ? rawData.category.matches 
-            : [rawData.category.matches];
-        
-        // Process each match day
-        matchDays.forEach(matchDay => {
-            if (matchDay.match && Array.isArray(matchDay.match)) {
-                // Process all matches for a given day
-                matchDay.match.forEach(match => {
-                    // Only include upcoming games (status "Not Started")
-                    // And limit to first 10 games
-                    if (match['@status'] === "Not Started" && scheduleData.upcoming_games.length < upcomingGamesLimit) {
-                        scheduleData.upcoming_games.push({
-                            date: match['@formatted_date'],
-                            time: match['@time'],
-                            home_team: match.hometeam['@name'],
-                            away_team: match.awayteam['@name'],
-                            tournament_name: rawData.category['@name'],
-                            venue: match['@venue_name'],
-                        });
-                    }
-                });
+    const matchesArr = Array.isArray(rawData.shedules.matches) ? rawData.shedules.matches : [rawData.shedules.matches];
+
+    // Each element in matchesArr is a match day object with a "match" array
+    for (const matchDay of matchesArr) {
+        if (matchDay.match && Array.isArray(matchDay.match)) {
+            for (const match of matchDay.match) {
+                // Only include games that are not started or upcoming (status can be "Not Started" or "Scheduled")
+                if (
+                    (match.status === "Not Started" || match.status === "Scheduled") &&
+                    scheduleData.upcoming_games.length < upcomingGamesLimit
+                ) {
+                    scheduleData.upcoming_games.push({
+                        date: match.formatted_date || match.date || null,
+                        time: match.time || null,
+                        home_team: match.hometeam?.name || null,
+                        away_team: match.awayteam?.name || null,
+                        venue: match.venue_name || null,
+                        match_id: match.id || null,
+                        attendance: match.attendance || null,
+                        status: match.status || null
+                    });
+                }
             }
-        });
+        }
     }
 
     return scheduleData;
@@ -100,6 +96,20 @@ function formatStandingsData(rawData) {
         });
     }
 
+    // Limit the stringified scheduleData to 25,000 characters (cut from the beginning)
+    const MAX_SCHEDULE_LENGTH = 25000;
+    let scheduleStr = JSON.stringify(scheduleData);
+    if (scheduleStr.length > MAX_SCHEDULE_LENGTH) {
+        // Cut from the beginning, keep the last 25,000 characters
+        scheduleStr = scheduleStr.slice(scheduleStr.length - MAX_SCHEDULE_LENGTH);
+        // Parse back to object
+        try {
+            return JSON.parse(scheduleStr);
+        } catch (e) {
+            // If parsing fails, return a truncated message
+            return { error: "Schedule data truncated and could not be parsed as JSON." };
+        }
+    }
     return formattedStandings;
 }
 
@@ -247,15 +257,15 @@ function formatScoresData(rawData) {
 }
 
 
-function formatMLBData(rawData) {
+function formatNBAData(rawData) {
     console.log(rawData)
     return {
         schedule: formatScheduleData(rawData.schedule),
-        standings: formatStandingsData(rawData.standings),
+        standings: '',
         scores: formatScoresData(rawData.scores)
     }
 }
 
 module.exports = {
-    formatMLBData
+    formatNBAData
 };
