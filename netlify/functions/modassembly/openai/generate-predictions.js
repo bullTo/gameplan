@@ -48,8 +48,9 @@ async function generatePredictions(prompt, extractedData, sportsData) {
             ■brief team (or palyer) and opponent prop.
             Why: clear and concise reason for the suggestion.
             Risk Assesment.
-          
+            
           Here, the suggested match must be the upcoming one, not a current or past one.
+
 
           Analyze the available data thoroughly, looking at:
           - Team performance based on recent games
@@ -73,7 +74,7 @@ async function generatePredictions(prompt, extractedData, sportsData) {
 
         const baseUrl = process.env.URL || process.env.DEPLOY_URL || 'http://localhost:8888';
         const response = await fetch(`${baseUrl}/.netlify/functions/openai`, {
-            method: 'POST',
+            method: 'POST', // Increase max tokens for more detailed response
             body: JSON.stringify({
                 messages,
                 use_claude: true,  // Use OpenAI

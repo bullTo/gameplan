@@ -147,7 +147,6 @@ exports.handler = async (event) => {
     // Step 4.5: Extract prediction JSON from the predictionsText
     const predictedJson = await extractPredictionJson(predictionsText);
 
-
     console.log(predictedJson)
     // Step 5: Log the prompt and response
     const promptLogId = await logPrompt(userId, prompt, predictionsText, predictedJson);
