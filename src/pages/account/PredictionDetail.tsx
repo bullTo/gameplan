@@ -10,8 +10,6 @@ const PredictionDetail = () => {
   const [prediction, setPrediction] = useState<any>(null);
   const [loading, setLoading] = useState(true);
   const [displayName, setDisplayName] = useState('');
-  const [opponent, setOpponent] = useState('');
-  const [logoUrl, setLogoUrl] = useState('');
   const [playerStats, setPlayerStats] = useState<any>(null);
 
   // Fetch predictions on component mount
@@ -26,9 +24,6 @@ const PredictionDetail = () => {
 
     const rawName = prediction?.parsed_entities?.player_name || prediction?.parsed_entities?.team_name || '';
     setDisplayName(rawName.split(',')[0].trim());
-    const rawOppName = prediction?.parsed_entities?.opponent || '';
-    setOpponent(rawOppName.split(',')[0].trim());
-    setLogoUrl(prediction?.parsed_entities?.logo_url || `/home/badges/${prediction?.sport}.png`);
 
     // Fetch stats from GoalServe if player/team info is available
     if (rawName) {
