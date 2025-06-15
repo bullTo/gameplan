@@ -7,7 +7,6 @@ import { Loader2 } from 'lucide-react';
 
 const Dashboard = () => {
   const [promptResponse, setPromptResponse] = useState<any>(null);
-  const [predictions, setPredictions] = useState<any[]>([]);
   const [loading, setLoading] = useState(true);
 
   // Stats
@@ -15,7 +14,6 @@ const Dashboard = () => {
   const [hitCount, setHitCount] = useState(0);
   const [winRatio, setWinRatio] = useState(0);
   const [liveCount, setLiveCount] = useState(0);
-  const [preferredStyle, setPreferredStyle] = useState('-');
   // Fetch recommendations on component mount
 
 
@@ -25,7 +23,6 @@ const Dashboard = () => {
       setLoading(true);
       try {
         const data = await getPredictions();
-        setPredictions(data.predictions || []);
 
         // Calculate stats
         const tracked = data.predictions.filter((p: any) => p.pickSaved).length;
@@ -39,18 +36,16 @@ const Dashboard = () => {
         setHitCount(hits);
         setWinRatio(win);
       } catch (err) {
-        setPredictions([]);
         setTrackedCount(0);
         setHitCount(0);
         setWinRatio(0);
-        setPreferredStyle('-');
       } finally {
         setLoading(false);
       }
     };
 
     fetchPredictions();
-  }, []);
+  }, [promptResponse]);
 
   return (
     <div className="w-full h-full p-5" style={{ background: 'rgba(17.76, 18.55, 28.04, 0.50)', overflow: 'hidden', borderRadius: 15 }}>
