@@ -18,20 +18,21 @@ interface PromptInputProps {
 
 // Sports list - updated to only include sports with data in our database
 const SPORTS = [
-  { id: 'NFL', name: 'NFL – National Football League' },
   { id: 'NBA', name: 'NBA – National Basketball Association' },
-  { id: 'NHL', name: 'NHL – National Hockey League' },
-  { id: 'MLB', name: 'MLB – Major League Baseball' }
+  { id: 'MLB', name: 'MLB – Major League Baseball' },
+  { id: 'MLS', name: 'MLS – Major League Soccer' },
+  { id: 'GOLF', name: 'GOLF – GOLF' },
+  { id: 'F1', name: 'F1 – F1' }
 ];
 
 // Prompt suggestions by sport - updated to be more generic and not reference specific dates
 const PROMPT_SUGGESTIONS = {
-  NFL: [
-    "Give me a 3-leg NFL parlay based on the available data",
-    "What are the best NFL player prop bets based on recent games?",
-    "Suggest an over/under for the Chiefs game",
-    "Give me a safe NFL moneyline bet based on recent performance",
-    "What's a good NFL spread bet with high value based on the data?"
+  MLS: [
+    "Give me a 3-leg MLS parlay based on the available data",
+    "What are the best MLS player prop bets based on recent games?",
+    "Suggest an over/under MLS for the Chiefs game",
+    "Give me a safe MLS moneyline bet based on recent performance",
+    "What's a good MLS spread bet with high value based on the data?"
   ],
   NBA: [
     "Give me a 3-leg NBA parlay based on the available data",
@@ -40,19 +41,26 @@ const PROMPT_SUGGESTIONS = {
     "Give me a safe NBA moneyline bet based on recent performance",
     "What's a good NBA spread bet with high value based on the data?"
   ],
-  NHL: [
-    "Give me a 2-leg NHL parlay based on the available data",
-    "What are the best NHL player prop bets based on recent games?",
-    "Suggest an over/under for total goals in the Capitals game",
-    "Give me a safe NHL moneyline bet based on recent performance",
-    "What's a good NHL puck line bet based on the data?"
-  ],
   MLB: [
     "Give me a 3-leg MLB parlay based on the available data",
     "What are the top 3 MLB player prop bets for today's games?",
     "Suggest an over/under for total runs in the Yankees game",
     "Give me a safe MLB moneyline bet based on pitching matchups",
     "What's a good MLB run line bet with the best value?"
+  ],
+  GOLF: [
+    "Give me a 3-leg GOLF parlay based on the available data",
+    "What are the top 3 GOLF player prop bets for today's games?",
+    "Suggest an over/under GOLF for total runs in the Yankees game",
+    "Give me a safe GOLF moneyline bet based on pitching matchups",
+    "What's a good GOLF run line bet with the best value?"
+  ],
+  F1: [
+    "Give me a 3-leg F1 parlay based on the available data",
+    "What are the top 3 F1 player prop bets for today's games?",
+    "Suggest an over/under F1 for total runs in the Yankees game",
+    "Give me a safe F1 moneyline bet based on pitching matchups",
+    "What's a good F1 run line bet with the best value?"
   ]
 };
 
@@ -93,7 +101,6 @@ export function PromptInput({ onPromptProcessed }: PromptInputProps) {
 
       const result = await processPrompt(prompt);
 
-      console.log("=============,,",result);
       console.timeEnd('processPrompt API call');
       console.log('✅ API call successful, received result:', result);
 

@@ -89,12 +89,17 @@ exports.handler = async (event) => {
       'SELECT prompt_log_id FROM saved_picks WHERE user_id = $1',
       [userId]
     );
+    const hitResult = await pool.query(
+      "SELECT prompt_log_id FROM saved_picks WHERE status = 'hit'"
+    )
     const savedPickIds = new Set(savedPicksResult.rows.map(row => row.prompt_log_id));
+    const hittedIds = new Set(hitResult.rows.map(row => row.prompt_log_id));
 
     // Add pickSaved property to each prediction
     const predictionsWithPickSaved = predictions.map(pred => ({
       ...pred,
-      pickSaved: savedPickIds.has(pred.id)
+      pickSaved: savedPickIds.has(pred.id),
+      isHit: hittedIds.has(pred.id)
     }));
 
     return {

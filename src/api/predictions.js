@@ -11,7 +11,7 @@ import { getAuthToken, handleResponse } from './utils';
  * @returns {Promise<any>} The predictions response
  */
 // API base URL for serverless functions
-const API_BASE_URL = import.meta.env.VITE_API_BASE_URL || '';
+const API_BASE_URL = import.meta.env.VITE_APP_DOMAIN || '';
 const FUNCTIONS_PATH_PREFIX = import.meta.env.VITE_FUNCTIONS_PATH_PREFIX || '/.netlify/functions';
 
 export async function getPredictions(params = {}) {
@@ -47,18 +47,19 @@ export async function getPredictions(params = {}) {
 
 /**
  * Get a single prediction by ID
- * @param {string|number} id - The prediction ID
+ * @param {string|undefined} id - The prediction ID
  * @returns {Promise<any>} The prediction response
  */
 export async function getPredictionById(id) {
   try {
+    console.log("getPRedictionById");
     const token = getAuthToken();
 
     if (!token) {
       throw new Error('Authentication required');
     }
 
-    const response = await fetch(`${API_BASE_URL}${FUNCTIONS_PATH_PREFIX}/get-recommendations?id=${id}`, {
+    const response = await fetch(`${API_BASE_URL}${FUNCTIONS_PATH_PREFIX}/get-prediction-by-id?id=${id}`, {
       method: 'GET',
       headers: {
         'Authorization': `Bearer ${token}`
@@ -71,3 +72,46 @@ export async function getPredictionById(id) {
     throw error;
   }
 }
+/**
+ * Fetch player/team stats from GoalServe via Netlify serverless function.
+ * @param {Object} params - The parameters for the stats request.
+ * @param {string} params.sport - The sport (e.g., 'mlb', 'nba', etc.)
+ * @param {string} [params.player] - The player name (optional)
+ * @param {string} [params.team] - The team name (optional)
+ * @param {string} [params.opponent] - The opponent name (optional)
+ * @returns {Promise<any>} The stats response
+ */
+export async function fetchGoalServeStats(params = {}) {
+  try {
+    const token = getAuthToken();
+    if (!token) {
+      throw new Error('Authentication required');
+    }
+
+    // Build query string
+    const queryParams = new URLSearchParams();
+    if (params.sport) queryParams.append('sport', params.sport);
+    if (params.player) queryParams.append('player', params.player);
+    if (params.team) queryParams.append('team', params.team);
+    if (params.opponent) queryParams.append('opponent', params.opponent);
+
+    const queryString = queryParams.toString() ? `?${queryParams.toString()}` : '';
+
+    const response = await fetch(
+      `${API_BASE_URL}${FUNCTIONS_PATH_PREFIX}/goalserve-stats${queryString}`,
+      {
+        method: 'GET',
+        headers: {
+          'Authorization': `Bearer ${token}`
+        }
+      }
+    );
+
+    console.log("response:", response)
+    return handleResponse(response);
+  } catch (error) {
+    console.error('Fetch GoalServe stats error:', error);
+    throw error;
+  }
+}
+

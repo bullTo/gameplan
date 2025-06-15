@@ -35,7 +35,7 @@ interface User {
 }
 
 // API base URL for serverless functions
-const API_BASE_URL = import.meta.env.VITE_API_BASE_URL || '';
+const API_BASE_URL = import.meta.env.VITE_APP_DOMAIN || '';
 const FUNCTIONS_PATH_PREFIX = import.meta.env.VITE_FUNCTIONS_PATH_PREFIX || '/.netlify/functions';
 
 

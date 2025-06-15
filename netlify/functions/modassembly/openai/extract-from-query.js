@@ -14,13 +14,13 @@ async function extractDataFromQuery(prompt) {
     const response = await fetch(`${baseUrl}/.netlify/functions/openai`, {
         method: 'POST',
         body: JSON.stringify({
-            use_claude: false,  // Use OpenAI
+            use_claude: true,  // Use OpenAI
             messages: [
                 {
                     role: 'system',
                     content: `You are a sports betting assistant. Your task is to analyze the user's prompt and extract the following information:
               {
-                "sport": "nba, mlb, nhl, nfl",
+                "sport": "nba, mlb, nhl, mls, golf, f1",
                 "bet_type": "prop, parlay, moneyline, spread, over/under, etc.",
                 "date1": "day.month.year" or null,
                 "date2": "day.month.year" or null,

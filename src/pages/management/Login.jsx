@@ -43,7 +43,7 @@ export default function AdminLogin() {
 
   return (
     <div className="min-h-screen flex items-center justify-center bg-[#072730] p-4">
-      <div className="w-full max-w-md">
+      <div className="w-full max-w-md ">
         <div className="text-center mb-8">
           <img
             src="/gameplan-ai-logo.png"
@@ -67,6 +67,7 @@ export default function AdminLogin() {
                 <Input
                   id="email"
                   type="email"
+                  className='text-black'
                   placeholder="admin@example.com"
                   value={email}
                   onChange={(e) => setEmail(e.target.value)}
@@ -78,6 +79,7 @@ export default function AdminLogin() {
                   id="password"
                   type="password"
                   value={password}
+                  className='text-black'
                   onChange={(e) => setPassword(e.target.value)}
                 />
               </div>

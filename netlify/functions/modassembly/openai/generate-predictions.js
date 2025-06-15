@@ -7,6 +7,7 @@ async function generatePredictions(prompt, extractedData, sportsData) {
     try {
         console.log(`🤖 Generating response with OpenAI for prompt: "${prompt}"`);
 
+        const MAX_PROMPT_LENGTH = 25000;
         const sport = extractedData.sport;
         const betType = extractedData.bet_type || 'general';
         const riskProfile = extractedData.risk_profile || 'moderate';
@@ -18,11 +19,15 @@ async function generatePredictions(prompt, extractedData, sportsData) {
             minute: 'numeric',
             hour12: true
         });
-
+        // Limit the sportsData stringified length as well
+        let sportsDataString = JSON.stringify(sportsData, null, 2);
+        if (sportsDataString.length > MAX_PROMPT_LENGTH) {
+            sportsDataString = sportsDataString.slice(0, MAX_PROMPT_LENGTH) + '\n... [truncated]';
+        }
         const messages = [
             {
                 role: 'system',
-                content: `You are a sports betting assistant specializing in ${sport} betting. Your task is to provide ${betType} betting suggestions based on the user's prompt and the provided sports data.
+                content: `You are a sports betting assistant specializing in ${sport} betting. Your task is to provide ${betType} betting suggestions about the upcoming games based on the user's prompt and the provided sports data.
   
           The user is looking for suggestions with a ${riskProfile} risk profile.
   
@@ -30,16 +35,22 @@ async function generatePredictions(prompt, extractedData, sportsData) {
           1. Scores - Recent game results with basic information about teams and scores
           2. Standings - Current team rankings in divisions/conferences
           3. Schedule - Upcoming games information
-  
+                
+         But if There are no Sandings or Scores, You should anaylze the schedule information and predict the trend and who we will win.
           This data is from our database of ${sport} information. The data is from May 2025 and is being used for testing purposes.
 
           The current time in New York City is ${nycTime}.
   
           Format your response in the following way:
-          1. A clear, concise betting suggestion with specific teams, players, and bet types
-          2. Supporting reasoning with relevant statistics from the provided data
-          3. Risk assessment that explains the confidence level and potential factors that could affect the outcome
-  
+          ○ Example output:
+            Parlay Suggestion: Team name  (or palyer name) vs opponent
+            ■ match date
+            ■brief team (or palyer) and opponent prop.
+            Why: clear and concise reason for the suggestion.
+            Risk Assesment.
+          
+          Here, the suggested match must be the upcoming one, not a current or past one.
+
           Analyze the available data thoroughly, looking at:
           - Team performance based on recent games
           - Team standings and records
@@ -49,26 +60,14 @@ async function generatePredictions(prompt, extractedData, sportsData) {
           If the sports data is insufficient, explain what specific data would be needed to make a better recommendation.
   
           Remember that you are providing suggestions for informational purposes only, not encouraging gambling.
-  
+          All answers should be clear, and brief. 
           IMPORTANT: Base your analysis ONLY on the data provided. Do not reference real-world events, current team performance, or player information that is not included in the provided data.
 
-          After your main response, extract and return the following JSON object based on your suggestion and reasoning:
-          {
-            "sport": "nba, mlb, nhl, nfl",
-            "betType": "prop, parlay, moneyline, spread, over/under, etc.",
-            "timeFrame": "day.month.year" or null,
-            "team_name": "main team mentioned or null",
-            "player_name": "main player mentioned or null",
-            "opponent": "opposing team or player or null",
-            "risk_profile": "safe bet, moderate, hail mary, etc.",
-            "odds": "betting odds mentioned or predict",
-            "confidence": "predict from the risk assessment as numeric value(%)"
-          }
-          Respond with your suggestion, then the JSON object on a new line. If a field is not applicable, use null. If odds or confidence are not explicitly mentioned, predict them based on your reasoning and risk assessment.`
+         `
             },
             {
                 role: 'user',
-                content: `My prompt: ${prompt}\n\nHere's the relevant sports data:\n${JSON.stringify(sportsData, null, 2)}`
+                content: `My prompt: ${prompt}\n\nHere's the relevant sports data:\n${sportsDataString}`
             }
         ];
 
@@ -77,8 +76,8 @@ async function generatePredictions(prompt, extractedData, sportsData) {
             method: 'POST',
             body: JSON.stringify({
                 messages,
-                use_claude: false,  // Use OpenAI
-                max_tokens: 2000   // Increase max tokens for more detailed response
+                use_claude: true,  // Use OpenAI
+                max_tokens: 500   // Increase max tokens for more detailed response
             })
         });
         console.log(`📥 OpenAI response status: ${response.status}`);
@@ -87,7 +86,10 @@ async function generatePredictions(prompt, extractedData, sportsData) {
         if (!data.message) {
             throw new Error('Failed to generate response');
         }
-        return data.message;
+
+        return {
+            predictionsText: data.message.content,
+        };
     } catch (error) {
         console.error('Error generating response:', error);
         throw error;
