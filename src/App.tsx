@@ -1,23 +1,23 @@
-import { Routes, Route, Navigate, useLocation } from 'react-router-dom'
+import { Routes, Route, Navigate } from 'react-router-dom'
 import HomePage from './pages/HomePage'
 import ResetPasswordPage from './pages/ResetPasswordPage'
 import AccountLayout from './layouts/AccountLayout'
 import ManagementLayout from './layouts/ManagementLayout'
 import LandingPage from './pages/landingpage/LandingPage'
 import { Toaster } from './components/ui/use-toast'
-import { useAuth } from './hooks/useAuth'
+// import { useAuth } from './hooks/useAuth'
 
 function App() {
-  function RequireAuth({ children }: { children: JSX.Element }) {
-    const { isAuthenticated } = useAuth(); // Replace with your actual auth hook/context
-    const location = useLocation();
-    const allowedPaths = ['/login', '/reset-password'];
+  // function RequireAuth({ children }: { children: JSX.Element }) {
+  //   const { isAuthenticated } = useAuth(); // Replace with your actual auth hook/context
+  //   const location = useLocation();
+  //   const allowedPaths = ['/login', '/reset-password'];
 
-    if (!isAuthenticated && !allowedPaths.includes(location.pathname)) {
-      return <Navigate to="/login" replace />;
-    }
-    return children;
-  }
+  //   if (!isAuthenticated && !allowedPaths.includes(location.pathname)) {
+  //     return <Navigate to="/login" replace />;
+  //   }
+  //   return children;
+  // }
   return (
     <>
       <Routes>
