@@ -92,10 +92,10 @@ async function createCheckoutSession(user, plan, successUrl, cancelUrl) {
   // Determine price ID based on plan name
   // Note: We're only supporting monthly subscriptions
   let priceId;
-  if (plan.name === 'pro') {
+  if (plan.name === 'core') {
+    priceId = process.env.STRIPE_PRICE_CORE;
+  } else if (plan.name === 'pro') {
     priceId = process.env.STRIPE_PRICE_PRO;
-  } else if (plan.name === 'elite') {
-    priceId = process.env.STRIPE_PRICE_ELITE;
   } else {
     throw new Error(`Invalid plan name: ${plan.name}`);
   }
