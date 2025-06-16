@@ -27,7 +27,7 @@ async function getUserSubscription(userId) {
   try {
     // Get user details
     const userResult = await pool.query(
-      `SELECT id, email, name, stripe_customer_id, subscription_plan, subscription_status, subscription_end_date
+      `SELECT id, email, name, subscription_plan
        FROM users
        WHERE id = $1`,
       [userId]
@@ -52,7 +52,7 @@ async function getUserSubscription(userId) {
 
     // Get subscription plan details
     const planResult = await pool.query(
-      `SELECT id, name, price_monthly, features
+      `SELECT id, name, price, features
        FROM subscription_plans
        WHERE name = $1`,
       [user.subscription_plan]

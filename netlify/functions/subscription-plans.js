@@ -27,9 +27,9 @@ async function getSubscriptionPlans() {
   try {
     // Get all subscription plans
     const result = await pool.query(`
-      SELECT id, name, price_monthly, daily_prompt_limit, features, created_at, updated_at
+      SELECT id, name, key, price, features, is_default, is_active, created_at, updated_at
       FROM subscription_plans
-      ORDER BY price_monthly ASC
+      ORDER BY price ASC
     `);
 
     return {
@@ -39,12 +39,12 @@ async function getSubscriptionPlans() {
           id: plan.id,
           name: plan.name.charAt(0).toUpperCase() + plan.name.slice(1), // Capitalize first letter
           key: plan.name, // Use name as key
-          price: plan.price_monthly, // Use monthly price
+          price: plan.price, // Use monthly price
           features: typeof plan.features === 'string'
             ? Object.keys(JSON.parse(plan.features)).map(key => `${key}: ${JSON.parse(plan.features)[key]}`)
             : Object.keys(plan.features).map(key => `${key}: ${plan.features[key]}`),
-          is_default: plan.name === 'free', // Free plan is default
-          is_active: true,
+          is_default: plan.is_default, // Free plan is default
+          is_active: plan.is_active,
           created_at: plan.created_at,
           updated_at: plan.updated_at
         }))

@@ -242,7 +242,7 @@ export function PromptInput({ onPromptProcessed }: PromptInputProps) {
               )}
               <Button
                 type="submit"
-                disabled={loading}
+                disabled={loading || (remainingPrompts !== null && remainingPrompts <= 0)}
                 className="bg-[#0EADAB] hover:bg-[#0EADAB]/80 text-white"
               >
                 {loading ? (
