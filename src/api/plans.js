@@ -3,6 +3,12 @@
  */
 import { handleResponse, getAuthToken } from './utils';
 
+
+
+// API base URL for serverless functions
+const API_BASE_URL = import.meta.env.VITE_APP_DOMAIN || '';
+const FUNCTIONS_PATH_PREFIX = import.meta.env.VITE_FUNCTIONS_PATH_PREFIX || '/.netlify/functions';
+
 /**
  * Get available subscription plans
  * @returns {Promise<Array>} Array of subscription plans
@@ -15,7 +21,7 @@ export async function getSubscriptionPlans() {
       throw new Error('No auth token found');
     }
     
-    const response = await fetch('/.netlify/functions/subscription-plans', {
+    const response = await fetch(`${API_BASE_URL}${FUNCTIONS_PATH_PREFIX}/subscription-plans`, {
       method: 'GET',
       headers: {
         'Authorization': `Bearer ${token}`
@@ -41,7 +47,7 @@ export async function getUserSubscription() {
       throw new Error('No auth token found');
     }
     
-    const response = await fetch('/.netlify/functions/user-subscription', {
+    const response = await fetch(`${API_BASE_URL}${FUNCTIONS_PATH_PREFIX}/user-subscription`, {
       method: 'GET',
       headers: {
         'Authorization': `Bearer ${token}`

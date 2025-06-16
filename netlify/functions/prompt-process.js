@@ -91,8 +91,10 @@ exports.handler = async (event) => {
       };
     }
 
-    const promptLimit = 100;
+    const promptLimit = getPromptLimit(user.subscription_plan);
 
+    console.log("user.daily_prompt_count", user.daily_prompt_count, promptLimit)
+    
     // Check if user has reached their daily prompt limit
     if (user.daily_prompt_count >= promptLimit) {
       return {
@@ -176,6 +178,18 @@ exports.handler = async (event) => {
   }
 };
 
+function getPromptLimit(subscriptionPlan) {
+  switch (subscriptionPlan) {
+    case 'free':
+      return 3;
+    case 'core':
+      return 15;
+    case 'pro':
+      return 30;
+    default:
+      return 3; // fallback to free plan limit
+  }
+}
 // Get user subscription details
 async function getUserSubscription(userId) {
   try {

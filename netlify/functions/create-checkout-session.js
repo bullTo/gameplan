@@ -40,7 +40,7 @@ async function getUserById(userId) {
 // Get subscription plan by name
 async function getSubscriptionPlan(planName) {
   const result = await pool.query(
-    'SELECT id, name, price_monthly, daily_prompt_limit, features FROM subscription_plans WHERE name = $1',
+    'SELECT id, name, price, features FROM subscription_plans WHERE name = $1',
     [planName]
   );
 

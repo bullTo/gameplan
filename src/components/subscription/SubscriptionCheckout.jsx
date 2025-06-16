@@ -11,7 +11,7 @@ import { useToast } from '@/components/ui/use-toast';
  * Displays subscription plans and allows users to checkout with Stripe
  */
 export function SubscriptionCheckout({ plans = [] }) {
-  const [loading, setLoading] = useState(false);
+  const [loading, setLoading] = useState(null);
   const navigate = useNavigate();
   const { toast } = useToast();
 
@@ -23,7 +23,7 @@ export function SubscriptionCheckout({ plans = [] }) {
   // Handle subscription checkout
   const handleCheckout = async (planName) => {
     try {
-      setLoading(true);
+      setLoading(planName);
       await redirectToCheckout(planName.toLowerCase()); // Convert to lowercase to match database
     } catch (error) {
       console.error('Checkout error:', error);
@@ -33,7 +33,7 @@ export function SubscriptionCheckout({ plans = [] }) {
         variant: 'destructive'
       });
     } finally {
-      setLoading(false);
+      setLoading(null);
     }
   };
 
@@ -79,7 +79,7 @@ function PlanCard({ plan, onCheckout, loading }) {
         </CardTitle>
         <CardDescription>
           <div className="flex items-baseline">
-            <span className="text-3xl font-bold">${(plan.price / 100).toFixed(2)}</span>
+            <span className="text-3xl font-bold">${plan.price}</span>
             <span className="text-muted-foreground ml-1">/month</span>
           </div>
         </CardDescription>
@@ -112,7 +112,7 @@ function PlanCard({ plan, onCheckout, loading }) {
           disabled={loading}
           variant={isPro ? 'default' : 'outline'}
         >
-          {loading ? 'Processing...' : `Subscribe to ${plan.name}`}
+          {loading === plan.name ? 'Processing...' : `Subscribe to ${plan.name}`}
         </Button>
       </CardFooter>
     </Card>

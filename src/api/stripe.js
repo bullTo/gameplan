@@ -3,6 +3,10 @@
  */
 import { handleResponse, getAuthToken } from './utils';
 
+// API base URL for serverless functions
+const API_BASE_URL = import.meta.env.VITE_APP_DOMAIN || '';
+const FUNCTIONS_PATH_PREFIX = import.meta.env.VITE_FUNCTIONS_PATH_PREFIX || '/.netlify/functions';
+const VITE_STRIPE_PUBLISHABLE_KEY = import.meta.env.VITE_STRIPE_PUBLISHABLE_KEY;
 /**
  * Create a checkout session for subscription purchase
  * @param {string} planName - The plan name (e.g., 'pro', 'elite')
@@ -13,12 +17,13 @@ import { handleResponse, getAuthToken } from './utils';
 export async function createCheckoutSession(planName, successUrl, cancelUrl) {
   try {
     const token = getAuthToken();
+    console.log(token, 'token from getAuthToken');
 
     if (!token) {
       throw new Error('No auth token found');
     }
 
-    const response = await fetch('/.netlify/functions/create-checkout-session', {
+    const response = await fetch(`${API_BASE_URL}${FUNCTIONS_PATH_PREFIX}/create-checkout-session`, {
       method: 'POST',
       headers: {
         'Content-Type': 'application/json',
@@ -45,13 +50,13 @@ export async function createCheckoutSession(planName, successUrl, cancelUrl) {
 export async function redirectToCheckout(planName) {
   try {
     // Load Stripe.js dynamically
-    const stripe = await loadStripe(import.meta.env.VITE_STRIPE_PUBLISHABLE_KEY);
-
+    const stripe = await loadStripe(VITE_STRIPE_PUBLISHABLE_KEY);
+    console.log(stripe, 'stripe from loadStripe');
     // Get the current URL for success and cancel URLs
     const baseUrl = window.location.origin;
     const successUrl = `${baseUrl}/account/subscription/success?session_id={CHECKOUT_SESSION_ID}`;
     const cancelUrl = `${baseUrl}/account/subscription/cancel`;
-
+    console.log(successUrl, 'successUrl');
     // Create checkout session
     const { sessionId } = await createCheckoutSession(
       planName,
@@ -59,10 +64,13 @@ export async function redirectToCheckout(planName) {
       cancelUrl
     );
 
+    console.log(sessionId, 'sessionId from createCheckoutSession');
     // Redirect to checkout
     const result = await stripe.redirectToCheckout({
       sessionId
     });
+
+    console.log(result, 'result from stripe.redirectToCheckout');
 
     if (result.error) {
       throw new Error(result.error.message);
@@ -85,7 +93,7 @@ export async function cancelSubscription() {
       throw new Error('No auth token found');
     }
 
-    const response = await fetch('/.netlify/functions/manage-subscription', {
+    const response = await fetch(`${API_BASE_URL}${FUNCTIONS_PATH_PREFIX}/manage-subscription`, {
       method: 'POST',
       headers: {
         'Content-Type': 'application/json',
@@ -115,7 +123,7 @@ export async function reactivateSubscription() {
       throw new Error('No auth token found');
     }
 
-    const response = await fetch('/.netlify/functions/manage-subscription', {
+    const response = await fetch(`${API_BASE_URL}${FUNCTIONS_PATH_PREFIX}/manage-subscription`, {
       method: 'POST',
       headers: {
         'Content-Type': 'application/json',
@@ -146,7 +154,7 @@ export async function updateSubscription(priceId) {
       throw new Error('No auth token found');
     }
 
-    const response = await fetch('/.netlify/functions/manage-subscription', {
+    const response = await fetch(`${API_BASE_URL}${FUNCTIONS_PATH_PREFIX}/manage-subscription`, {
       method: 'POST',
       headers: {
         'Content-Type': 'application/json',
@@ -178,7 +186,7 @@ export async function createPortalSession(returnUrl) {
       throw new Error('No auth token found');
     }
 
-    const response = await fetch('/.netlify/functions/manage-subscription', {
+    const response = await fetch(`${API_BASE_URL}${FUNCTIONS_PATH_PREFIX}/manage-subscription`, {
       method: 'POST',
       headers: {
         'Content-Type': 'application/json',

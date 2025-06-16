@@ -69,7 +69,7 @@ async function summarizeStatsWithOpenAI(stats, { sport, player, team, opponent }
                 {
                     role: 'system',
                     content: `
-You are a sports stats assistant. Given the following raw stats JSON for ${sport.toUpperCase()} and the player/team "${player || team}", extract:
+You are a sports betting assistant specializing in ${sport} betting. Given the following raw stats JSON for ${sport.toUpperCase()} and the player/team "${player || team}", extract:
 - Season average (PTS+AST or relevant stat)
 - Last 5 games average (PTS+AST or relevant stat)
 - Average vs opponent (${opponent})
