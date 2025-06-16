@@ -27,17 +27,13 @@ function App() {
         <Route
           path="/account/*"
           element={
-            <RequireAuth>
-              <AccountLayout />
-            </RequireAuth>
+            <AccountLayout />
           }
         />
         <Route
           path="/management/*"
           element={
-            <RequireAuth>
-              <ManagementLayout />
-            </RequireAuth>
+            <ManagementLayout />
           }
         />
         <Route path="*" element={<Navigate to="/" replace />} />
