@@ -21,14 +21,12 @@ function verifyStripeSignature(event, signature) {
       return JSON.parse(event.body);
     }
 
-    // Clean the webhook secret of any whitespace
-    const webhookSecret = process.env.STRIPE_WEBHOOK_SECRET.trim();
-
     // Verify the signature using the webhook secret
+    console.log(event.body, signature, process.env.STRIPE_WEBHOOK_SECRET);
     return stripe.webhooks.constructEvent(
       event.body,
       signature,
-      webhookSecret
+      process.env.STRIPE_WEBHOOK_SECRET
     );
   } catch (error) {
     console.error('⚠️ Webhook signature verification failed:', error.message);
@@ -360,42 +358,8 @@ exports.handler = async (event, context) => {
       };
     }
 
-    // Get the raw body
-    let rawBody;
-    try {
-      // If the body is already a string, use it directly
-      console.log('event.body', event);
-      if (typeof event.body === 'string') {
-        rawBody = event.body;
-      } else {
-        // If it's an object, stringify it
-        rawBody = JSON.stringify(event.body);
-      }
-    } catch (err) {
-      console.error('❌ Error processing request body:', err);
-      return {
-        statusCode: 400,
-        body: JSON.stringify({ error: 'Invalid request body' })
-      };
-    }
-
-    if (!rawBody) {
-      console.error('❌ Missing request body');
-      return {
-        statusCode: 400,
-        body: JSON.stringify({ error: 'Missing request body' })
-      };
-    }
-
-    // Clean the webhook secret
-    const webhookSecret = process.env.STRIPE_WEBHOOK_SECRET.trim();
-
-    // Verify the signature
-    const stripeEvent = stripe.webhooks.constructEvent(
-      rawBody,
-      signature,
-      webhookSecret
-    );
+    // Verify the signature and parse the event
+    const stripeEvent = verifyStripeSignature(event, signature);
 
     console.log(`🔔 Received Stripe event: ${stripeEvent.type}`);
 
