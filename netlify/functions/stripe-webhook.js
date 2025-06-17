@@ -360,8 +360,25 @@ exports.handler = async (event, context) => {
       };
     }
 
-    // Ensure we're using the raw request body
-    const rawBody = event.body;
+    // Get the raw body
+    let rawBody;
+    try {
+      // If the body is already a string, use it directly
+      console.log('event.body', event);
+      if (typeof event.body === 'string') {
+        rawBody = event.body;
+      } else {
+        // If it's an object, stringify it
+        rawBody = JSON.stringify(event.body);
+      }
+    } catch (err) {
+      console.error('❌ Error processing request body:', err);
+      return {
+        statusCode: 400,
+        body: JSON.stringify({ error: 'Invalid request body' })
+      };
+    }
+
     if (!rawBody) {
       console.error('❌ Missing request body');
       return {
@@ -370,14 +387,15 @@ exports.handler = async (event, context) => {
       };
     }
 
-    // Create a new event object with the raw body
-    const eventWithRawBody = {
-      ...event,
-      body: rawBody
-    };
+    // Clean the webhook secret
+    const webhookSecret = process.env.STRIPE_WEBHOOK_SECRET.trim();
 
-    // Verify the signature and parse the event
-    const stripeEvent = verifyStripeSignature(eventWithRawBody, signature);
+    // Verify the signature
+    const stripeEvent = stripe.webhooks.constructEvent(
+      rawBody,
+      signature,
+      webhookSecret
+    );
 
     console.log(`🔔 Received Stripe event: ${stripeEvent.type}`);
 
