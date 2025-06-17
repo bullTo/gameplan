@@ -77,7 +77,7 @@ async function fetchCFLData(sport, extractedData) {
     }
 
     const scoreUrls = scoresURLs();
-    const standingsUrl = `https://www.goalserve.com/getfeed/${API_KEY}/football/home?json=1`;
+    // const standingsUrl = `https://www.goalserve.com/getfeed/${API_KEY}/football/home?json=1`;
     let scheduleUrl = `https://www.goalserve.com/getfeed/${API_KEY}/football/canada_schedule?json=1`;
 
     // Add dates for scheduled games
@@ -89,7 +89,7 @@ async function fetchCFLData(sport, extractedData) {
     }
 
     // Fetch standings and schedule
-    const standingsPromise = fetchWithErrorHandling(standingsUrl);
+    // const standingsPromise = fetchWithErrorHandling(standingsUrl);
     const schedulePromise = fetchWithErrorHandling(scheduleUrl);
 
     // Fetch scores (first 10 successful)
@@ -116,13 +116,13 @@ async function fetchCFLData(sport, extractedData) {
 
     // Wait for all promises to resolve
     const [scoreData, scheduleData] = await Promise.all([
-        standingsPromise,
+        // standingsPromise,
         schedulePromise
     ]);
     // Return structured data
     return {
         sport,
-        scores: scoreData,
+        // scores: scoreData,
         schedule: scheduleData
     };
 }

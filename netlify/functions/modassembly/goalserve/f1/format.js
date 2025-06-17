@@ -161,7 +161,7 @@ function formatCFLData(rawData) {
     return {
         schedule: formatScheduleData(rawData.schedule),
         standings: '',
-        scores: formatScoresData(rawData.scores)
+        scores: ''
     }
 }
 
