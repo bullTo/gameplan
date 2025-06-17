@@ -21,12 +21,28 @@ function verifyStripeSignature(event, signature) {
       return JSON.parse(event.body);
     }
 
+    // Debug logging
+    console.log('🔍 Debug Info:');
+    console.log('Request Body:', event.body);
+    console.log('Signature:', signature);
+    console.log('Webhook Secret Length:', process.env.STRIPE_WEBHOOK_SECRET?.length);
+    console.log('Webhook Secret (first 4 chars):', process.env.STRIPE_WEBHOOK_SECRET?.substring(0, 4) + '...');
+
+    // Clean and validate webhook secret
+    if (!process.env.STRIPE_WEBHOOK_SECRET) {
+      throw new Error('STRIPE_WEBHOOK_SECRET is not set');
+    }
+
+    const webhookSecret = process.env.STRIPE_WEBHOOK_SECRET.trim();
+    if (webhookSecret.length < 20) { // Stripe webhook secrets are typically longer
+      throw new Error('Invalid webhook secret length');
+    }
+
     // Verify the signature using the webhook secret
-    console.log(event.body, signature, process.env.STRIPE_WEBHOOK_SECRET);
     return stripe.webhooks.constructEvent(
       event.body,
       signature,
-      process.env.STRIPE_WEBHOOK_SECRET
+      webhookSecret
     );
   } catch (error) {
     console.error('⚠️ Webhook signature verification failed:', error.message);
