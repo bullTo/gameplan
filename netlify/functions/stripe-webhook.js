@@ -23,10 +23,9 @@ function verifyStripeSignature(event, signature) {
 
     // Debug logging
     console.log('🔍 Debug Info:');
-    console.log('Request Body:', event.body);
+    console.log('Request Body Type:', typeof event.body);
     console.log('Signature:', signature);
     console.log('Webhook Secret Length:', process.env.STRIPE_WEBHOOK_SECRET?.length);
-    console.log('Webhook Secret (first 4 chars):', process.env.STRIPE_WEBHOOK_SECRET?.substring(0, 4) + '...');
 
     // Clean and validate webhook secret
     if (!process.env.STRIPE_WEBHOOK_SECRET) {
@@ -34,13 +33,18 @@ function verifyStripeSignature(event, signature) {
     }
 
     const webhookSecret = process.env.STRIPE_WEBHOOK_SECRET.trim();
-    if (webhookSecret.length < 20) { // Stripe webhook secrets are typically longer
+    if (webhookSecret.length < 20) {
       throw new Error('Invalid webhook secret length');
     }
 
+    // Ensure we have the raw string body
+    const rawBody = typeof event.body === 'string' 
+      ? event.body 
+      : JSON.stringify(event.body);
+
     // Verify the signature using the webhook secret
     return stripe.webhooks.constructEvent(
-      event.body,
+      rawBody,
       signature,
       webhookSecret
     );
@@ -371,6 +375,15 @@ exports.handler = async (event, context) => {
       return {
         statusCode: 401,
         body: JSON.stringify({ error: 'Missing Stripe signature' })
+      };
+    }
+
+    // Ensure we have the raw body
+    if (!event.body) {
+      console.error('❌ Missing request body');
+      return {
+        statusCode: 400,
+        body: JSON.stringify({ error: 'Missing request body' })
       };
     }
 
