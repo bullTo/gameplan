@@ -114,7 +114,7 @@ async function fetchCFLData(sport, extractedData) {
     // }
 
     // Wait for all promises to resolve
-    const [scoreData, scheduleData] = await Promise.all([
+    const [scheduleData] = await Promise.all([
         // standingsPromise,
         schedulePromise
     ]);
