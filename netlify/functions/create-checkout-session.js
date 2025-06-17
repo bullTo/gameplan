@@ -94,7 +94,8 @@ async function createCheckoutSession(user, plan, successUrl, cancelUrl) {
   let priceId;
   if (plan.name === 'core') {
     priceId = process.env.STRIPE_PRICE_CORE;
-  } else if (plan.name === 'pro') {
+  }
+   else if (plan.name === 'pro') {
     priceId = process.env.STRIPE_PRICE_PRO;
   } else {
     throw new Error(`Invalid plan name: ${plan.name}`);
@@ -111,8 +112,7 @@ async function createCheckoutSession(user, plan, successUrl, cancelUrl) {
     line_items: [
       {
         price: priceId,
-        quantity: 1,
-      },
+        quantity: 1,      },
     ],
     mode: 'subscription',
     subscription_data: {

@@ -191,12 +191,9 @@ async function updateUserSubscription(stripeCustomerId, subscriptionId, subscrip
   const userResult = await pool.query(
     `UPDATE users
      SET subscription_plan = $1,
-         subscription_status = $2,
-         subscription_end_date = $3,
-         updated_at = NOW()
-     WHERE stripe_customer_id = $4
+     WHERE stripe_customer_id = $2
      RETURNING id`,
-    [planName, status, endDate, stripeCustomerId]
+    [planName, stripeCustomerId]
   );
 
   if (userResult.rows.length === 0) {
@@ -221,26 +218,26 @@ async function updateUserSubscription(stripeCustomerId, subscriptionId, subscrip
 
   // Check if subscription history record exists
   const historyResult = await pool.query(
-    `SELECT id FROM user_subscription_history
-     WHERE user_id = $1 AND stripe_subscription_id = $2`,
-    [userId, subscriptionId]
+    `SELECT id FROM user_subscriptions
+     WHERE user_id = $1 AND plan_id = $2`,
+    [userId, planId]
   );
 
   if (historyResult.rows.length === 0) {
     // Create new subscription history record
     await pool.query(
-      `INSERT INTO user_subscription_history
-       (user_id, plan_id, stripe_subscription_id, start_date, end_date, status)
-       VALUES ($1, $2, $3, NOW(), $4, $5)`,
-      [userId, planId, subscriptionId, endDate, status]
+      `INSERT INTO user_subscriptions
+       (user_id, plan_id, status, start_date, end_date)
+       VALUES ($1, $2, $3, NOW(), $4)`,
+      [userId, planId, status, endDate ]
     );
   } else {
     // Update existing subscription history record
     await pool.query(
-      `UPDATE user_subscription_history
+      `UPDATE user_subscriptions
        SET plan_id = $1, end_date = $2, status = $3
-       WHERE user_id = $4 AND stripe_subscription_id = $5`,
-      [planId, endDate, status, userId, subscriptionId]
+       WHERE user_id = $4`,
+      [planId, endDate, status, userId]
     );
   }
 }
@@ -251,8 +248,6 @@ async function updateUserToFreePlan(stripeCustomerId, subscriptionId) {
   const userResult = await pool.query(
     `UPDATE users
      SET subscription_plan = 'free',
-         subscription_status = 'canceled',
-         updated_at = NOW()
      WHERE stripe_customer_id = $1
      RETURNING id`,
     [stripeCustomerId]
@@ -267,10 +262,10 @@ async function updateUserToFreePlan(stripeCustomerId, subscriptionId) {
 
   // Update subscription history record
   await pool.query(
-    `UPDATE user_subscription_history
+    `UPDATE user_subscriptions
      SET status = 'canceled', end_date = NOW()
-     WHERE user_id = $1 AND stripe_subscription_id = $2`,
-    [userId, subscriptionId]
+     WHERE user_id = $1`,
+    [userId]
   );
 }
 
@@ -295,10 +290,10 @@ async function updateSubscriptionStatus(stripeCustomerId, subscriptionId, status
 
   // Update subscription history record
   await pool.query(
-    `UPDATE user_subscription_history
+    `UPDATE user_subscriptions
      SET status = $1
-     WHERE user_id = $2 AND stripe_subscription_id = $3`,
-    [status, userId, subscriptionId]
+     WHERE user_id = $2`,
+    [status, userId]
   );
 }
 
@@ -319,10 +314,10 @@ async function recordPayment(stripeCustomerId, subscriptionId, invoice, paymentS
 
   // Update subscription history record with payment information
   await pool.query(
-    `UPDATE user_subscription_history
-     SET payment_status = $1, amount_paid = $2
-     WHERE user_id = $3 AND stripe_subscription_id = $4`,
-    [paymentStatus, invoice.amount_paid, userId, subscriptionId]
+    `UPDATE user_subscriptions
+     SET amount = $1
+     WHERE user_id = $2`,
+    [invoice.amount_paid, userId]
   );
 }
 
@@ -332,8 +327,8 @@ async function getPlanNameFromPriceId(priceId) {
   switch (priceId) {
     case process.env.STRIPE_PRICE_PRO:
       return 'pro';
-    case process.env.STRIPE_PRICE_ELITE:
-      return 'elite';
+    case process.env.STRIPE_PRICE_CORE:
+      return 'core';
     default:
       console.warn(`Unknown price ID: ${priceId}, defaulting to free plan`);
       return 'free';
