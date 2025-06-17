@@ -107,7 +107,7 @@ const HomePage = () => {
       });
 
       // Redirect to dashboard on successful registration
-      navigate('/account/dashboard');
+      navigate('/account/subscription');
     } catch (error) {
       console.error('Registration error:', error);
 
