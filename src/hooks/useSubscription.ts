@@ -8,6 +8,10 @@ interface SubscriptionStatus {
   error: string | null;
 }
 
+const API_BASE_URL = import.meta.env.VITE_APP_DOMAIN || '';
+const FUNCTIONS_PATH_PREFIX = import.meta.env.VITE_FUNCTIONS_PATH_PREFIX || '/.netlify/functions';
+
+
 export const useSubscription = (): SubscriptionStatus => {
   const { user } = useAuth();
   const [status, setStatus] = useState<string | null>(null);
@@ -29,7 +33,7 @@ export const useSubscription = (): SubscriptionStatus => {
 
         const userData = user as any;
 
-        const response = await fetch(`/.netlify/functions/get-user-status?userId=${userData.id}`, {
+        const response = await fetch(`${API_BASE_URL}${FUNCTIONS_PATH_PREFIX}/get-user-status?userId=${userData.id}`, {
           headers: {
             'Authorization': `Bearer ${localStorage.getItem('authToken')}`
           }
