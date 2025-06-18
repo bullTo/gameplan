@@ -75,7 +75,7 @@ const AccountLayout = () => {
           <nav className="flex items-center space-x-6">
             <Button
               variant="ghost"
-              onClick={() => handlePremiumNavigation('/account/predictions')}
+              onClick={() => handlePremiumNavigation('/account/dashboard')}
               className="flex items-center px-3 py-2 text-base"
               style={{
                 color: isActive('/account/dashboard') ? '#0EADAB' : 'white',
