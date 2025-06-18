@@ -21,12 +21,6 @@ function verifyStripeSignature(event, signature) {
       return JSON.parse(event.body);
     }
 
-    // Debug logging
-    console.log('🔍 Debug Info:');
-    console.log('Request Body Type:', typeof event.body);
-    console.log('Signature:', signature);
-    console.log('Webhook Secret Length:', process.env.STRIPE_WEBHOOK_SECRET?.length);
-
     // Clean and validate webhook secret
     if (!process.env.STRIPE_WEBHOOK_SECRET) {
       throw new Error('STRIPE_WEBHOOK_SECRET is not set');
@@ -37,7 +31,6 @@ function verifyStripeSignature(event, signature) {
       throw new Error('Invalid webhook secret length');
     }
 
-    // Ensure we have the raw string body
     const rawBody = typeof event.body === 'string' 
       ? event.body 
       : JSON.stringify(event.body);
@@ -211,7 +204,7 @@ async function updateUserSubscription(stripeCustomerId, subscriptionId, subscrip
   // Update user record
   const userResult = await pool.query(
     `UPDATE users
-     SET subscription_plan = $1,
+     SET subscription_plan = $1
      WHERE stripe_customer_id = $2
      RETURNING id`,
     [planName, stripeCustomerId]
@@ -295,8 +288,7 @@ async function updateSubscriptionStatus(stripeCustomerId, subscriptionId, status
   // Update user record
   const userResult = await pool.query(
     `UPDATE users
-     SET subscription_status = $1,
-         updated_at = NOW()
+     SET status = $1
      WHERE stripe_customer_id = $2
      RETURNING id`,
     [status, stripeCustomerId]
@@ -386,7 +378,6 @@ exports.handler = async (event, context) => {
         body: JSON.stringify({ error: 'Missing request body' })
       };
     }
-
     // Verify the signature and parse the event
     const stripeEvent = verifyStripeSignature(event, signature);
 
