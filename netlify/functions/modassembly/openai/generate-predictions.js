@@ -52,6 +52,7 @@ async function generatePredictions(prompt, extractedData, sportsData) {
                 Aaron Judge over 0.5 Home runs
                 Aaron judge 1+ hits
                 Aaron judge over 5.5 strikeouts
+                
           Here, the suggested match must be the upcoming one, not a current or past one.
           Matches that have already been played should not be suggested.
 
@@ -77,7 +78,7 @@ async function generatePredictions(prompt, extractedData, sportsData) {
 
         const baseUrl = process.env.URL || process.env.DEPLOY_URL || 'http://localhost:8888';
         const response = await fetch(`${baseUrl}/.netlify/functions/openai`, {
-            method: 'POST',
+            method: 'POST', // Increase max tokens for more detailed response
             body: JSON.stringify({
                 messages,
                 use_claude: true,  // Use OpenAI
