@@ -48,7 +48,7 @@ async function generatePredictions(prompt, extractedData, sportsData) {
             ■brief team (or palyer) and opponent prop.
             Why: clear and concise reason for the suggestion.
             Risk Assesment.
-          
+
           And if it's a parlay, if users ask like "give me a strikeout parlay or strikeout play", player stats or props should be shown like this.
           Example if it’s the New York Yankees it would say
             Aaron Judge over 0.5 Home runs
@@ -79,7 +79,7 @@ async function generatePredictions(prompt, extractedData, sportsData) {
 
         const baseUrl = process.env.URL || process.env.DEPLOY_URL || 'http://localhost:8888';
         const response = await fetch(`${baseUrl}/.netlify/functions/openai`, {
-            method: 'POST',
+            method: 'POST', // Increase max tokens for more detailed response
             body: JSON.stringify({
                 messages,
                 use_claude: true,  // Use OpenAI

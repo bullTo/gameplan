@@ -1,50 +1,46 @@
-import { useState, useEffect } from 'react';
-import {
-  getUsers,
-  createUser,
-  updateUser
-} from '@/api/admin';
+import { useState, useEffect } from "react";
+import { getUsers, createUser, updateUser } from "@/api/admin";
 import {
   Card,
   CardContent,
   CardDescription,
   CardHeader,
-  CardTitle
-} from '@/components/ui/card';
+  CardTitle,
+} from "@/components/ui/card";
 import {
   Table,
   TableBody,
   TableCell,
   TableHead,
   TableHeader,
-  TableRow
-} from '@/components/ui/table';
+  TableRow,
+} from "@/components/ui/table";
 import {
   Dialog,
   DialogContent,
   DialogDescription,
   DialogFooter,
   DialogHeader,
-  DialogTitle
-} from '@/components/ui/dialog';
-import { Button } from '@/components/ui/button';
-import { Input } from '@/components/ui/input';
-import { Label } from '@/components/ui/label';
+  DialogTitle,
+} from "@/components/ui/dialog";
+import { Button } from "@/components/ui/button";
+import { Input } from "@/components/ui/input";
+import { Label } from "@/components/ui/label";
 import {
   Select,
   SelectContent,
   SelectItem,
   SelectTrigger,
-  SelectValue
-} from '@/components/ui/select';
+  SelectValue,
+} from "@/components/ui/select";
 import {
   Loader2,
   Search,
   Plus,
   Edit,
   ChevronLeft,
-  ChevronRight
-} from 'lucide-react';
+  ChevronRight,
+} from "lucide-react";
 
 export default function UsersPage() {
   const [users, setUsers] = useState([]);
@@ -54,14 +50,14 @@ export default function UsersPage() {
     page: 1,
     limit: 10,
     total: 0,
-    pages: 0
+    pages: 0,
   });
 
   // Filters
-  const [search, setSearch] = useState('');
-  const [subscriptionFilter, setSubscriptionFilter] = useState('');
-  const [sortBy, setSortBy] = useState('created_at');
-  const [sortOrder, setSortOrder] = useState('desc');
+  const [search, setSearch] = useState("");
+  const [subscriptionFilter, setSubscriptionFilter] = useState("");
+  const [sortBy, setSortBy] = useState("created_at");
+  const [sortOrder, setSortOrder] = useState("desc");
 
   // Modals
   const [userFormOpen, setUserFormOpen] = useState(false);
@@ -69,10 +65,10 @@ export default function UsersPage() {
 
   // Form state
   const [formData, setFormData] = useState({
-    name: '',
-    email: '',
-    password: '',
-    subscription_plan: 'free'
+    name: "",
+    email: "",
+    password: "",
+    subscription_plan: "free",
   });
   const [formLoading, setFormLoading] = useState(false);
   const [formError, setFormError] = useState(null);
@@ -93,13 +89,13 @@ export default function UsersPage() {
         search,
         subscription_plan: subscriptionFilter,
         sort_by: sortBy,
-        sort_order: sortOrder
+        sort_order: sortOrder,
       });
 
       setUsers(response.users);
       setPagination(response.pagination);
     } catch (err) {
-      setError(err.message || 'Failed to load users');
+      setError(err.message || "Failed to load users");
     } finally {
       setLoading(false);
     }
@@ -108,16 +104,16 @@ export default function UsersPage() {
   const handleSearchSubmit = (e) => {
     e.preventDefault();
     // Reset to first page when searching
-    setPagination(prev => ({ ...prev, page: 1 }));
+    setPagination((prev) => ({ ...prev, page: 1 }));
   };
 
   const handleCreateUser = () => {
     setUserToEdit(null);
     setFormData({
-      name: '',
-      email: '',
-      password: '',
-      subscription_plan: 'free'
+      name: "",
+      email: "",
+      password: "",
+      subscription_plan: "free",
     });
     setFormError(null);
     setUserFormOpen(true);
@@ -129,8 +125,8 @@ export default function UsersPage() {
       id: user.id,
       name: user.name,
       email: user.email,
-      password: '', // Don't populate password for security
-      subscription_plan: user.subscription_plan
+      password: "", // Don't populate password for security
+      subscription_plan: user.subscription_plan,
     });
     setFormError(null);
     setUserFormOpen(true);
@@ -138,11 +134,11 @@ export default function UsersPage() {
 
   const handleFormChange = (e) => {
     const { name, value } = e.target;
-    setFormData(prev => ({ ...prev, [name]: value }));
+    setFormData((prev) => ({ ...prev, [name]: value }));
   };
 
   const handleSubscriptionChange = (value) => {
-    setFormData(prev => ({ ...prev, subscription_plan: value }));
+    setFormData((prev) => ({ ...prev, subscription_plan: value }));
   };
 
   const handleFormSubmit = async (e) => {
@@ -166,13 +162,11 @@ export default function UsersPage() {
       setUserFormOpen(false);
       fetchUsers();
     } catch (err) {
-      setFormError(err.message || 'Failed to save user');
+      setFormError(err.message || "Failed to save user");
     } finally {
       setFormLoading(false);
     }
   };
-
-
 
   return (
     <div className="space-y-6">
@@ -187,9 +181,7 @@ export default function UsersPage() {
       <Card>
         <CardHeader>
           <CardTitle>User Management</CardTitle>
-          <CardDescription>
-            View and manage user accounts
-          </CardDescription>
+          <CardDescription>View and manage user accounts</CardDescription>
         </CardHeader>
         <CardContent>
           {/* Filters */}
@@ -213,9 +205,7 @@ export default function UsersPage() {
               <SelectTrigger className="w-[180px]">
                 <SelectValue placeholder="All Plans" />
               </SelectTrigger>
-              <SelectContent
-              className="bg-[white] text-[black]"
-              >
+              <SelectContent className="bg-[white] text-[black]">
                 <SelectItem value="all">All Plans</SelectItem>
                 <SelectItem value="free">Free</SelectItem>
                 <SelectItem value="core">Core</SelectItem>
@@ -223,16 +213,11 @@ export default function UsersPage() {
               </SelectContent>
             </Select>
 
-            <Select
-              value={sortBy}
-              onValueChange={setSortBy}
-            >
+            <Select value={sortBy} onValueChange={setSortBy}>
               <SelectTrigger className="w-[180px]">
                 <SelectValue placeholder="Sort By" />
               </SelectTrigger>
-              <SelectContent
-              className="bg-[white] text-[black]"
-              >
+              <SelectContent className="bg-[white] text-[black]">
                 <SelectItem value="created_at">Registration Date</SelectItem>
                 <SelectItem value="last_login">Last Login</SelectItem>
                 <SelectItem value="name">Name</SelectItem>
@@ -240,16 +225,11 @@ export default function UsersPage() {
               </SelectContent>
             </Select>
 
-            <Select
-              value={sortOrder}
-              onValueChange={setSortOrder}
-            >
+            <Select value={sortOrder} onValueChange={setSortOrder}>
               <SelectTrigger className="w-[120px]">
                 <SelectValue placeholder="Order" />
               </SelectTrigger>
-              <SelectContent
-                className="bg-[white] text-[black]"
-              >
+              <SelectContent className="bg-[white] text-[black]">
                 <SelectItem value="asc">Ascending</SelectItem>
                 <SelectItem value="desc">Descending</SelectItem>
               </SelectContent>
@@ -290,30 +270,38 @@ export default function UsersPage() {
                     </TableCell>
                   </TableRow>
                 ) : (
-                  users.map(user => (
+                  users.map((user) => (
                     <TableRow key={user.id}>
                       <TableCell>{user.name}</TableCell>
                       <TableCell>{user.email}</TableCell>
                       <TableCell>
-                        <span className={`
+                        <span
+                          className={`
                           inline-block px-2 py-1 rounded-full text-xs font-medium
-                          ${user.subscription_plan === 'pro' ? 'bg-yellow-500/20 text-yellow-500' :
-                            user.subscription_plan === 'core' ? 'bg-purple-500/20 text-purple-500' :
-                            'bg-blue-500/20 text-blue-500'}
-                        `}>
-                          {user.subscription_plan === 'core' ? 'Pro' :
-                           user.subscription_plan === 'pro' ? 'Elite' :
-                           user.subscription_plan.charAt(0).toUpperCase() + user.subscription_plan.slice(1)}
+                          ${
+                            user.subscription_plan === "pro"
+                              ? "bg-yellow-500/20 text-yellow-500"
+                              : user.subscription_plan === "core"
+                              ? "bg-purple-500/20 text-purple-500"
+                              : "bg-blue-500/20 text-blue-500"
+                          }
+                        `}
+                        >
+                          {user.subscription_plan === "core"
+                            ? "Pro"
+                            : user.subscription_plan === "pro"
+                            ? "Elite"
+                            : user.subscription_plan.charAt(0).toUpperCase() +
+                              user.subscription_plan.slice(1)}
                         </span>
                       </TableCell>
                       <TableCell>
                         {new Date(user.created_at).toLocaleDateString()}
                       </TableCell>
                       <TableCell>
-                        {user.last_login ?
-                          new Date(user.last_login).toLocaleDateString() :
-                          'Never'
-                        }
+                        {user.last_login
+                          ? new Date(user.last_login).toLocaleDateString()
+                          : "Never"}
                       </TableCell>
                       <TableCell className="text-right">
                         <Button
@@ -335,13 +323,17 @@ export default function UsersPage() {
           {pagination.pages > 1 && (
             <div className="flex items-center justify-between mt-4">
               <div className="text-sm text-muted-foreground">
-                Showing {(pagination.page - 1) * pagination.limit + 1} to {Math.min(pagination.page * pagination.limit, pagination.total)} of {pagination.total} users
+                Showing {(pagination.page - 1) * pagination.limit + 1} to{" "}
+                {Math.min(pagination.page * pagination.limit, pagination.total)}{" "}
+                of {pagination.total} users
               </div>
               <div className="flex items-center space-x-2">
                 <Button
                   variant="outline"
                   size="sm"
-                  onClick={() => setPagination(prev => ({ ...prev, page: prev.page - 1 }))}
+                  onClick={() =>
+                    setPagination((prev) => ({ ...prev, page: prev.page - 1 }))
+                  }
                   disabled={pagination.page === 1}
                 >
                   <ChevronLeft className="h-4 w-4" />
@@ -352,7 +344,9 @@ export default function UsersPage() {
                 <Button
                   variant="outline"
                   size="sm"
-                  onClick={() => setPagination(prev => ({ ...prev, page: prev.page + 1 }))}
+                  onClick={() =>
+                    setPagination((prev) => ({ ...prev, page: prev.page + 1 }))
+                  }
                   disabled={pagination.page === pagination.pages}
                 >
                   <ChevronRight className="h-4 w-4" />
@@ -367,9 +361,9 @@ export default function UsersPage() {
       <Dialog open={userFormOpen} onOpenChange={setUserFormOpen}>
         <DialogContent>
           <DialogHeader>
-            <DialogTitle>{userToEdit ? 'Edit User' : 'Add User'}</DialogTitle>
+            <DialogTitle>{userToEdit ? "Edit User" : "Add User"}</DialogTitle>
             <DialogDescription>
-              {userToEdit ? 'Update user details' : 'Create a new user account'}
+              {userToEdit ? "Update user details" : "Create a new user account"}
             </DialogDescription>
           </DialogHeader>
 
@@ -402,7 +396,9 @@ export default function UsersPage() {
 
               <div className="space-y-2">
                 <Label htmlFor="password">
-                  {userToEdit ? 'Password (leave blank to keep current)' : 'Password'}
+                  {userToEdit
+                    ? "Password (leave blank to keep current)"
+                    : "Password"}
                 </Label>
                 <Input
                   id="password"
@@ -424,8 +420,7 @@ export default function UsersPage() {
                   <SelectTrigger>
                     <SelectValue placeholder="Select a plan" />
                   </SelectTrigger>
-                  <SelectContent
-                  >
+                  <SelectContent>
                     <SelectItem value="free">Free</SelectItem>
                     <SelectItem value="core">Pro</SelectItem>
                     <SelectItem value="pro">Elite</SelectItem>
@@ -455,16 +450,16 @@ export default function UsersPage() {
                     <Loader2 className="mr-2 h-4 w-4 animate-spin" />
                     Saving...
                   </>
+                ) : userToEdit ? (
+                  "Update User"
                 ) : (
-                  userToEdit ? 'Update User' : 'Create User'
+                  "Create User"
                 )}
               </Button>
             </DialogFooter>
           </form>
         </DialogContent>
       </Dialog>
-
-
     </div>
   );
 }
