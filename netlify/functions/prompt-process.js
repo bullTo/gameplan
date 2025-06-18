@@ -16,6 +16,7 @@ const { formatMLSData } = require('./modassembly/goalserve/mls/format');
 const { formatGOLFData } = require('./modassembly/goalserve/golf/format');
 const { formatNBAData } = require('./modassembly/goalserve/nba/format');
 const { formatCFLData } = require('./modassembly/goalserve/f1/format');
+const { parseArgs } = require('util');
 
 // Initialize PostgreSQL connection pool
 const pool = new Pool({
@@ -156,7 +157,7 @@ exports.handler = async (event) => {
 
     // Step 5: Increment the user's daily prompt count
     await incrementPromptCount(userId);
-
+console.log(parseArgs)
     return {
       statusCode: 200,
       body: JSON.stringify({
