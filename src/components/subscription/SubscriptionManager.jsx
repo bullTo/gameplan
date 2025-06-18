@@ -168,7 +168,7 @@ export function SubscriptionManager({ subscription, onUpdate }) {
           </div>
           <div>
             <h4 className="text-sm font-medium text-muted-foreground">Amount</h4>
-            <p className="text-lg font-medium">${(subscription.amount / 100).toFixed(2)}</p>
+            <p className="text-lg font-medium">${subscription.amount}</p>
           </div>
         </div>
 

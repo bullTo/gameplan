@@ -2,6 +2,7 @@ require('dotenv').config();
 // Netlify function to get user's subscription details
 const { Pool } = require('pg');
 const jwt = require('jsonwebtoken');
+const { collapseTextChangeRangesAcrossMultipleVersions } = require('typescript');
 const stripe = require('stripe')(process.env.STRIPE_SECRET_KEY);
 
 // Initialize PostgreSQL connection pool
@@ -27,13 +28,11 @@ async function getUserSubscription(userId) {
   try {
     // Get user details
     const userResult = await pool.query(
-      `SELECT id, email, name, subscription_plan
+      `SELECT id, email, name, subscription_plan, status, stripe_customer_id
        FROM users
        WHERE id = $1`,
       [userId]
     );
-
-    console.log('User query result:', JSON.stringify(userResult.rows[0], null, 2));
 
     if (userResult.rows.length === 0) {
       throw new Error('User not found');
@@ -57,16 +56,29 @@ async function getUserSubscription(userId) {
        WHERE name = $1`,
       [user.subscription_plan]
     );
-
+    
     if (planResult.rows.length === 0) {
       throw new Error('Subscription plan not found');
     }
 
     const plan = planResult.rows[0];
+    const userSubscriptionResult = await pool.query(
+      `SELECT id, end_date
+       FROM user_subscriptions
+       WHERE user_id = $1`,
+      [user.id]
+    );
+      
+    if (userSubscriptionResult.rows.length === 0) {
+      throw new Error('Subscription plan not found');
+    }
+
+    const userSubscription = userSubscriptionResult.rows[0];
 
     // Get subscription from Stripe if customer ID exists
     let stripeSubscription = null;
 
+    console.log('user.stripe_customer_id', user.stripe_customer_id);
     if (user.stripe_customer_id) {
       try {
         // Get customer's subscriptions from Stripe
@@ -75,6 +87,8 @@ async function getUserSubscription(userId) {
           status: 'all',
           limit: 1
         });
+
+        console.log('subscriptions', subscriptions);
 
         if (subscriptions.data.length > 0) {
           stripeSubscription = subscriptions.data[0];
@@ -90,7 +104,7 @@ async function getUserSubscription(userId) {
 
     // Format the date for debugging
     let formattedDate = null;
-    if (user.subscription_end_date) {
+    if (userSubscription.end_date) {
       try {
         formattedDate = new Date(user.subscription_end_date).toISOString();
         console.log('Formatted date:', formattedDate);
@@ -108,10 +122,10 @@ async function getUserSubscription(userId) {
       id: stripeSubscription ? stripeSubscription.id : `local_${user.id}`,
       plan: plan.name.charAt(0).toUpperCase() + plan.name.slice(1), // Capitalize first letter
       planKey: plan.name,
-      status: user.subscription_status || 'active',
+      status: user.status || 'active',
       interval: 'monthly', // We only support monthly billing
-      next_billing_date: user.subscription_end_date, // Add the next billing date directly from the database
-      amount: plan.price_monthly,
+      next_billing_date: userSubscription.end_date, // Add the next billing date directly from the database
+      amount: plan.price,
       cancel_at_period_end: stripeSubscription ? stripeSubscription.cancel_at_period_end : false,
       features: typeof plan.features === 'string'
         ? Object.keys(JSON.parse(plan.features)).map(key => `${key}: ${JSON.parse(plan.features)[key]}`)

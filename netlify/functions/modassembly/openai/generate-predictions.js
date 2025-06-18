@@ -49,7 +49,13 @@ async function generatePredictions(prompt, extractedData, sportsData) {
             Why: clear and concise reason for the suggestion.
             Risk Assesment.
           
+          And if it's a parlay, if users ask like "give me a strikeout parlay or strikeout play", player stats or props should be shown like this.
+          Example if it’s the New York Yankees it would say
+            Aaron Judge over 0.5 Home runs
+            Aaron judge 1+ hits
+            Aaron judge over 5.5 strikeouts , ...
           Here, the suggested match must be the upcoming one, not a current or past one.
+          Matches that have already been played should not be suggested.
 
           Analyze the available data thoroughly, looking at:
           - Team performance based on recent games
