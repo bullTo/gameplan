@@ -1,11 +1,17 @@
-import { useState, useEffect } from 'react';
-import { Card, CardContent, CardDescription, CardHeader, CardTitle } from '@/components/ui/card';
-import { getAnalytics } from '@/api/admin';
-import { Loader2, Users, Zap, ListChecks } from 'lucide-react';
-import { LineChart } from '@mui/x-charts/LineChart';
+import { useState, useEffect } from "react";
+import {
+  Card,
+  CardContent,
+  CardDescription,
+  CardHeader,
+  CardTitle,
+} from "@/components/ui/card";
+import { getAnalytics } from "@/api/admin";
+import { Loader2, Users, Zap, ListChecks } from "lucide-react";
+import { LineChart } from "@mui/x-charts/LineChart";
 // Make sure emotion is properly imported
-import '@emotion/react';
-import '@emotion/styled';
+import "@emotion/react";
+import "@emotion/styled";
 
 export default function AdminDashboard() {
   const [loading, setLoading] = useState(true);
@@ -15,10 +21,10 @@ export default function AdminDashboard() {
   useEffect(() => {
     const fetchAnalytics = async () => {
       try {
-        const data = await getAnalytics('30d');
+        const data = await getAnalytics("30d");
         setAnalytics(data);
       } catch (err) {
-        setError(err.message || 'Failed to load analytics');
+        setError(err.message || "Failed to load analytics");
       } finally {
         setLoading(false);
       }
@@ -67,9 +73,15 @@ export default function AdminDashboard() {
           title="Subscription Plans"
           value={
             <div className="flex flex-col text-sm">
-              <span>Free: {subscriptionStats.subscriptionCounts.free || 0}</span>
+              <span>
+                Free: {subscriptionStats.subscriptionCounts.free || 0}
+              </span>
               <span>Pro: {subscriptionStats.subscriptionCounts.core || 0}</span>
-              <span>Elite: {(subscriptionStats.subscriptionCounts.pro || 0) + (subscriptionStats.subscriptionCounts.elite || 0)}</span>
+              <span>
+                Elite:{" "}
+                {(subscriptionStats.subscriptionCounts.pro || 0) +
+                  (subscriptionStats.subscriptionCounts.elite || 0)}
+              </span>
             </div>
           }
           description="Current distribution"
@@ -103,7 +115,9 @@ export default function AdminDashboard() {
             {userStats.userGrowth.length > 0 ? (
               <UserGrowthChart data={userStats.userGrowth} />
             ) : (
-              <p className="text-muted-foreground">No user growth data available</p>
+              <p className="text-muted-foreground">
+                No user growth data available
+              </p>
             )}
           </div>
         </CardContent>
@@ -147,15 +161,21 @@ export default function AdminDashboard() {
           <div className="grid grid-cols-1 md:grid-cols-3 gap-4">
             <div className="bg-[#1B1C25] p-4 rounded-lg">
               <div className="text-sm text-muted-foreground mb-1">Pending</div>
-              <div className="text-2xl font-bold">{trackerStats.picksByStatus.pending || 0}</div>
+              <div className="text-2xl font-bold">
+                {trackerStats.picksByStatus.pending || 0}
+              </div>
             </div>
             <div className="bg-[#1B1C25] p-4 rounded-lg">
               <div className="text-sm text-muted-foreground mb-1">Hits</div>
-              <div className="text-2xl font-bold text-green-500">{trackerStats.picksByStatus.hit || 0}</div>
+              <div className="text-2xl font-bold text-green-500">
+                {trackerStats.picksByStatus.hit || 0}
+              </div>
             </div>
             <div className="bg-[#1B1C25] p-4 rounded-lg">
               <div className="text-sm text-muted-foreground mb-1">Misses</div>
-              <div className="text-2xl font-bold text-red-500">{trackerStats.picksByStatus.miss || 0}</div>
+              <div className="text-2xl font-bold text-red-500">
+                {trackerStats.picksByStatus.miss || 0}
+              </div>
             </div>
           </div>
         </CardContent>
@@ -167,11 +187,11 @@ export default function AdminDashboard() {
 // Summary Card Component
 function SummaryCard({ title, value, description, icon, color }) {
   const colorClasses = {
-    blue: 'bg-blue-500/10 text-blue-500',
-    green: 'bg-green-500/10 text-green-500',
-    yellow: 'bg-yellow-500/10 text-yellow-500',
-    purple: 'bg-purple-500/10 text-purple-500',
-    red: 'bg-red-500/10 text-red-500',
+    blue: "bg-blue-500/10 text-blue-500",
+    green: "bg-green-500/10 text-green-500",
+    yellow: "bg-yellow-500/10 text-yellow-500",
+    purple: "bg-purple-500/10 text-purple-500",
+    red: "bg-red-500/10 text-red-500",
   };
 
   return (
@@ -179,12 +199,16 @@ function SummaryCard({ title, value, description, icon, color }) {
       <CardContent className="p-6">
         <div className="flex items-center justify-between mb-4">
           <h3 className="text-sm font-medium text-muted-foreground">{title}</h3>
-          <div className={`p-2 rounded-full ${colorClasses[color] || colorClasses.blue}`}>
+          <div
+            className={`p-2 rounded-full ${
+              colorClasses[color] || colorClasses.blue
+            }`}
+          >
             {icon}
           </div>
         </div>
         <div className="text-2xl font-bold mb-1">
-          {typeof value === 'number' ? value.toLocaleString() : value}
+          {typeof value === "number" ? value.toLocaleString() : value}
         </div>
         <p className="text-sm text-muted-foreground">{description}</p>
       </CardContent>
@@ -197,7 +221,9 @@ function SummaryCard({ title, value, description, icon, color }) {
 function UserGrowthChart({ data }) {
   // If no data, show a message
   if (!data || data.length === 0) {
-    return <p className="text-muted-foreground">No user growth data available</p>;
+    return (
+      <p className="text-muted-foreground">No user growth data available</p>
+    );
   }
 
   // Generate sample data if needed for testing
@@ -209,7 +235,7 @@ function UserGrowthChart({ data }) {
       date.setDate(today.getDate() - (30 - i));
       sampleData.push({
         date: date.toISOString(),
-        count: Math.floor(Math.random() * 5) + 1
+        count: Math.floor(Math.random() * 5) + 1,
       });
     }
   }
@@ -218,12 +244,12 @@ function UserGrowthChart({ data }) {
   const chartData = data.length >= 2 ? data : sampleData;
 
   // Format data for MUI X Charts
-  const xLabels = chartData.map(item => {
+  const xLabels = chartData.map((item) => {
     const date = new Date(item.date);
     return date.getDate(); // Day of month
   });
 
-  const yValues = chartData.map(item => item.count);
+  const yValues = chartData.map((item) => item.count);
 
   // Find min and max for y-axis
   const maxCount = Math.max(...yValues);
@@ -231,7 +257,7 @@ function UserGrowthChart({ data }) {
 
   // Format tooltip data
   const valueFormatter = (value, context) => {
-    if (context.type === 'data') {
+    if (context.type === "data") {
       const dataIndex = context.dataIndex;
       const date = new Date(chartData[dataIndex].date);
       return `${date.toLocaleDateString()}: ${value} users`;
@@ -240,41 +266,41 @@ function UserGrowthChart({ data }) {
   };
 
   // Log data for debugging
-  console.log('Chart data:', chartData);
-  console.log('X labels:', xLabels);
-  console.log('Y values:', yValues);
+  console.log("Chart data:", chartData);
+  console.log("X labels:", xLabels);
+  console.log("Y values:", yValues);
 
   return (
     <div className="w-full h-[250px]">
-      <div style={{ width: '100%', height: '100%' }}>
+      <div style={{ width: "100%", height: "100%" }}>
         <LineChart
           margin={{ top: 20, right: 20, bottom: 30, left: 40 }}
           series={[
             {
               data: yValues,
-              label: 'New Users',
-              color: '#0EADAB',
+              label: "New Users",
+              color: "#0EADAB",
               showMark: true,
               valueFormatter,
               curve: "linear",
               // Make the label white
               labelStyle: {
-                fill: 'white',
+                fill: "white",
               },
             },
           ]}
           xAxis={[
             {
               data: xLabels,
-              scaleType: 'point',
+              scaleType: "point",
               valueFormatter: (value) => `Day ${value}`,
               tickLabelStyle: {
                 fontSize: 12,
-                fill: 'white', // Make x-axis labels white
+                fill: "white", // Make x-axis labels white
               },
-              label: 'Day',
+              label: "Day",
               labelStyle: {
-                fill: 'white', // Make x-axis title white
+                fill: "white", // Make x-axis title white
               },
             },
           ]}
@@ -284,48 +310,48 @@ function UserGrowthChart({ data }) {
               max: yAxisMax,
               tickLabelStyle: {
                 fontSize: 12,
-                fill: 'white', // Make y-axis labels white
+                fill: "white", // Make y-axis labels white
               },
-              label: 'Users',
+              label: "Users",
               labelStyle: {
-                fill: 'white', // Make y-axis title white
+                fill: "white", // Make y-axis title white
               },
             },
           ]}
           sx={{
-            '.MuiLineElement-root': {
+            ".MuiLineElement-root": {
               strokeWidth: 3,
             },
-            '.MuiMarkElement-root': {
-              stroke: 'white',
+            ".MuiMarkElement-root": {
+              stroke: "white",
               strokeWidth: 2,
               r: 5,
-              fill: '#0EADAB',
+              fill: "#0EADAB",
             },
-            '.MuiChartsAxis-tickLabel': {
-              fontSize: '0.75rem',
-              fill: 'white', // Ensure all tick labels are white
+            ".MuiChartsAxis-tickLabel": {
+              fontSize: "0.75rem",
+              fill: "white", // Ensure all tick labels are white
             },
-            '.MuiChartsAxis-tick': {
-              stroke: 'rgba(255, 255, 255, 0.5)', // Lighter white for ticks
+            ".MuiChartsAxis-tick": {
+              stroke: "rgba(255, 255, 255, 0.5)", // Lighter white for ticks
             },
-            '.MuiChartsAxis-line': {
-              stroke: 'rgba(255, 255, 255, 0.5)', // Lighter white for axis lines
+            ".MuiChartsAxis-line": {
+              stroke: "rgba(255, 255, 255, 0.5)", // Lighter white for axis lines
             },
-            '.MuiChartsLegend-label': {
-              fill: 'white', // White legend text
+            ".MuiChartsLegend-label": {
+              fill: "white", // White legend text
             },
-            '.MuiChartsLegend-series': {
-              fill: 'white', // White legend elements
+            ".MuiChartsLegend-series": {
+              fill: "white", // White legend elements
             },
-            '.MuiChartsAxis-label': {
-              fill: 'white', // White axis labels
-              fontSize: '0.8rem',
+            ".MuiChartsAxis-label": {
+              fill: "white", // White axis labels
+              fontSize: "0.8rem",
             },
-            width: '100%',
-            height: '100%',
+            width: "100%",
+            height: "100%",
           }}
-          tooltip={{ trigger: 'item' }}
+          tooltip={{ trigger: "item" }}
           slotProps={{
             legend: {
               hidden: true,
@@ -349,22 +375,24 @@ function SubscriptionChart({ data }) {
   const total = Object.values(data).reduce((sum, count) => sum + count, 0);
 
   if (total === 0) {
-    return <p className="text-muted-foreground">No subscription data available</p>;
+    return (
+      <p className="text-muted-foreground">No subscription data available</p>
+    );
   }
 
   const colors = {
-    free: 'bg-blue-500',
-    core: 'bg-purple-500',
-    pro: 'bg-yellow-500',
-    elite: 'bg-green-500'
+    free: "bg-blue-500",
+    core: "bg-purple-500",
+    pro: "bg-yellow-500",
+    elite: "bg-green-500",
   };
 
   // Map subscription plan names for display
   const planNames = {
-    free: 'Free',
-    core: 'Pro',
-    pro: 'Pro',
-    elite: 'Elite'
+    free: "Free",
+    core: "Pro",
+    pro: "Pro",
+    elite: "Elite",
   };
 
   return (
@@ -373,18 +401,26 @@ function SubscriptionChart({ data }) {
         {Object.entries(data).map(([plan, count]) => (
           <div
             key={plan}
-            className={`${colors[plan] || 'bg-gray-500'}`}
+            className={`${colors[plan] || "bg-gray-500"}`}
             style={{ width: `${(count / total) * 100}%` }}
-            title={`${plan}: ${count} users (${Math.round((count / total) * 100)}%)`}
+            title={`${plan}: ${count} users (${Math.round(
+              (count / total) * 100
+            )}%)`}
           />
         ))}
       </div>
       <div className="flex flex-wrap gap-4">
         {Object.entries(data).map(([plan, count]) => (
           <div key={plan} className="flex items-center">
-            <div className={`w-3 h-3 rounded-full ${colors[plan] || 'bg-gray-500'} mr-2`} />
+            <div
+              className={`w-3 h-3 rounded-full ${
+                colors[plan] || "bg-gray-500"
+              } mr-2`}
+            />
             <span>{planNames[plan] || plan}: </span>
-            <span className="font-medium ml-1">{count} ({Math.round((count / total) * 100)}%)</span>
+            <span className="font-medium ml-1">
+              {count} ({Math.round((count / total) * 100)}%)
+            </span>
           </div>
         ))}
       </div>
@@ -396,14 +432,18 @@ function SportDistributionChart({ data }) {
   const total = Object.values(data).reduce((sum, count) => sum + count, 0);
 
   if (total === 0) {
-    return <p className="text-muted-foreground">No sport distribution data available</p>;
+    return (
+      <p className="text-muted-foreground">
+        No sport distribution data available
+      </p>
+    );
   }
 
   const colors = {
-    NBA: 'bg-orange-500',
-    MLB: 'bg-blue-500',
-    NFL: 'bg-green-500',
-    NHL: 'bg-purple-500'
+    NBA: "bg-orange-500",
+    MLB: "bg-blue-500",
+    NFL: "bg-green-500",
+    NHL: "bg-purple-500",
   };
 
   return (
@@ -412,18 +452,26 @@ function SportDistributionChart({ data }) {
         {Object.entries(data).map(([sport, count]) => (
           <div
             key={sport}
-            className={`${colors[sport] || 'bg-gray-500'}`}
+            className={`${colors[sport] || "bg-gray-500"}`}
             style={{ width: `${(count / total) * 100}%` }}
-            title={`${sport}: ${count} prompts (${Math.round((count / total) * 100)}%)`}
+            title={`${sport}: ${count} prompts (${Math.round(
+              (count / total) * 100
+            )}%)`}
           />
         ))}
       </div>
       <div className="flex flex-wrap gap-4">
         {Object.entries(data).map(([sport, count]) => (
           <div key={sport} className="flex items-center">
-            <div className={`w-3 h-3 rounded-full ${colors[sport] || 'bg-gray-500'} mr-2`} />
+            <div
+              className={`w-3 h-3 rounded-full ${
+                colors[sport] || "bg-gray-500"
+              } mr-2`}
+            />
             <span>{sport}: </span>
-            <span className="font-medium ml-1">{count} ({Math.round((count / total) * 100)}%)</span>
+            <span className="font-medium ml-1">
+              {count} ({Math.round((count / total) * 100)}%)
+            </span>
           </div>
         ))}
       </div>
