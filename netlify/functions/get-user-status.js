@@ -60,7 +60,6 @@ exports.handler = async (event, context) => {
     }
 
     // Query the database for user status
-    console.log(decoded.sub !== userId && decoded.role !== 'admin')
     const result = await pool.query(
       `SELECT status, subscription_plan 
        FROM users 
