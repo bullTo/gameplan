@@ -12,6 +12,7 @@ import { getUserData, logoutUser } from '@/api/auth'
 import Footer from '@/components/Footer'
 import SubscriptionGuard from '@/components/SubscriptionGuard'
 import { useSubscription } from '@/hooks/useSubscription'
+import { useToast } from '@/components/ui/use-toast'
 
 // Import page components
 import Dashboard from '@/pages/account/Dashboard'
@@ -30,6 +31,7 @@ import SubscriptionCancel from '@/pages/account/SubscriptionCancel'
 const AccountLayout = () => {
   const navigate = useNavigate()
   const location = useLocation()
+  const { toast } = useToast()
   const { status: userStatus } = useSubscription()
 
   // Helper function to check if a menu item is active
@@ -52,7 +54,18 @@ const AccountLayout = () => {
     if (hasPremiumAccess()) {
       navigate(path);
     } else {
-      navigate('/account/subscription');
+      // Redirect to subscription page for premium features
+      if (path.includes('/predictions') || path.includes('/tracker')) {
+        toast({
+          title: "Premium Feature Required",
+          description: "This feature requires an active subscription. Redirecting to subscription page...",
+          variant: "destructive",
+        });
+        navigate('/account/subscription');
+      } else {
+        // For non-premium features like dashboard, allow access
+        navigate(path);
+      }
     }
   }
 
@@ -201,9 +214,7 @@ const AccountLayout = () => {
       <main className="mx-auto max-w-7xl px-4 py-6 sm:px-6 lg:px-8" style={{ color: 'white' }}>
         <Routes>
           <Route path="dashboard" element={
-            <SubscriptionGuard requiredStatus="active">
               <Dashboard />
-            </SubscriptionGuard>
           } />
           <Route path="predictions" element={
             <SubscriptionGuard requiredStatus="active">

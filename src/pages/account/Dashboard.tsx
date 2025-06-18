@@ -1,11 +1,20 @@
 import { useState, useEffect } from 'react';
+import { useNavigate } from 'react-router-dom';
 import { PromptInput } from '@/components/PromptInput';
 import { getPredictions } from '@/api/predictions';
 import { Loader2 } from 'lucide-react';
+import { useAuth } from '@/hooks/useAuth';
+import { useSubscription } from '@/hooks/useSubscription';
+import { useToast } from '@/components/ui/use-toast';
 
 // Team Logo Image component
 
 const Dashboard = () => {
+  const navigate = useNavigate();
+  const { toast } = useToast();
+  const { user } = useAuth();
+  const { status: userStatus, loading: subscriptionLoading } = useSubscription();
+  
   const [promptResponse, setPromptResponse] = useState<any>(null);
   const [loading, setLoading] = useState(true);
 
@@ -14,38 +23,69 @@ const Dashboard = () => {
   const [hitCount, setHitCount] = useState(0);
   const [winRatio, setWinRatio] = useState(0);
   const [liveCount, setLiveCount] = useState(0);
-  // Fetch recommendations on component mount
 
-
+  // Check subscription status and redirect if inactive
   useEffect(() => {
-    // Fetch all predictions for the user
-    const fetchPredictions = async () => {
-      setLoading(true);
-      try {
-        const data = await getPredictions();
+    if (!subscriptionLoading && userStatus && userStatus !== 'active') {
+      toast({
+        title: "Subscription Required",
+        description: "You need an active subscription to access the dashboard. Redirecting to subscription page...",
+        variant: "destructive",
+      });
+      navigate('/account/subscription', { replace: true });
+    }
+  }, [userStatus, subscriptionLoading, navigate, toast]);
 
-        // Calculate stats
-        const tracked = data.predictions.filter((p: any) => p.pickSaved).length;
-        const hits = data.predictions.filter((p: any) => p.isHit).length;
-        const total = data.predictions.length;
-        const win = total > 0 ? Math.round((hits / total) * 100) : 0;
-        // Example: preferred style by most common betType
+  // Fetch recommendations on component mount
+  useEffect(() => {
+    // Only fetch predictions if user has active subscription
+    if (userStatus === 'active') {
+      // Fetch all predictions for the user
+      const fetchPredictions = async () => {
+        setLoading(true);
+        try {
+          const data = await getPredictions();
 
-        setLiveCount(total);
-        setTrackedCount(tracked);
-        setHitCount(hits);
-        setWinRatio(win);
-      } catch (err) {
-        setTrackedCount(0);
-        setHitCount(0);
-        setWinRatio(0);
-      } finally {
-        setLoading(false);
-      }
-    };
+          // Calculate stats
+          const tracked = data.predictions.filter((p: any) => p.pickSaved).length;
+          const hits = data.predictions.filter((p: any) => p.isHit).length;
+          const total = data.predictions.length;
+          const win = total > 0 ? Math.round((hits / total) * 100) : 0;
+          // Example: preferred style by most common betType
 
-    fetchPredictions();
-  }, [promptResponse]);
+          setLiveCount(total);
+          setTrackedCount(tracked);
+          setHitCount(hits);
+          setWinRatio(win);
+        } catch (err) {
+          setTrackedCount(0);
+          setHitCount(0);
+          setWinRatio(0);
+        } finally {
+          setLoading(false);
+        }
+      };
+
+      fetchPredictions();
+    }
+  }, [promptResponse, userStatus]);
+
+  // Show loading state while checking subscription
+  if (subscriptionLoading) {
+    return (
+      <div className="w-full h-full p-5 flex items-center justify-center" style={{ background: 'rgba(17.76, 18.55, 28.04, 0.50)', overflow: 'hidden', borderRadius: 15 }}>
+        <div className="flex items-center">
+          <Loader2 className="h-8 w-8 animate-spin text-[#0EADAB]" />
+          <span className="ml-2 text-white">Checking subscription status...</span>
+        </div>
+      </div>
+    );
+  }
+
+  // Don't render dashboard content if user is not active
+  if (userStatus !== 'active') {
+    return null;
+  }
 
   return (
     <div className="w-full h-full p-5" style={{ background: 'rgba(17.76, 18.55, 28.04, 0.50)', overflow: 'hidden', borderRadius: 15 }}>
