@@ -261,7 +261,7 @@ async function updateUserToFreePlan(stripeCustomerId, subscriptionId) {
   // Update user record
   const userResult = await pool.query(
     `UPDATE users
-     SET subscription_plan = 'free',
+     SET subscription_plan = 'free'
      WHERE stripe_customer_id = $1
      RETURNING id`,
     [stripeCustomerId]

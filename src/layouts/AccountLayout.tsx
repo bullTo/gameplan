@@ -1,7 +1,7 @@
 import { Routes, Route, Navigate } from 'react-router-dom'
 import { Button } from '@/components/ui/button'
 import { useNavigate, useLocation } from 'react-router-dom'
-import { ChevronDown, Gift } from 'lucide-react'
+import { ChevronDown, Gift, Lock } from 'lucide-react'
 import {
   DropdownMenu,
   DropdownMenuContent,
@@ -10,6 +10,8 @@ import {
 } from "@/components/ui/dropdown-menu"
 import { getUserData, logoutUser } from '@/api/auth'
 import Footer from '@/components/Footer'
+import SubscriptionGuard from '@/components/SubscriptionGuard'
+import { useSubscription } from '@/hooks/useSubscription'
 
 // Import page components
 import Dashboard from '@/pages/account/Dashboard'
@@ -28,16 +30,30 @@ import SubscriptionCancel from '@/pages/account/SubscriptionCancel'
 const AccountLayout = () => {
   const navigate = useNavigate()
   const location = useLocation()
+  const { status: userStatus } = useSubscription()
 
   // Helper function to check if a menu item is active
   const isActive = (path: string) => {
     return location.pathname === path
   }
 
+  // Helper function to check if user has access to premium features
+  const hasPremiumAccess = () => {
+    return userStatus === 'active';
+  }
+
   const handleLogout = () => {
     // Implement logout functionality
     logoutUser()
     navigate('/')
+  }
+
+  const handlePremiumNavigation = (path: string) => {
+    if (hasPremiumAccess()) {
+      navigate(path);
+    } else {
+      navigate('/account/subscription');
+    }
   }
 
   return (
@@ -59,7 +75,7 @@ const AccountLayout = () => {
           <nav className="flex items-center space-x-6">
             <Button
               variant="ghost"
-              onClick={() => navigate('/account/dashboard')}
+              onClick={() => handlePremiumNavigation('/account/predictions')}
               className="flex items-center px-3 py-2 text-base"
               style={{
                 color: isActive('/account/dashboard') ? '#0EADAB' : 'white',
@@ -73,7 +89,7 @@ const AccountLayout = () => {
             </Button>
             <Button
               variant="ghost"
-              onClick={() => navigate('/account/predictions')}
+              onClick={() => handlePremiumNavigation('/account/predictions')}
               className="flex items-center px-3 py-2 text-base"
               style={{
                 color: isActive('/account/predictions') ? '#0EADAB' : 'white',
@@ -83,10 +99,13 @@ const AccountLayout = () => {
               }}
             >
               Predictions
+              {!hasPremiumAccess() && (
+                <Lock size={12} className="ml-1 text-gray-400" />
+              )}
             </Button>
             <Button
               variant="ghost"
-              onClick={() => navigate('/account/tracker')}
+              onClick={() => handlePremiumNavigation('/account/tracker')}
               className="flex items-center px-3 py-2 text-base"
               style={{
                 color: isActive('/account/tracker') ? '#0EADAB' : 'white',
@@ -96,6 +115,9 @@ const AccountLayout = () => {
               }}
             >
               Tracker
+              {!hasPremiumAccess() && (
+                <Lock size={12} className="ml-1 text-gray-400" />
+              )}
             </Button>
             <DropdownMenu>
               <DropdownMenuTrigger asChild>
@@ -178,10 +200,26 @@ const AccountLayout = () => {
 
       <main className="mx-auto max-w-7xl px-4 py-6 sm:px-6 lg:px-8" style={{ color: 'white' }}>
         <Routes>
-          <Route path="dashboard" element={<Dashboard />} />
-          <Route path="predictions" element={<Predictions />} />
-          <Route path="predictions/:id" element={<PredictionDetail />} />
-          <Route path="tracker" element={<Tracker />} />
+          <Route path="dashboard" element={
+            <SubscriptionGuard requiredStatus="active">
+              <Dashboard />
+            </SubscriptionGuard>
+          } />
+          <Route path="predictions" element={
+            <SubscriptionGuard requiredStatus="active">
+              <Predictions />
+            </SubscriptionGuard>
+          } />
+          <Route path="predictions/:id" element={
+            <SubscriptionGuard requiredStatus="active">
+              <PredictionDetail />
+            </SubscriptionGuard>
+          } />
+          <Route path="tracker" element={
+            <SubscriptionGuard requiredStatus="active">
+              <Tracker />
+            </SubscriptionGuard>
+          } />
           <Route path="profile" element={<Profile />} />
           <Route path="settings" element={<Settings />} />
           <Route path="referral" element={<Referral />} />
