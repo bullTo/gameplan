@@ -3,7 +3,6 @@ import { useNavigate } from 'react-router-dom';
 import { PromptInput } from '@/components/PromptInput';
 import { getPredictions } from '@/api/predictions';
 import { Loader2 } from 'lucide-react';
-import { useAuth } from '@/hooks/useAuth';
 import { useSubscription } from '@/hooks/useSubscription';
 import { useToast } from '@/components/ui/use-toast';
 
@@ -12,7 +11,6 @@ import { useToast } from '@/components/ui/use-toast';
 const Dashboard = () => {
   const navigate = useNavigate();
   const { toast } = useToast();
-  const { user } = useAuth();
   const { status: userStatus, loading: subscriptionLoading } = useSubscription();
   
   const [promptResponse, setPromptResponse] = useState<any>(null);
