@@ -100,13 +100,13 @@ async function getUserSubscription(userId) {
     }
 
     // Log subscription_end_date
-    console.log('subscription_end_date from DB:', user.subscription_end_date);
+    console.log('subscription_end_date from DB:', userSubscription.end_date);
 
     // Format the date for debugging
     let formattedDate = null;
     if (userSubscription.end_date) {
       try {
-        formattedDate = new Date(user.subscription_end_date).toISOString();
+        formattedDate = new Date(userSubscription.end_date).toISOString();
         console.log('Formatted date:', formattedDate);
       } catch (error) {
         console.error('Error formatting date:', error);
