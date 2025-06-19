@@ -1,5 +1,6 @@
 const { Pool } = require('pg');
 const jwt = require('jsonwebtoken');
+const { DatabaseBackup } = require('lucide-react');
 
 // Initialize PostgreSQL connection pool
 const pool = new Pool({
@@ -50,6 +51,8 @@ exports.handler = async (event, context) => {
         body: JSON.stringify({ error: 'User ID is required' })
       };
     }
+    console.log(decoded.sub, userId)
+    console.log(decoded.sub != userId && decoded.role !== 'admin')
 
     // Verify that the user is requesting their own status or is an admin
     if (decoded.sub != userId && decoded.role !== 'admin') {

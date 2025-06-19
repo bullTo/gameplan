@@ -51,6 +51,7 @@ const AccountLayout = () => {
   }
 
   const handlePremiumNavigation = (path: string) => {
+    console.log(hasPremiumAccess())
     if (hasPremiumAccess()) {
       navigate(path);
     } else {

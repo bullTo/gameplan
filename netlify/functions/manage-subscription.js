@@ -53,19 +53,19 @@ async function getUserActiveSubscription(userId) {
   
   // Get the user's active subscription from the database
   const subscriptionResult = await pool.query(
-    `SELECT stripe_subscription_id 
-     FROM user_subscription_history 
+    `SELECT id 
+     FROM user_subscriptions
      WHERE user_id = $1 AND status = 'active'
      ORDER BY created_at DESC
      LIMIT 1`,
     [userId]
   );
   
-  if (subscriptionResult.rows.length === 0 || !subscriptionResult.rows[0].stripe_subscription_id) {
+  if (subscriptionResult.rows.length === 0 || !subscriptionResult.rows[0].id) {
     return null;
   }
   
-  const stripeSubscriptionId = subscriptionResult.rows[0].stripe_subscription_id;
+  const stripeSubscriptionId = stripeCustomerId;
   
   // Get the subscription details from Stripe
   try {
