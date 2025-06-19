@@ -46,7 +46,7 @@ Today’s date in NYC is ${nycTime}.
 
         const baseUrl = process.env.URL || process.env.DEPLOY_URL || 'http://localhost:8888';
         const response = await fetch(`${baseUrl}/.netlify/functions/openai`, {
-            method: 'POST',
+            method: 'POST', // Increase max tokens for more detailed response
             body: JSON.stringify({
                 messages,
                 use_claude: true,  // Use OpenAI
