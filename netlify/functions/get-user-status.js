@@ -43,18 +43,18 @@ exports.handler = async (event, context) => {
     const decoded = verifyToken(token);
 
     // Get user ID from query parameters
-    let { userId } = event.queryStringParameters || {};
+    // const { userId } = event.queryStringParameters || {};
     
-    if (!userId) {
-      return {
-        statusCode: 400,
-        body: JSON.stringify({ error: 'User ID is required' })
-      };
-    }
-    userId = decoded.sub;
+    // if (!userId) {
+    //   return {
+    //     statusCode: 400,
+    //     body: JSON.stringify({ error: 'User ID is required' })
+    //   };
+    // }
+    let userId = decoded.sub;
 
     // Verify that the user is requesting their own status or is an admin
-    if (!userId || decoded.role !== 'admin') {
+    if (!userId && decoded.role !== 'admin') {
       return {
         statusCode: 403,
         body: JSON.stringify({ error: 'Access denied' })
@@ -78,6 +78,7 @@ exports.handler = async (event, context) => {
 
     const user = result.rows[0];
     
+    console.log("user:::::", user)
     // Return user status
     return {
       statusCode: 200,
