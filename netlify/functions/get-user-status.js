@@ -43,7 +43,7 @@ exports.handler = async (event, context) => {
     const decoded = verifyToken(token);
 
     // Get user ID from query parameters
-    const { userId } = event.queryStringParameters || {};
+    let { userId } = event.queryStringParameters || {};
     
     if (!userId) {
       return {
@@ -51,11 +51,10 @@ exports.handler = async (event, context) => {
         body: JSON.stringify({ error: 'User ID is required' })
       };
     }
-    console.log(decoded.sub, userId)
-    console.log(decoded.sub != userId && decoded.role !== 'admin')
+    userId = decoded.sub;
 
     // Verify that the user is requesting their own status or is an admin
-    if (decoded.sub != userId && decoded.role !== 'admin') {
+    if (!userId || decoded.role !== 'admin') {
       return {
         statusCode: 403,
         body: JSON.stringify({ error: 'Access denied' })

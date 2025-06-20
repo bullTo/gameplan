@@ -23,10 +23,10 @@ export const useSubscription = (): SubscriptionStatus => {
       try {
         setError(null);
 
-        if (!user || !(user as any)?.id) {
-          setStatus('inactive');
-          return;
-        }
+        // if (!user || !(user as any)?.id) {
+        //   setStatus('inactive');
+        //   return;
+        // }
 
         const userData = user as any;
 
