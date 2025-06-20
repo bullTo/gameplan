@@ -13,21 +13,18 @@ const FUNCTIONS_PATH_PREFIX = import.meta.env.VITE_FUNCTIONS_PATH_PREFIX || '/.n
 
 
 export const useSubscription = (): SubscriptionStatus => {
-  const { user } = useAuth();
+  const { user, loading } = useAuth();
   const [status, setStatus] = useState<string | null>(null);
   const [subscription_plan, setSubscriptionPlan] = useState<string | null>(null);
-  const [loading, setLoading] = useState(true);
   const [error, setError] = useState<string | null>(null);
 
   useEffect(() => {
     const fetchSubscriptionStatus = async () => {
       try {
-        setLoading(true);
         setError(null);
 
         if (!user || !(user as any)?.id) {
           setStatus('inactive');
-          setLoading(false);
           return;
         }
 
@@ -52,8 +49,6 @@ export const useSubscription = (): SubscriptionStatus => {
         console.error('Error fetching subscription status:', err);
         setError('Error fetching subscription status');
         setStatus('inactive');
-      } finally {
-        setLoading(false);
       }
     };
 

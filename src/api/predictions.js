@@ -1,4 +1,5 @@
 // API functions for predictions
+import { continuousColorLegendClasses } from '@mui/x-charts';
 import { getAuthToken, handleResponse } from './utils';
 
 /**
@@ -95,6 +96,7 @@ export async function fetchGoalServeStats(params = {}) {
     if (params.team) queryParams.append('team', params.team);
     if (params.opponent) queryParams.append('opponent', params.opponent);
 
+    console.log(params.sport, params.player, params.team, params.opponent)
     const queryString = queryParams.toString() ? `?${queryParams.toString()}` : '';
 
     const response = await fetch(
