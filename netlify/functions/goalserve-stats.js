@@ -37,7 +37,7 @@ async function fetchGoalServeRaw({ sport, player, team, opponent }) {
             const sportsGOLFData = await fetchGOLFData(extractedData.sport, extractedData);
             formattedData = formatGOLFData(sportsGOLFData);
             break;
-        case 'CFL':
+        case 'cfl':
             const sportsCFLData = await fetchCFLData(extractedData.sport, extractedData);
             formattedData = formatCFLData(sportsCFLData);
             break;
