@@ -19,6 +19,7 @@ export const useSubscription = (): SubscriptionStatus => {
   const [error, setError] = useState<string | null>(null);
 
   useEffect(() => {
+    console.log("user subsciroiotn")
     const fetchSubscriptionStatus = async () => {
       try {
         setError(null);
@@ -28,9 +29,7 @@ export const useSubscription = (): SubscriptionStatus => {
         //   return;
         // }
 
-        const userData = user as any;
-
-        const response = await fetch(`${API_BASE_URL}${FUNCTIONS_PATH_PREFIX}/get-user-status?userId=${userData.id}`, {
+        const response = await fetch(`${API_BASE_URL}${FUNCTIONS_PATH_PREFIX}/get-user-status`, {
           headers: {
             'Authorization': `Bearer ${localStorage.getItem('authToken')}`
           }
