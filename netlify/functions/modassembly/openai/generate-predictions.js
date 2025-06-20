@@ -30,6 +30,7 @@ async function generatePredictions(prompt, extractedData, sportsData) {
                 content: `You are a sports betting assistant for the ${sport}. The user prompt asks for a ${betType} pick using the provided data.
 
 Use only the given schedule, scores, and standings. Suggest picks from *future games only*. Please compare the match time with current time for picking future games only.
+please show current time and match time.
 Format clearly and briefly.
 
 If the user asks for props, include 2–3 relevant stat-based props with exact player's name. not team name.
