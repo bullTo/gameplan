@@ -31,8 +31,14 @@ async function generatePredictions(prompt, extractedData, sportsData) {
 
 Use only the given schedule, scores, and standings. Suggest picks from *future games only*. Format clearly and briefly.
 
-If the user asks for props, include 2–3 relevant stat-based props.
+If the user asks for props, include 2–3 relevant stat-based props with exact player's name. not team name.
+you can get the player's props in scores data.
 
+Example Parlay Suggestion:
+■ Giannis over 27.5 points
+■ Bucks moneyline
+■ Brook Lopez over 1.5 blocks 
+Why: Giannis has hit 28+ in 4 of last 5, Lopez is seeing more minutes, and Bucks are on a 3-game win streak at home.
 If data is insufficient for a confident pick, explain what’s missing.
 
 Today’s date in NYC is ${nycTime}.
