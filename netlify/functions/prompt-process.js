@@ -164,7 +164,7 @@ console.log(promptLimit, user.daily_prompt_count)
         response: predictionsText,
         promptAnalysis: predictedJson,
         promptLogId,
-        remainingPrompts: promptLimit - (user.daily_prompt_count + 1)
+        remainingPrompts: promptLimit - (Number(user.daily_prompt_count ?? 0) + 1)
       }),
       headers: { 'Content-Type': 'application/json' }
     };
