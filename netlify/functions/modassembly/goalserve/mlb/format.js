@@ -114,135 +114,172 @@ function formatScoresData(rawData) {
         players: {}
     }
 
-    // Handle both array and single match cases
-    const matches = rawData.scores.category && rawData.scores.category.match 
-        ? (Array.isArray(rawData.scores.category.match) 
-            ? rawData.scores.category.match 
-            : [rawData.scores.category.match])
-        : [];
+    // Set limit for scoresData items
+    const MAX_ITEMS = 25000;
+    let itemCount = 0;
 
-    for (const match of matches) {
-        // Compute home team
-        if (match.hometeam) {
-            const homeTeamId = match.hometeam['@id'];
-            if (!scoresData.teams[homeTeamId]) {
-                scoresData.teams[homeTeamId] = {
-                    name: match.hometeam['@name'],
-                    stats: {
-                        hits: 0,
-                        errors: 0,
-                        totalscore: 0,
-                        innings: {}
-                    }
-                };
-            }
-            
-            const homeTeam = scoresData.teams[homeTeamId];
-            homeTeam.stats.hits = parseInt(match.hometeam['@hits']) || 0;
-            homeTeam.stats.errors = parseInt(match.hometeam['@errors']) || 0;
-            homeTeam.stats.totalscore = parseInt(match.hometeam['@totalscore']) || 0;
-            
-            // Process innings
-            if (match.hometeam.innings && match.hometeam.innings.inning) {
-                const innings = Array.isArray(match.hometeam.innings.inning) 
-                    ? match.hometeam.innings.inning 
-                    : [match.hometeam.innings.inning];
-                    
-                innings.forEach(inning => {
-                    homeTeam.stats.innings[inning['@number']] = {
-                        hits: parseInt(inning['@hits']) || 0,
-                        score: parseInt(inning['@score']) || 0
-                    };
-                });
-            }
-        }
-        
-        // Compute away team
-        if (match.awayteam) {
-            const awayTeamId = match.awayteam['@id'];
-            if (!scoresData.teams[awayTeamId]) {
-                scoresData.teams[awayTeamId] = {
-                    name: match.awayteam['@name'],
-                    stats: {
-                        hits: 0,
-                        errors: 0,
-                        totalscore: 0,
-                        innings: {}
-                    }
-                };
-            }
-            
-            const awayTeam = scoresData.teams[awayTeamId];
-            awayTeam.stats.hits = parseInt(match.awayteam['@hits']) || 0;
-            awayTeam.stats.errors = parseInt(match.awayteam['@errors']) || 0;
-            awayTeam.stats.totalscore = parseInt(match.awayteam['@totalscore']) || 0;
-            
-            // Process innings
-            if (match.awayteam.innings && match.awayteam.innings.inning) {
-                const innings = Array.isArray(match.awayteam.innings.inning) 
-                    ? match.awayteam.innings.inning 
-                    : [match.awayteam.innings.inning];
-                    
-                innings.forEach(inning => {
-                    awayTeam.stats.innings[inning['@number']] = {
-                        hits: parseInt(inning['@hits']) || 0,
-                        score: parseInt(inning['@score']) || 0
-                    };
-                });
-            }
+    // Handle rawData.scores as an array
+    const scoresArray = Array.isArray(rawData.scores) ? rawData.scores : [rawData.scores];
+
+    for (const scoreItem of scoresArray) {
+        // Check if we've reached the limit
+        if (itemCount >= MAX_ITEMS) {
+            console.warn(`Reached maximum limit of ${MAX_ITEMS} items. Stopping processing.`);
+            break;
         }
 
-        if (match.events) {
-            // Process baseball events
-            const processEvents = (events) => {
-                if (!events) return;
-                
-                // Handle both single events and arrays of events
-                const eventArray = Array.isArray(events.event) ? events.event : [events.event];
-                
-                eventArray.forEach(evt => {
-                    if (!evt || !evt['@desc']) return;
-                    
-                    // Extract player name from event description
-                    const playerMatch = evt['@desc'].match(/^([A-Za-z\-]+)\s/);
-                    const playerId = playerMatch ? playerMatch[1].toLowerCase() : null;
-                    
-                    if (playerId) {
-                        // Initialize player if not exists
-                        if (!scoresData.players[playerId]) {
-                            scoresData.players[playerId] = {
-                                name: playerMatch[1],
-                                stats: {
-                                    home_runs: 0,
-                                    singles: 0,
-                                    doubles: 0,
-                                    rbi: 0
-                                }
-                            };
-                        }
-                        
-                        // Update player statistics based on event description
-                        if (evt['@desc'].includes('homered')) {
-                            scoresData.players[playerId].stats.home_runs++;
-                        } else if (evt['@desc'].includes('doubled')) {
-                            scoresData.players[playerId].stats.doubles++;
-                        } else if (evt['@desc'].includes('singled')) {
-                            scoresData.players[playerId].stats.singles++;
-                        }
-                        
-                        // Count RBIs
-                        const rbiMatch = evt['@desc'].match(/scored(?: and [A-Za-z\-]+ scored)*(?:,|\.)/);
-                        if (rbiMatch) {
-                            const scorers = (rbiMatch[0].match(/[A-Za-z\-]+/g) || []).length;
-                            scoresData.players[playerId].stats.rbi += scorers;
-                        }
-                    }
-                });
-            };
+        // Handle both array and single match cases for each score item
+        const matches = scoreItem.category && scoreItem.category.match 
+            ? (Array.isArray(scoreItem.category.match) 
+                ? scoreItem.category.match 
+                : [scoreItem.category.match])
+            : [];
 
-            processEvents(match.events);
+        for (const match of matches) {
+            // Check if we've reached the limit
+            if (itemCount >= MAX_ITEMS) {
+                console.warn(`Reached maximum limit of ${MAX_ITEMS} items. Stopping processing.`);
+                break;
+            }
+
+            // Compute home team
+            if (match.hometeam) {
+                const homeTeamId = match.hometeam['@id'];
+                if (!scoresData.teams[homeTeamId]) {
+                    scoresData.teams[homeTeamId] = {
+                        name: match.hometeam['@name'],
+                        stats: {
+                            hits: 0,
+                            errors: 0,
+                            totalscore: 0,
+                            innings: {}
+                        }
+                    };
+                    itemCount++;
+                }
+                
+                const homeTeam = scoresData.teams[homeTeamId];
+                homeTeam.stats.hits = parseInt(match.hometeam['@hits']) || 0;
+                homeTeam.stats.errors = parseInt(match.hometeam['@errors']) || 0;
+                homeTeam.stats.totalscore = parseInt(match.hometeam['@totalscore']) || 0;
+                
+                // Process innings
+                if (match.hometeam.innings && match.hometeam.innings.inning) {
+                    const innings = Array.isArray(match.hometeam.innings.inning) 
+                        ? match.hometeam.innings.inning 
+                        : [match.hometeam.innings.inning];
+                        
+                    innings.forEach(inning => {
+                        homeTeam.stats.innings[inning['@number']] = {
+                            hits: parseInt(inning['@hits']) || 0,
+                            score: parseInt(inning['@score']) || 0
+                        };
+                    });
+                }
+            }
+            
+            // Compute away team
+            if (match.awayteam) {
+                const awayTeamId = match.awayteam['@id'];
+                if (!scoresData.teams[awayTeamId]) {
+                    scoresData.teams[awayTeamId] = {
+                        name: match.awayteam['@name'],
+                        stats: {
+                            hits: 0,
+                            errors: 0,
+                            totalscore: 0,
+                            innings: {}
+                        }
+                    };
+                    itemCount++;
+                }
+                
+                const awayTeam = scoresData.teams[awayTeamId];
+                awayTeam.stats.hits = parseInt(match.awayteam['@hits']) || 0;
+                awayTeam.stats.errors = parseInt(match.awayteam['@errors']) || 0;
+                awayTeam.stats.totalscore = parseInt(match.awayteam['@totalscore']) || 0;
+                
+                // Process innings
+                if (match.awayteam.innings && match.awayteam.innings.inning) {
+                    const innings = Array.isArray(match.awayteam.innings.inning) 
+                        ? match.awayteam.innings.inning 
+                        : [match.awayteam.innings.inning];
+                        
+                    innings.forEach(inning => {
+                        awayTeam.stats.innings[inning['@number']] = {
+                            hits: parseInt(inning['@hits']) || 0,
+                            score: parseInt(inning['@score']) || 0
+                        };
+                    });
+                }
+            }
+
+            if (match.events) {
+                // Process baseball events
+                const processEvents = (events) => {
+                    if (!events) return;
+                    
+                    // Handle both single events and arrays of events
+                    const eventArray = Array.isArray(events.event) ? events.event : [events.event];
+                    
+                    eventArray.forEach(evt => {
+                        // Check if we've reached the limit
+                        if (itemCount >= MAX_ITEMS) {
+                            return; // Skip processing this event
+                        }
+
+                        if (!evt || !evt['@desc']) return;
+                        
+                        // Extract player name from event description
+                        const playerMatch = evt['@desc'].match(/^([A-Za-z\-]+)\s/);
+                        const playerId = playerMatch ? playerMatch[1].toLowerCase() : null;
+                        
+                        if (playerId) {
+                            // Initialize player if not exists
+                            if (!scoresData.players[playerId]) {
+                                scoresData.players[playerId] = {
+                                    name: playerMatch[1],
+                                    stats: {
+                                        home_runs: 0,
+                                        singles: 0,
+                                        doubles: 0,
+                                        rbi: 0
+                                    }
+                                };
+                                itemCount++;
+                            }
+                            
+                            // Update player statistics based on event description
+                            if (evt['@desc'].includes('homered')) {
+                                scoresData.players[playerId].stats.home_runs++;
+                            } else if (evt['@desc'].includes('doubled')) {
+                                scoresData.players[playerId].stats.doubles++;
+                            } else if (evt['@desc'].includes('singled')) {
+                                scoresData.players[playerId].stats.singles++;
+                            }
+                            
+                            // Count RBIs
+                            const rbiMatch = evt['@desc'].match(/scored(?: and [A-Za-z\-]+ scored)*(?:,|\.)/);
+                            if (rbiMatch) {
+                                const scorers = (rbiMatch[0].match(/[A-Za-z\-]+/g) || []).length;
+                                scoresData.players[playerId].stats.rbi += scorers;
+                            }
+                        }
+                    });
+                };
+
+                processEvents(match.events);
+            }
         }
     }
+
+    // Add metadata about the limit
+    scoresData.metadata = {
+        totalItems: itemCount,
+        limitReached: itemCount >= MAX_ITEMS,
+        maxItems: MAX_ITEMS
+    };
+
     return scoresData;
 }
 
