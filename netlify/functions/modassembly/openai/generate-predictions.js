@@ -25,7 +25,7 @@ async function generatePredictions(prompt, extractedData, sportsData) {
         // Limit the sportsData stringified length as well
         let sportsDataString = JSON.stringify(sportsData, null, 2);
         if (sportsDataString.length > MAX_PROMPT_LENGTH) {
-            sportsDataString = sportsDataString.slice(scheduleStr.length - MAX_SCHEDULE_LENGTH);
+            sportsDataString = sportsDataString.slice(sportsDataString.length - MAX_PROMPT_LENGTH) + '\n... [truncated]';
         }
         const messages = [
             {
