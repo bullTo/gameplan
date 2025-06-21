@@ -162,20 +162,19 @@ function formatScoresData(rawData) {
                 homeTeam.stats.hits = parseInt(match.hometeam['@hits']) || 0;
                 homeTeam.stats.errors = parseInt(match.hometeam['@errors']) || 0;
                 homeTeam.stats.totalscore = parseInt(match.hometeam['@totalscore']) || 0;
-                
                 // Process innings
-                if (match.hometeam.innings && match.hometeam.innings.inning) {
-                    const innings = Array.isArray(match.hometeam.innings.inning) 
-                        ? match.hometeam.innings.inning 
-                        : [match.hometeam.innings.inning];
+                // if (match.hometeam.innings && match.hometeam.innings.inning) {
+                //     const innings = Array.isArray(match.hometeam.innings.inning) 
+                //         ? match.hometeam.innings.inning 
+                //         : [match.hometeam.innings.inning];
                         
-                    innings.forEach(inning => {
-                        homeTeam.stats.innings[inning['@number']] = {
-                            hits: parseInt(inning['@hits']) || 0,
-                            score: parseInt(inning['@score']) || 0
-                        };
-                    });
-                }
+                //     innings.forEach(inning => {
+                //         homeTeam.stats.innings[inning['@number']] = {
+                //             hits: parseInt(inning['@hits']) || 0,
+                //             score: parseInt(inning['@score']) || 0
+                //         };
+                //     });
+                // }
             }
             
             // Compute away team
@@ -200,18 +199,18 @@ function formatScoresData(rawData) {
                 awayTeam.stats.totalscore = parseInt(match.awayteam['@totalscore']) || 0;
                 
                 // Process innings
-                if (match.awayteam.innings && match.awayteam.innings.inning) {
-                    const innings = Array.isArray(match.awayteam.innings.inning) 
-                        ? match.awayteam.innings.inning 
-                        : [match.awayteam.innings.inning];
+                // if (match.awayteam.innings && match.awayteam.innings.inning) {
+                //     const innings = Array.isArray(match.awayteam.innings.inning) 
+                //         ? match.awayteam.innings.inning 
+                //         : [match.awayteam.innings.inning];
                         
-                    innings.forEach(inning => {
-                        awayTeam.stats.innings[inning['@number']] = {
-                            hits: parseInt(inning['@hits']) || 0,
-                            score: parseInt(inning['@score']) || 0
-                        };
-                    });
-                }
+                //     innings.forEach(inning => {
+                //         awayTeam.stats.innings[inning['@number']] = {
+                //             hits: parseInt(inning['@hits']) || 0,
+                //             score: parseInt(inning['@score']) || 0
+                //         };
+                //     });
+                // }
             }
 
             if (match.events) {
