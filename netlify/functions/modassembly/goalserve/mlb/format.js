@@ -15,14 +15,14 @@ function formatScheduleData(rawData) {
     };
 
     const upcomingGamesLimit = 10;
-    
+
     // Check if matches exists
     if (rawData.category.matches) {
         // Handle both array of match days and single match day object
-        const matchDays = Array.isArray(rawData.category.matches) 
-            ? rawData.category.matches 
+        const matchDays = Array.isArray(rawData.category.matches)
+            ? rawData.category.matches
             : [rawData.category.matches];
-        
+
         // Process each match day
         matchDays.forEach(matchDay => {
             if (matchDay.match && Array.isArray(matchDay.match)) {
@@ -115,7 +115,6 @@ function formatScoresData(rawData) {
     }
 
     // Set limit for scoresData items
-    const MAX_ITEMS = 25000;
     let itemCount = 0;
 
     // Handle rawData.scores as an array
@@ -123,25 +122,16 @@ function formatScoresData(rawData) {
 
     for (const scoreItem of scoresArray) {
         // Check if we've reached the limit
-        if (itemCount >= MAX_ITEMS) {
-            console.warn(`Reached maximum limit of ${MAX_ITEMS} items. Stopping processing.`);
-            break;
-        }
 
         // Handle both array and single match cases for each score item
-        const matches = scoreItem.category && scoreItem.category.match 
-            ? (Array.isArray(scoreItem.category.match) 
-                ? scoreItem.category.match 
+        const matches = scoreItem.category && scoreItem.category.match
+            ? (Array.isArray(scoreItem.category.match)
+                ? scoreItem.category.match
                 : [scoreItem.category.match])
             : [];
 
         for (const match of matches) {
-            // Check if we've reached the limit
-            if (itemCount >= MAX_ITEMS) {
-                console.warn(`Reached maximum limit of ${MAX_ITEMS} items. Stopping processing.`);
-                break;
-            }
-
+            
             // Compute home team
             if (match.hometeam) {
                 const homeTeamId = match.hometeam['@id'];
@@ -157,7 +147,7 @@ function formatScoresData(rawData) {
                     };
                     itemCount++;
                 }
-                
+
                 const homeTeam = scoresData.teams[homeTeamId];
                 homeTeam.stats.hits = parseInt(match.hometeam['@hits']) || 0;
                 homeTeam.stats.errors = parseInt(match.hometeam['@errors']) || 0;
@@ -167,7 +157,7 @@ function formatScoresData(rawData) {
                 //     const innings = Array.isArray(match.hometeam.innings.inning) 
                 //         ? match.hometeam.innings.inning 
                 //         : [match.hometeam.innings.inning];
-                        
+
                 //     innings.forEach(inning => {
                 //         homeTeam.stats.innings[inning['@number']] = {
                 //             hits: parseInt(inning['@hits']) || 0,
@@ -176,7 +166,7 @@ function formatScoresData(rawData) {
                 //     });
                 // }
             }
-            
+
             // Compute away team
             if (match.awayteam) {
                 const awayTeamId = match.awayteam['@id'];
@@ -192,18 +182,18 @@ function formatScoresData(rawData) {
                     };
                     itemCount++;
                 }
-                
+
                 const awayTeam = scoresData.teams[awayTeamId];
                 awayTeam.stats.hits = parseInt(match.awayteam['@hits']) || 0;
                 awayTeam.stats.errors = parseInt(match.awayteam['@errors']) || 0;
                 awayTeam.stats.totalscore = parseInt(match.awayteam['@totalscore']) || 0;
-                
+
                 // Process innings
                 // if (match.awayteam.innings && match.awayteam.innings.inning) {
                 //     const innings = Array.isArray(match.awayteam.innings.inning) 
                 //         ? match.awayteam.innings.inning 
                 //         : [match.awayteam.innings.inning];
-                        
+
                 //     innings.forEach(inning => {
                 //         awayTeam.stats.innings[inning['@number']] = {
                 //             hits: parseInt(inning['@hits']) || 0,
@@ -217,22 +207,20 @@ function formatScoresData(rawData) {
                 // Process baseball events
                 const processEvents = (events) => {
                     if (!events) return;
-                    
+
                     // Handle both single events and arrays of events
                     const eventArray = Array.isArray(events.event) ? events.event : [events.event];
-                    
+
                     eventArray.forEach(evt => {
-                        // Check if we've reached the limit
-                        if (itemCount >= MAX_ITEMS) {
-                            return; // Skip processing this event
-                        }
+                    
+                      
 
                         if (!evt || !evt['@desc']) return;
-                        
+
                         // Extract player name from event description
                         const playerMatch = evt['@desc'].match(/^([A-Za-z\-]+)\s/);
                         const playerId = playerMatch ? playerMatch[1].toLowerCase() : null;
-                        
+
                         if (playerId) {
                             // Initialize player if not exists
                             if (!scoresData.players[playerId]) {
@@ -247,7 +235,7 @@ function formatScoresData(rawData) {
                                 };
                                 itemCount++;
                             }
-                            
+
                             // Update player statistics based on event description
                             if (evt['@desc'].includes('homered')) {
                                 scoresData.players[playerId].stats.home_runs++;
@@ -256,7 +244,7 @@ function formatScoresData(rawData) {
                             } else if (evt['@desc'].includes('singled')) {
                                 scoresData.players[playerId].stats.singles++;
                             }
-                            
+
                             // Count RBIs
                             const rbiMatch = evt['@desc'].match(/scored(?: and [A-Za-z\-]+ scored)*(?:,|\.)/);
                             if (rbiMatch) {
@@ -275,15 +263,13 @@ function formatScoresData(rawData) {
     // Add metadata about the limit
     scoresData.metadata = {
         totalItems: itemCount,
-        limitReached: itemCount >= MAX_ITEMS,
-        maxItems: MAX_ITEMS
     };
 
     return scoresData;
 }
 
 // Function to compress scoresData for OpenAI prompts
-function compressScoresDataForOpenAI(scoresData, maxCharacters = 30000) {
+function compressScoresDataForOpenAI(scoresData, maxCharacters = 25000) {
     if (!scoresData || scoresData.error) {
         return scoresData;
     }
@@ -310,7 +296,7 @@ function compressScoresDataForOpenAI(scoresData, maxCharacters = 30000) {
     Object.keys(scoresData.players).forEach(playerId => {
         const player = scoresData.players[playerId];
         const stats = player.stats;
-        
+
         // Only include players with meaningful stats
         const totalStats = stats.home_runs + stats.singles + stats.doubles + stats.rbi;
         if (totalStats > 0) {
@@ -334,15 +320,15 @@ function compressScoresDataForOpenAI(scoresData, maxCharacters = 30000) {
 }
 
 // Advanced compression for very large datasets
-function compressScoresDataForOpenAIAdvanced(scoresData, maxCharacters = 30000) {
+function compressScoresDataForOpenAIAdvanced(scoresData, maxCharacters = 25000) {
     // Sort teams by total score (descending)
     const sortedTeams = Object.entries(scoresData.teams)
-        .sort(([,a], [,b]) => b.stats.totalscore - a.stats.totalscore)
+        .sort(([, a], [, b]) => b.stats.totalscore - a.stats.totalscore)
         .slice(0, 50); // Keep top 50 teams
 
     // Sort players by total impact (home runs + RBIs)
     const sortedPlayers = Object.entries(scoresData.players)
-        .sort(([,a], [,b]) => {
+        .sort(([, a], [, b]) => {
             const aImpact = a.stats.home_runs * 3 + a.stats.rbi * 2 + a.stats.doubles + a.stats.singles;
             const bImpact = b.stats.home_runs * 3 + b.stats.rbi * 2 + b.stats.doubles + b.stats.singles;
             return bImpact - aImpact;
@@ -392,16 +378,16 @@ function createScoresDataSummary(scoresData) {
     // Calculate summary statistics
     const teamCount = Object.keys(scoresData.teams).length;
     const playerCount = Object.keys(scoresData.players).length;
-    
+
     // Top 5 teams by score
     const topTeams = Object.entries(scoresData.teams)
-        .sort(([,a], [,b]) => b.stats.totalscore - a.stats.totalscore)
+        .sort(([, a], [, b]) => b.stats.totalscore - a.stats.totalscore)
         .slice(0, 5)
         .map(([id, team]) => `${team.name}:${team.stats.totalscore}`);
 
     // Top 5 players by home runs
     const topPlayers = Object.entries(scoresData.players)
-        .sort(([,a], [,b]) => b.stats.home_runs - a.stats.home_runs)
+        .sort(([, a], [, b]) => b.stats.home_runs - a.stats.home_runs)
         .slice(0, 5)
         .map(([id, player]) => `${player.name}:${player.stats.home_runs}HR`);
 
@@ -417,11 +403,16 @@ function createScoresDataSummary(scoresData) {
 }
 
 function formatMLBData(rawData) {
-    console.log(rawData)
+    // Get original data
+    const scoresData = formatScoresData(rawData);
+
+    // For OpenAI prompt (under 30k chars)
+    const compressed = compressScoresDataForOpenAI(scoresData, 25000);
+
     return {
         schedule: formatScheduleData(rawData.schedule),
         standings: formatStandingsData(rawData.standings),
-        scores: formatScoresData(rawData.scores)
+        scores: compressed
     }
 }
 
