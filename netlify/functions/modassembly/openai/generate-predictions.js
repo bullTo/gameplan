@@ -47,7 +47,7 @@ The scores data is compressed to save space. Here's what the abbreviations mean:
   - "r" = rbi
 - "m" = metaData
 
-❗ Only suggest bets for **future games**, based on today's date and time: ${nycTime}. 
+❗ Only suggest bets for **future games**, based on today's time: ${nycTime}. !!!You need to compare the current not only date but also the time with the game times in the scores data.
 ❌ Do not describe or summarize past game results.
 ✅ Your job is to PREDICT the most likely outcomes of upcoming games and suggest high-confidence bets.
 Note: Analyze p(players) of scores data for specific players props.
