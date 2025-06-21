@@ -46,7 +46,6 @@ Output should be concise and clear.
   ■ Mention player props only if specific stats are found in the scores data
   ■ Their last 5 games and historical data to backup why we chose this
 
-📉 If there’s not enough data for strong predictions, say that clearly instead of guessing.
          `
             },
             {
