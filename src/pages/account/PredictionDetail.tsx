@@ -122,8 +122,8 @@ const PredictionDetail = () => {
                         </span>
                       </div>
                     </div>
-                    <div className="px-4 py-1 bg-[rgba(14,163,173,0.05)] border border-[#0EA3AD] rounded-full">
-                      <span className="text-[#0EA3AD] text-[10px] font-normal font-['Poppins'] leading-[170%] tracking-[0.6px]">
+                    <div className="px-4 py-1 bg-[rgba(14,163,173,0.05)] w-full max-w-[90px] text-center border border-[#0EA3AD] rounded-full">
+                      <span className="text-[#0EA3AD] text-[10px]  font-normal font-['Poppins'] leading-[170%] tracking-[0.6px]">
                         {prediction?.parsed_entities?.risk_profile}
                       </span>
                     </div>

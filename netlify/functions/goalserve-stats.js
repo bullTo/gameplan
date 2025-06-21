@@ -79,9 +79,9 @@ You are a sports betting assistant specializing in ${sport} betting. Given the f
 Respond in this JSON format:
 For example
 {
-  "season_average": "27.8 PTS+AST",
-  "last_5_games": "29.4 PTS+AST",
-  "vs_opponent": "31.2 PTS+AST",
+  "season_average": "27.8" (only number),
+  "last_5_games": "29.4" (only number),
+  "vs_opponent": "31.2" (only number),
   "game_breakdown": [
     { "date": "...", "opponent": "...", "pts": "...", "ast": "...", "pts_ast": "...", "result": "Over/Under ✓/✗" }
   ],
