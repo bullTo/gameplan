@@ -15,6 +15,9 @@ async function generatePredictions(prompt, extractedData, sportsData) {
         // Get current time in NYC timezone
         const nycTime = new Date().toLocaleString('en-US', {
             timeZone: 'America/New_York',
+            year: 'numeric',
+            month: '2-digit',
+            day: '2-digit',
             hour: 'numeric',
             minute: 'numeric',
             hour12: true
@@ -27,7 +30,7 @@ async function generatePredictions(prompt, extractedData, sportsData) {
         const messages = [
             {
                 role: 'system',
-                content: `You are a sports betting AI assistant focused on predicting outcomes of *upcoming games only* in ${sport}. You must analyze the provided **schedule**, **scores**, and **standings** to forecast suitable betting picks.
+                content: `show the current datetime. You are a sports betting AI assistant focused on predicting outcomes of *upcoming games only* in ${sport}. You must analyze the provided **schedule**, **scores**, and **standings** to forecast suitable betting picks.
 ❗ Only suggest bets for **future games**, based on today’s date and time: ${nycTime}. if necessary, you can show current date time.
 ❌ Do not describe or summarize past game results.
 ✅ Your job is to PREDICT the most likely outcomes of upcoming games and suggest high-confidence bets.
