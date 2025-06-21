@@ -42,15 +42,15 @@ The scores data is compressed to save space. Here's what the abbreviations mean:
 - "p" = players
   - "n" = player_name
   - "hr" = home_runs
-  - "s" = sac_fly
+  - "s" = singles
   - "d" = doubles
-  - "r" = runs
+  - "r" = rbi
 - "m" = metaData
 
 ❗ Only suggest bets for **future games**, based on today's date and time: ${nycTime}. 
 ❌ Do not describe or summarize past game results.
 ✅ Your job is to PREDICT the most likely outcomes of upcoming games and suggest high-confidence bets.
-Note: Analyze players of scores data for specific players props.
+Note: Analyze p(players) of scores data for specific players props.
 Output should be concise and clear.
 
 🎯 Output Format:
