@@ -36,6 +36,7 @@ async function generatePredictions(prompt, extractedData, sportsData) {
 ✅ Your job is to PREDICT the most likely outcomes of upcoming games and suggest high-confidence bets.
 
 🎯 Output Format:
+-match time
 - List 2–3 betting suggestions (moneyline, spread, total, or props)
 - Each should include:
   ■ Bet line (e.g., “Lakers -3.5 spread”)
