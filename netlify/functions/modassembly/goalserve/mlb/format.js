@@ -124,14 +124,14 @@ function formatScoresData(rawData) {
         // Check if we've reached the limit
 
         // Handle both array and single match cases for each score item
-        const matches = scoreItem.category && scoreItem.category.match
+        const matches = scoreItem.scores.category && scoreItem.scores.category.match
             ? (Array.isArray(scoreItem.category.match)
-                ? scoreItem.category.match
-                : [scoreItem.category.match])
+                ? scoreItem.scores.category.match
+                : [scoreItem.scores.category.match])
             : [];
 
         for (const match of matches) {
-            
+
             // Compute home team
             if (match.hometeam) {
                 const homeTeamId = match.hometeam['@id'];
@@ -212,8 +212,8 @@ function formatScoresData(rawData) {
                     const eventArray = Array.isArray(events.event) ? events.event : [events.event];
 
                     eventArray.forEach(evt => {
-                    
-                      
+
+
 
                         if (!evt || !evt['@desc']) return;
 
