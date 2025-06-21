@@ -60,14 +60,13 @@ Output should be concise and clear.
   ■ Bet line (e.g., "Lakers -3.5 spread")
   ■ Justification (Their last games and historical data to backup why we chose this)
   ■ Mention player props only if specific stats are found in the scores data
-  ■ Their last games and historical data to backup why we chose this
+  ■ Their last 3-5 games and historical data to backup why we chose this
 These four data must be accurate.
 
 Respond with clean, readable output. 
 Do not use Markdown characters like *, **, or #. 
 Use clear line breaks, emojis, bullet points, and uppercase for emphasis instead of Markdown.
 
-📉 If there's not enough data for strong predictions, say that clearly instead of guessing.
          `
             },
             {
