@@ -12,7 +12,7 @@ const Dashboard = () => {
   const navigate = useNavigate();
   const { toast } = useToast();
   const { status: userStatus, loading: subscriptionLoading } = useSubscription();
-  
+
   const [promptResponse, setPromptResponse] = useState<any>(null);
   const [loading, setLoading] = useState(true);
 
@@ -24,7 +24,7 @@ const Dashboard = () => {
 
   // Check subscription status and redirect if inactive
   useEffect(() => {
-    console.log(subscriptionLoading, userStatus, !subscriptionLoading && userStatus && userStatus !== 'active' )
+    console.log(subscriptionLoading, userStatus, !subscriptionLoading && userStatus && userStatus !== 'active')
     if (!subscriptionLoading && userStatus && userStatus !== 'active') {
       toast({
         title: "Subscription Required",
