@@ -7,7 +7,7 @@ async function generatePredictions(prompt, extractedData, sportsData) {
     try {
         console.log(`🤖 Generating response with OpenAI for prompt: "${prompt}"`);
 
-        const MAX_PROMPT_LENGTH = 25000;
+        const MAX_PROMPT_LENGTH = 285000;
         const sport = extractedData.sport;
         const betType = extractedData.bet_type || 'general';
         const riskProfile = extractedData.risk_profile || 'moderate';
@@ -25,7 +25,7 @@ async function generatePredictions(prompt, extractedData, sportsData) {
         // Limit the sportsData stringified length as well
         let sportsDataString = JSON.stringify(sportsData, null, 2);
         if (sportsDataString.length > MAX_PROMPT_LENGTH) {
-            sportsDataString = sportsDataString.slice(sportsDataString.length - MAX_PROMPT_LENGTH) + '\n... [truncated]';
+            sportsDataString = sportsDataString.slice(0, MAX_PROMPT_LENGTH) + '\n... [truncated]';
         }
         const messages = [
             {
@@ -34,13 +34,15 @@ async function generatePredictions(prompt, extractedData, sportsData) {
 ❗ Only suggest bets for **future games**, based on today’s date and time: ${nycTime}. 
 ❌ Do not describe or summarize past game results.
 ✅ Your job is to PREDICT the most likely outcomes of upcoming games and suggest high-confidence bets.
+Note: Analyze players of scores data for specific players props.
 Output should be concise and clear.
+
 🎯 Output Format:
 - match date
 - List 2–3 betting suggestions based on user's prompt
 - Each should include:
   ■ Bet line (e.g., “Lakers -3.5 spread”)
-  ■ Justification (based on team performance, standings, trends, etc.)
+  ■ Justification (Their last games and historical data to backup why we chose this)
   ■ Mention player props only if specific stats are found in the scores data
   ■ Their last 5 games and historical data to backup why we chose this
 
