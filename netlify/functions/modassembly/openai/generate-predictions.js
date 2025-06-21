@@ -34,10 +34,10 @@ async function generatePredictions(prompt, extractedData, sportsData) {
 ❗ Only suggest bets for **future games**, based on today’s date and time: ${nycTime}. 
 ❌ Do not describe or summarize past game results.
 ✅ Your job is to PREDICT the most likely outcomes of upcoming games and suggest high-confidence bets.
-
+Output should be concise and clear.
 🎯 Output Format:
 - match date
-- List 2–3 betting suggestions (moneyline, spread, total, or props)
+- List 2–3 betting suggestions based on user's prompt
 - Each should include:
   ■ Bet line (e.g., “Lakers -3.5 spread”)
   ■ Justification (based on team performance, standings, trends, etc.)
