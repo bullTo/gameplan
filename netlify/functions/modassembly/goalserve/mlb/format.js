@@ -282,6 +282,139 @@ function formatScoresData(rawData) {
     return scoresData;
 }
 
+// Function to compress scoresData for OpenAI prompts
+function compressScoresDataForOpenAI(scoresData, maxCharacters = 30000) {
+    if (!scoresData || scoresData.error) {
+        return scoresData;
+    }
+
+    // Create compressed version
+    const compressed = {
+        t: {}, // teams
+        p: {}, // players
+        m: scoresData.metadata // metadata
+    };
+
+    // Compress teams data
+    Object.keys(scoresData.teams).forEach(teamId => {
+        const team = scoresData.teams[teamId];
+        compressed.t[teamId] = {
+            n: team.name, // name
+            h: team.stats.hits, // hits
+            e: team.stats.errors, // errors
+            s: team.stats.totalscore // score
+        };
+    });
+
+    // Compress players data - only include players with significant stats
+    Object.keys(scoresData.players).forEach(playerId => {
+        const player = scoresData.players[playerId];
+        const stats = player.stats;
+        
+        // Only include players with meaningful stats
+        const totalStats = stats.home_runs + stats.singles + stats.doubles + stats.rbi;
+        if (totalStats > 0) {
+            compressed.p[playerId] = {
+                n: player.name, // name
+                hr: stats.home_runs, // home_runs
+                s: stats.singles, // singles
+                d: stats.doubles, // doubles
+                r: stats.rbi // rbi
+            };
+        }
+    });
+
+    // Check character count and further compress if needed
+    const jsonString = JSON.stringify(compressed);
+    if (jsonString.length > maxCharacters) {
+        return compressScoresDataForOpenAIAdvanced(scoresData, maxCharacters);
+    }
+
+    return compressed;
+}
+
+// Advanced compression for very large datasets
+function compressScoresDataForOpenAIAdvanced(scoresData, maxCharacters = 30000) {
+    // Sort teams by total score (descending)
+    const sortedTeams = Object.entries(scoresData.teams)
+        .sort(([,a], [,b]) => b.stats.totalscore - a.stats.totalscore)
+        .slice(0, 50); // Keep top 50 teams
+
+    // Sort players by total impact (home runs + RBIs)
+    const sortedPlayers = Object.entries(scoresData.players)
+        .sort(([,a], [,b]) => {
+            const aImpact = a.stats.home_runs * 3 + a.stats.rbi * 2 + a.stats.doubles + a.stats.singles;
+            const bImpact = b.stats.home_runs * 3 + b.stats.rbi * 2 + b.stats.doubles + b.stats.singles;
+            return bImpact - aImpact;
+        })
+        .slice(0, 100); // Keep top 100 players
+
+    const compressed = {
+        t: {},
+        p: {},
+        m: {
+            ...scoresData.metadata,
+            teamsKept: sortedTeams.length,
+            playersKept: sortedPlayers.length
+        }
+    };
+
+    // Add top teams
+    sortedTeams.forEach(([teamId, team]) => {
+        compressed.t[teamId] = {
+            n: team.name,
+            h: team.stats.hits,
+            e: team.stats.errors,
+            s: team.stats.totalscore
+        };
+    });
+
+    // Add top players
+    sortedPlayers.forEach(([playerId, player]) => {
+        compressed.p[playerId] = {
+            n: player.name,
+            hr: player.stats.home_runs,
+            s: player.stats.singles,
+            d: player.stats.doubles,
+            r: player.stats.rbi
+        };
+    });
+
+    return compressed;
+}
+
+// Function to create a summary format for very large datasets
+function createScoresDataSummary(scoresData) {
+    if (!scoresData || scoresData.error) {
+        return scoresData;
+    }
+
+    // Calculate summary statistics
+    const teamCount = Object.keys(scoresData.teams).length;
+    const playerCount = Object.keys(scoresData.players).length;
+    
+    // Top 5 teams by score
+    const topTeams = Object.entries(scoresData.teams)
+        .sort(([,a], [,b]) => b.stats.totalscore - a.stats.totalscore)
+        .slice(0, 5)
+        .map(([id, team]) => `${team.name}:${team.stats.totalscore}`);
+
+    // Top 5 players by home runs
+    const topPlayers = Object.entries(scoresData.players)
+        .sort(([,a], [,b]) => b.stats.home_runs - a.stats.home_runs)
+        .slice(0, 5)
+        .map(([id, player]) => `${player.name}:${player.stats.home_runs}HR`);
+
+    return {
+        summary: {
+            teams: teamCount,
+            players: playerCount,
+            topTeams: topTeams.join(','),
+            topPlayers: topPlayers.join(','),
+            totalItems: scoresData.metadata.totalItems
+        }
+    };
+}
 
 function formatMLBData(rawData) {
     console.log(rawData)
@@ -293,5 +426,8 @@ function formatMLBData(rawData) {
 }
 
 module.exports = {
-    formatMLBData
+    formatMLBData,
+    compressScoresDataForOpenAI,
+    compressScoresDataForOpenAIAdvanced,
+    createScoresDataSummary
 };
