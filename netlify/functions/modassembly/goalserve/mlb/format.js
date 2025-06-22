@@ -14,7 +14,7 @@ function formatScheduleData(rawData) {
         upcoming_games: []
     };
 
-    const upcomingGamesLimit = 15;
+    const upcomingGamesLimit = 10;
 
     // Check if matches exists
     if (rawData.category.matches) {
@@ -32,12 +32,12 @@ function formatScheduleData(rawData) {
                     // And limit to first 10 games
                     if (match['@status'] === "Not Started" && scheduleData.upcoming_games.length < upcomingGamesLimit) {
                         scheduleData.upcoming_games.push({
-                            date: match['@formatted_date'],
-                            time: match['@time'],
-                            home_team: match.hometeam['@name'],
-                            away_team: match.awayteam['@name'],
-                            tournament_name: rawData.category['@name'],
-                            venue: match['@venue_name'],
+                            d: match['@formatted_date'],
+                            t: match['@time'],
+                            ht: match.hometeam['@name'],
+                            at: match.awayteam['@name'],
+                            tn: rawData.category['@name'],
+                            v: match['@venue_name'],
                         });
                     }
                 });
@@ -79,17 +79,17 @@ function formatStandingsData(rawData) {
                         division.team.forEach(team => {
                             // Include only the most relevant fields for predictions
                             formattedDivision.teams.push({
-                                name: team['@name'],
-                                position: team['@position'],
-                                won: team['@won'],
-                                lost: team['@lost'],
-                                home_record: team['@home_record'],
-                                road_record: team['@away_record'],
-                                points_for: team['@runs_scored'] || team['@points_for'],
-                                points_against: team['@runs_allowed'] || team['@points_against'],
-                                difference: team['@runs_diff'] || team['@difference'],
-                                streak: team['@current_streak'] || team['@streak'],
-                                games_back: team['@games_back']
+                                n: team['@name'],
+                                p: team['@position'],
+                                w: team['@won'],
+                                l: team['@lost'],
+                                hr: team['@home_record'],
+                                rr: team['@away_record'],
+                                pf: team['@runs_scored'] || team['@points_for'],
+                                pa: team['@runs_allowed'] || team['@points_against'],
+                                diff: team['@runs_diff'] || team['@difference'],
+                                strk: team['@current_streak'] || team['@streak'],
+                                gb: team['@games_back']
                             });
                         });
                     }
@@ -220,12 +220,14 @@ function formatScoresData(rawData) {
                         // Extract player name from event description
                         const playerMatch = evt['@desc'].match(/^([A-Za-z\-]+)\s/);
                         const playerId = playerMatch ? playerMatch[1].toLowerCase() : null;
+                        const playerTeam = evt['@team'] == "awayteam" ? match.awayteam["@id"] : match.hometeam["@id"];
 
                         if (playerId) {
                             // Initialize player if not exists
                             if (!scoresData.players[playerId]) {
                                 scoresData.players[playerId] = {
                                     name: playerMatch[1],
+                                    team: playerTeam,
                                     stats: {
                                         home_runs: 0,
                                         singles: 0,
@@ -302,6 +304,7 @@ function compressScoresDataForOpenAI(scoresData, maxCharacters = 25000) {
         if (totalStats > 0) {
             compressed.p[playerId] = {
                 n: player.name, // name
+                t: player.team,
                 hr: stats.home_runs, // home_runs
                 s: stats.singles, // singles
                 d: stats.doubles, // doubles
@@ -359,6 +362,7 @@ function compressScoresDataForOpenAIAdvanced(scoresData, maxCharacters = 25000) 
     sortedPlayers.forEach(([playerId, player]) => {
         compressed.p[playerId] = {
             n: player.name,
+            t: player.team,
             hr: player.stats.home_runs,
             s: player.stats.singles,
             d: player.stats.doubles,
@@ -408,7 +412,6 @@ function formatMLBData(rawData) {
 
     // For OpenAI prompt (under 30k chars)
     const compressed = compressScoresDataForOpenAI(scoresData, 25000);
-
     return {
         schedule: formatScheduleData(rawData.schedule),
         standings: formatStandingsData(rawData.standings),
