@@ -258,7 +258,7 @@ function compressScoresDataForOpenAI(scoresData, maxCharacters = 25000) {
         compressed.t[teamId] = [];
         scoresData.teams[teamId].forEach(teamObj => {
             const compressedTeam = {
-                m: matchId,
+                m: teamObj.match,
                 h: teamObj.stats.hits, // hits
                 e: teamObj.stats.errors, // errors
                 s: teamObj.stats.totalscore, // score
