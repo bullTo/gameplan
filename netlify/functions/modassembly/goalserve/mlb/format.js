@@ -14,7 +14,7 @@ function formatScheduleData(rawData) {
         upcoming_games: []
     };
 
-    const upcomingGamesLimit = 10;
+    const upcomingGamesLimit = 15;
 
     // Check if matches exists
     if (rawData.category.matches) {
