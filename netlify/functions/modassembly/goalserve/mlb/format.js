@@ -32,6 +32,7 @@ function formatScheduleData(rawData) {
                     // And limit to first 10 games
                     if (match['@status'] === "Not Started" && scheduleData.upcoming_games.length < upcomingGamesLimit) {
                         scheduleData.upcoming_games.push({
+                            id: match['@id'],
                             d: match['@formatted_date'],
                             t: match['@time'],
                             ht: match.hometeam['@name'],
@@ -131,10 +132,10 @@ function formatScoresData(rawData) {
         for (const match of matches) {
             // Compute home team
             if (match.hometeam) {
-                const homeTeamId = match.hometeam['@id'];
+                const homeTeamId = match.hometeam['@name'];
                 if (!scoresData.teams[homeTeamId]) {
                     scoresData.teams[homeTeamId] = {
-                        name: match.hometeam['@name'],
+                        match: match['@id'],
                         stats: {
                             hits: 0,
                             errors: 0,
@@ -153,10 +154,10 @@ function formatScoresData(rawData) {
 
             // Compute away team
             if (match.awayteam) {
-                const awayTeamId = match.awayteam['@id'];
+                const awayTeamId = match.awayteam['@name'];
                 if (!scoresData.teams[awayTeamId]) {
                     scoresData.teams[awayTeamId] = {
-                        name: match.awayteam['@name'],
+                        match: match['@id'],
                         stats: {
                             hits: 0,
                             errors: 0,
@@ -185,43 +186,44 @@ function formatScoresData(rawData) {
                         if (!evt || !evt['@desc']) return;
 
                         // Extract player name from event description
-                        const playerMatch = evt['@desc'].match(/^([A-Za-z\-]+)\s/);
-                        const playerId = playerMatch ? playerMatch[1].toLowerCase() : null;
+                        const nameRegex = /([A-Z][a-zA-Z.'\-]+(?:\s[A-Z][a-zA-Z.'\-]+)*?(?:\sJr\.| Sr\.| III| II)?)/g;
+                        const playerMatches = evt['@desc'].match(nameRegex) || [];
                         const playerTeamId = evt['@team'] == "awayteam" ? match.awayteam["@id"] : match.hometeam["@id"];
 
-                        if (playerId && scoresData.teams[playerTeamId]) {
-                            // Initialize player if not exists under the team
-                            if (!scoresData.teams[playerTeamId].players[playerId]) {
-                                scoresData.teams[playerTeamId].players[playerId] = {
-                                    name: playerMatch[1],
-                                    stats: {
+                        playerMatches.forEach(playerId => {
+
+                            if (playerId && scoresData.teams[playerTeamId]) {
+                                // Initialize player if not exists under the team
+                                if (!scoresData.teams[playerTeamId].players[playerId]) {
+                                    scoresData.teams[playerTeamId].players[playerId] = {
                                         home_runs: 0,
                                         singles: 0,
                                         doubles: 0,
                                         rbi: 0
-                                    }
-                                };
-                                itemCount++;
+                                    };
+                                }
                             }
+                        });
 
-                            // Update player statistics based on event description
-                            const playerStats = scoresData.teams[playerTeamId].players[playerId].stats;
-                            if (evt['@desc'].includes('homered')) {
-                                playerStats.home_runs++;
-                            } else if (evt['@desc'].includes('doubled')) {
-                                playerStats.doubles++;
-                            } else if (evt['@desc'].includes('singled')) {
-                                playerStats.singles++;
-                            }
 
-                            // Count RBIs
-                            const rbiMatch = evt['@desc'].match(/scored(?: and [A-Za-z\-]+ scored)*(?:,|\.)/);
-                            if (rbiMatch) {
-                                const scorers = (rbiMatch[0].match(/[A-Za-z\-]+/g) || []).length;
-                                playerStats.rbi += scorers;
-                            }
+                        // Update player statistics based on event description
+                        const playerStats = scoresData.teams[playerTeamId].players[playerId];
+                        if (evt['@desc'].includes('homered')) {
+                            playerStats.home_runs++;
+                        } else if (evt['@desc'].includes('doubled')) {
+                            playerStats.doubles++;
+                        } else if (evt['@desc'].includes('singled')) {
+                            playerStats.singles++;
                         }
-                    });
+
+                        // Count RBIs
+                        const rbiMatch = evt['@desc'].match(/scored(?: and [A-Za-z\-]+ scored)*(?:,|\.)/);
+                        if (rbiMatch) {
+                            const scorers = (rbiMatch[0].match(/[A-Za-z\-]+/g) || []).length;
+                            playerStats.rbi += scorers;
+                        }
+                    }
+                    );
                 };
 
                 processEvents(match.events);
