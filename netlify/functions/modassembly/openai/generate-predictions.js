@@ -35,7 +35,7 @@ async function generatePredictions(prompt, extractedData, sportsData) {
 📊 DATA STRUCTURE HINTS:
 The scores data is compressed to save space. Here's what the abbreviations mean:
 
-❗ Only suggest bets for **future games**, based on today's time: ${nycTime}.  Only suggest bets for games that have not yet occurred. Their time is after the current time.
+❗ Only suggest bets for **future games**, based on today's time: ${nycTime}.  Show the current date and time. Only suggest bets for games that have not yet occurred. Their time is after the current time.
 ❌ Do not describe or summarize past game results.
 ✅ Your job is to PREDICT the most likely outcomes of upcoming games and suggest high-confidence bets.
 Note: Analyze p(players) of scores data for specific players props.
