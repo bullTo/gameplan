@@ -256,10 +256,7 @@ function compressScoresDataForOpenAI(scoresData, maxCharacters = 25000) {
     Object.keys(scoresData.teams).forEach(teamId => {
         // Each teamId is now an array of team objects (one per match)
         compressed.t[teamId] = [];
-        scoresData.teams[teamId].forEach(teamObjWithId => {
-            // teamObjWithId is an object: { [matchId]: teamObj }
-            const matchId = Object.keys(teamObjWithId)[0];
-            const teamObj = teamObjWithId[matchId];
+        scoresData.teams[teamId].forEach(teamObj => {
             const compressedTeam = {
                 m: matchId,
                 h: teamObj.stats.hits, // hits
@@ -404,8 +401,8 @@ function createScoresDataSummary(scoresData) {
 function formatMLBData(rawData) {
     // Get original data
     const scoresData = formatScoresData(rawData);
-
     console.log(scoresData);
+    console.log(scoresData.teams['New York Mets'])
     // For OpenAI prompt (under 30k chars)
     const compressed = compressScoresDataForOpenAI(scoresData, 25000);
 
