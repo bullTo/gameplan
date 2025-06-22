@@ -134,44 +134,40 @@ function formatScoresData(rawData) {
             if (match.hometeam) {
                 const homeTeamId = match.hometeam['@name'];
                 if (!scoresData.teams[homeTeamId]) {
-                    scoresData.teams[homeTeamId] = {
+                    scoresData.teams[homeTeamId] = [];
+
+                    const homeTeamObj =  {
                         match: match['@id'],
                         stats: {
-                            hits: 0,
-                            errors: 0,
-                            totalscore: 0,
+                            hits: parseInt(match.hometeam['@hits']) || 0,
+                            errors: parseInt(match.hometeam['@errors']) || 0,
+                            totalscore: parseInt(match.hometeam['@totalscore']) || 0,
                         },
                         players: {}
                     };
+                    scoresData.teams[homeTeamId].push({ [match['@id']]: homeTeamObj });
                     itemCount++;
                 }
 
-                const homeTeam = scoresData.teams[homeTeamId];
-                homeTeam.stats.hits = parseInt(match.hometeam['@hits']) || 0;
-                homeTeam.stats.errors = parseInt(match.hometeam['@errors']) || 0;
-                homeTeam.stats.totalscore = parseInt(match.hometeam['@totalscore']) || 0;
             }
 
             // Compute away team
             if (match.awayteam) {
                 const awayTeamId = match.awayteam['@name'];
                 if (!scoresData.teams[awayTeamId]) {
-                    scoresData.teams[awayTeamId] = {
-                        match: match['@id'],
+                    scoresData.teams[awayTeamId] = [];
+
+                    const awayTeamObj =  {
                         stats: {
-                            hits: 0,
-                            errors: 0,
-                            totalscore: 0,
+                            hits: parseInt(match.awayteam['@hits']) || 0,
+                            errors: parseInt(match.awayteam['@errors']) || 0,
+                            totalscore: parseInt(match.awayteam['@totalscore']) || 0,
                         },
                         players: {}
                     };
+                    scoresData.teams[awayTeamId].push({ [match['@id']]: awayTeamObj });
                     itemCount++;
                 }
-
-                const awayTeam = scoresData.teams[awayTeamId];
-                awayTeam.stats.hits = parseInt(match.awayteam['@hits']) || 0;
-                awayTeam.stats.errors = parseInt(match.awayteam['@errors']) || 0;
-                awayTeam.stats.totalscore = parseInt(match.awayteam['@totalscore']) || 0;
             }
 
             if (match.events) {
@@ -191,7 +187,7 @@ function formatScoresData(rawData) {
                         const playerTeamId = evt['@team'] == "awayteam" ? match.awayteam["@name"] : match.hometeam["@name"];
 
                         // Check if team exists before processing players
-                        if (!playerTeamId || !scoresData.teams[playerTeamId]) {
+                        if (!playerTeamId || !scoresData.teams[playerTeamId][match['@id']]) {
                             console.warn(`Team not found for playerTeamId: ${playerTeamId}`);
                             return;
                         }
@@ -199,9 +195,10 @@ function formatScoresData(rawData) {
                         playerMatches.forEach(playerId => {
                             if (!playerId) return;
 
+                            matchteam = scoresData.teams[playerTeamId][match['@id']];
                             // Initialize player if not exists under the team
-                            if (!scoresData.teams[playerTeamId].players[playerId]) {
-                                scoresData.teams[playerTeamId].players[playerId] = {
+                            if (!matchteam.players[playerId]) {
+                                matchteam.players[playerId] = {
                                     home_runs: 0,
                                     singles: 0,
                                     doubles: 0,
@@ -210,7 +207,7 @@ function formatScoresData(rawData) {
                             }
 
                             // Update player statistics based on event description
-                            const playerStats = scoresData.teams[playerTeamId].players[playerId];
+                            const playerStats = matchteam.players[playerId];
                             if (evt['@desc'].includes('homered')) {
                                 playerStats.home_runs++;
                             } else if (evt['@desc'].includes('doubled')) {
@@ -253,37 +250,42 @@ function compressScoresDataForOpenAI(scoresData, maxCharacters = 25000) {
         t: {}, // teams
         m: scoresData.metadata // metadata
     };
-console.log("working well in the point1")
+
     // Compress teams and their players
     Object.keys(scoresData.teams).forEach(teamId => {
-        const team = scoresData.teams[teamId];
-        compressed.t[teamId] = {
-            h: team.stats.hits, // hits
-            e: team.stats.errors, // errors
-            s: team.stats.totalscore, // score
-            p: {}
-        };
-
-        console.log("working well in the point2")
-        // Only include players with meaningful stats
-        Object.keys(team.players).forEach(playerId => {
-            const player = team.players[playerId];
-            const totalStats = player.home_runs + player.singles + player.doubles + player.rbi;
-            if (totalStats > 0) {
-                compressed.t[teamId].p[playerId] = {
-                    hr: player.home_runs, // home_runs
-                    s: player.singles,    // singles
-                    d: player.doubles,    // doubles
-                    r: player.rbi         // rbi
-                };
-            }
+        // Each teamId is now an array of team objects (one per match)
+        compressed.t[teamId] = [];
+        scoresData.teams[teamId].forEach(teamObjWithId => {
+            // teamObjWithId is an object: { [matchId]: teamObj }
+            const matchId = Object.keys(teamObjWithId)[0];
+            const teamObj = teamObjWithId[matchId];
+            const compressedTeam = {
+                m: matchId,
+                h: teamObj.stats.hits, // hits
+                e: teamObj.stats.errors, // errors
+                s: teamObj.stats.totalscore, // score
+                p: {}
+            };
+            // Only include players with meaningful stats
+            Object.keys(teamObj.players).forEach(playerId => {
+                const player = teamObj.players[playerId];
+                const totalStats = player.home_runs + player.singles + player.doubles + player.rbi;
+                if (totalStats > 0) {
+                    compressedTeam.p[playerId] = {
+                        hr: player.home_runs, // home_runs
+                        s: player.singles,    // singles
+                        d: player.doubles,    // doubles
+                        r: player.rbi         // rbi
+                    };
+                }
+            });
+            compressed.t[teamId].push(compressedTeam);
         });
     });
-    console.log("working well in the point3")
 
     // Check character count and further compress if needed
     const jsonString = JSON.stringify(compressed);
-    console.log(compressed, jsonString.length)
+    console.log(jsonString.length)
     if (jsonString.length > maxCharacters) {
         // Optionally, call compressScoresDataForOpenAIAdvanced or fallback
         return compressed;
@@ -298,60 +300,67 @@ function compressScoresDataForOpenAIAdvanced(scoresData, maxCharacters = 25000) 
         return scoresData;
     }
 
-    // Sort teams by total score (descending) and keep top 50
-    const sortedTeams = Object.entries(scoresData, scoresData.teams)
-        .sort(([, a], [, b]) => b.stats.totalscore - a.stats.totalscore)
-        .slice(0, 50);
+    // Sort teams by total score (descending) and keep top 50 teams (across all matches)
+    const teamTotals = Object.entries(scoresData.teams).map(([teamId, teamArr]) => {
+        // Sum total scores across all matches for this team
+        const totalScore = teamArr.reduce((sum, teamObjWithId) => {
+            const matchId = Object.keys(teamObjWithId)[0];
+            const teamObj = teamObjWithId[matchId];
+            return sum + (teamObj.stats.totalscore || 0);
+        }, 0);
+        return { teamId, totalScore };
+    });
+    teamTotals.sort((a, b) => b.totalScore - a.totalScore);
+    const topTeams = teamTotals.slice(0, 50).map(t => t.teamId);
 
     const compressed = {
         t: {},
         m: {
             ...scoresData.metadata,
-            teamsKept: sortedTeams.length
+            teamsKept: topTeams.length
         }
     };
 
-    // For each top team, keep only top 3 players by impact
-    sortedTeams.forEach(([teamId, team]) => {
-        // Sort players by impact (home runs * 3 + rbi * 2 + doubles + singles)
-        const sortedPlayers = Object.entries(team.players || {})
-            .sort(([, a], [, b]) => {
-                const aStats = a.stats;
-                const bStats = b.stats;
-                const aImpact = aStats.home_runs * 3 + aStats.rbi * 2 + aStats.doubles + aStats.singles;
-                const bImpact = bStats.home_runs * 3 + bStats.rbi * 2 + bStats.doubles + bStats.singles;
-                return bImpact - aImpact;
-            })
-            .slice(0, 3); // Keep top 3 players per team
-
-        compressed.t[teamId] = {
-            n: team.name,
-            h: team.stats.hits,
-            e: team.stats.errors,
-            s: team.stats.totalscore,
-            p: {}
-        };
-
-        sortedPlayers.forEach(([playerId, player]) => {
-            const stats = player.stats;
-            const totalStats = stats.home_runs + stats.singles + stats.doubles + stats.rbi;
-            if (totalStats > 0) {
-                compressed.t[teamId].p[playerId] = {
-                    hr: stats.home_runs,
-                    s: stats.singles,
-                    d: stats.doubles,
-                    r: stats.rbi
-                };
-            }
+    // For each top team, keep only top 3 players by impact per match
+    topTeams.forEach(teamId => {
+        compressed.t[teamId] = [];
+        scoresData.teams[teamId].forEach(teamObjWithId => {
+            const matchId = Object.keys(teamObjWithId)[0];
+            const teamObj = teamObjWithId[matchId];
+            // Sort players by impact (home runs * 3 + rbi * 2 + doubles + singles)
+            const sortedPlayers = Object.entries(teamObj.players || {})
+                .sort(([, a], [, b]) => {
+                    const aImpact = a.home_runs * 3 + a.rbi * 2 + a.doubles + a.singles;
+                    const bImpact = b.home_runs * 3 + b.rbi * 2 + b.doubles + b.singles;
+                    return bImpact - aImpact;
+                })
+                .slice(0, 3); // Keep top 3 players per match
+            const compressedTeam = {
+                m: matchId,
+                h: teamObj.stats.hits,
+                e: teamObj.stats.errors,
+                s: teamObj.stats.totalscore,
+                p: {}
+            };
+            sortedPlayers.forEach(([playerId, player]) => {
+                const totalStats = player.home_runs + player.singles + player.doubles + player.rbi;
+                if (totalStats > 0) {
+                    compressedTeam.p[playerId] = {
+                        hr: player.home_runs,
+                        s: player.singles,
+                        d: player.doubles,
+                        r: player.rbi
+                    };
+                }
+            });
+            compressed.t[teamId].push(compressedTeam);
         });
     });
 
     // Check character count and further compress if needed
     const jsonString = JSON.stringify(compressed);
-    console.log("letters::", jsonString.length)
     if (jsonString.length > maxCharacters) {
         // Optionally, reduce players per team or teams further
-        // For now, just return as is
         return compressed;
     }
 
