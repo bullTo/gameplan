@@ -203,25 +203,24 @@ function formatScoresData(rawData) {
                                     };
                                 }
                             }
+
+                            // Update player statistics based on event description
+                            const playerStats = scoresData.teams[playerTeamId].players[playerId];
+                            if (evt['@desc'].includes('homered')) {
+                                playerStats.home_runs++;
+                            } else if (evt['@desc'].includes('doubled')) {
+                                playerStats.doubles++;
+                            } else if (evt['@desc'].includes('singled')) {
+                                playerStats.singles++;
+                            }
+
+                            // Count RBIs
+                            const rbiMatch = evt['@desc'].match(/scored(?: and [A-Za-z\-]+ scored)*(?:,|\.)/);
+                            if (rbiMatch) {
+                                const scorers = (rbiMatch[0].match(/[A-Za-z\-]+/g) || []).length;
+                                playerStats.rbi += scorers;
+                            }
                         });
-
-
-                        // Update player statistics based on event description
-                        const playerStats = scoresData.teams[playerTeamId].players[playerId];
-                        if (evt['@desc'].includes('homered')) {
-                            playerStats.home_runs++;
-                        } else if (evt['@desc'].includes('doubled')) {
-                            playerStats.doubles++;
-                        } else if (evt['@desc'].includes('singled')) {
-                            playerStats.singles++;
-                        }
-
-                        // Count RBIs
-                        const rbiMatch = evt['@desc'].match(/scored(?: and [A-Za-z\-]+ scored)*(?:,|\.)/);
-                        if (rbiMatch) {
-                            const scorers = (rbiMatch[0].match(/[A-Za-z\-]+/g) || []).length;
-                            playerStats.rbi += scorers;
-                        }
                     }
                     );
                 };
