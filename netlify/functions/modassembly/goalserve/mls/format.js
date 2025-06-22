@@ -233,13 +233,326 @@ function extractGoalsFromSummary(goalsObj) {
 }
 
 function formatMLSData(rawData) {
+    const scoresData = formatScoresData(rawData.scores);
     return {
-        schedule: formatScheduleData(rawData),
-        standings: formatStandingsData(rawData),
-        scores: formatScoresData(rawData)
+        schedule: formatScheduleData(rawData.schedule),
+        standings: formatStandingsData(rawData.standings),
+        scores: compressScoresDataForOpenAIAdvanced(scoresData, 25000)
     }
 }
 
+// Function to compress scoresData for OpenAI prompts
+function compressScoresDataForOpenAI(scoresData, maxCharacters = 25000) {
+    if (!scoresData || scoresData.error) {
+        return scoresData;
+    }
+
+    // Create compressed version
+    const compressed = {
+        t: {}, // teams
+        p: {}, // players
+        m: {} // metadata
+    };
+
+    // Compress teams data from matches
+    if (scoresData.matches) {
+        scoresData.matches.forEach(match => {
+            // Local team
+            if (match.localteam) {
+                const teamId = match.localteam.id;
+                if (!compressed.t[teamId]) {
+                    compressed.t[teamId] = {
+                        n: match.localteam.name, // name
+                        gs: parseInt(match.localteam.goals) || 0, // goals_scored
+                        ht: match.localteam.ht_score || '', // halftime_score
+                        ft: match.localteam.ft_score || '' // fulltime_score
+                    };
+                }
+            }
+
+            // Visitor team
+            if (match.visitorteam) {
+                const teamId = match.visitorteam.id;
+                if (!compressed.t[teamId]) {
+                    compressed.t[teamId] = {
+                        n: match.visitorteam.name, // name
+                        gs: parseInt(match.visitorteam.goals) || 0, // goals_scored
+                        ht: match.visitorteam.ht_score || '', // halftime_score
+                        ft: match.visitorteam.ft_score || '' // fulltime_score
+                    };
+                }
+            }
+
+            // Process goalscorers for players
+            const allGoalscorers = [
+                ...(match.localteam?.goalscorers || []),
+                ...(match.visitorteam?.goalscorers || [])
+            ];
+
+            allGoalscorers.forEach(goal => {
+                if (goal.name) {
+                    const playerId = goal.name.toLowerCase().replace(/\s+/g, '_');
+                    if (!compressed.p[playerId]) {
+                        compressed.p[playerId] = {
+                            n: goal.name, // name
+                            g: 0, // goals
+                            a: 0, // assists
+                            p: 0 // penalties
+                        };
+                    }
+                    
+                    const player = compressed.p[playerId];
+                    player.g++; // increment goals
+                    if (goal.penalty) player.p++;
+                }
+
+                // Process assists
+                if (goal.assist_name) {
+                    const assistPlayerId = goal.assist_name.toLowerCase().replace(/\s+/g, '_');
+                    if (!compressed.p[assistPlayerId]) {
+                        compressed.p[assistPlayerId] = {
+                            n: goal.assist_name, // name
+                            g: 0, // goals
+                            a: 0, // assists
+                            p: 0 // penalties
+                        };
+                    }
+                    compressed.p[assistPlayerId].a++; // increment assists
+                }
+            });
+        });
+    }
+
+    // Add metadata
+    compressed.m = {
+        league: scoresData.league,
+        id: scoresData.id,
+        matchCount: scoresData.matches ? scoresData.matches.length : 0
+    };
+
+    // Check character count and further compress if needed
+    const jsonString = JSON.stringify(compressed);
+    if (jsonString.length > maxCharacters) {
+        return compressScoresDataForOpenAIAdvanced(scoresData, maxCharacters);
+    }
+
+    return compressed;
+}
+
+// Advanced compression for very large datasets
+function compressScoresDataForOpenAIAdvanced(scoresData, maxCharacters = 25000) {
+    if (!scoresData || scoresData.error) {
+        return scoresData;
+    }
+
+    // Create compressed version
+    const compressed = {
+        t: {}, // teams
+        p: {}, // players
+        m: {} // metadata
+    };
+
+    // Process teams and players with limits
+    const teamStats = {};
+    const playerStats = {};
+
+    if (scoresData.matches) {
+        scoresData.matches.forEach(match => {
+            // Aggregate team stats
+            if (match.localteam) {
+                const teamId = match.localteam.id;
+                if (!teamStats[teamId]) {
+                    teamStats[teamId] = {
+                        name: match.localteam.name,
+                        goals: 0,
+                        matches: 0
+                    };
+                }
+                teamStats[teamId].goals += parseInt(match.localteam.goals) || 0;
+                teamStats[teamId].matches++;
+            }
+
+            if (match.visitorteam) {
+                const teamId = match.visitorteam.id;
+                if (!teamStats[teamId]) {
+                    teamStats[teamId] = {
+                        name: match.visitorteam.name,
+                        goals: 0,
+                        matches: 0
+                    };
+                }
+                teamStats[teamId].goals += parseInt(match.visitorteam.goals) || 0;
+                teamStats[teamId].matches++;
+            }
+
+            // Aggregate player stats
+            const allGoalscorers = [
+                ...(match.localteam?.goalscorers || []),
+                ...(match.visitorteam?.goalscorers || [])
+            ];
+
+            allGoalscorers.forEach(goal => {
+                if (goal.name) {
+                    const playerId = goal.name.toLowerCase().replace(/\s+/g, '_');
+                    if (!playerStats[playerId]) {
+                        playerStats[playerId] = {
+                            name: goal.name,
+                            goals: 0,
+                            assists: 0,
+                            penalties: 0
+                        };
+                    }
+                    
+                    playerStats[playerId].goals++;
+                    if (goal.penalty) playerStats[playerId].penalties++;
+                }
+
+                if (goal.assist_name) {
+                    const assistPlayerId = goal.assist_name.toLowerCase().replace(/\s+/g, '_');
+                    if (!playerStats[assistPlayerId]) {
+                        playerStats[assistPlayerId] = {
+                            name: goal.assist_name,
+                            goals: 0,
+                            assists: 0,
+                            penalties: 0
+                        };
+                    }
+                    playerStats[assistPlayerId].assists++;
+                }
+            });
+        });
+    }
+
+    // Sort and keep top teams (by total goals)
+    const sortedTeams = Object.entries(teamStats)
+        .sort(([,a], [,b]) => b.goals - a.goals)
+        .slice(0, 30); // Keep top 30 teams
+
+    // Sort and keep top players (by impact: goals + assists)
+    const sortedPlayers = Object.entries(playerStats)
+        .sort(([,a], [,b]) => {
+            const aImpact = a.goals * 2 + a.assists + a.penalties;
+            const bImpact = b.goals * 2 + b.assists + b.penalties;
+            return bImpact - aImpact;
+        })
+        .slice(0, 50); // Keep top 50 players
+
+    // Add top teams
+    sortedTeams.forEach(([teamId, team]) => {
+        compressed.t[teamId] = {
+            n: team.name, // name
+            g: team.goals, // total goals
+            m: team.matches // matches played
+        };
+    });
+
+    // Add top players
+    sortedPlayers.forEach(([playerId, player]) => {
+        compressed.p[playerId] = {
+            n: player.name, // name
+            g: player.goals, // goals
+            a: player.assists, // assists
+            p: player.penalties // penalties
+        };
+    });
+
+    // Add metadata
+    compressed.m = {
+        league: scoresData.league,
+        teamsKept: sortedTeams.length,
+        playersKept: sortedPlayers.length,
+        totalMatches: scoresData.matches ? scoresData.matches.length : 0
+    };
+
+    return compressed;
+}
+
+// Function to create a summary format for very large datasets
+function createScoresDataSummary(scoresData) {
+    if (!scoresData || scoresData.error) {
+        return scoresData;
+    }
+
+    // Calculate summary statistics
+    const teamStats = {};
+    const playerStats = {};
+
+    if (scoresData.matches) {
+        scoresData.matches.forEach(match => {
+            // Aggregate team stats
+            if (match.localteam) {
+                const teamId = match.localteam.id;
+                if (!teamStats[teamId]) {
+                    teamStats[teamId] = {
+                        name: match.localteam.name,
+                        goals: 0
+                    };
+                }
+                teamStats[teamId].goals += parseInt(match.localteam.goals) || 0;
+            }
+
+            if (match.visitorteam) {
+                const teamId = match.visitorteam.id;
+                if (!teamStats[teamId]) {
+                    teamStats[teamId] = {
+                        name: match.visitorteam.name,
+                        goals: 0
+                    };
+                }
+                teamStats[teamId].goals += parseInt(match.visitorteam.goals) || 0;
+            }
+
+            // Aggregate player stats
+            const allGoalscorers = [
+                ...(match.localteam?.goalscorers || []),
+                ...(match.visitorteam?.goalscorers || [])
+            ];
+
+            allGoalscorers.forEach(goal => {
+                if (goal.name) {
+                    const playerId = goal.name.toLowerCase().replace(/\s+/g, '_');
+                    if (!playerStats[playerId]) {
+                        playerStats[playerId] = {
+                            name: goal.name,
+                            goals: 0
+                        };
+                    }
+                    playerStats[playerId].goals++;
+                }
+            });
+        });
+    }
+
+    const teamCount = Object.keys(teamStats).length;
+    const playerCount = Object.keys(playerStats).length;
+    
+    // Top 5 teams by goals
+    const topTeams = Object.entries(teamStats)
+        .sort(([,a], [,b]) => b.goals - a.goals)
+        .slice(0, 5)
+        .map(([id, team]) => `${team.name}:${team.goals}G`);
+
+    // Top 5 players by goals
+    const topPlayers = Object.entries(playerStats)
+        .sort(([,a], [,b]) => b.goals - a.goals)
+        .slice(0, 5)
+        .map(([id, player]) => `${player.name}:${player.goals}G`);
+
+    return {
+        summary: {
+            league: scoresData.league,
+            teams: teamCount,
+            players: playerCount,
+            topTeams: topTeams.join(','),
+            topPlayers: topPlayers.join(','),
+            totalMatches: scoresData.matches ? scoresData.matches.length : 0
+        }
+    };
+}
+
 module.exports = {
-    formatMLSData
+    formatMLSData,
+    compressScoresDataForOpenAI,
+    compressScoresDataForOpenAIAdvanced,
+    createScoresDataSummary
 };

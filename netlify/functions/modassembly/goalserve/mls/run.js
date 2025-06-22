@@ -11,7 +11,7 @@ function scoresURLs(baseDate = new Date()) {
     const today = new Date(baseDate);
 
     const urls = [];
-    urls.push(`https://www.goalserve.com/getfeed/${API_KEY}/commentaries/1440?json=1`);
+    urls.push(`https://www.goalserve.com/getfeed/${API_KEY}/commentaries/1440.xml?json=1`);
 
     // Get valid MLS season dates for the past year
     const currentYear = today.getFullYear();
@@ -49,7 +49,7 @@ function scoresURLs(baseDate = new Date()) {
             const dateMonth = (startDate.getMonth() + 1).toString().padStart(2, '0');
             const dateYear = startDate.getFullYear();
             const dateString = `${dateDay}.${dateMonth}.${dateYear}`;
-            urls.push(`https://www.goalserve.com/getfeed/${API_KEY}/commentaries/1440?date=${dateString}&json=1`);
+            urls.push(`https://www.goalserve.com/getfeed/${API_KEY}/commentaries/1440.xml?date=${dateString}&json=1`);
         }
     }
 
@@ -78,7 +78,7 @@ async function fetchMLSData(sport, extractedData) {
 
     const scoreUrls = scoresURLs();
     const standingsUrl = `https://www.goalserve.com/getfeed/${API_KEY}/standings/usa.xml?json=1`;
-    let scheduleUrl = `https://www.goalserve.com/getfeed/${API_KEY}/soccerfixtures/usa/mls?json=1`;
+    let scheduleUrl = `https://www.goalserve.com/getfeed/${API_KEY}/soccerfixtures/usa/mls.xml?json=1`;
 
     // Add dates for scheduled games
     if (extractedData.date1) {
@@ -123,7 +123,7 @@ async function fetchMLSData(sport, extractedData) {
     // Return structured data
     return {
         sport,
-        scores: scoresResults[0],
+        scores: scoresResults,
         standings: standingsData.standings,
         schedule: scheduleData.results
     };
