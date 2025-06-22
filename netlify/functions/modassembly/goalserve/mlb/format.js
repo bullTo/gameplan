@@ -190,18 +190,23 @@ function formatScoresData(rawData) {
                         const playerMatches = evt['@desc'].match(nameRegex) || [];
                         const playerTeamId = evt['@team'] == "awayteam" ? match.awayteam["@id"] : match.hometeam["@id"];
 
-                        playerMatches.forEach(playerId => {
+                        // Check if team exists before processing players
+                        if (!playerTeamId || !scoresData.teams[playerTeamId]) {
+                            console.warn(`Team not found for playerTeamId: ${playerTeamId}`);
+                            return;
+                        }
 
-                            if (playerId && scoresData.teams[playerTeamId]) {
-                                // Initialize player if not exists under the team
-                                if (!scoresData.teams[playerTeamId].players[playerId]) {
-                                    scoresData.teams[playerTeamId].players[playerId] = {
-                                        home_runs: 0,
-                                        singles: 0,
-                                        doubles: 0,
-                                        rbi: 0
-                                    };
-                                }
+                        playerMatches.forEach(playerId => {
+                            if (!playerId) return;
+
+                            // Initialize player if not exists under the team
+                            if (!scoresData.teams[playerTeamId].players[playerId]) {
+                                scoresData.teams[playerTeamId].players[playerId] = {
+                                    home_runs: 0,
+                                    singles: 0,
+                                    doubles: 0,
+                                    rbi: 0
+                                };
                             }
 
                             // Update player statistics based on event description
@@ -221,8 +226,7 @@ function formatScoresData(rawData) {
                                 playerStats.rbi += scorers;
                             }
                         });
-                    }
-                    );
+                    });
                 };
 
                 processEvents(match.events);
@@ -254,7 +258,6 @@ function compressScoresDataForOpenAI(scoresData, maxCharacters = 25000) {
     Object.keys(scoresData.teams).forEach(teamId => {
         const team = scoresData.teams[teamId];
         compressed.t[teamId] = {
-            n: team.name, // name
             h: team.stats.hits, // hits
             e: team.stats.errors, // errors
             s: team.stats.totalscore, // score
@@ -264,14 +267,13 @@ function compressScoresDataForOpenAI(scoresData, maxCharacters = 25000) {
         // Only include players with meaningful stats
         Object.keys(team.players).forEach(playerId => {
             const player = team.players[playerId];
-            const stats = player.stats;
             const totalStats = stats.home_runs + stats.singles + stats.doubles + stats.rbi;
             if (totalStats > 0) {
                 compressed.t[teamId].p[playerId] = {
-                    hr: stats.home_runs, // home_runs
-                    s: stats.singles,    // singles
-                    d: stats.doubles,    // doubles
-                    r: stats.rbi         // rbi
+                    hr: player.home_runs, // home_runs
+                    s: player.singles,    // singles
+                    d: player.doubles,    // doubles
+                    r: player.rbi         // rbi
                 };
             }
         });
@@ -284,8 +286,8 @@ function compressScoresDataForOpenAI(scoresData, maxCharacters = 25000) {
     if (jsonString.length > maxCharacters) {
         // console.log(compressed, jsonString.length, maxCharacters);
         // You may want to update compressScoresDataForOpenAIAdvanced similarly
-        const compressAdvanced = compressScoresDataForOpenAIAdvanced(compressed, maxCharacters)
-        return compressAdvanced; // or call a fallback
+        // const compressAdvanced = compressScoresDataForOpenAIAdvanced(compressed, maxCharacters)
+        return compressed; // or call a fallback
     }
 
     return compressed;
