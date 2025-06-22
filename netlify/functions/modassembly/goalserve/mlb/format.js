@@ -407,7 +407,7 @@ function formatMLBData(rawData) {
     const scoresData = formatScoresData(rawData);
 
     // For OpenAI prompt (under 30k chars)
-    const compressed = compressScoresDataForOpenAIAdvanced(scoresData, 25000);
+    const compressed = compressScoresDataForOpenAI(scoresData, 25000);
 
     return {
         schedule: formatScheduleData(rawData.schedule),
