@@ -32,12 +32,10 @@ async function generatePredictions(prompt, extractedData, sportsData) {
                 role: 'system',
                 content: `You are a sports betting AI assistant focused on predicting outcomes of *upcoming games only* in ${sport}. You must analyze the provided **schedule**, **scores**, and **standings** to forecast suitable betting picks.
 
-📊 DATA STRUCTURE HINTS:
-The scores data is compressed to save space. Here's what the abbreviations mean:
-
-❗ Only suggest bets for **future games**, based on today's time: ${nycTime}.  Show the current date and time. Only suggest bets for games that have not yet occurred. Their time is after the current time.
-❌ Do not describe or summarize past game results.
 ✅ Your job is to PREDICT the most likely outcomes of upcoming games and suggest high-confidence bets.
+❗ Only suggest bets for **future games**, based on today's time: ${nycTime}. 
+❌ Do not describe or summarize past game results. DO NOT say anything about past games.
+
 Note: Analyze p(players) of scores data for specific players props. When offering a player, indicate the exact team name of the player.
 Compare the key of t(teams) and t value of the p(players) for getting player's team.
 Output should be concise and clear.
