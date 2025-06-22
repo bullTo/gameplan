@@ -196,7 +196,7 @@ function formatScoresData(rawData) {
                         playerMatches.forEach(playerId => {
                             if (!playerId) return;
 
-                            matchteam = scoresData.teams[playerTeamId][scoresData.teams[playerTeamId].length - 1];
+                            let matchteam = scoresData.teams[playerTeamId][scoresData.teams[playerTeamId].length - 1];
                             // Initialize player if not exists under the team
                             if (!matchteam.players[playerId]) {
                                 matchteam.players[playerId] = {
