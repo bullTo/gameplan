@@ -401,8 +401,8 @@ function createScoresDataSummary(scoresData) {
 function formatMLBData(rawData) {
     // Get original data
     const scoresData = formatScoresData(rawData);
-    console.log(scoresData);
-    console.log(scoresData.teams['New York Mets'])
+    console.log(scoresData.teams['New York Yankees'], scoresData.teams['New York Yankees'].players)
+    console.log(scoresData.teams['Los Angeles Dodgers'], scoresData.teams['Los Angeles Dodgers'].players)
     // For OpenAI prompt (under 30k chars)
     const compressed = compressScoresDataForOpenAI(scoresData, 25000);
 
