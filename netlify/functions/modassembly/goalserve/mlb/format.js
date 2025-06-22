@@ -188,7 +188,7 @@ function formatScoresData(rawData) {
                         // Extract player name from event description
                         const nameRegex = /([A-Z][a-zA-Z.'\-]+(?:\s[A-Z][a-zA-Z.'\-]+)*?(?:\sJr\.| Sr\.| III| II)?)/g;
                         const playerMatches = evt['@desc'].match(nameRegex) || [];
-                        const playerTeamId = evt['@team'] == "awayteam" ? match.awayteam["@id"] : match.hometeam["@id"];
+                        const playerTeamId = evt['@team'] == "awayteam" ? match.awayteam["@name"] : match.hometeam["@name"];
 
                         // Check if team exists before processing players
                         if (!playerTeamId || !scoresData.teams[playerTeamId]) {
