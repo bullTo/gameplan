@@ -145,7 +145,7 @@ function formatScoresData(rawData) {
                         },
                         players: {}
                     };
-                    scoresData.teams[homeTeamId].push({ [match['@id']]: homeTeamObj });
+                    scoresData.teams[homeTeamId].push(homeTeamObj);
                     itemCount++;
                 }
 
@@ -165,7 +165,7 @@ function formatScoresData(rawData) {
                         },
                         players: {}
                     };
-                    scoresData.teams[awayTeamId].push({ [match['@id']]: awayTeamObj });
+                    scoresData.teams[awayTeamId].push(awayTeamObj);
                     itemCount++;
                 }
             }
@@ -187,7 +187,8 @@ function formatScoresData(rawData) {
                         const playerTeamId = evt['@team'] == "awayteam" ? match.awayteam["@name"] : match.hometeam["@name"];
 
                         // Check if team exists before processing players
-                        if (!playerTeamId || !scoresData.teams[playerTeamId][match['@id']]) {
+                        const length = scoresData.teams[playerTeamId].length
+                        if (!playerTeamId || !scoresData.teams[playerTeamId][length - 1]) {
                             console.warn(`Team not found for playerTeamId: ${playerTeamId}`);
                             return;
                         }
@@ -195,7 +196,7 @@ function formatScoresData(rawData) {
                         playerMatches.forEach(playerId => {
                             if (!playerId) return;
 
-                            matchteam = scoresData.teams[playerTeamId][match['@id']];
+                            matchteam = scoresData.teams[playerTeamId][length - 1];
                             // Initialize player if not exists under the team
                             if (!matchteam.players[playerId]) {
                                 matchteam.players[playerId] = {
