@@ -253,7 +253,7 @@ function compressScoresDataForOpenAI(scoresData, maxCharacters = 25000) {
         t: {}, // teams
         m: scoresData.metadata // metadata
     };
-
+console.log("working well in the point1")
     // Compress teams and their players
     Object.keys(scoresData.teams).forEach(teamId => {
         const team = scoresData.teams[teamId];
@@ -264,10 +264,11 @@ function compressScoresDataForOpenAI(scoresData, maxCharacters = 25000) {
             p: {}
         };
 
+        console.log("working well in the point2")
         // Only include players with meaningful stats
         Object.keys(team.players).forEach(playerId => {
             const player = team.players[playerId];
-            const totalStats = stats.home_runs + stats.singles + stats.doubles + stats.rbi;
+            const totalStats = player.home_runs + player.singles + player.doubles + player.rbi;
             if (totalStats > 0) {
                 compressed.t[teamId].p[playerId] = {
                     hr: player.home_runs, // home_runs
@@ -278,16 +279,14 @@ function compressScoresDataForOpenAI(scoresData, maxCharacters = 25000) {
             }
         });
     });
+    console.log("working well in the point3")
 
     // Check character count and further compress if needed
     const jsonString = JSON.stringify(compressed);
-
-    console.log(compressed, jsonString.length, maxCharacters);
+    console.log(compressed, jsonString.length)
     if (jsonString.length > maxCharacters) {
-        // console.log(compressed, jsonString.length, maxCharacters);
-        // You may want to update compressScoresDataForOpenAIAdvanced similarly
-        // const compressAdvanced = compressScoresDataForOpenAIAdvanced(compressed, maxCharacters)
-        return compressed; // or call a fallback
+        // Optionally, call compressScoresDataForOpenAIAdvanced or fallback
+        return compressed;
     }
 
     return compressed;
@@ -349,6 +348,7 @@ function compressScoresDataForOpenAIAdvanced(scoresData, maxCharacters = 25000) 
 
     // Check character count and further compress if needed
     const jsonString = JSON.stringify(compressed);
+    console.log("letters::", jsonString.length)
     if (jsonString.length > maxCharacters) {
         // Optionally, reduce players per team or teams further
         // For now, just return as is
