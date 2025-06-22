@@ -39,6 +39,7 @@ The scores data is compressed to save space. Here's what the abbreviations mean:
 ❌ Do not describe or summarize past game results.
 ✅ Your job is to PREDICT the most likely outcomes of upcoming games and suggest high-confidence bets.
 Note: Analyze p(players) of scores data for specific players props. When offering a player, indicate the exact team name of the player.
+Compare the key of t(teams) and t value of the p(players) for getting player's team.
 Output should be concise and clear.
 
 🎯 Output Format:
