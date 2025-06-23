@@ -415,9 +415,6 @@ function formatMLBData(rawData) {
     // Get original data
     const scoresData = formatScoresData(rawData);
     // For OpenAI prompt (under 30k chars)
-    console.log("scoresData, length", scoresData, JSON.stringify(scoresData).length);
-
-    console.log(scoresData.teams[undefined][0])
     const compressed = compressScoresDataForOpenAI(scoresData, 25000);
 
     return {
