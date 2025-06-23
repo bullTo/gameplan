@@ -122,7 +122,7 @@ async function fetchMLBData(sport, extractedData) {
     // Return structured data
     return {
         sport,
-        scores: scoresResults,
+        scores: scoresResults[1],
         standings: standingsData.standings,
         schedule: scheduleData.fixtures
     };
