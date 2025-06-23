@@ -123,7 +123,7 @@ function formatScoresData(rawData) {
 
     for (const scoreItem of scoresArray) {
         // Handle both array and single match cases for each score item
-        console.log("scoreItem:::", scoreItem);
+        console.log("scoreItem:::", scoreItem.scores.category.match.length);
         const matches = scoreItem.scores.category && scoreItem.scores.category.match
             ? (Array.isArray(scoreItem.scores.category.match)
                 ? scoreItem.scores.category.match
@@ -136,19 +136,20 @@ function formatScoresData(rawData) {
                 const homeTeamId = match.hometeam['@name'];
                 if (!scoresData.teams[homeTeamId]) {
                     scoresData.teams[homeTeamId] = [];
-
-                    const homeTeamObj =  {
-                        match: match['@id'],
-                        stats: {
-                            hits: parseInt(match.hometeam['@hits']) || 0,
-                            errors: parseInt(match.hometeam['@errors']) || 0,
-                            totalscore: parseInt(match.hometeam['@totalscore']) || 0,
-                        },
-                        players: {}
-                    };
-                    scoresData.teams[homeTeamId].push(homeTeamObj);
-                    itemCount++;
                 }
+
+                const homeTeamObj = {
+                    match: match['@id'],
+                    stats: {
+                        hits: parseInt(match.hometeam['@hits']) || 0,
+                        errors: parseInt(match.hometeam['@errors']) || 0,
+                        totalscore: parseInt(match.hometeam['@totalscore']) || 0,
+                    },
+                    players: {}
+                };
+                console.log("homeTeamId", homeTeamId)
+                scoresData.teams[homeTeamId].push(homeTeamObj);
+                itemCount++;
 
             }
 
@@ -157,18 +158,19 @@ function formatScoresData(rawData) {
                 const awayTeamId = match.awayteam['@name'];
                 if (!scoresData.teams[awayTeamId]) {
                     scoresData.teams[awayTeamId] = [];
-
-                    const awayTeamObj =  {
-                        stats: {
-                            hits: parseInt(match.awayteam['@hits']) || 0,
-                            errors: parseInt(match.awayteam['@errors']) || 0,
-                            totalscore: parseInt(match.awayteam['@totalscore']) || 0,
-                        },
-                        players: {}
-                    };
-                    scoresData.teams[awayTeamId].push(awayTeamObj);
-                    itemCount++;
                 }
+
+                const awayTeamObj = {
+                    stats: {
+                        hits: parseInt(match.awayteam['@hits']) || 0,
+                        errors: parseInt(match.awayteam['@errors']) || 0,
+                        totalscore: parseInt(match.awayteam['@totalscore']) || 0,
+                    },
+                    players: {}
+                };
+                console.log("awayTeamId", awayTeamId)
+                scoresData.teams[awayTeamId].push(awayTeamObj);
+                itemCount++;
             }
 
             if (match.events) {
@@ -185,8 +187,15 @@ function formatScoresData(rawData) {
                         // Extract player name from event description
                         const nameRegex = /([A-Z][a-zA-Z.'\-]+(?:\s[A-Z][a-zA-Z.'\-]+)*?(?:\sJr\.| Sr\.| III| II)?)/g;
                         const playerMatches = evt['@desc'].match(nameRegex) || [];
-                        const playerTeamId = evt['@team'] == "awayteam" ? match.awayteam["@name"] : match.hometeam["@name"];
+                        const playerTeamId = (evt['@team'] === "awayteam" && match.awayteam && match.awayteam["@name"]) ? match.awayteam["@name"]
+                            : (evt['@team'] === "hometeam" && match.hometeam && match.hometeam["@name"]) ? match.hometeam["@name"]
+                                : undefined;
 
+                        console.log(`Process event: ${evt['@desc']} for team: ${playerTeamId} with players: ${playerMatches.join(', ')}`);
+                        if (!playerTeamId) {
+                            console.warn('Skipping event with undefined playerTeamId:', evt, match);
+                            return;
+                        }
                         // Check if team exists before processing players
                         const length = scoresData.teams[playerTeamId].length
                         if (!playerTeamId || !scoresData.teams[playerTeamId][length - 1]) {
@@ -402,12 +411,12 @@ function createScoresDataSummary(scoresData) {
 function formatMLBData(rawData) {
     // Get original data
     const scoresData = formatScoresData(rawData);
-    console.log(scoresData.teams['New York Yankees'], scoresData.teams['New York Yankees'].players)
-    console.log(scoresData.teams['Los Angeles Dodgers'], scoresData.teams['Los Angeles Dodgers'].players)
     // For OpenAI prompt (under 30k chars)
+    console.log("scoresData, length", scoresData, JSON.stringify(scoresData).length);
+
+    console.log(scoresData.teams[undefined][0])
     const compressed = compressScoresDataForOpenAI(scoresData, 25000);
 
-    console.log(compressed)
     return {
         schedule: formatScheduleData(rawData.schedule),
         standings: formatStandingsData(rawData.standings),
