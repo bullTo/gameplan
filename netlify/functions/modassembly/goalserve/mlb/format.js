@@ -133,17 +133,16 @@ function formatScoresData(rawData) {
         for (const match of matches) {
             // Compute home team
             if (match.hometeam) {
-                const homeTeamId = match.hometeam['@name'];
+                let homeTeamId = match.hometeam['@name'] || match.hometeam['name'];
                 if (!scoresData.teams[homeTeamId]) {
                     scoresData.teams[homeTeamId] = [];
                 }
 
                 const homeTeamObj = {
-                    match: match['@id'],
                     stats: {
-                        hits: parseInt(match.hometeam['@hits']) || 0,
-                        errors: parseInt(match.hometeam['@errors']) || 0,
-                        totalscore: parseInt(match.hometeam['@totalscore']) || 0,
+                        hits: parseInt(match.hometeam['@hits'] || match.hometeam['hits']) || 0,
+                        errors: parseInt(match.hometeam['@errors'] || match.hometeam['errors']) || 0,
+                        totalscore: parseInt(match.hometeam['@totalscore'] || match.hometeam['totalscore']) || 0,
                     },
                     players: {}
                 };
@@ -155,16 +154,16 @@ function formatScoresData(rawData) {
 
             // Compute away team
             if (match.awayteam) {
-                const awayTeamId = match.awayteam['@name'];
+                let awayTeamId = match.awayteam['@name'] || match.awayteam['name'];
                 if (!scoresData.teams[awayTeamId]) {
                     scoresData.teams[awayTeamId] = [];
                 }
 
                 const awayTeamObj = {
                     stats: {
-                        hits: parseInt(match.awayteam['@hits']) || 0,
-                        errors: parseInt(match.awayteam['@errors']) || 0,
-                        totalscore: parseInt(match.awayteam['@totalscore']) || 0,
+                        hits: parseInt(match.awayteam['@hits'] || match.awayteam['hits']) || 0,
+                        errors: parseInt(match.awayteam['@errors'] || match.awayteam['errors']) || 0,
+                        totalscore: parseInt(match.awayteam['@totalscore'] || match.awayteam['totalscore']) || 0,
                     },
                     players: {}
                 };
@@ -182,16 +181,20 @@ function formatScoresData(rawData) {
                     const eventArray = Array.isArray(events.event) ? events.event : [events.event];
 
                     eventArray.forEach(evt => {
-                        if (!evt || !evt['@desc']) return;
 
+                        let awayTeamId = match.awayteam['@name'] || match.awayteam['name'];
+                        let homeTeamId = match.hometeam['@name'] || match.hometeam['name'];
+                        if (!evt || !(evt['@desc'] || evt['desc'])) return;
                         // Extract player name from event description
+                        const desc = evt['@desc'] || evt['desc'];
+                        const team = evt['@team'] || evt['team'];
                         const nameRegex = /([A-Z][a-zA-Z.'\-]+(?:\s[A-Z][a-zA-Z.'\-]+)*?(?:\sJr\.| Sr\.| III| II)?)/g;
-                        const playerMatches = evt['@desc'].match(nameRegex) || [];
-                        const playerTeamId = (evt['@team'] === "awayteam" && match.awayteam && match.awayteam["@name"]) ? match.awayteam["@name"]
-                            : (evt['@team'] === "hometeam" && match.hometeam && match.hometeam["@name"]) ? match.hometeam["@name"]
+                        const playerMatches = desc.match(nameRegex) || [];
+                        const playerTeamId = (team === "awayteam" && match.awayteam && awayTeamId) ? awayTeamId
+                            : (team === "hometeam" && match.hometeam && homeTeamId) ? homeTeamId
                                 : undefined;
 
-                        console.log(`Process event: ${evt['@desc']} for team: ${playerTeamId} with players: ${playerMatches.join(', ')}`);
+
                         if (!playerTeamId) {
                             console.warn('Skipping event with undefined playerTeamId:', evt, match);
                             return;
@@ -203,40 +206,41 @@ function formatScoresData(rawData) {
                             return;
                         }
 
-                        playerMatches.forEach(playerId => {
-                            if (!playerId) return;
+                        // Update player statistics based on event description
+                        const hitter = playerMatches[0];
+                        let matchteam = scoresData.teams[playerTeamId][scoresData.teams[playerTeamId].length - 1];
+                        // Initialize player if not exists under the team
+                        if (!matchteam.players[hitter]) {
+                            matchteam.players[hitter] = {
+                                home_runs: 0,
+                                singles: 0,
+                                doubles: 0,
+                                rbi: 0
+                            };
+                        }
 
-                            let matchteam = scoresData.teams[playerTeamId][scoresData.teams[playerTeamId].length - 1];
-                            // Initialize player if not exists under the team
-                            if (!matchteam.players[playerId]) {
-                                matchteam.players[playerId] = {
-                                    home_runs: 0,
-                                    singles: 0,
-                                    doubles: 0,
-                                    rbi: 0
-                                };
-                            }
+                        // Update player statistics based on event description
+                        const playerStats = matchteam.players[hitter];
+                        if (desc.includes('homered')) {
+                            playerStats.home_runs++;
+                        } else if (desc.includes('doubled')) {
+                            playerStats.doubles++;
+                        } else if (desc.includes('singled')) {
+                            playerStats.singles++;
+                        }
 
-                            // Update player statistics based on event description
-                            const playerStats = matchteam.players[playerId];
-                            if (evt['@desc'].includes('homered')) {
-                                playerStats.home_runs++;
-                            } else if (evt['@desc'].includes('doubled')) {
-                                playerStats.doubles++;
-                            } else if (evt['@desc'].includes('singled')) {
-                                playerStats.singles++;
+                        // Find all who scored
+                        const scoredRegex = /([A-Z][a-zA-Z.'\-]+(?:\s[A-Z][a-zA-Z.'\-]+)*?(?:\sJr\.| Sr\.| III| II)?) scored/g;
+                        let socoreMatch;
+                        while ((socoreMatch = scoredRegex.exec(desc)) !== null) {
+                            const scorer = socoreMatch[1];
+                            if (!matchteam.players[scorer]) {
+                                matchteam.players[scorer] = { home_runs: 0, singles: 0, doubles: 0, rbi: 0 };
                             }
-
-                            // Count RBIs
-                            const rbiMatch = evt['@desc'].match(/scored(?: and [A-Za-z\-]+ scored)*(?:,|\.)/);
-                            if (rbiMatch) {
-                                const scorers = (rbiMatch[0].match(/[A-Za-z\-]+/g) || []).length;
-                                playerStats.rbi += scorers;
-                            }
-                        });
+                            matchteam.players[scorer].rbi++;
+                        }
                     });
                 };
-
                 processEvents(match.events);
             }
         }
@@ -301,7 +305,6 @@ function compressScoresDataForOpenAI(scoresData, maxCharacters = 25000) {
 
     return compressed;
 }
-
 // Advanced compression for very large datasets
 function compressScoresDataForOpenAIAdvanced(scoresData, maxCharacters = 25000) {
     if (!scoresData || scoresData.error) {
