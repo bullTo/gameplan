@@ -6,7 +6,7 @@ import { handleResponse, getAuthToken } from './utils';
 // API base URL for serverless functions
 const API_BASE_URL = import.meta.env.VITE_APP_DOMAIN || '';
 const FUNCTIONS_PATH_PREFIX = import.meta.env.VITE_FUNCTIONS_PATH_PREFIX || '/.netlify/functions';
-const VITE_STRIPE_PUBLISHABLE_KEY = 'pk_test_51QMLAUABO9WbwXS3Tf0a72v52lVafEqeV8L1E0v9fbdtp1XKp7EtpfLwliF0HVNnSXsZqPqZEBmkWR8m4MNC33Xh00BvVZnhso'
+const VITE_STRIPE_PUBLISHABLE_KEY = 'pk_live_51QMLAUABO9WbwXS3SIPXeOPVeGcsFh7yYmgAiAXqVK0ayow7ewRg679Z6tAlHJg4VPWdmg84rXjK9FspZi2nKgN000wsGzQNNg'
 /**
  * Create a checkout session for subscription purchase
  * @param {string} planName - The plan name (e.g., 'pro', 'elite')
