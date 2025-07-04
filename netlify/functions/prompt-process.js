@@ -356,6 +356,7 @@ async function logPrompt(userId, promptText, response, parsedEntities) {
   try {
     // Insert the prompt log
     // Extract sport and bet_type from parsed entities with correct case handling
+    console.log("parsedEntities", parsedEntities)
     const arr = parseLooseObjectArray(parsedEntities);
     const sport = arr[0].Sport || arr[0].sport || null;
     const betType = arr[0]["Bet type"] || arr[0].bet_type || null;
