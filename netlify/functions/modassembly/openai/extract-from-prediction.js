@@ -25,7 +25,7 @@ Return only the JSON object, nothing else.
 JSON format:
 {
   "sport": "nba, mlb, mls, f1, golf, cfl",
-  "bet_type": "prop, parlay, moneyline, spread, over/under, etc.",
+  "bet_type": ["prop, parlay, moneyline, spread, over/under, etc."],
   "match_date": "day.month.year" or null,
   "team_name": "main team mentioned or null",
   "player_name": "main player mentioned or null",

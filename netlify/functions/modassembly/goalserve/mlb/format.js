@@ -123,7 +123,6 @@ function formatScoresData(rawData) {
 
     for (const scoreItem of scoresArray) {
         // Handle both array and single match cases for each score item
-        console.log("scoreItem:::", scoreItem.scores.category.match.length);
         const matches = scoreItem.scores.category && scoreItem.scores.category.match
             ? (Array.isArray(scoreItem.scores.category.match)
                 ? scoreItem.scores.category.match
@@ -146,7 +145,6 @@ function formatScoresData(rawData) {
                     },
                     players: {}
                 };
-                console.log("homeTeamId", homeTeamId)
                 scoresData.teams[homeTeamId].push(homeTeamObj);
                 itemCount++;
 
@@ -167,7 +165,6 @@ function formatScoresData(rawData) {
                     },
                     players: {}
                 };
-                console.log("awayTeamId", awayTeamId)
                 scoresData.teams[awayTeamId].push(awayTeamObj);
                 itemCount++;
             }
