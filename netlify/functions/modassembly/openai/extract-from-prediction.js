@@ -33,8 +33,10 @@ JSON format:
   "risk_profile": "safe bet, moderate, hail mary",
   "odds": "betting odds mentioned or predict like +120, -110",
   "confidence": "predict from the risk assessment as numeric value(%)"
+  "analysis": ["analysis1", "analysis2", "analysis3", ...]
 }
 
+analysis is an array of strings, each string is a short analysis of the prediction like "- OVER 8.5 Total Runs".
 confidence includes only number, not %
 No need to include text for explanation in odds field. and null is not string.
 

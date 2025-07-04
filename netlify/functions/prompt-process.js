@@ -158,7 +158,7 @@ exports.handler = async (event) => {
 
     // Step 5: Increment the user's daily prompt count
     await incrementPromptCount(userId);
-console.log(promptLimit, user.daily_prompt_count)
+console.log(promptLimit, user.daily_prompt_count, promptLogId)
     return {
       statusCode: 200,
       body: JSON.stringify({
