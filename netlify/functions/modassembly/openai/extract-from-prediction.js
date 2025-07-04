@@ -32,11 +32,12 @@ JSON format:
   "opponent": "opposing team or player or null",
   "risk_profile": "safe bet, moderate, hail mary",
   "odds": "betting odds mentioned or predict like +120, -110",
-  "confidence": "predict from the risk assessment as numeric value(%)"
-  "analysis": ["analysis1", "analysis2", "analysis3", ...]
+  "confidence": "predict from the risk assessment as numeric value(%)",
+  "suggestion": ["suggestion1 for the bet", "suggestion2 for the bet", "suggestion3 for the bet", ...],
+  "analysis": ["analysis of suggestion1", "analysis of suggestion2", "analysis of suggestion3", ...]
 }
-
-analysis is an array of strings, each string is a short analysis of the prediction like "- OVER 8.5 Total Runs".
+Suggestion is an array of strings, each string is a suggestion for the bet prompt asks. Suggestion maybe has one value, but in case of parlay, it can have multiple values.
+Analysis is an array of strings, each string is a one clear analysis of the suggestion.
 confidence includes only number, not %
 No need to include text for explanation in odds field. and null is not string.
 
