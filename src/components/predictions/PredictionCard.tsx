@@ -17,12 +17,14 @@ interface PredictionCardProps {
       player_name?: string;
       opponent?: string;
       sport: string;
-      bet_type: string;
+      bet_type: string[];
       description: string;
       match_date?: string;
       odds?: string;
       confidence: number;
       risk_profile: string;
+      suggestion: string[];
+      analysis: string[];
       hit_rate?: string;
       logo_url?: string;
     }
@@ -35,13 +37,14 @@ const PredictionCard = ({ prediction }: PredictionCardProps) => {
   // const [error, setError] = useState<string | null>(null);
   // Format the confidence as a percentage
 
+  console.log("prediction.parsed_entities:", prediction.parsed_entities);
   const match_date = prediction.parsed_entities.match_date;
   // Determine the display name (team or player)
   const rawName = prediction.parsed_entities.player_name || prediction.parsed_entities.team_name || '';
   const displayName = rawName.split(',')[0].trim();
-
-   const rawOppName = prediction.parsed_entities.opponent || '';
+  const rawOppName = prediction.parsed_entities.opponent || '';
   const opponent = rawOppName.split(',')[0].trim();
+
 
   // Default logo if none provided
   const logoUrl = prediction.parsed_entities.logo_url || `/home/badges/${prediction.sport}.png`;
@@ -88,7 +91,7 @@ const PredictionCard = ({ prediction }: PredictionCardProps) => {
                 <span className="text-white/50 text-sm"> vs {opponent}</span>
               )}
             </div>
-            
+
           </div>
         </div>
         {prediction.parsed_entities.risk_profile && (<div className="px-4 py-1 w-full max-w-[92px] bg-[#0EADAB]/5 border border-[#0EADAB] rounded-full">
@@ -103,17 +106,33 @@ const PredictionCard = ({ prediction }: PredictionCardProps) => {
         {prediction.parsed_entities.hit_rate && (
           <p className="text-white/50 text-xs">{prediction.parsed_entities.hit_rate}</p>
         )}
-        <div className="text-white text-xs">{prediction.prompt_text}</div>
+
+        <div className="text-white text-xs space-y-2">
+          {prediction.parsed_entities.suggestion && prediction.parsed_entities.suggestion.length > 0 && (
+            <div>
+              {prediction.parsed_entities.suggestion.map((suggestion, index) => (
+                <>
+                  <div key={index} className="text-white text-xs mb-1">
+                    {suggestion}
+                  </div>
+                  <div key={'analysis' + index} className="text-white/60 text-xs ml-2 mb-1">
+                    • {prediction.parsed_entities.analysis[index]}
+                  </div>
+                </>
+              ))}
+            </div>
+          )}
+        </div>
       </div>
 
       <div className="flex justify-between items-center">
         <div className="flex gap-4">
           <div className="bg-[#1B1C25] p-2 rounded-xl border border-[rgba(14,173,171,0.2)] flex flex-col items-center">
-            <span className="text-white text-2xl">{ prediction.parsed_entities.odds?prediction.parsed_entities.odds:'-'}</span>
+            <span className="text-white text-2xl">{prediction.parsed_entities.odds ? prediction.parsed_entities.odds : '-'}</span>
             <span className="text-white text-xs">Odds</span>
           </div>
           <div className="bg-[#1B1C25] p-2 rounded-xl border border-[rgba(14,173,171,0.2)] flex flex-col items-center">
-            <span className="text-white text-2xl">{prediction.parsed_entities.confidence ? prediction.parsed_entities.confidence+'%':'-'}</span>
+            <span className="text-white text-2xl">{prediction.parsed_entities.confidence ? prediction.parsed_entities.confidence + '%' : '-'}</span>
             <span className="text-white text-xs">Confidence</span>
           </div>
         </div>

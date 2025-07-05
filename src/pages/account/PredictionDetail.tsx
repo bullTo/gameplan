@@ -68,6 +68,8 @@ const PredictionDetail = () => {
       // Fetch all predictions
       const response = await getPredictionById(id);
 
+
+      console.log(response, response.prediction)
       if (response && response.prediction) {
         setPrediction(response.prediction[0]);
 
@@ -118,7 +120,15 @@ const PredictionDetail = () => {
                           {displayName}
                         </span>
                         <span className="text-white text-xs font-normal font-['Poppins'] leading-[170%] tracking-[0.6px]">
-                          {prediction?.bet_type}
+                          {prediction.parsed_entities.bet_type && prediction.parsed_entities.bet_type.length > 0 && (
+                            <span>
+                              {prediction.parsed_entities.bet_type.map((item: string, index: number) => (
+                                <div key={index} className="text-white text-xs mb-1">
+                                  {' ' + item}
+                                </div>
+                              ))}
+                            </span>
+                          )}
                         </span>
                       </div>
                     </div>
@@ -134,6 +144,17 @@ const PredictionDetail = () => {
                 <div className="flex flex-col gap-1">
                   <span className="text-white text-xs font-normal font-['Poppins'] leading-[170%] tracking-[0.6px]">
                     Match Date: {prediction?.parsed_entities?.match_date}
+                  </span>
+                  <span className="text-white text-xs font-normal font-['Poppins'] leading-[170%] tracking-[0.6px]">
+                    {prediction.parsed_entities.suggestion && prediction.parsed_entities.suggestion.length > 0 && (
+                      <div>
+                        {prediction.parsed_entities.suggestion.map((suggestion: any, index: number) => (
+                          <div key={index} className="text-white text-xs mb-1">
+                            - {suggestion}
+                          </div>
+                        ))}
+                      </div>
+                    )}
                   </span>
                   <span className="text-[rgba(255,255,255,0.5)] text-xs font-normal font-['Poppins'] leading-[170%] tracking-[0.6px]">
                     {prediction.stats}
@@ -179,58 +200,44 @@ const PredictionDetail = () => {
                   AI Rationale:
                 </h3>
                 <p className="text-white text-xs font-normal font-['Poppins'] leading-[170%] tracking-[0.6px] overflow-auto">
-                  {getRationaleSection(prediction.response)}
+                  {prediction.parsed_entities.analysis && prediction.parsed_entities.analysis.length > 0 && (
+                    <div>
+                      {prediction.parsed_entities.analysis.map((analysis: any, index: number) => (
+                        <div key={index} className="text-white/70 text-xs mb-1 mt-2">
+                          {analysis}
+                        </div>
+                      ))}
+                    </div>
+                  )}
                 </p>
               </div>
             </div>
 
             {/* Right Column - 70% width with historical data and charts */}
             <div className="w-full md:w-[70%] bg-[#1B1C25] border border-[rgba(14,173,171,0.2)] rounded-[15px] p-6">
-              <h2 className="text-white text-xl font-medium mb-6">Historical Performance</h2>
-
-              {/* Stats Summary */}
-              <div className="grid grid-cols-1 md:grid-cols-3 gap-4 mb-8">
-                <div className="bg-[#072730] p-4 rounded-lg">
-                  <p className="text-gray-300 text-sm">Season Average</p>
-                  <p className="text-2xl font-bold text-white">
-                    {playerStats?.season_average || 'N/A'}
-                  </p>
-                </div>
-                <div className="bg-[#072730] p-4 rounded-lg">
-                  <p className="text-gray-300 text-sm">Last 5 Games</p>
-                  <p className="text-2xl font-bold text-white">
-                    {playerStats?.last_5_games || 'N/A'}</p>
-                </div>
-                <div className="bg-[#072730] p-4 rounded-lg">
-                  <p className="text-gray-300 text-sm">vs Opponent</p>
-                  <p className="text-2xl font-bold text-white">
-                    {playerStats?.vs_opponent || 'N/A'}</p>
-                </div>
-              </div>
-
               {/* Game by Game Breakdown */}
-              <h3 className="text-white text-lg font-medium mb-4">Game by Game Breakdown</h3>
+              <h3 className="text-white text-lg font-medium mb-4">Game History</h3>
               <div className="bg-[#072730] rounded-lg overflow-hidden mb-8">
                 <table className="min-w-full divide-y divide-[#0EADAB]/20">
                   <thead className="bg-[#072730]">
                     <tr>
                       <th scope="col" className="px-6 py-3 text-left text-xs font-medium text-gray-300 uppercase tracking-wider">
+                        Opponent
+                      </th>
+                      <th scope="col" className="px-6 py-3 text-left text-xs font-medium text-gray-300 uppercase tracking-wider">
                         Date
                       </th>
                       <th scope="col" className="px-6 py-3 text-left text-xs font-medium text-gray-300 uppercase tracking-wider">
-                        Opponent
+                        Result
+                      </th>
+                      <th scope="col" className="px-6 py-3 text-left text-xs font-medium text-gray-300 uppercase tracking-wider">
+                        Hit
                       </th>
                       <th scope="col" className="px-6 py-3 text-left text-xs font-medium text-gray-300 uppercase tracking-wider">
                         PTS
                       </th>
                       <th scope="col" className="px-6 py-3 text-left text-xs font-medium text-gray-300 uppercase tracking-wider">
                         AST
-                      </th>
-                      <th scope="col" className="px-6 py-3 text-left text-xs font-medium text-gray-300 uppercase tracking-wider">
-                        PTS+AST
-                      </th>
-                      <th scope="col" className="px-6 py-3 text-left text-xs font-medium text-gray-300 uppercase tracking-wider">
-                        Result
                       </th>
                     </tr>
                   </thead>
@@ -259,13 +266,6 @@ const PredictionDetail = () => {
                 </table>
               </div>
 
-              {/* Additional Analysis */}
-              <h3 className="text-white text-lg font-medium mb-4">Additional Analysis</h3>
-              <div className="bg-[#072730] p-4 rounded-lg">
-                <p className="text-white text-sm leading-relaxed">
-                  {playerStats?.additional_analysis || 'No additional analysis available.'}
-                </p>
-              </div>
             </div>
           </div>
         )}
