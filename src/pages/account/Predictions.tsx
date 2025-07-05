@@ -18,12 +18,14 @@ interface Prediction {
     player_name?: string;
     opponent?: string;
     sport: string;
-    bet_type: string;
+    bet_type: string[];
     description: string;
     match_date?: string;
     odds?: string;
     confidence: number;
     risk_profile: string;
+    suggestion: string[];
+    analysis: string[];
     hit_rate?: string;
     logo_url?: string;
   }

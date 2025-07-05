@@ -36,31 +36,6 @@ const PredictionDetail = () => {
     }
   }, [prediction]);
 
-  const getRationaleSection = (response: string) => {
-    if (!response) return '';
-    const lower = response.toLowerCase();
-    const whyIdx = lower.indexOf('why:');
-    const riskIdx = lower.indexOf('risk assessment');
-    if (whyIdx === -1 || riskIdx === -1 || riskIdx <= whyIdx) return '';
-    // Extract between "why:" and before "Risk assessment"
-    let rationale = response.substring(whyIdx + 4, riskIdx).trim();
-
-    // Split into lines by "- " and filter out empty lines
-    const lines = rationale
-      .split(/-\s+/)
-      .map(line => line.trim())
-      .filter(line => line.length > 0);
-
-    // Return as a markdown-style list
-    return (
-      <ul className="list-disc pl-5">
-        {lines.map((line, idx) => (
-          <li key={idx}>{line}</li>
-        ))}
-      </ul>
-    );
-  };
-
   // Fetch predictions from API
   const fetchPrediction = async (id: string | undefined) => {
     try {
@@ -245,16 +220,16 @@ const PredictionDetail = () => {
                     {playerStats?.game_breakdown?.length > 0 ? (
                       playerStats.game_breakdown.map((game: any, idx: number) => (
                         <tr key={idx}>
-                          <td className="px-6 py-4 whitespace-nowrap text-sm text-gray-300">{game.date}</td>
                           <td className="px-6 py-4 whitespace-nowrap text-sm text-white">{game.opponent}</td>
-                          <td className="px-6 py-4 whitespace-nowrap text-sm text-white">{game.pts}</td>
-                          <td className="px-6 py-4 whitespace-nowrap text-sm text-white">{game.ast}</td>
-                          <td className="px-6 py-4 whitespace-nowrap text-sm text-white font-medium">{game.pts_ast}</td>
+                          <td className="px-6 py-4 whitespace-nowrap text-sm text-gray-300">{game.date}</td>
                           <td className="px-6 py-4 whitespace-nowrap text-sm">
                             <span className="px-2 inline-flex text-xs leading-5 font-semibold rounded-full bg-green-100 text-green-800">
                               {game.result}
                             </span>
                           </td>
+                          <td className="px-6 py-4 whitespace-nowrap text-sm text-white">{game.pts}</td>
+                          <td className="px-6 py-4 whitespace-nowrap text-sm text-white">{game.ast}</td>
+                          <td className="px-6 py-4 whitespace-nowrap text-sm text-white font-medium">{game.pts_ast}</td>
                         </tr>
                       ))
                     ) : (
