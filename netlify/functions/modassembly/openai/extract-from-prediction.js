@@ -38,7 +38,9 @@ JSON format:
 }
 Suggestion is an array of strings, each string is a suggestion for the bet prompt asks. Suggestion maybe has one value, but in case of parlay, it can have multiple values.
 The counts of Suggestion and Analysis must be same as the real count of openAI's suggestions.
-Analysis is an array of strings, each string is a one clear analysis of the suggestion.
+For example: Two bets are suggested:
+Analysis is an array of strings, each string is a one clear analysis of the suggestion - A vs B, C vs D
+In this case, suggestion = ['A vs B', 'C vs D'].  not ['A vs B and C vs D']. One Match is also one suggestion.
 confidence includes only number, not %
 No need to include text for explanation in odds field. and null is not string.
 
