@@ -140,14 +140,6 @@ const PredictionDetail = () => {
                 <div className="flex justify-between items-center mt-4">
                   <div className="flex gap-6">
                     {/* Odds Card */}
-                    <div className="flex flex-col items-center justify-center p-4 bg-[#1B1C25] border border-[rgba(14,173,171,0.2)] rounded-xl">
-                      <span className="text-white text-2xl font-normal font-['Poppins'] leading-[150%] tracking-[0.8px]">
-                        {prediction?.parsed_entities?.odds}
-                      </span>
-                      <span className="text-white text-xs font-normal font-['Poppins'] leading-[170%] tracking-[0.6px]">
-                        Odds
-                      </span>
-                    </div>
 
                     {/* Confidence Card */}
                     <div className="flex flex-col items-center justify-center p-4 bg-[#1B1C25] border border-[rgba(14,173,171,0.2)] rounded-xl">
@@ -168,7 +160,11 @@ const PredictionDetail = () => {
                   </button>
                 </div>
               </div>
+              
+            </div>
 
+            {/* Right Column - 70% width with historical data and charts */}
+            <div className="w-full md:w-[70%] bg-[#1B1C25] border border-[rgba(14,173,171,0.2)] rounded-[15px] p-6">
               {/* AI Rationale Card */}
               <div className="flex flex-col gap-2 p-5 bg-[#1B1C25] border border-[rgba(14,173,171,0.2)] rounded-[15px] flex-grow">
                 <h3 className="text-white text-sm font-normal font-['Poppins'] leading-[170%] tracking-[0.6px]">
@@ -185,60 +181,6 @@ const PredictionDetail = () => {
                     </div>
                   )}
                 </p>
-              </div>
-            </div>
-
-            {/* Right Column - 70% width with historical data and charts */}
-            <div className="w-full md:w-[70%] bg-[#1B1C25] border border-[rgba(14,173,171,0.2)] rounded-[15px] p-6">
-              {/* Game by Game Breakdown */}
-              <h3 className="text-white text-lg font-medium mb-4">Game History</h3>
-              <div className="bg-[#072730] rounded-lg overflow-hidden mb-8">
-                <table className="min-w-full divide-y divide-[#0EADAB]/20">
-                  <thead className="bg-[#072730]">
-                    <tr>
-                      <th scope="col" className="px-6 py-3 text-left text-xs font-medium text-gray-300 uppercase tracking-wider">
-                        Opponent
-                      </th>
-                      <th scope="col" className="px-6 py-3 text-left text-xs font-medium text-gray-300 uppercase tracking-wider">
-                        Date
-                      </th>
-                      <th scope="col" className="px-6 py-3 text-left text-xs font-medium text-gray-300 uppercase tracking-wider">
-                        Result
-                      </th>
-                      <th scope="col" className="px-6 py-3 text-left text-xs font-medium text-gray-300 uppercase tracking-wider">
-                        Hit
-                      </th>
-                      <th scope="col" className="px-6 py-3 text-left text-xs font-medium text-gray-300 uppercase tracking-wider">
-                        PTS
-                      </th>
-                      <th scope="col" className="px-6 py-3 text-left text-xs font-medium text-gray-300 uppercase tracking-wider">
-                        AST
-                      </th>
-                    </tr>
-                  </thead>
-                  <tbody className="bg-[#072730] divide-y divide-[#0EADAB]/20">
-                    {playerStats?.game_breakdown?.length > 0 ? (
-                      playerStats.game_breakdown.map((game: any, idx: number) => (
-                        <tr key={idx}>
-                          <td className="px-6 py-4 whitespace-nowrap text-sm text-white">{game.opponent}</td>
-                          <td className="px-6 py-4 whitespace-nowrap text-sm text-gray-300">{game.date}</td>
-                          <td className="px-6 py-4 whitespace-nowrap text-sm">
-                            <span className="px-2 inline-flex text-xs leading-5 font-semibold rounded-full bg-green-100 text-green-800">
-                              {game.result}
-                            </span>
-                          </td>
-                          <td className="px-6 py-4 whitespace-nowrap text-sm text-white">{game.pts}</td>
-                          <td className="px-6 py-4 whitespace-nowrap text-sm text-white">{game.ast}</td>
-                          <td className="px-6 py-4 whitespace-nowrap text-sm text-white font-medium">{game.pts_ast}</td>
-                        </tr>
-                      ))
-                    ) : (
-                      <tr>
-                        <td colSpan={6} className="text-center text-gray-400 py-4">No data available</td>
-                      </tr>
-                    )}
-                  </tbody>
-                </table>
               </div>
 
             </div>
