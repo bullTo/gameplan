@@ -357,9 +357,20 @@ async function logPrompt(userId, promptText, response, parsedEntities) {
     // Insert the prompt log
     // Extract sport and bet_type from parsed entities with correct case handling
     console.log("parsedEntities", parsedEntities)
-    const arr = parseLooseObjectArray(parsedEntities);
-    const sport = arr[0].Sport || arr[0].sport || null;
-    const betType = arr[0]["Bet type"] || arr[0].bet_type || null;
+    
+    // Parse the JSON string directly since extractPredictionJson returns a JSON string
+    let parsedData;
+    try {
+      parsedData = JSON.parse(parsedEntities);
+    } catch (e) {
+      console.error('Failed to parse parsedEntities as JSON:', e);
+      // Fallback to the old method if direct parsing fails
+      const arr = parseLooseObjectArray(parsedEntities);
+      parsedData = arr[0];
+    }
+    
+    const sport = parsedData.Sport || parsedData.sport || null;
+    const betType = parsedData["Bet type"] || parsedData.bet_type || null;
 
     console.log(`📝 Logging prompt with sport: ${sport}, bet_type: ${betType}`);
 
@@ -373,7 +384,7 @@ async function logPrompt(userId, promptText, response, parsedEntities) {
         response,
         sport,
         betType,
-        JSON.stringify(arr[0])
+        JSON.stringify(parsedData)
       ]
     );
 
