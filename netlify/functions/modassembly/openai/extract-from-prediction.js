@@ -30,7 +30,7 @@ JSON format:
   "team_name": "main team mentioned or null",
   "player_name": "main player mentioned or null",
   "opponent": "opposing team or player or null",
-  "risk_profile": "safe bet, moderate, hail mary",
+  "risk_profile": "low risk, moderate, high risk",
   "odds": "betting odds mentioned or predict like +120, -110",
   "confidence": "predict from the risk assessment as numeric value(%)",
   "suggestion": ["suggestion1 for the bet", "suggestion2 for the bet", "suggestion3 for the bet", ...],

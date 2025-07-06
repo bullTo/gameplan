@@ -2,23 +2,9 @@ import { useEffect, useState } from 'react';
 import { Button } from '@/components/ui/button';
 import { Card, CardContent, CardDescription, CardFooter, CardHeader, CardTitle } from '@/components/ui/card';
 import { Tabs, TabsContent, TabsList, TabsTrigger } from '@/components/ui/tabs';
-import { getSavedPicks, updatePickStatus } from '@/api/prompt.js';
+import { getSavedPicks, updatePickStatus, type SavedPick } from '@/api/prompt.js';
 import { Loader2, CheckCircle, XCircle, Clock } from 'lucide-react';
 import { format } from 'date-fns';
-
-// Define the SavedPick type locally
-interface SavedPick {
-  id: number;
-  play_text: string;
-  reasoning: string | null;
-  status: 'pending' | 'hit' | 'miss';
-  created_at: string;
-  updated_at: string;
-  sport: string | null;
-  bet_type: string | null;
-  metadata: any;
-  prompt_log_id: number | null;
-}
 
 export function SavedPicks() {
   const [picks, setPicks] = useState<SavedPick[]>([]);
@@ -114,11 +100,10 @@ export function SavedPicks() {
                 <div className="space-y-4">
                   {picks.map(pick => (
                     <Card key={pick.id} className="overflow-hidden">
-                      <div className={`h-1 ${
-                        pick.status === 'hit' ? 'bg-green-500' :
+                      <div className={`h-1 ${pick.status === 'hit' ? 'bg-green-500' :
                         pick.status === 'miss' ? 'bg-red-500' :
-                        'bg-yellow-500'
-                      }`} />
+                          'bg-yellow-500'
+                        }`} />
                       <CardHeader className="pb-2">
                         <div className="flex justify-between items-start">
                           <CardTitle className="text-base">{pick.reasoning}</CardTitle>
@@ -127,11 +112,41 @@ export function SavedPicks() {
                             <span>{format(new Date(pick.created_at), 'MMM d, yyyy')}</span>
                           </div>
                         </div>
-                        {pick.play_text && (
-                          <CardDescription className="mt-1 line-clamp-2">
-                            {pick.play_text}
-                          </CardDescription>
-                        )}
+                        <div className="flex flex-col">
+                          <div>
+                            {(pick.metadata.player_name || pick.metadata.team_name) && pick.metadata.suggestion.length == 1 &&
+                              <div>
+                                <span className="text-white text-sm">{pick.metadata.player_name || pick.metadata.team_name}</span>
+                                {pick.metadata.opponent && (
+                                  <span className="text-white/50 text-sm"> vs {pick.metadata.opponent}</span>
+                                )}
+                              </div>
+                            }
+                            { pick.metadata.suggestion.length > 1 &&
+                              <div>
+                                <span className="text-white text-sm">
+                                  {pick.metadata.suggestion.length + " leg " + pick.metadata.bet_type[0]}
+                                </span>
+                              </div>
+                            }
+                          </div>
+
+                        </div>                         <div className="text-white text-xs space-y-2">
+                           {pick.metadata.suggestion && pick.metadata.suggestion.length > 0 && (
+                             <div>
+                               {pick.metadata.suggestion.map((suggestion: string, index: number) => (
+                                 <div key={index}>
+                                   <div className="text-white/80 text-xs mb-1">
+                                     {suggestion}
+                                   </div>
+                                   <div className="text-white/60 text-xs ml-2 mb-1 line-clamp-1">
+                                     • {pick.metadata.analysis[index]}
+                                   </div>
+                                 </div>
+                               ))}
+                             </div>
+                           )}
+                         </div>
                       </CardHeader>
                       <CardFooter className="pt-2 flex justify-between">
                         <div className="flex items-center text-sm">

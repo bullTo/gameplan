@@ -45,8 +45,9 @@ const PredictionCard = ({ prediction }: PredictionCardProps) => {
   const rawOppName = prediction.parsed_entities.opponent || '';
   const opponent = rawOppName.split(',')[0].trim();
 
-
-  // Default logo if none provided
+  console.log(displayName && prediction.parsed_entities.suggestion.length == 1, "adsadfd" );
+  console.log(!displayName || prediction.parsed_entities.suggestion.length > 1, "bcfewer");
+    // Default logo if none provided
   const logoUrl = prediction.parsed_entities.logo_url || `/home/badges/${prediction.sport}.png`;
 
   const handleSavePick = async () => {
@@ -86,10 +87,21 @@ const PredictionCard = ({ prediction }: PredictionCardProps) => {
           />
           <div className="flex flex-col">
             <div>
-              <span className="text-white text-sm">{displayName}</span>
-              {opponent && (
-                <span className="text-white/50 text-sm"> vs {opponent}</span>
-              )}
+              {displayName && prediction.parsed_entities.suggestion.length == 1 &&
+                <div>
+                  <span className="text-white text-sm">{displayName}</span>
+                  {opponent && (
+                    <span className="text-white/50 text-sm"> vs {opponent}</span>
+                  )}
+                </div>
+              }
+              { prediction.parsed_entities.suggestion.length > 1 &&
+                <div>
+                  <span className="text-white text-sm">
+                    {prediction.parsed_entities.suggestion.length + " leg " + prediction.parsed_entities.bet_type[0]}
+                  </span>
+                </div>
+              }
             </div>
 
           </div>
@@ -109,28 +121,30 @@ const PredictionCard = ({ prediction }: PredictionCardProps) => {
 
         <div className="text-white text-xs space-y-2">
           {prediction.parsed_entities.suggestion && prediction.parsed_entities.suggestion.length > 0 && (
-            <div>
+            <>
               {prediction.parsed_entities.suggestion.map((suggestion, index) => (
-                <>
+                <div key={index}>
                   <div key={index} className="text-white text-xs mb-1">
                     {suggestion}
                   </div>
                   <div key={'analysis' + index} className="text-white/60 text-xs ml-2 mb-1 line-clamp-1">
                     • {prediction.parsed_entities.analysis[index]}
                   </div>
-                </>
+                </div>
               ))}
-            </div>
+            </>
           )}
         </div>
       </div>
 
       <div className="flex justify-between items-center">
         <div className="flex gap-4">
-          <div className="bg-[#1B1C25] p-2 rounded-xl border border-[rgba(14,173,171,0.2)] flex flex-col items-center">
-            <span className="text-white text-2xl">{prediction.parsed_entities.odds ? prediction.parsed_entities.odds : '-'}</span>
-            <span className="text-white text-xs">Odds</span>
-          </div>
+          {prediction.parsed_entities.odds &&
+            <div className="bg-[#1B1C25] p-2 rounded-xl border border-[rgba(14,173,171,0.2)] flex flex-col items-center">
+              <span className="text-white text-2xl">{prediction.parsed_entities.odds}</span>
+              <span className="text-white text-xs">Odds</span>
+            </div>
+          }
           <div className="bg-[#1B1C25] p-2 rounded-xl border border-[rgba(14,173,171,0.2)] flex flex-col items-center">
             <span className="text-white text-2xl">{prediction.parsed_entities.confidence ? prediction.parsed_entities.confidence + '%' : '-'}</span>
             <span className="text-white text-xs">Confidence</span>

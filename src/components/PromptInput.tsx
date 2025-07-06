@@ -99,7 +99,7 @@ export function PromptInput({ onPromptProcessed }: PromptInputProps) {
       console.log('📡 Calling processPrompt API...');
       console.time('processPrompt API call');
 
-      const result = await processPrompt(prompt);
+      const result = await processPrompt(prompt, selectedSport ? selectedSport : '');
 
       console.timeEnd('processPrompt API call');
       console.log('✅ API call successful, received result:', result);
