@@ -115,7 +115,7 @@ const PredictionCard = ({ prediction }: PredictionCardProps) => {
                   <div key={index} className="text-white text-xs mb-1">
                     {suggestion}
                   </div>
-                  <div key={'analysis' + index} className="text-white/60 text-xs ml-2 mb-1">
+                  <div key={'analysis' + index} className="text-white/60 text-xs ml-2 mb-1 line-clamp-1">
                     • {prediction.parsed_entities.analysis[index]}
                   </div>
                 </>

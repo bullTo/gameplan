@@ -1,9 +1,11 @@
 require('dotenv').config();
 
+
 // Netlify function for authentication (login and registration)
 const { Pool } = require('pg');
 const bcrypt = require('bcryptjs');
 const jwt = require('jsonwebtoken');
+const { Resend } = require("resend");
 
 // Initialize PostgreSQL connection pool
 const pool = new Pool({
@@ -147,6 +149,23 @@ async function handleRegister(data) {
 
     // Generate JWT token
     const token = generateToken(user.id, user.email);
+
+
+    const resend = new Resend(process.env.RESEND_API_KEY);
+    await resend.emails.send({
+      from: "Your App <onboarding@resend.dev>", // or your verified domain
+      to: email,
+      subject: "Welcome to Your App!",
+      html: `
+        <h2>Welcome to Your App, ${name.split(" ")[0]}!</h2>
+        <p>We're excited to have you join our community. Your account has been created successfully.</p>
+        <p>Start exploring and enjoy what we have to offer!</p>
+        <p>If you have any questions, feel free to reply to this email — we're here to help.</p>
+        <br />
+        <p>Cheers,</p>
+        <p>The Your App Team</p>
+      `,
+    });
 
     return {
       statusCode: 201,
