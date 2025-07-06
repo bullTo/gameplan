@@ -16,6 +16,36 @@ function formatScheduleData(rawData) {
 
     const upcomingGamesLimit = 15;
 
+    // Helper function to check if a game is upcoming based on date and time
+    function isGameUpcoming(formattedDate, time) {
+        try {
+            // Parse the formatted date (DD.MM.YYYY) and time (HH:MM AM/PM)
+            const [day, month, year] = formattedDate.split('.');
+            const [timeStr, period] = time.split(' ');
+            let [hours, minutes] = timeStr.split(':').map(Number);
+            
+            // Convert 12-hour format to 24-hour format
+            if (period === 'PM' && hours !== 12) {
+                hours += 12;
+            } else if (period === 'AM' && hours === 12) {
+                hours = 0;
+            }
+            
+            // Create game date in NY timezone
+            const gameDate = new Date(`${year}-${month}-${day}T${hours.toString().padStart(2, '0')}:${minutes.toString().padStart(2, '0')}:00`);
+            
+            // Get current time in NY timezone
+            const now = new Date();
+            const nyTime = new Date(now.toLocaleString("en-US", {timeZone: "America/New_York"}));
+            
+            // Compare game time with current NY time
+            return gameDate > nyTime;
+        } catch (error) {
+            console.error('Error parsing game date/time:', error);
+            return false;
+        }
+    }
+
     // Check if matches exists
     if (rawData.category.matches) {
         // Handle both array of match days and single match day object
@@ -28,9 +58,10 @@ function formatScheduleData(rawData) {
             if (matchDay.match && Array.isArray(matchDay.match)) {
                 // Process all matches for a given day
                 matchDay.match.forEach(match => {
-                    // Only include upcoming games (status "Not Started")
-                    // And limit to first 10 games
-                    if (match['@status'] === "Not Started" && scheduleData.upcoming_games.length < upcomingGamesLimit) {
+                    // Only include upcoming games based on date/time comparison
+                    // And limit to first 15 games
+                    if (isGameUpcoming(match['@formatted_date'], match['@time']) && 
+                        scheduleData.upcoming_games.length < upcomingGamesLimit) {
                         scheduleData.upcoming_games.push({
                             id: match['@id'],
                             d: match['@formatted_date'],

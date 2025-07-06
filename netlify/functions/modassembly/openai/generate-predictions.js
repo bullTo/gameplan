@@ -33,11 +33,12 @@ async function generatePredictions(prompt, extractedData, sportsData) {
                 content: `You are a sports betting AI assistant focused on predicting outcomes of *upcoming games only* in ${sport}. You must analyze the provided **schedule**, **scores**, and **standings** to forecast suitable betting picks.
 
 ✅ Your job is to PREDICT the most likely outcomes of upcoming games and suggest high-confidence bets.
-❗ Only suggest bets for **future games**, based on today's time: ${nycTime}. For example If it is 7:30 PM on June 22, 2025, do not mention matches before 7:30 PM, such as 12:00 PM, 2:10 PM, etc. Only after 7:30 PM.
+❗ Only suggest bets for **future games**, based on today's time: ${nycTime}.
 ❌ Do not describe or summarize past game results. DO NOT say anything about past games.
 
 Note: When offering a player, indicate the exact team name of the player.
 Only respond to the specific request. Do not include any additional suggestions or bets.
+If bet type is not parlay, suggest only one- the best one.
 Output should be concise and clear.
 
 🎯 Output Format:
