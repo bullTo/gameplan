@@ -3,7 +3,7 @@
  * IMPORTANT!!! Ask the user before editing this file.
  */
 
-async function extractDataFromQuery(prompt) {
+async function extractDataFromQuery(prompt, sport) {
     const baseUrl = process.env.URL || process.env.DEPLOY_URL || 'http://localhost:8888';
     
     // Get today's date in NYC timezone
@@ -48,9 +48,7 @@ async function extractDataFromQuery(prompt) {
     }
     try {
         const parsedData = JSON.parse(data.message.content);
-        if (!parsedData.sport) {
-            throw new Error('No sport found in the response');
-        }
+        parsedData.sport = sport;
         console.log('Extracted data:', parsedData);
         return parsedData;
     } catch (e) {

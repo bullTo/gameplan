@@ -42,13 +42,20 @@ export interface SavePickRequest {
   sport: string;
   betType: string;
   metadata: {
-    player?: string;
-    team?: string;
+    team_name?: string;
+    player_name?: string;
     opponent?: string;
-    line?: number;
-    type?: string;
+    sport: string;
+    bet_type: string[];
+    description: string;
+    match_date?: string;
     odds?: string;
-    [key: string]: any;
+    confidence: number;
+    risk_profile: string;
+    suggestion: string[];
+    analysis: string[];
+    hit_rate?: string;
+    logo_url?: string;
   };
 }
 
@@ -84,7 +91,7 @@ export interface UpdatePickStatusResponse {
   };
 }
 
-export function processPrompt(prompt: string): Promise<PromptResponse>;
+export function processPrompt(prompt: string, sport: string): Promise<PromptResponse>;
 export function savePick(pickData: SavePickRequest): Promise<SavePickResponse>;
 export function getSavedPicks(params?: {
   status?: string;

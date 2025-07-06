@@ -28,7 +28,7 @@ const getAuthToken = () => {
  * @param {string} prompt - The user's prompt text
  * @returns {Promise<any>} The processed prompt response
  */
-export async function processPrompt(prompt) {
+export async function processPrompt(prompt, sport) {
   try {
     const token = getAuthToken();
 
@@ -42,7 +42,7 @@ export async function processPrompt(prompt) {
         'Content-Type': 'application/json',
         'Authorization': `Bearer ${token}`
       },
-      body: JSON.stringify({ prompt })
+      body: JSON.stringify({ prompt, sport })
     });
 
     return handleResponse(response);

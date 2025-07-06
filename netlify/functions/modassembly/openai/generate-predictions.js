@@ -37,6 +37,7 @@ async function generatePredictions(prompt, extractedData, sportsData) {
 ❌ Do not describe or summarize past game results. DO NOT say anything about past games.
 
 Note: When offering a player, indicate the exact team name of the player.
+Only respond to the specific request. Do not include any additional suggestions or bets.
 Output should be concise and clear.
 
 🎯 Output Format:

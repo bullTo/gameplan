@@ -152,7 +152,7 @@ async function handleRegister(data) {
 
 
     const resend = new Resend(process.env.RESEND_API_KEY);
-    await resend.emails.send({
+    const response = await resend.emails.send({
       from: "Your App <onboarding@resend.dev>", // or your verified domain
       to: email,
       subject: "Welcome to Your App!",
@@ -166,6 +166,8 @@ async function handleRegister(data) {
         <p>The Your App Team</p>
       `,
     });
+
+    console.log("response.id::", response.id)
 
     return {
       statusCode: 201,

@@ -69,7 +69,7 @@ exports.handler = async (event) => {
     }
 
     // Parse request body
-    const { prompt } = JSON.parse(event.body);
+    const { prompt, sport } = JSON.parse(event.body);
 
     if (!prompt) {
       return {
@@ -79,7 +79,15 @@ exports.handler = async (event) => {
       };
     }
 
-    console.log(`Processing prompt for user ${userId}: ${prompt}`);
+    if ( !sport ) {
+      return {
+        statusCode: 400,
+        body: JSON.stringify({ error: 'Sport is required' }),
+        headers: { 'Content-Type': 'application/json' }
+      };
+    }
+
+    console.log(`Processing prompt for user ${userId}: ${sport} - ${prompt}`);
 
     // Check user's subscription and prompt usage
     const user = await getUserSubscription(userId);
@@ -110,7 +118,7 @@ exports.handler = async (event) => {
     }
 
     // Step 1: Parse the prompt with OpenAI to extract relevant information
-    const extractedData = await extractDataFromQuery(prompt);
+    const extractedData = await extractDataFromQuery(prompt, sport);
 
     // Step 2: Fetch relevant data from GoalServe based on the prompt analysis
     let formattedData;
