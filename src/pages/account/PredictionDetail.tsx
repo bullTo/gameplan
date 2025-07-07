@@ -1,8 +1,10 @@
 import { useParams, useNavigate } from 'react-router-dom';
+import { Button } from '@/components/ui/button';
 import { useEffect, useState } from 'react';
 import { getPredictionById } from '../../api/predictions'
 import { ArrowLeft, Loader2 } from 'lucide-react';
 import { fetchGoalServeStats } from '../../api/predictions';
+import { savePick } from '@/api/prompt';
 
 const PredictionDetail = () => {
   const { id } = useParams();
@@ -10,6 +12,8 @@ const PredictionDetail = () => {
   const [prediction, setPrediction] = useState<any>(null);
   const [loading, setLoading] = useState(true);
   const [displayName, setDisplayName] = useState('');
+  const [savingPick, setSavingPick] = useState(false)
+  const [pickSaved, setPickSaved] = useState(false)
   // const [playerStats, setPlayerStats] = useState<any>(null);
 
   // Fetch predictions on component mount
@@ -36,6 +40,30 @@ const PredictionDetail = () => {
     }
   }, [prediction]);
 
+
+  const handleSavePick = async () => {
+
+    setSavingPick(true);
+
+    try {
+      await savePick({
+        playText: prediction.response,
+        promptLogId: prediction.id,
+        reasoning: prediction.prompt_text,
+        sport: prediction.sport,
+        betType: prediction.bet_type,
+        metadata: prediction.parsed_entities
+      });
+
+      setPickSaved(true);
+    } catch (err) {
+      // setError(err instanceof Error ? err.message : 'Failed to save pick');
+    } finally {
+      setSavingPick(false);
+    }
+  };
+
+
   // Fetch predictions from API
   const fetchPrediction = async (id: string | undefined) => {
     try {
@@ -44,10 +72,11 @@ const PredictionDetail = () => {
       const response = await getPredictionById(id);
 
 
-      console.log(response, response.prediction)
-      if (response && response.prediction) {
-        setPrediction(response.prediction[0]);
+      console.log(response, response.predictionWithPickSaved)
+      if (response && response.predictionWithPickSaved) {
+        setPrediction(response.predictionWithPickSaved[0]);
 
+        setPickSaved(response.predictionWithPickSaved[0].pickSaved)
       }
     } catch (error) {
       console.error('Error fetching predictions:', error);
@@ -155,12 +184,25 @@ const PredictionDetail = () => {
 
                 {/* Action Buttons */}
                 <div className="flex flex-col gap-4 mt-4">
-                  <button className="w-full py-2 bg-[#389353] border border-[#389353] rounded-md text-[#1B1C25] text-xs font-semibold font-['Poppins'] tracking-[0.2px]">
-                    Add To Tracker
-                  </button>
+                  <Button
+                    onClick={handleSavePick}
+                    disabled={savingPick || pickSaved}
+                    className="bg-[#0EADAB] hover:bg-[#0EADAB]/80 text-white"
+                  >
+                    {savingPick ? (
+                      <>
+                        <Loader2 className="mr-2 h-4 w-4 animate-spin" />
+                        Saving...
+                      </>
+                    ) : pickSaved ? (
+                      'Added to Tracker'
+                    ) : (
+                      'Add to Tracker'
+                    )}
+                  </Button>
                 </div>
               </div>
-              
+
             </div>
 
             {/* Right Column - 70% width with historical data and charts */}

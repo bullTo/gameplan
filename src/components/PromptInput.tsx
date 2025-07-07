@@ -116,7 +116,7 @@ export function PromptInput({ onPromptProcessed }: PromptInputProps) {
         setError('The AI did not provide a response. Please try again.');
       }
 
-      
+
       console.log('📊 Setting state with API result:', result.promptAnalysis)
       setPromptAnalysis(result.promptAnalysis);
       setPromptLogId(result.promptLogId);
@@ -140,14 +140,17 @@ export function PromptInput({ onPromptProcessed }: PromptInputProps) {
     setSavingPick(true);
     console.log(promptAnalysis)
 
+    // Parse the JSON string directly since extractPredictionJson returns a JSON string
+    let parsedData;
+    parsedData = JSON.parse(promptAnalysis);
     try {
       await savePick({
         playText: response,
         promptLogId,
         reasoning: prompt,
-        sport: promptAnalysis?.sport || null,
-        betType: promptAnalysis?.bet_type || null,
-        metadata: promptAnalysis
+        sport: parsedData?.sport || null,
+        betType: parsedData?.bet_type || null,
+        metadata: parsedData
       });
 
       setPickSaved(true);
@@ -160,7 +163,7 @@ export function PromptInput({ onPromptProcessed }: PromptInputProps) {
 
   const handleRegenerate = () => {
     if (loading) return;
-    handleSubmit({ preventDefault: () => {} } as React.FormEvent);
+    handleSubmit({ preventDefault: () => { } } as React.FormEvent);
   };
 
   const handleSelectPrompt = (selectedPrompt: string) => {
