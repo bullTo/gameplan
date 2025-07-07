@@ -60,10 +60,11 @@ exports.handler = async (event) => {
       [id]
     );
 
+
     // Add pickSaved property to each prediction
     const predictionWithPickSaved = prediction?.map(pred => ({
       ...pred,
-      pickSaved: savedPicksResult ? true : false
+      pickSaved: savedPicksResult.rows.length > 0 ? true : false
     }));
 
     console.log(prediction)
