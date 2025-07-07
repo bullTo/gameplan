@@ -54,22 +54,22 @@ exports.handler = async (event) => {
     const result = await pool.query(query, params);
     const prediction = result.rows
 
-     // Get all saved picks for this user
-    // const savedPicksResult = await pool.query(
-    //   'SELECT id FROM saved_picks WHERE prompt_log_id = $1',
-    //   [id]
-    // );
+    //  Get all saved picks for this user
+    const savedPicksResult = await pool.query(
+      'SELECT id FROM saved_picks WHERE prompt_log_id = $1',
+      [id]
+    );
 
-    // // Add pickSaved property to each prediction
-    // const predictionWithPickSaved = prediction?.map(pred => ({
-    //   ...pred,
-    //   pickSaved: savedPickIds.has(pred.id)
-    // }));
+    // Add pickSaved property to each prediction
+    const predictionWithPickSaved = prediction?.map(pred => ({
+      ...pred,
+      pickSaved: savedPicksResult ? true : false
+    }));
 
     console.log(prediction)
     return {
       statusCode: 200,
-      body: JSON.stringify({ prediction }),
+      body: JSON.stringify({ predictionWithPickSaved }),
       headers: { 'Content-Type': 'application/json' }
     };
   } catch (error) {
