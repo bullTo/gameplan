@@ -116,37 +116,38 @@ export function SavedPicks() {
                           <div>
                             {(pick.metadata.player_name || pick.metadata.team_name) && pick.metadata.suggestion.length == 1 &&
                               <div>
-                                <span className="text-white text-sm">{pick.metadata.player_name || pick.metadata.team_name}</span>
-                                {pick.metadata.opponent && (
+                                <span className="text-white text-sm">{pick.metadata?.player_name || pick.metadata?.team_name}</span>
+                                {pick.metadata?.opponent && (
                                   <span className="text-white/50 text-sm"> vs {pick.metadata.opponent}</span>
                                 )}
                               </div>
                             }
-                            { pick.metadata.suggestion.length > 1 &&
+                            {pick.metadata?.suggestion?.length > 1 &&
                               <div>
                                 <span className="text-white text-sm">
-                                  {pick.metadata.suggestion.length + " leg " + pick.metadata.bet_type[0]}
+                                  {pick.metadata.suggestion.length + " leg " + pick.metadata?.bet_type?.[0]}
                                 </span>
                               </div>
                             }
                           </div>
 
-                        </div>                         <div className="text-white text-xs space-y-2">
-                           {pick.metadata.suggestion && pick.metadata.suggestion.length > 0 && (
-                             <div>
-                               {pick.metadata.suggestion.map((suggestion: string, index: number) => (
-                                 <div key={index}>
-                                   <div className="text-white/80 text-xs mb-1">
-                                     {suggestion}
-                                   </div>
-                                   <div className="text-white/60 text-xs ml-2 mb-1 line-clamp-1">
-                                     • {pick.metadata.analysis[index]}
-                                   </div>
-                                 </div>
-                               ))}
-                             </div>
-                           )}
-                         </div>
+                        </div>                         
+                        <div className="text-white text-xs space-y-2">
+                          {pick.metadata?.suggestion && pick.metadata?.suggestion?.length > 0 && (
+                            <div>
+                              {pick.metadata.suggestion.map((suggestion: string, index: number) => (
+                                <div key={index}>
+                                  <div className="text-white/80 text-xs mb-1">
+                                    {suggestion}
+                                  </div>
+                                  <div className="text-white/60 text-xs ml-2 mb-1 line-clamp-1">
+                                    • {pick.metadata?.analysis?.[index] || ' No analysis '}
+                                  </div>
+                                </div>
+                              ))}
+                            </div>
+                          )}
+                        </div>
                       </CardHeader>
                       <CardFooter className="pt-2 flex justify-between">
                         <div className="flex items-center text-sm">

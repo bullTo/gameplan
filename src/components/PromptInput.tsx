@@ -138,6 +138,7 @@ export function PromptInput({ onPromptProcessed }: PromptInputProps) {
     if (!response || !promptLogId) return;
 
     setSavingPick(true);
+    console.log(promptAnalysis)
 
     try {
       await savePick({
