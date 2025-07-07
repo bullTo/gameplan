@@ -10,7 +10,7 @@ const PredictionDetail = () => {
   const [prediction, setPrediction] = useState<any>(null);
   const [loading, setLoading] = useState(true);
   const [displayName, setDisplayName] = useState('');
-  const [playerStats, setPlayerStats] = useState<any>(null);
+  // const [playerStats, setPlayerStats] = useState<any>(null);
 
   // Fetch predictions on component mount
   useEffect(() => {
@@ -32,7 +32,7 @@ const PredictionDetail = () => {
         player: rawName.split(',')[0].trim(),
         team: prediction?.parsed_entities?.team_name?.split(',')[0].trim(),
         opponent: prediction?.parsed_entities?.opponent?.split(',')[0].trim(),
-      }).then(setPlayerStats);
+      });
     }
   }, [prediction]);
 
