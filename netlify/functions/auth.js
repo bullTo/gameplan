@@ -224,7 +224,7 @@ async function handleLogin(data) {
     if (result.rows.length === 0) {
       return {
         statusCode: 401,
-        message: 'Invalid credentials',
+        body: JSON.stringify({ error: 'Invalid credentials' }),
         headers: { 'Content-Type': 'application/json' }
       };
     }
@@ -236,7 +236,7 @@ async function handleLogin(data) {
     if (!isMatch) {
       return {
         statusCode: 401,
-        message: "Invalid credentials",
+        body: JSON.stringify({ error: 'Invalid credentials' }),
         headers: { 'Content-Type': 'application/json' }
       };
     }
@@ -245,7 +245,7 @@ async function handleLogin(data) {
     {
       return {
         statusCode: 401,
-        message: "Email not verified",
+        body: JSON.stringify({ error: 'Email not verified' }),
         headers: { 'Content-Type': 'application/json' }
       };
     }
