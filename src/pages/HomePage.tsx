@@ -113,6 +113,7 @@ const HomePage = () => {
         agreeToTerms: data.agreeToTerms
       });
 
+      console.log(response)
       toast({
         title: "Registered Successfully",
         description: response,
