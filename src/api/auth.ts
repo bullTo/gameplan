@@ -52,7 +52,7 @@ const handleResponse = async (response: Response) => {
 
 
 // Login user
-export async function loginUser(credentials: LoginCredentials) {
+export async function loginUser(credentials: LoginCredentials):Promise<{ message: string, role?: any }> {
   try {
     
     // For development/testing, use mock data
@@ -63,11 +63,8 @@ export async function loginUser(credentials: LoginCredentials) {
           // Store mock token and user data
           localStorage.setItem('authToken', 'mock-token-123');
           const userData = {
-            id: '1',
-            name: 'John Doe',
-            email: credentials.email,
-            role: 'user',
-            subscription_plan: 'free'
+            message: 'login successfully',
+            role: 'user'
           };
           localStorage.setItem('userData', JSON.stringify(userData));
 

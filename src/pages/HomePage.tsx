@@ -60,7 +60,7 @@ const HomePage = () => {
 
       toast({
         title: "Login Successfully",
-        description: response,
+        description: response.message,
         variant: "destructive",
       });
       // Redirect to dashboard on successful login
@@ -116,7 +116,7 @@ const HomePage = () => {
       console.log(response)
       toast({
         title: "Registered Successfully",
-        description: response,
+        description: response.message,
         variant: "destructive",
       });
       
