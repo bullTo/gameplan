@@ -1,4 +1,5 @@
 import { useState, useEffect } from 'react'
+import { useToast } from '@/components/ui/use-toast';
 import { Tabs, TabsContent, TabsList, TabsTrigger } from '@/components/ui/tabs'
 import { Card, CardContent, CardDescription, CardFooter, CardHeader, CardTitle } from '@/components/ui/card'
 import { Button } from '@/components/ui/button'
@@ -13,6 +14,7 @@ import { ForgotPasswordDialog } from '@/components/ForgotPasswordDialog'
 const HomePage = () => {
   const [activeTab, setActiveTab] = useState('login')
   const navigate = useNavigate()
+  const { toast } = useToast();
   const location = useLocation()
 
   useEffect(() => {
@@ -50,12 +52,17 @@ const HomePage = () => {
       console.log('Login data:', data);
 
       // Call the login API
-      await loginUser({
+      const response = await loginUser({
         email: data.email,
         password: data.password,
         rememberMe: data.rememberMe
       });
 
+      toast({
+        title: "Login Successfully",
+        description: response,
+        variant: "destructive",
+      });
       // Redirect to dashboard on successful login
       navigate('/account/dashboard');
     } catch (error) {
@@ -105,8 +112,12 @@ const HomePage = () => {
         password: data.password,
         agreeToTerms: data.agreeToTerms
       });
-      
-      console.log(response)
+
+      toast({
+        title: "Registered Successfully",
+        description: response,
+        variant: "destructive",
+      });
       
     } catch (error) {
       console.error('Registration error:', error);
