@@ -6,6 +6,11 @@ const { Pool } = require('pg');
 const bcrypt = require('bcryptjs');
 const jwt = require('jsonwebtoken');
 const { Resend } = require("resend");
+const crypto = require('crypto');
+
+function generateVerificationToken() {
+  return crypto.randomBytes(32).toString('hex');
+}
 
 // Initialize PostgreSQL connection pool
 const pool = new Pool({
@@ -137,12 +142,17 @@ async function handleRegister(data) {
     const salt = await bcrypt.genSalt(10);
     const hashedPassword = await bcrypt.hash(password, salt);
 
+    // Generate verification token and expiry
+    const verificationToken = generateVerificationToken();
+    const verificationTokenExpiry = new Date();
+    verificationTokenExpiry.setHours(verificationTokenExpiry.getHours() + 24); // 24 hours expiry
+
     // Insert new user
     const result = await pool.query(
-      `INSERT INTO users (name, email, password_hash, subscription_plan, created_at, last_login)
-       VALUES ($1, $2, $3, $4, NOW(), NOW())
+      `INSERT INTO users (name, email, password_hash, subscription_plan, created_at, last_login, email_verified, email_verification_token, email_verification_token_expiry)
+       VALUES ($1, $2, $3, $4, NOW(), NOW(), $5, $6, $7)
        RETURNING id, email, subscription_plan`,
-      [name, email, hashedPassword, 'free']
+      [name, email, hashedPassword, 'free', false, verificationToken, verificationTokenExpiry]
     );
 
     const user = result.rows[0];
@@ -150,27 +160,27 @@ async function handleRegister(data) {
     // Generate JWT token
     const token = generateToken(user.id, user.email);
 
-
+    // Send verification email
     const resend = new Resend(process.env.RESEND_API_KEY);
-    const response = await resend.emails.send({
-      from: "hello@gameplanai.io", // or your verified domain
+    const verifyUrl = `${process.env.VITE_APP_DOMAIN || 'https://yourdomain.com'}/verify-email?token=${verificationToken}`;
+    await resend.emails.send({
+      from: "hello@gameplanai.io",
       to: email,
-      subject: "Welcome to Your App!",
+      subject: "Verify your email for GamePlan AI",
       html: `
-        <h2>Welcome to GamePlan AI App, ${name.split(" ")[0]}!</h2>
-        <p>We're excited to have you join our community. Your account has been created successfully.</p>
-        <p>Start exploring and enjoy what we have to offer!</p>
-        <p>If you have any questions, feel free to reply to this email — we're here to help.</p>
+        <h2>Welcome to GamePlan AI, ${name.split(" ")[0]}!</h2>
+        <p>Please verify your email address by clicking the link below:</p>
+        <a href="${verifyUrl}">${verifyUrl}</a>
+        <p>This link will expire in 24 hours.</p>
         <br />
-        <p>Cheers,</p>
-        <p>The GamePlan AI Team</p>
+        <p>Cheers,<br/>The GamePlan AI Team</p>
       `,
     });
 
     return {
       statusCode: 201,
       body: JSON.stringify({
-        message: 'User registered successfully',
+        message: 'User registered successfully. Please check your email to verify your account.',
         user: {
           id: user.id,
           email: user.email,
