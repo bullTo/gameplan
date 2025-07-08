@@ -52,7 +52,7 @@ const handleResponse = async (response: Response) => {
 
 
 // Login user
-export async function loginUser(credentials: LoginCredentials) :Promise<{ message: string, role?: string }>{
+export async function loginUser(credentials: LoginCredentials) {
   try {
     
     // For development/testing, use mock data
@@ -105,7 +105,7 @@ export async function loginUser(credentials: LoginCredentials) :Promise<{ messag
 }
 
 // Login admin
-export async function loginAdmin(credentials: LoginCredentials):Promise<{ message: string, role?: string }> {
+export async function loginAdmin(credentials: LoginCredentials) {
   // For now, we'll keep the mock implementation for admin login
   console.log('Logging in admin with:', credentials);
 
@@ -128,7 +128,7 @@ export async function loginAdmin(credentials: LoginCredentials):Promise<{ messag
 }
 
 // Register user
-export async function registerUser(data: RegisterData) :Promise<{ message: string, role?: string }>{
+export async function registerUser(data: RegisterData) :Promise<{ message: string, role?: any }>{
   try {
     // For development/testing, use mock data
     if (import.meta.env.DEV && !import.meta.env.VITE_USE_REAL_API) {
@@ -138,11 +138,8 @@ export async function registerUser(data: RegisterData) :Promise<{ message: strin
           // Store mock token and user data
           localStorage.setItem('authToken', 'mock-token-123');
           const userData = {
-            id: '2',
-            name: data.name,
-            email: data.email,
+            message: 'successfully',
             role: 'user',
-            subscription_plan: 'free'
           };
           localStorage.setItem('userData', JSON.stringify(userData));
 
