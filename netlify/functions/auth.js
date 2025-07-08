@@ -217,14 +217,14 @@ async function handleLogin(data) {
   try {
     // Find user by email
     const result = await pool.query(
-      'SELECT id, name, email, password_hash, subscription_plan FROM users WHERE email = $1',
+      'SELECT id, name, email, password_hash, subscription_plan, email_verified FROM users WHERE email = $1',
       [email]
     );
 
     if (result.rows.length === 0) {
       return {
         statusCode: 401,
-        body: JSON.stringify({ error: 'Invalid credentials' }),
+        message: 'Invalid credentials',
         headers: { 'Content-Type': 'application/json' }
       };
     }
@@ -236,11 +236,19 @@ async function handleLogin(data) {
     if (!isMatch) {
       return {
         statusCode: 401,
-        body: JSON.stringify({ error: 'Invalid credentials' }),
+        message: "Invalid credentials",
         headers: { 'Content-Type': 'application/json' }
       };
     }
 
+    if ( !user.email_verified )
+    {
+      return {
+        statusCode: 401,
+        message: "Email not verified",
+        headers: { 'Content-Type': 'application/json' }
+      };
+    }
     // Generate JWT token with longer expiry if rememberMe is true
     const tokenExpiry = rememberMe ? '30d' : (process.env.JWT_EXPIRY || '7d');
     const token = jwt.sign(

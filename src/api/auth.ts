@@ -95,7 +95,7 @@ export async function loginUser(credentials: LoginCredentials): Promise<User> {
     localStorage.setItem('userData', JSON.stringify(data.user));
 
     return {
-      ...data.user,
+      ...data.message,
       role: 'user'
     };
   } catch (error) {
@@ -169,7 +169,7 @@ export async function registerUser(data: RegisterData): Promise<User> {
     const responseData = await handleResponse(response);
 
     return {
-      ...responseData.user,
+      ...responseData.message,
       role: 'user'
     };
   } catch (error) {

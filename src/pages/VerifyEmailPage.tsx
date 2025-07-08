@@ -1,8 +1,10 @@
 import { useEffect, useState } from 'react';
+import { useToast } from '@/components/ui/use-toast';
 import { useNavigate, useSearchParams } from 'react-router-dom';
 
 const VerifyEmailPage = () => {
   const [searchParams] = useSearchParams();
+  const { toast } = useToast();
   const navigate = useNavigate();
   const [status, setStatus] = useState<'verifying' | 'success' | 'error'>('verifying');
   const [message, setMessage] = useState('');
@@ -14,15 +16,28 @@ const VerifyEmailPage = () => {
       setMessage('No token provided.');
       return;
     }
+    
+    setStatus('verifying');
     fetch(`/.netlify/functions/verify-email?token=${token}`)
       .then(res => res.json())
       .then(data => {
         if (data.message === 'Email verified') {
-          setStatus('success');
+          toast({
+            title: "Email-Verification",
+            description: "Verfication Successfully",
+            variant: "destructive",
+          });
+          
+        setStatus('success');
           setTimeout(() => navigate('/'), 2000); // Redirect after 2 seconds
         } else {
           setStatus('error');
           setMessage(data.error || 'Verification failed.');
+          toast({
+            title: "Email-Verification",
+            description: "Verfication Filed",
+            variant: "destructive",
+          });
         }
       })
       .catch(() => {
