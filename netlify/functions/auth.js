@@ -153,21 +153,19 @@ async function handleRegister(data) {
 
     const resend = new Resend(process.env.RESEND_API_KEY);
     const response = await resend.emails.send({
-      from: "Your App <onboarding@resend.dev>", // or your verified domain
+      from: "hello@gameplanai.io", // or your verified domain
       to: email,
       subject: "Welcome to Your App!",
       html: `
-        <h2>Welcome to Your App, ${name.split(" ")[0]}!</h2>
+        <h2>Welcome to GamePlan AI App, ${name.split(" ")[0]}!</h2>
         <p>We're excited to have you join our community. Your account has been created successfully.</p>
         <p>Start exploring and enjoy what we have to offer!</p>
         <p>If you have any questions, feel free to reply to this email — we're here to help.</p>
         <br />
         <p>Cheers,</p>
-        <p>The Your App Team</p>
+        <p>The GamePlan AI Team</p>
       `,
     });
-
-    console.log("response.id::", response.id)
 
     return {
       statusCode: 201,
