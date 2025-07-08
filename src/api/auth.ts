@@ -52,7 +52,7 @@ const handleResponse = async (response: Response) => {
 
 
 // Login user
-export async function loginUser(credentials: LoginCredentials): Promise<User> {
+export async function loginUser(credentials: LoginCredentials) :Promise<{ message: string, role?: string }>{
   try {
     
     // For development/testing, use mock data
@@ -95,7 +95,7 @@ export async function loginUser(credentials: LoginCredentials): Promise<User> {
     localStorage.setItem('userData', JSON.stringify(data.user));
 
     return {
-      ...data.message,
+      message: data.message,
       role: 'user'
     };
   } catch (error) {
@@ -105,7 +105,7 @@ export async function loginUser(credentials: LoginCredentials): Promise<User> {
 }
 
 // Login admin
-export async function loginAdmin(credentials: LoginCredentials): Promise<User> {
+export async function loginAdmin(credentials: LoginCredentials):Promise<{ message: string, role?: string }> {
   // For now, we'll keep the mock implementation for admin login
   console.log('Logging in admin with:', credentials);
 
@@ -128,7 +128,7 @@ export async function loginAdmin(credentials: LoginCredentials): Promise<User> {
 }
 
 // Register user
-export async function registerUser(data: RegisterData): Promise<User> {
+export async function registerUser(data: RegisterData) :Promise<{ message: string, role?: string }>{
   try {
     // For development/testing, use mock data
     if (import.meta.env.DEV && !import.meta.env.VITE_USE_REAL_API) {
@@ -169,7 +169,7 @@ export async function registerUser(data: RegisterData): Promise<User> {
     const responseData = await handleResponse(response);
 
     return {
-      ...responseData.message,
+      message: responseData.message,
       role: 'user'
     };
   } catch (error) {
