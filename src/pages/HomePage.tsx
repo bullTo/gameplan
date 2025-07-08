@@ -99,15 +99,15 @@ const HomePage = () => {
       }
 
       // Call the registration API
-      await registerUser({
+      const response = await registerUser({
         name: data.name,
         email: data.email,
         password: data.password,
         agreeToTerms: data.agreeToTerms
       });
-
-      // Redirect to dashboard on successful registration
-      navigate('/account/subscription');
+      
+      console.log(response)
+      
     } catch (error) {
       console.error('Registration error:', error);
 

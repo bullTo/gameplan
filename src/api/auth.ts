@@ -168,10 +168,6 @@ export async function registerUser(data: RegisterData): Promise<User> {
 
     const responseData = await handleResponse(response);
 
-    // Store authentication data
-    localStorage.setItem('authToken', responseData.token);
-    localStorage.setItem('userData', JSON.stringify(responseData.user));
-
     return {
       ...responseData.user,
       role: 'user'
