@@ -52,17 +52,13 @@ const HomePage = () => {
       console.log('Login data:', data);
 
       // Call the login API
-      const response = await loginUser({
+      await loginUser({
         email: data.email,
         password: data.password,
         rememberMe: data.rememberMe
       });
 
-      toast({
-        title: "Login Successfully",
-        description: response.message,
-        variant: "destructive",
-      });
+
       // Redirect to dashboard on successful login
       navigate('/account/dashboard');
     } catch (error) {
@@ -78,7 +74,12 @@ const HomePage = () => {
         });
       } else {
         // Generic error handling
-        alert(errorMessage);
+
+        toast({
+          title: "Error",
+          description: errorMessage,
+          variant: "destructive",
+        });
       }
     }
   }
@@ -119,7 +120,7 @@ const HomePage = () => {
         description: response.message,
         variant: "destructive",
       });
-      
+
     } catch (error) {
       console.error('Registration error:', error);
 
@@ -138,7 +139,12 @@ const HomePage = () => {
         });
       } else {
         // Generic error handling
-        alert(errorMessage);
+
+        toast({
+          title: "Error",
+          description: errorMessage,
+          variant: "destructive",
+        });
       }
     }
   }

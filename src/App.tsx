@@ -5,6 +5,7 @@ import AccountLayout from './layouts/AccountLayout'
 import ManagementLayout from './layouts/ManagementLayout'
 import LandingPage from './pages/landingpage/LandingPage'
 import { Toaster } from './components/ui/use-toast'
+import VerifyEmailPage from './pages/VerifyEmailPage'
 // import { useAuth } from './hooks/useAuth'
 
 function App() {
@@ -23,6 +24,7 @@ function App() {
       <Routes>
         <Route path="/" element={<LandingPage />} />
         <Route path="/login" element={<HomePage />} />
+        <Route path="/verify-email" element={<VerifyEmailPage />} />
         <Route path="/reset-password" element={<ResetPasswordPage />} />
         <Route
           path="/account/*"
