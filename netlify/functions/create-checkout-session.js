@@ -124,6 +124,7 @@ async function createCheckoutSession(user, plan, successUrl, cancelUrl) {
     },
     success_url: successUrl,
     cancel_url: cancelUrl,
+    allow_promotion_codes: true, 
     client_reference_id: user.id.toString(),
     metadata: {
       userId: user.id,
