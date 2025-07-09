@@ -57,7 +57,6 @@ export async function loginUser(credentials: LoginCredentials):Promise<{ message
     
     // For development/testing, use mock data
     if (import.meta.env.DEV && !import.meta.env.VITE_USE_REAL_API) {
-      console.log('Using mock login:', credentials);
       return new Promise((resolve) => {
         setTimeout(() => {
           // Store mock token and user data
