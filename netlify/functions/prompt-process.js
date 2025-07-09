@@ -29,9 +29,9 @@ const pool = new Pool({
 // Daily prompt limits by subscription plan
 // Increased limits for development
 const PROMPT_LIMITS = {
-  'free': 20,  // Increased from 3 for development
-  'core': 30,  // Increased from 15 for development
-  'pro': 50    // Increased from 30 for development
+  'free': 0,  // Increased from 3 for development
+  'core': 10,  // Increased from 15 for development
+  'pro': 20    // Increased from 30 for development
 };
 
 exports.handler = async (event) => {
