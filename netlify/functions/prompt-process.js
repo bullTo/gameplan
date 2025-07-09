@@ -192,9 +192,9 @@ function getPromptLimit(subscriptionPlan) {
     case 'free':
       return 3;
     case 'core':
-      return 15;
+      return 10;
     case 'pro':
-      return 30;
+      return 20;
     default:
       return 3; // fallback to free plan limit
   }
