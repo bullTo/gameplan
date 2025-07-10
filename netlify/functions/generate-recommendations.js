@@ -49,6 +49,30 @@ const RISK_LEVELS = ['Safe Bet', 'Moderate', 'Hail Mary'];
 
 // Main handler function
 exports.handler = async (event, context) => {
+  // 🔧 Handle preflight request
+  if (event.httpMethod === 'OPTIONS') {
+    return {
+      statusCode: 200,
+      headers: {
+        'Access-Control-Allow-Origin': 'https://gameplanai.io',
+        'Access-Control-Allow-Headers': 'Content-Type',
+        'Access-Control-Allow-Methods': 'POST, OPTIONS',
+      },
+      body: '',
+    };
+  }
+  // 🔧 Handle preflight request
+  if (event.httpMethod === 'OPTIONS') {
+    return {
+      statusCode: 200,
+      headers: {
+        'Access-Control-Allow-Origin': 'https://gameplanai.io',
+        'Access-Control-Allow-Headers': 'Content-Type',
+        'Access-Control-Allow-Methods': 'POST, OPTIONS',
+      },
+      body: '',
+    };
+  }
   // Check if this is a scheduled event or manual trigger
   const isScheduled = event.isScheduled || false;
 

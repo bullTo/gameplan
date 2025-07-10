@@ -20,6 +20,18 @@ function verifyToken(token) {
 }
 
 exports.handler = async (event, context) => {
+  // 🔧 Handle preflight request
+  if (event.httpMethod === 'OPTIONS') {
+    return {
+      statusCode: 200,
+      headers: {
+        'Access-Control-Allow-Origin': 'https://gameplanai.io',
+        'Access-Control-Allow-Headers': 'Content-Type',
+        'Access-Control-Allow-Methods': 'POST, OPTIONS',
+      },
+      body: '',
+    };
+  }
   // Only allow GET requests
   if (event.httpMethod !== 'GET') {
     return {

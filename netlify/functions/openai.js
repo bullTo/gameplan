@@ -12,6 +12,18 @@ const openai = new OpenAI({
 const OPEN_ROUTER_API_KEY = process.env.OPEN_ROUTER_API_KEY;
 
 exports.handler = async (event) => {
+  // 🔧 Handle preflight request
+  if (event.httpMethod === 'OPTIONS') {
+    return {
+      statusCode: 200,
+      headers: {
+        'Access-Control-Allow-Origin': 'https://gameplanai.io',
+        'Access-Control-Allow-Headers': 'Content-Type',
+        'Access-Control-Allow-Methods': 'POST, OPTIONS',
+      },
+      body: '',
+    };
+  }
   try {
     // Only allow POST requests
     if (event.httpMethod !== 'POST') {
@@ -113,7 +125,12 @@ exports.handler = async (event) => {
         message: completion.choices[0].message,
         usage: completion.usage
       }),
-      headers: { 'Content-Type': 'application/json' }
+      headers: {
+        'Content-Type': 'application/json',
+        'Access-Control-Allow-Origin': 'https://gameplanai.io',
+        'Access-Control-Allow-Headers': 'Content-Type',
+        'Access-Control-Allow-Methods': 'GET, POST, OPTIONS',
+      },
     };
   } catch (error) {
     console.error('OpenAI API error:', error.response?.data || error.message);
@@ -123,7 +140,12 @@ exports.handler = async (event) => {
         error: 'Failed to generate response from OpenAI',
         details: error.response?.data?.error || error.message
       }),
-      headers: { 'Content-Type': 'application/json' }
+      headers: {
+        'Content-Type': 'application/json',
+        'Access-Control-Allow-Origin': 'https://gameplanai.io',
+        'Access-Control-Allow-Headers': 'Content-Type',
+        'Access-Control-Allow-Methods': 'GET, POST, OPTIONS',
+      },
     };
   }
 };

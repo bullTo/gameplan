@@ -35,6 +35,18 @@ function getAdminIdFromToken(authHeader) {
 
 // Main handler function
 exports.handler = async (event, context) => {
+  // 🔧 Handle preflight request
+  if (event.httpMethod === 'OPTIONS') {
+    return {
+      statusCode: 200,
+      headers: {
+        'Access-Control-Allow-Origin': 'https://gameplanai.io',
+        'Access-Control-Allow-Headers': 'Content-Type',
+        'Access-Control-Allow-Methods': 'POST, OPTIONS',
+      },
+      body: '',
+    };
+  }
   // Verify admin authentication
   console.log('Auth header:', event.headers.authorization ? 'Present' : 'Missing');
 
