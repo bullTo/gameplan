@@ -32,7 +32,12 @@ exports.handler = async (event) => {
     return {
       statusCode: 405,
       body: JSON.stringify({ error: 'Method Not Allowed' }),
-      headers: { 'Content-Type': 'application/json' }
+        headers: {
+          'Content-Type': 'application/json',
+          'Access-Control-Allow-Origin': 'https://gameplanai.io',
+          'Access-Control-Allow-Headers': 'Content-Type',
+          'Access-Control-Allow-Methods': 'GET, POST, OPTIONS'
+        }
     };
   }
 
@@ -59,7 +64,12 @@ exports.handler = async (event) => {
     return {
       statusCode: 500,
       body: JSON.stringify({ error: 'Internal Server Error' }),
-      headers: { 'Content-Type': 'application/json' }
+        headers: {
+          'Content-Type': 'application/json',
+          'Access-Control-Allow-Origin': 'https://gameplanai.io',
+          'Access-Control-Allow-Headers': 'Content-Type',
+          'Access-Control-Allow-Methods': 'GET, POST, OPTIONS'
+        }
     };
   }
 };
@@ -73,7 +83,12 @@ async function handleAdminLogin(data) {
     return {
       statusCode: 400,
       body: JSON.stringify({ error: 'Email and password are required' }),
-      headers: { 'Content-Type': 'application/json' }
+        headers: {
+          'Content-Type': 'application/json',
+          'Access-Control-Allow-Origin': 'https://gameplanai.io',
+          'Access-Control-Allow-Headers': 'Content-Type',
+          'Access-Control-Allow-Methods': 'GET, POST, OPTIONS'
+        }
     };
   }
 
@@ -85,7 +100,7 @@ async function handleAdminLogin(data) {
         WHERE table_name = 'admins'
       );
     `);
-    
+
     if (!tableExists.rows[0].exists) {
       // Create the admins table if it doesn't exist
       await pool.query(`
@@ -98,12 +113,12 @@ async function handleAdminLogin(data) {
           last_login TIMESTAMP WITH TIME ZONE
         );
       `);
-      
+
       // Create a default admin if specified in environment variables
       if (process.env.ADMIN_EMAIL && process.env.ADMIN_PASSWORD) {
         const salt = await bcrypt.genSalt(10);
         const hashedPassword = await bcrypt.hash(process.env.ADMIN_PASSWORD, salt);
-        
+
         await pool.query(
           `INSERT INTO admins (name, email, password_hash)
            VALUES ($1, $2, $3)
@@ -123,7 +138,12 @@ async function handleAdminLogin(data) {
       return {
         statusCode: 401,
         body: JSON.stringify({ error: 'Invalid credentials' }),
-        headers: { 'Content-Type': 'application/json' }
+        headers: {
+          'Content-Type': 'application/json',
+          'Access-Control-Allow-Origin': 'https://gameplanai.io',
+          'Access-Control-Allow-Headers': 'Content-Type',
+          'Access-Control-Allow-Methods': 'GET, POST, OPTIONS'
+        }
       };
     }
 
@@ -135,7 +155,12 @@ async function handleAdminLogin(data) {
       return {
         statusCode: 401,
         body: JSON.stringify({ error: 'Invalid credentials' }),
-        headers: { 'Content-Type': 'application/json' }
+        headers: {
+          'Content-Type': 'application/json',
+          'Access-Control-Allow-Origin': 'https://gameplanai.io',
+          'Access-Control-Allow-Headers': 'Content-Type',
+          'Access-Control-Allow-Methods': 'GET, POST, OPTIONS'
+        }
       };
     }
 
@@ -160,14 +185,24 @@ async function handleAdminLogin(data) {
         },
         token
       }),
-      headers: { 'Content-Type': 'application/json' }
+        headers: {
+          'Content-Type': 'application/json',
+          'Access-Control-Allow-Origin': 'https://gameplanai.io',
+          'Access-Control-Allow-Headers': 'Content-Type',
+          'Access-Control-Allow-Methods': 'GET, POST, OPTIONS'
+        }
     };
   } catch (error) {
     console.error('Admin login error:', error);
     return {
       statusCode: 500,
       body: JSON.stringify({ error: 'Failed to login' }),
-      headers: { 'Content-Type': 'application/json' }
+        headers: {
+          'Content-Type': 'application/json',
+          'Access-Control-Allow-Origin': 'https://gameplanai.io',
+          'Access-Control-Allow-Headers': 'Content-Type',
+          'Access-Control-Allow-Methods': 'GET, POST, OPTIONS'
+        }
     };
   }
 }
@@ -175,45 +210,60 @@ async function handleAdminLogin(data) {
 // Verify admin token
 async function verifyAdminToken(headers) {
   const authHeader = headers.authorization;
-  
+
   if (!authHeader || !authHeader.startsWith('Bearer ')) {
     return {
       statusCode: 401,
       body: JSON.stringify({ error: 'No token provided' }),
-      headers: { 'Content-Type': 'application/json' }
+        headers: {
+          'Content-Type': 'application/json',
+          'Access-Control-Allow-Origin': 'https://gameplanai.io',
+          'Access-Control-Allow-Headers': 'Content-Type',
+          'Access-Control-Allow-Methods': 'GET, POST, OPTIONS'
+        }
     };
   }
-  
+
   const token = authHeader.split(' ')[1];
-  
+
   try {
     const decoded = jwt.verify(token, process.env.JWT_SECRET);
-    
+
     // Check if the token belongs to an admin
     if (decoded.role !== 'admin') {
       return {
         statusCode: 403,
         body: JSON.stringify({ error: 'Not authorized as admin' }),
-        headers: { 'Content-Type': 'application/json' }
+        headers: {
+          'Content-Type': 'application/json',
+          'Access-Control-Allow-Origin': 'https://gameplanai.io',
+          'Access-Control-Allow-Headers': 'Content-Type',
+          'Access-Control-Allow-Methods': 'GET, POST, OPTIONS'
+        }
       };
     }
-    
+
     // Get admin details
     const result = await pool.query(
       'SELECT id, name, email FROM admins WHERE id = $1',
       [decoded.sub]
     );
-    
+
     if (result.rows.length === 0) {
       return {
         statusCode: 404,
         body: JSON.stringify({ error: 'Admin not found' }),
-        headers: { 'Content-Type': 'application/json' }
+        headers: {
+          'Content-Type': 'application/json',
+          'Access-Control-Allow-Origin': 'https://gameplanai.io',
+          'Access-Control-Allow-Headers': 'Content-Type',
+          'Access-Control-Allow-Methods': 'GET, POST, OPTIONS'
+        }
       };
     }
-    
+
     const admin = result.rows[0];
-    
+
     return {
       statusCode: 200,
       body: JSON.stringify({
@@ -225,13 +275,23 @@ async function verifyAdminToken(headers) {
           role: 'admin'
         }
       }),
-      headers: { 'Content-Type': 'application/json' }
+        headers: {
+          'Content-Type': 'application/json',
+          'Access-Control-Allow-Origin': 'https://gameplanai.io',
+          'Access-Control-Allow-Headers': 'Content-Type',
+          'Access-Control-Allow-Methods': 'GET, POST, OPTIONS'
+        }
     };
   } catch (error) {
     return {
       statusCode: 401,
       body: JSON.stringify({ error: 'Invalid token' }),
-      headers: { 'Content-Type': 'application/json' }
+        headers: {
+          'Content-Type': 'application/json',
+          'Access-Control-Allow-Origin': 'https://gameplanai.io',
+          'Access-Control-Allow-Headers': 'Content-Type',
+          'Access-Control-Allow-Methods': 'GET, POST, OPTIONS'
+        }
     };
   }
 }

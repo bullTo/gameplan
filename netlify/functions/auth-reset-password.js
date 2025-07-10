@@ -37,7 +37,12 @@ export const handler = async (event) => {
     return {
       statusCode: 405,
       body: JSON.stringify({ error: 'Method Not Allowed' }),
-      headers: { 'Content-Type': 'application/json' }
+        headers: {
+          'Content-Type': 'application/json',
+          'Access-Control-Allow-Origin': 'https://gameplanai.io',
+          'Access-Control-Allow-Headers': 'Content-Type',
+          'Access-Control-Allow-Methods': 'GET, POST, OPTIONS'
+        }
     };
   }
 
@@ -66,7 +71,12 @@ export const handler = async (event) => {
     return {
       statusCode: 500,
       body: JSON.stringify({ error: 'Internal Server Error' }),
-      headers: { 'Content-Type': 'application/json' }
+        headers: {
+          'Content-Type': 'application/json',
+          'Access-Control-Allow-Origin': 'https://gameplanai.io',
+          'Access-Control-Allow-Headers': 'Content-Type',
+          'Access-Control-Allow-Methods': 'GET, POST, OPTIONS'
+        }
     };
   }
 };
@@ -80,7 +90,12 @@ async function handleResetRequest(data) {
     return {
       statusCode: 400,
       body: JSON.stringify({ error: 'Email is required' }),
-      headers: { 'Content-Type': 'application/json' }
+        headers: {
+          'Content-Type': 'application/json',
+          'Access-Control-Allow-Origin': 'https://gameplanai.io',
+          'Access-Control-Allow-Headers': 'Content-Type',
+          'Access-Control-Allow-Methods': 'GET, POST, OPTIONS'
+        }
     };
   }
 
@@ -88,7 +103,12 @@ async function handleResetRequest(data) {
     return {
       statusCode: 400,
       body: JSON.stringify({ error: 'Invalid email format' }),
-      headers: { 'Content-Type': 'application/json' }
+        headers: {
+          'Content-Type': 'application/json',
+          'Access-Control-Allow-Origin': 'https://gameplanai.io',
+          'Access-Control-Allow-Headers': 'Content-Type',
+          'Access-Control-Allow-Methods': 'GET, POST, OPTIONS'
+        }
     };
   }
 
@@ -106,7 +126,12 @@ async function handleResetRequest(data) {
         body: JSON.stringify({
           message: 'If your email is registered, you will receive a password reset link'
         }),
-        headers: { 'Content-Type': 'application/json' }
+          headers: {
+            'Content-Type': 'application/json',
+            'Access-Control-Allow-Origin': 'https://gameplanai.io',
+            'Access-Control-Allow-Headers': 'Content-Type',
+            'Access-Control-Allow-Methods': 'GET, POST, OPTIONS'
+          }
       };
     }
 
@@ -141,14 +166,24 @@ async function handleResetRequest(data) {
           resetUrl: `${process.env.VITE_APP_DOMAIN}/reset-password?token=${resetToken}`
         }
       }),
-      headers: { 'Content-Type': 'application/json' }
+        headers: {
+          'Content-Type': 'application/json',
+          'Access-Control-Allow-Origin': 'https://gameplanai.io',
+          'Access-Control-Allow-Headers': 'Content-Type',
+          'Access-Control-Allow-Methods': 'GET, POST, OPTIONS'
+        }
     };
   } catch (error) {
     console.error('Reset request error:', error);
     return {
       statusCode: 500,
       body: JSON.stringify({ error: 'Failed to process reset request' }),
-      headers: { 'Content-Type': 'application/json' }
+        headers: {
+          'Content-Type': 'application/json',
+          'Access-Control-Allow-Origin': 'https://gameplanai.io',
+          'Access-Control-Allow-Headers': 'Content-Type',
+          'Access-Control-Allow-Methods': 'GET, POST, OPTIONS'
+        }
     };
   }
 }
@@ -161,7 +196,12 @@ async function handleVerifyToken(data) {
     return {
       statusCode: 400,
       body: JSON.stringify({ error: 'Token is required' }),
-      headers: { 'Content-Type': 'application/json' }
+        headers: {
+          'Content-Type': 'application/json',
+          'Access-Control-Allow-Origin': 'https://gameplanai.io',
+          'Access-Control-Allow-Headers': 'Content-Type',
+          'Access-Control-Allow-Methods': 'GET, POST, OPTIONS'
+        }
     };
   }
 
@@ -178,7 +218,12 @@ async function handleVerifyToken(data) {
       return {
         statusCode: 400,
         body: JSON.stringify({ error: 'Invalid or expired token' }),
-        headers: { 'Content-Type': 'application/json' }
+          headers: {
+            'Content-Type': 'application/json',
+            'Access-Control-Allow-Origin': 'https://gameplanai.io',
+            'Access-Control-Allow-Headers': 'Content-Type',
+            'Access-Control-Allow-Methods': 'GET, POST, OPTIONS'
+          }
       };
     }
 
@@ -190,7 +235,12 @@ async function handleVerifyToken(data) {
       return {
         statusCode: 400,
         body: JSON.stringify({ error: 'Token has expired' }),
-        headers: { 'Content-Type': 'application/json' }
+          headers: {
+            'Content-Type': 'application/json',
+            'Access-Control-Allow-Origin': 'https://gameplanai.io',
+            'Access-Control-Allow-Headers': 'Content-Type',
+            'Access-Control-Allow-Methods': 'GET, POST, OPTIONS'
+          }
       };
     }
 
@@ -200,14 +250,24 @@ async function handleVerifyToken(data) {
         message: 'Token is valid',
         userId: user.id
       }),
-      headers: { 'Content-Type': 'application/json' }
+        headers: {
+          'Content-Type': 'application/json',
+          'Access-Control-Allow-Origin': 'https://gameplanai.io',
+          'Access-Control-Allow-Headers': 'Content-Type',
+          'Access-Control-Allow-Methods': 'GET, POST, OPTIONS'
+        }
     };
   } catch (error) {
     console.error('Token verification error:', error);
     return {
       statusCode: 500,
       body: JSON.stringify({ error: 'Failed to verify token' }),
-      headers: { 'Content-Type': 'application/json' }
+        headers: {
+          'Content-Type': 'application/json',
+          'Access-Control-Allow-Origin': 'https://gameplanai.io',
+          'Access-Control-Allow-Headers': 'Content-Type',
+          'Access-Control-Allow-Methods': 'GET, POST, OPTIONS'
+        }
     };
   }
 }
@@ -220,7 +280,12 @@ async function handlePasswordReset(data) {
     return {
       statusCode: 400,
       body: JSON.stringify({ error: 'Token and password are required' }),
-      headers: { 'Content-Type': 'application/json' }
+        headers: {
+          'Content-Type': 'application/json',
+          'Access-Control-Allow-Origin': 'https://gameplanai.io',
+          'Access-Control-Allow-Headers': 'Content-Type',
+          'Access-Control-Allow-Methods': 'GET, POST, OPTIONS'
+        }
     };
   }
 
@@ -230,7 +295,12 @@ async function handlePasswordReset(data) {
       body: JSON.stringify({
         error: 'Password must be at least 8 characters and include uppercase, lowercase, and numbers'
       }),
-      headers: { 'Content-Type': 'application/json' }
+        headers: {
+          'Content-Type': 'application/json',
+          'Access-Control-Allow-Origin': 'https://gameplanai.io',
+          'Access-Control-Allow-Headers': 'Content-Type',
+          'Access-Control-Allow-Methods': 'GET, POST, OPTIONS'
+        }
     };
   }
 
@@ -247,7 +317,12 @@ async function handlePasswordReset(data) {
       return {
         statusCode: 400,
         body: JSON.stringify({ error: 'Invalid or expired token' }),
-        headers: { 'Content-Type': 'application/json' }
+          headers: {
+            'Content-Type': 'application/json',
+            'Access-Control-Allow-Origin': 'https://gameplanai.io',
+            'Access-Control-Allow-Headers': 'Content-Type',
+            'Access-Control-Allow-Methods': 'GET, POST, OPTIONS'
+          }
       };
     }
 
@@ -259,7 +334,12 @@ async function handlePasswordReset(data) {
       return {
         statusCode: 400,
         body: JSON.stringify({ error: 'Token has expired' }),
-        headers: { 'Content-Type': 'application/json' }
+          headers: {
+            'Content-Type': 'application/json',
+            'Access-Control-Allow-Origin': 'https://gameplanai.io',
+            'Access-Control-Allow-Headers': 'Content-Type',
+            'Access-Control-Allow-Methods': 'GET, POST, OPTIONS'
+          }
       };
     }
 
@@ -278,14 +358,24 @@ async function handlePasswordReset(data) {
     return {
       statusCode: 200,
       body: JSON.stringify({ message: 'Password has been reset successfully' }),
-      headers: { 'Content-Type': 'application/json' }
+        headers: {
+          'Content-Type': 'application/json',
+          'Access-Control-Allow-Origin': 'https://gameplanai.io',
+          'Access-Control-Allow-Headers': 'Content-Type',
+          'Access-Control-Allow-Methods': 'GET, POST, OPTIONS'
+        }
     };
   } catch (error) {
     console.error('Password reset error:', error);
     return {
       statusCode: 500,
       body: JSON.stringify({ error: 'Failed to reset password' }),
-      headers: { 'Content-Type': 'application/json' }
+        headers: {
+          'Content-Type': 'application/json',
+          'Access-Control-Allow-Origin': 'https://gameplanai.io',
+          'Access-Control-Allow-Headers': 'Content-Type',
+          'Access-Control-Allow-Methods': 'GET, POST, OPTIONS'
+        }
     };
   }
 }

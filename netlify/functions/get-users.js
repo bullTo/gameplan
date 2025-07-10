@@ -63,7 +63,12 @@ exports.handler = async (event, context) => {
       return {
         statusCode: 405,
         body: JSON.stringify({ error: 'Method Not Allowed' }),
-        headers: { 'Content-Type': 'application/json' }
+          headers: {
+            'Content-Type': 'application/json',
+            'Access-Control-Allow-Origin': 'https://gameplanai.io',
+            'Access-Control-Allow-Headers': 'Content-Type',
+            'Access-Control-Allow-Methods': 'GET, POST, OPTIONS'
+          }
       };
   }
 };
@@ -170,7 +175,12 @@ async function handleGetUsers(event, adminId) {
             pages: Math.ceil(total / limit)
           }
         }),
-        headers: { 'Content-Type': 'application/json' }
+          headers: {
+            'Content-Type': 'application/json',
+            'Access-Control-Allow-Origin': 'https://gameplanai.io',
+            'Access-Control-Allow-Headers': 'Content-Type',
+            'Access-Control-Allow-Methods': 'GET, POST, OPTIONS'
+          }
       };
     } else {
       // Format for the Subscriptions page (with offset/limit)
@@ -182,7 +192,12 @@ async function handleGetUsers(event, adminId) {
           limit,
           offset
         }),
-        headers: { 'Content-Type': 'application/json' }
+          headers: {
+            'Content-Type': 'application/json',
+            'Access-Control-Allow-Origin': 'https://gameplanai.io',
+            'Access-Control-Allow-Headers': 'Content-Type',
+            'Access-Control-Allow-Methods': 'GET, POST, OPTIONS'
+          }
       };
     }
   } catch (error) {
@@ -190,7 +205,12 @@ async function handleGetUsers(event, adminId) {
     return {
       statusCode: 500,
       body: JSON.stringify({ error: 'Failed to fetch users' }),
-      headers: { 'Content-Type': 'application/json' }
+        headers: {
+          'Content-Type': 'application/json',
+          'Access-Control-Allow-Origin': 'https://gameplanai.io',
+          'Access-Control-Allow-Headers': 'Content-Type',
+          'Access-Control-Allow-Methods': 'GET, POST, OPTIONS'
+        }
     };
   }
 }
@@ -205,7 +225,12 @@ async function handleCreateUser(event, adminId) {
       return {
         statusCode: 400,
         body: JSON.stringify({ error: 'Name, email, and password are required' }),
-        headers: { 'Content-Type': 'application/json' }
+          headers: {
+            'Content-Type': 'application/json',
+            'Access-Control-Allow-Origin': 'https://gameplanai.io',
+            'Access-Control-Allow-Headers': 'Content-Type',
+            'Access-Control-Allow-Methods': 'GET, POST, OPTIONS'
+          }
       };
     }
 
@@ -219,7 +244,12 @@ async function handleCreateUser(event, adminId) {
       return {
         statusCode: 409,
         body: JSON.stringify({ error: 'User with this email already exists' }),
-        headers: { 'Content-Type': 'application/json' }
+          headers: {
+            'Content-Type': 'application/json',
+            'Access-Control-Allow-Origin': 'https://gameplanai.io',
+            'Access-Control-Allow-Headers': 'Content-Type',
+            'Access-Control-Allow-Methods': 'GET, POST, OPTIONS'
+          }
       };
     }
 
@@ -242,14 +272,24 @@ async function handleCreateUser(event, adminId) {
         message: 'User created successfully',
         user: result.rows[0]
       }),
-      headers: { 'Content-Type': 'application/json' }
+        headers: {
+          'Content-Type': 'application/json',
+          'Access-Control-Allow-Origin': 'https://gameplanai.io',
+          'Access-Control-Allow-Headers': 'Content-Type',
+          'Access-Control-Allow-Methods': 'GET, POST, OPTIONS'
+        }
     };
   } catch (error) {
     console.error('Error creating user:', error);
     return {
       statusCode: 500,
       body: JSON.stringify({ error: 'Failed to create user' }),
-      headers: { 'Content-Type': 'application/json' }
+        headers: {
+          'Content-Type': 'application/json',
+          'Access-Control-Allow-Origin': 'https://gameplanai.io',
+          'Access-Control-Allow-Headers': 'Content-Type',
+          'Access-Control-Allow-Methods': 'GET, POST, OPTIONS'
+        }
     };
   }
 }
@@ -264,7 +304,12 @@ async function handleUpdateUser(event, adminId) {
       return {
         statusCode: 400,
         body: JSON.stringify({ error: 'User ID is required' }),
-        headers: { 'Content-Type': 'application/json' }
+          headers: {
+            'Content-Type': 'application/json',
+            'Access-Control-Allow-Origin': 'https://gameplanai.io',
+            'Access-Control-Allow-Headers': 'Content-Type',
+            'Access-Control-Allow-Methods': 'GET, POST, OPTIONS'
+          }
       };
     }
 
@@ -278,7 +323,12 @@ async function handleUpdateUser(event, adminId) {
       return {
         statusCode: 404,
         body: JSON.stringify({ error: 'User not found' }),
-        headers: { 'Content-Type': 'application/json' }
+          headers: {
+            'Content-Type': 'application/json',
+            'Access-Control-Allow-Origin': 'https://gameplanai.io',
+            'Access-Control-Allow-Headers': 'Content-Type',
+            'Access-Control-Allow-Methods': 'GET, POST, OPTIONS'
+          }
       };
     }
 
@@ -315,7 +365,12 @@ async function handleUpdateUser(event, adminId) {
       return {
         statusCode: 400,
         body: JSON.stringify({ error: 'No updates provided' }),
-        headers: { 'Content-Type': 'application/json' }
+          headers: {
+            'Content-Type': 'application/json',
+            'Access-Control-Allow-Origin': 'https://gameplanai.io',
+            'Access-Control-Allow-Headers': 'Content-Type',
+            'Access-Control-Allow-Methods': 'GET, POST, OPTIONS'
+          }
       };
     }
 
@@ -330,14 +385,24 @@ async function handleUpdateUser(event, adminId) {
         message: 'User updated successfully',
         user: result.rows[0]
       }),
-      headers: { 'Content-Type': 'application/json' }
+        headers: {
+          'Content-Type': 'application/json',
+          'Access-Control-Allow-Origin': 'https://gameplanai.io',
+          'Access-Control-Allow-Headers': 'Content-Type',
+          'Access-Control-Allow-Methods': 'GET, POST, OPTIONS'
+        }
     };
   } catch (error) {
     console.error('Error updating user:', error);
     return {
       statusCode: 500,
       body: JSON.stringify({ error: 'Failed to update user' }),
-      headers: { 'Content-Type': 'application/json' }
+        headers: {
+          'Content-Type': 'application/json',
+          'Access-Control-Allow-Origin': 'https://gameplanai.io',
+          'Access-Control-Allow-Headers': 'Content-Type',
+          'Access-Control-Allow-Methods': 'GET, POST, OPTIONS'
+        }
     };
   }
 }
@@ -351,7 +416,12 @@ async function handleDeleteUser(event, adminId) {
       return {
         statusCode: 400,
         body: JSON.stringify({ error: 'User ID is required' }),
-        headers: { 'Content-Type': 'application/json' }
+          headers: {
+            'Content-Type': 'application/json',
+            'Access-Control-Allow-Origin': 'https://gameplanai.io',
+            'Access-Control-Allow-Headers': 'Content-Type',
+            'Access-Control-Allow-Methods': 'GET, POST, OPTIONS'
+          }
       };
     }
 
@@ -365,7 +435,12 @@ async function handleDeleteUser(event, adminId) {
       return {
         statusCode: 404,
         body: JSON.stringify({ error: 'User not found' }),
-        headers: { 'Content-Type': 'application/json' }
+          headers: {
+            'Content-Type': 'application/json',
+            'Access-Control-Allow-Origin': 'https://gameplanai.io',
+            'Access-Control-Allow-Headers': 'Content-Type',
+            'Access-Control-Allow-Methods': 'GET, POST, OPTIONS'
+          }
       };
     }
 
@@ -377,14 +452,24 @@ async function handleDeleteUser(event, adminId) {
       body: JSON.stringify({
         message: 'User deleted successfully'
       }),
-      headers: { 'Content-Type': 'application/json' }
+        headers: {
+          'Content-Type': 'application/json',
+          'Access-Control-Allow-Origin': 'https://gameplanai.io',
+          'Access-Control-Allow-Headers': 'Content-Type',
+          'Access-Control-Allow-Methods': 'GET, POST, OPTIONS'
+        }
     };
   } catch (error) {
     console.error('Error deleting user:', error);
     return {
       statusCode: 500,
       body: JSON.stringify({ error: 'Failed to delete user' }),
-      headers: { 'Content-Type': 'application/json' }
+        headers: {
+          'Content-Type': 'application/json',
+          'Access-Control-Allow-Origin': 'https://gameplanai.io',
+          'Access-Control-Allow-Headers': 'Content-Type',
+          'Access-Control-Allow-Methods': 'GET, POST, OPTIONS'
+        }
     };
   }
 };

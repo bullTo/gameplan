@@ -41,7 +41,12 @@ exports.handler = async (event) => {
       return {
         statusCode: 405,
         body: JSON.stringify({ error: 'Method Not Allowed' }),
-        headers: { 'Content-Type': 'application/json' }
+          headers: {
+            'Content-Type': 'application/json',
+            'Access-Control-Allow-Origin': 'https://gameplanai.io',
+            'Access-Control-Allow-Headers': 'Content-Type',
+            'Access-Control-Allow-Methods': 'GET, POST, OPTIONS'
+          }
       };
     }
 
@@ -51,7 +56,12 @@ exports.handler = async (event) => {
       return {
         statusCode: 401,
         body: JSON.stringify({ error: 'Authentication required' }),
-        headers: { 'Content-Type': 'application/json' }
+          headers: {
+            'Content-Type': 'application/json',
+            'Access-Control-Allow-Origin': 'https://gameplanai.io',
+            'Access-Control-Allow-Headers': 'Content-Type',
+            'Access-Control-Allow-Methods': 'GET, POST, OPTIONS'
+          }
       };
     }
 
@@ -64,7 +74,12 @@ exports.handler = async (event) => {
       return {
         statusCode: 401,
         body: JSON.stringify({ error: 'Invalid token' }),
-        headers: { 'Content-Type': 'application/json' }
+          headers: {
+            'Content-Type': 'application/json',
+            'Access-Control-Allow-Origin': 'https://gameplanai.io',
+            'Access-Control-Allow-Headers': 'Content-Type',
+            'Access-Control-Allow-Methods': 'GET, POST, OPTIONS'
+          }
       };
     }
 
@@ -75,7 +90,12 @@ exports.handler = async (event) => {
       return {
         statusCode: 400,
         body: JSON.stringify({ error: 'Prompt is required' }),
-        headers: { 'Content-Type': 'application/json' }
+          headers: {
+            'Content-Type': 'application/json',
+            'Access-Control-Allow-Origin': 'https://gameplanai.io',
+            'Access-Control-Allow-Headers': 'Content-Type',
+            'Access-Control-Allow-Methods': 'GET, POST, OPTIONS'
+          }
       };
     }
 
@@ -83,7 +103,12 @@ exports.handler = async (event) => {
       return {
         statusCode: 400,
         body: JSON.stringify({ error: 'Sport is required' }),
-        headers: { 'Content-Type': 'application/json' }
+          headers: {
+            'Content-Type': 'application/json',
+            'Access-Control-Allow-Origin': 'https://gameplanai.io',
+            'Access-Control-Allow-Headers': 'Content-Type',
+            'Access-Control-Allow-Methods': 'GET, POST, OPTIONS'
+          }
       };
     }
 
@@ -96,7 +121,12 @@ exports.handler = async (event) => {
       return {
         statusCode: 404,
         body: JSON.stringify({ error: 'User not found' }),
-        headers: { 'Content-Type': 'application/json' }
+          headers: {
+            'Content-Type': 'application/json',
+            'Access-Control-Allow-Origin': 'https://gameplanai.io',
+            'Access-Control-Allow-Headers': 'Content-Type',
+            'Access-Control-Allow-Methods': 'GET, POST, OPTIONS'
+          }
       };
     }
 
@@ -113,7 +143,12 @@ exports.handler = async (event) => {
           limit: promptLimit,
           used: user.daily_prompt_count
         }),
-        headers: { 'Content-Type': 'application/json' }
+          headers: {
+            'Content-Type': 'application/json',
+            'Access-Control-Allow-Origin': 'https://gameplanai.io',
+            'Access-Control-Allow-Headers': 'Content-Type',
+            'Access-Control-Allow-Methods': 'GET, POST, OPTIONS'
+          }
       };
     }
 
@@ -174,7 +209,12 @@ console.log(promptLimit, user.daily_prompt_count, promptLogId)
         promptLogId,
         remainingPrompts: promptLimit - (Number(user.daily_prompt_count ?? 0) + 1)
       }),
-      headers: { 'Content-Type': 'application/json' }
+        headers: {
+          'Content-Type': 'application/json',
+          'Access-Control-Allow-Origin': 'https://gameplanai.io',
+          'Access-Control-Allow-Headers': 'Content-Type',
+          'Access-Control-Allow-Methods': 'GET, POST, OPTIONS'
+        }
     };
 
   } catch (error) {
@@ -182,7 +222,12 @@ console.log(promptLimit, user.daily_prompt_count, promptLogId)
     return {
       statusCode: 500,
       body: JSON.stringify({ error: 'Failed to process prompt' }),
-      headers: { 'Content-Type': 'application/json' }
+        headers: {
+          'Content-Type': 'application/json',
+          'Access-Control-Allow-Origin': 'https://gameplanai.io',
+          'Access-Control-Allow-Headers': 'Content-Type',
+          'Access-Control-Allow-Methods': 'GET, POST, OPTIONS'
+        }
     };
   }
 };

@@ -72,7 +72,12 @@ exports.handler = async (event) => {
           error: 'No valid sports specified',
           validSports: allSports
         }),
-        headers: { 'Content-Type': 'application/json' }
+          headers: {
+            'Content-Type': 'application/json',
+            'Access-Control-Allow-Origin': 'https://gameplanai.io',
+            'Access-Control-Allow-Headers': 'Content-Type',
+            'Access-Control-Allow-Methods': 'GET, POST, OPTIONS'
+          }
       };
     }
 
@@ -87,7 +92,12 @@ exports.handler = async (event) => {
         sports: sports,
         results: results
       }),
-      headers: { 'Content-Type': 'application/json' }
+        headers: {
+          'Content-Type': 'application/json',
+          'Access-Control-Allow-Origin': 'https://gameplanai.io',
+          'Access-Control-Allow-Headers': 'Content-Type',
+          'Access-Control-Allow-Methods': 'GET, POST, OPTIONS'
+        }
     };
   } catch (error) {
     console.error('Error in get-sports-data handler:', error);
@@ -98,7 +108,12 @@ exports.handler = async (event) => {
         error: 'Failed to update sports data',
         message: error.message
       }),
-      headers: { 'Content-Type': 'application/json' }
+        headers: {
+          'Content-Type': 'application/json',
+          'Access-Control-Allow-Origin': 'https://gameplanai.io',
+          'Access-Control-Allow-Headers': 'Content-Type',
+          'Access-Control-Allow-Methods': 'GET, POST, OPTIONS'
+        }
     };
   }
 };

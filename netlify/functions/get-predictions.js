@@ -28,7 +28,12 @@ exports.handler = async (event) => {
       return {
         statusCode: 401,
         body: JSON.stringify({ error: 'Authentication required' }),
-        headers: { 'Content-Type': 'application/json' }
+          headers: {
+            'Content-Type': 'application/json',
+            'Access-Control-Allow-Origin': 'https://gameplanai.io',
+            'Access-Control-Allow-Headers': 'Content-Type',
+            'Access-Control-Allow-Methods': 'GET, POST, OPTIONS'
+          }
       };
     }
     let userId;
@@ -39,7 +44,12 @@ exports.handler = async (event) => {
       return {
         statusCode: 401,
         body: JSON.stringify({ error: 'Invalid token' }),
-        headers: { 'Content-Type': 'application/json' }
+          headers: {
+            'Content-Type': 'application/json',
+            'Access-Control-Allow-Origin': 'https://gameplanai.io',
+            'Access-Control-Allow-Headers': 'Content-Type',
+            'Access-Control-Allow-Methods': 'GET, POST, OPTIONS'
+          }
       };
     }
 
