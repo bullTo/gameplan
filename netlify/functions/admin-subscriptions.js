@@ -47,6 +47,30 @@ const verifyAdmin = async (headers) => {
 };
 
 exports.handler = async (event) => {
+  // 🔧 Handle preflight request
+  if (event.httpMethod === 'OPTIONS') {
+    return {
+      statusCode: 200,
+      headers: {
+        'Access-Control-Allow-Origin': 'https://gameplanai.io',
+        'Access-Control-Allow-Headers': 'Content-Type',
+        'Access-Control-Allow-Methods': 'POST, OPTIONS',
+      },
+      body: '',
+    };
+  }
+  // 🔧 Handle preflight request
+  if (event.httpMethod === 'OPTIONS') {
+    return {
+      statusCode: 200,
+      headers: {
+        'Access-Control-Allow-Origin': 'https://gameplanai.io',
+        'Access-Control-Allow-Headers': 'Content-Type',
+        'Access-Control-Allow-Methods': 'POST, OPTIONS',
+      },
+      body: '',
+    };
+  }
   // Verify admin authentication
   const adminAuth = await verifyAdmin(event.headers);
 
@@ -54,7 +78,12 @@ exports.handler = async (event) => {
     return {
       statusCode: 401,
       body: JSON.stringify({ error: adminAuth.error }),
-      headers: { 'Content-Type': 'application/json' }
+      headers: {
+        'Content-Type': 'application/json',
+        'Access-Control-Allow-Origin': 'https://gameplanai.io',
+        'Access-Control-Allow-Headers': 'Content-Type',
+        'Access-Control-Allow-Methods': 'GET, POST, OPTIONS',
+      },
     };
   }
 
@@ -156,14 +185,24 @@ async function getSubscriptionPlans() {
       body: JSON.stringify({
         plans: result.rows
       }),
-      headers: { 'Content-Type': 'application/json' }
+      headers: {
+        'Content-Type': 'application/json',
+        'Access-Control-Allow-Origin': 'https://gameplanai.io',
+        'Access-Control-Allow-Headers': 'Content-Type',
+        'Access-Control-Allow-Methods': 'GET, POST, OPTIONS',
+      },
     };
   } catch (error) {
     console.error('Error getting subscription plans:', error);
     return {
       statusCode: 500,
       body: JSON.stringify({ error: 'Failed to get subscription plans' }),
-      headers: { 'Content-Type': 'application/json' }
+      headers: {
+        'Content-Type': 'application/json',
+        'Access-Control-Allow-Origin': 'https://gameplanai.io',
+        'Access-Control-Allow-Headers': 'Content-Type',
+        'Access-Control-Allow-Methods': 'GET, POST, OPTIONS',
+      },
     };
   }
 }
@@ -208,14 +247,24 @@ async function createSubscriptionPlan(event) {
         message: 'Subscription plan created successfully',
         plan: result.rows[0]
       }),
-      headers: { 'Content-Type': 'application/json' }
+      headers: {
+        'Content-Type': 'application/json',
+        'Access-Control-Allow-Origin': 'https://gameplanai.io',
+        'Access-Control-Allow-Headers': 'Content-Type',
+        'Access-Control-Allow-Methods': 'GET, POST, OPTIONS',
+      },
     };
   } catch (error) {
     console.error('Error creating subscription plan:', error);
     return {
       statusCode: 500,
       body: JSON.stringify({ error: 'Failed to create subscription plan' }),
-      headers: { 'Content-Type': 'application/json' }
+      headers: {
+        'Content-Type': 'application/json',
+        'Access-Control-Allow-Origin': 'https://gameplanai.io',
+        'Access-Control-Allow-Headers': 'Content-Type',
+        'Access-Control-Allow-Methods': 'GET, POST, OPTIONS',
+      },
     };
   }
 }
@@ -281,14 +330,24 @@ async function updateSubscriptionPlan(event) {
         message: 'Subscription plan updated successfully',
         plan: result.rows[0]
       }),
-      headers: { 'Content-Type': 'application/json' }
+      headers: {
+        'Content-Type': 'application/json',
+        'Access-Control-Allow-Origin': 'https://gameplanai.io',
+        'Access-Control-Allow-Headers': 'Content-Type',
+        'Access-Control-Allow-Methods': 'GET, POST, OPTIONS',
+      },
     };
   } catch (error) {
     console.error('Error updating subscription plan:', error);
     return {
       statusCode: 500,
       body: JSON.stringify({ error: 'Failed to update subscription plan' }),
-      headers: { 'Content-Type': 'application/json' }
+      headers: {
+        'Content-Type': 'application/json',
+        'Access-Control-Allow-Origin': 'https://gameplanai.io',
+        'Access-Control-Allow-Headers': 'Content-Type',
+        'Access-Control-Allow-Methods': 'GET, POST, OPTIONS',
+      },
     };
   }
 }
@@ -352,14 +411,24 @@ async function deleteSubscriptionPlan(event) {
       body: JSON.stringify({
         message: 'Subscription plan deleted successfully'
       }),
-      headers: { 'Content-Type': 'application/json' }
+      headers: {
+        'Content-Type': 'application/json',
+        'Access-Control-Allow-Origin': 'https://gameplanai.io',
+        'Access-Control-Allow-Headers': 'Content-Type',
+        'Access-Control-Allow-Methods': 'GET, POST, OPTIONS',
+      },
     };
   } catch (error) {
     console.error('Error deleting subscription plan:', error);
     return {
       statusCode: 500,
       body: JSON.stringify({ error: 'Failed to delete subscription plan' }),
-      headers: { 'Content-Type': 'application/json' }
+      headers: {
+        'Content-Type': 'application/json',
+        'Access-Control-Allow-Origin': 'https://gameplanai.io',
+        'Access-Control-Allow-Headers': 'Content-Type',
+        'Access-Control-Allow-Methods': 'GET, POST, OPTIONS',
+      },
     };
   }
 }
@@ -491,14 +560,24 @@ async function getUserSubscriptions(event) {
           pages: Math.ceil(total / parseInt(limit))
         }
       }),
-      headers: { 'Content-Type': 'application/json' }
+      headers: {
+        'Content-Type': 'application/json',
+        'Access-Control-Allow-Origin': 'https://gameplanai.io',
+        'Access-Control-Allow-Headers': 'Content-Type',
+        'Access-Control-Allow-Methods': 'GET, POST, OPTIONS',
+      },
     };
   } catch (error) {
     console.error('Error getting user subscriptions:', error);
     return {
       statusCode: 500,
       body: JSON.stringify({ error: 'Failed to get user subscriptions' }),
-      headers: { 'Content-Type': 'application/json' }
+      headers: {
+        'Content-Type': 'application/json',
+        'Access-Control-Allow-Origin': 'https://gameplanai.io',
+        'Access-Control-Allow-Headers': 'Content-Type',
+        'Access-Control-Allow-Methods': 'GET, POST, OPTIONS',
+      },
     };
   }
 }
@@ -585,14 +664,24 @@ async function updateUserSubscription(event) {
         message: 'User subscription updated successfully',
         subscription: result.rows[0]
       }),
-      headers: { 'Content-Type': 'application/json' }
+      headers: {
+        'Content-Type': 'application/json',
+        'Access-Control-Allow-Origin': 'https://gameplanai.io',
+        'Access-Control-Allow-Headers': 'Content-Type',
+        'Access-Control-Allow-Methods': 'GET, POST, OPTIONS',
+      },
     };
   } catch (error) {
     console.error('Error updating user subscription:', error);
     return {
       statusCode: 500,
       body: JSON.stringify({ error: 'Failed to update user subscription' }),
-      headers: { 'Content-Type': 'application/json' }
+      headers: {
+        'Content-Type': 'application/json',
+        'Access-Control-Allow-Origin': 'https://gameplanai.io',
+        'Access-Control-Allow-Headers': 'Content-Type',
+        'Access-Control-Allow-Methods': 'GET, POST, OPTIONS',
+      },
     };
   }
 }
