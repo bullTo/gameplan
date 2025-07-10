@@ -62,7 +62,12 @@ exports.handler = async (event) => {
     return {
       statusCode: 500,
       body: JSON.stringify({ error: 'Failed to fetch data' }),
-      headers: { 'Content-Type': 'application/json' }
+        headers: {
+          'Content-Type': 'application/json',
+          'Access-Control-Allow-Origin': 'https://gameplanai.io',
+          'Access-Control-Allow-Headers': 'Content-Type',
+          'Access-Control-Allow-Methods': 'GET, POST, OPTIONS'
+        }
     };
   }
 };
