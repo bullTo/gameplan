@@ -35,7 +35,7 @@ const LandingPage: React.FC = () => {
           </div>
 
           {/* Button Right */}
-          <div>
+          <div className='hidden sm:flex'>
             <Button
               className="bg-[#0EADAB] hover:bg-[#0EADAB]/90 text-white font-poppins tracking-wider px-8 py-3 rounded-md w-[263px] h-[50px]"
               onClick={handleLoginClick}
