@@ -1,6 +1,5 @@
 const { Pool } = require('pg');
 const jwt = require('jsonwebtoken');
-const { DatabaseBackup } = require('lucide-react');
 
 // Initialize PostgreSQL connection pool
 const pool = new Pool({
