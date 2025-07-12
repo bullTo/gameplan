@@ -5,6 +5,18 @@ const fetch = require('node-fetch');
 
 // This function will be triggered by a Netlify scheduled event
 exports.handler = async (event) => {
+  // 🔧 Handle preflight request
+  if (event.httpMethod === 'OPTIONS') {
+    return {
+      statusCode: 200,
+      headers: {
+        'Access-Control-Allow-Origin': 'https://gameplanai.io',
+        'Access-Control-Allow-Headers': 'Content-Type',
+        'Access-Control-Allow-Methods': 'POST, OPTIONS',
+      },
+      body: '',
+    };
+  }
   console.log('Starting scheduled sports data update');
   
   try {
