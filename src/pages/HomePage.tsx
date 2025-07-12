@@ -10,9 +10,12 @@ import { useForm } from 'react-hook-form'
 import { useNavigate, Link, useLocation } from 'react-router-dom'
 import { loginUser, registerUser } from '@/api/auth'
 import { ForgotPasswordDialog } from '@/components/ForgotPasswordDialog'
+import TermsModal from '@/components/TermsModal'
 
 const HomePage = () => {
   const [activeTab, setActiveTab] = useState('login')
+  const [termsModalOpen, setTermsModalOpen] = useState(false)
+  const [privacyModalOpen, setPrivacyModalOpen] = useState(false)
   const navigate = useNavigate()
   const { toast } = useToast();
   const location = useLocation()
@@ -418,9 +421,27 @@ const HomePage = () => {
                           <div className="space-y-1 leading-none">
                             <FormLabel style={{ fontSize: '0.875rem', color: '#A1A1A2', display: 'inline-flex', flexWrap: 'wrap' }}>
                               <span>By clicking Sign Up, you agree to our&nbsp;</span>
-                              <Link to="/terms" style={{ color: '#0EADAB', textDecoration: 'underline' }}>
+                              <button 
+                                type="button"
+                                onClick={(e) => {
+                                  e.preventDefault();
+                                  setTermsModalOpen(true);
+                                }}
+                                style={{ color: '#0EADAB', textDecoration: 'underline', background: 'none', border: 'none', cursor: 'pointer', padding: 0, font: 'inherit' }}
+                              >
                                 Terms and Conditions
-                              </Link>
+                              </button>
+                              <span>&nbsp;and&nbsp;</span>
+                              <button 
+                                type="button"
+                                onClick={(e) => {
+                                  e.preventDefault();
+                                  setPrivacyModalOpen(true);
+                                }}
+                                style={{ color: '#0EADAB', textDecoration: 'underline', background: 'none', border: 'none', cursor: 'pointer', padding: 0, font: 'inherit' }}
+                              >
+                                Privacy Policy
+                              </button>
                             </FormLabel>
                           </div>
                         </FormItem>
@@ -442,6 +463,17 @@ const HomePage = () => {
           </TabsContent>
         </Tabs>
 
+        <TermsModal
+          open={termsModalOpen}
+          onOpenChange={setTermsModalOpen}
+          type="terms"
+        />
+
+        <TermsModal
+          open={privacyModalOpen}
+          onOpenChange={setPrivacyModalOpen}
+          type="privacy"
+        />
 
       </div>
     </div>
