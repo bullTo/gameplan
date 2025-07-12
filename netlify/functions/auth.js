@@ -8,6 +8,14 @@ const jwt = require('jsonwebtoken');
 const { Resend } = require("resend");
 const crypto = require('crypto');
 
+// CORS headers
+const CORS_HEADERS = {
+  'Access-Control-Allow-Origin': '*',
+  'Access-Control-Allow-Headers': 'Content-Type, Authorization',
+  'Access-Control-Allow-Methods': 'GET, POST, OPTIONS',
+  'Content-Type': 'application/json'
+};
+
 function generateVerificationToken() {
   return crypto.randomBytes(32).toString('hex');
 }
@@ -47,41 +55,21 @@ const isValidPassword = (password) => {
 };
 
 exports.handler = async (event) => {
-  // 🔧 Handle preflight request
+  // Handle CORS preflight
   if (event.httpMethod === 'OPTIONS') {
     return {
       statusCode: 200,
-      headers: {
-        'Access-Control-Allow-Origin': 'https://gameplanai.io',
-        'Access-Control-Allow-Headers': 'Content-Type',
-        'Access-Control-Allow-Methods': 'POST, OPTIONS',
-      },
-      body: '',
+      headers: CORS_HEADERS,
+      body: ''
     };
   }
-  // 🔧 Handle preflight request
-  if (event.httpMethod === 'OPTIONS') {
-    return {
-      statusCode: 200,
-      headers: {
-        'Access-Control-Allow-Origin': 'https://gameplanai.io',
-        'Access-Control-Allow-Headers': 'Content-Type',
-        'Access-Control-Allow-Methods': 'POST, OPTIONS',
-      },
-      body: '',
-    };
-  }
+
   // Only allow POST requests
   if (event.httpMethod !== 'POST') {
     return {
       statusCode: 405,
       body: JSON.stringify({ error: 'Method Not Allowed' }),
-      headers: {
-        'Content-Type': 'application/json',
-        'Access-Control-Allow-Origin': 'https://gameplanai.io',
-        'Access-Control-Allow-Headers': 'Content-Type',
-        'Access-Control-Allow-Methods': 'GET, POST, OPTIONS'
-      }
+      headers: CORS_HEADERS
     };
   }
 
@@ -100,12 +88,7 @@ exports.handler = async (event) => {
         return {
           statusCode: 400,
           body: JSON.stringify({ error: 'Invalid action' }),
-          headers: {
-            'Content-Type': 'application/json',
-            'Access-Control-Allow-Origin': 'https://gameplanai.io',
-            'Access-Control-Allow-Headers': 'Content-Type',
-            'Access-Control-Allow-Methods': 'GET, POST, OPTIONS'
-          }
+          headers: CORS_HEADERS
         };
     }
   } catch (error) {
@@ -113,12 +96,7 @@ exports.handler = async (event) => {
     return {
       statusCode: 500,
       body: JSON.stringify({ error: 'Internal Server Error' }),
-      headers: {
-        'Content-Type': 'application/json',
-        'Access-Control-Allow-Origin': 'https://gameplanai.io',
-        'Access-Control-Allow-Headers': 'Content-Type',
-        'Access-Control-Allow-Methods': 'GET, POST, OPTIONS'
-      }
+      headers: CORS_HEADERS
     };
   }
 };
@@ -132,12 +110,7 @@ async function handleRegister(data) {
     return {
       statusCode: 400,
       body: JSON.stringify({ error: 'Name, email, and password are required' }),
-      headers: {
-        'Content-Type': 'application/json',
-        'Access-Control-Allow-Origin': 'https://gameplanai.io',
-        'Access-Control-Allow-Headers': 'Content-Type',
-        'Access-Control-Allow-Methods': 'GET, POST, OPTIONS'
-      }
+      headers: CORS_HEADERS
     };
   }
 
@@ -145,12 +118,7 @@ async function handleRegister(data) {
     return {
       statusCode: 400,
       body: JSON.stringify({ error: 'You must agree to the Terms and Conditions' }),
-      headers: {
-        'Content-Type': 'application/json',
-        'Access-Control-Allow-Origin': 'https://gameplanai.io',
-        'Access-Control-Allow-Headers': 'Content-Type',
-        'Access-Control-Allow-Methods': 'GET, POST, OPTIONS'
-      }
+      headers: CORS_HEADERS
     };
   }
 
@@ -158,12 +126,7 @@ async function handleRegister(data) {
     return {
       statusCode: 400,
       body: JSON.stringify({ error: 'Invalid email format' }),
-      headers: {
-        'Content-Type': 'application/json',
-        'Access-Control-Allow-Origin': 'https://gameplanai.io',
-        'Access-Control-Allow-Headers': 'Content-Type',
-        'Access-Control-Allow-Methods': 'GET, POST, OPTIONS'
-      }
+      headers: CORS_HEADERS
     };
   }
 
@@ -173,12 +136,7 @@ async function handleRegister(data) {
       body: JSON.stringify({
         error: 'Password must be at least 8 characters and include uppercase, lowercase, and numbers'
       }),
-      headers: {
-        'Content-Type': 'application/json',
-        'Access-Control-Allow-Origin': 'https://gameplanai.io',
-        'Access-Control-Allow-Headers': 'Content-Type',
-        'Access-Control-Allow-Methods': 'GET, POST, OPTIONS'
-      }
+      headers: CORS_HEADERS
     };
   }
 
@@ -193,12 +151,7 @@ async function handleRegister(data) {
       return {
         statusCode: 409,
         body: JSON.stringify({ error: 'User with this email already exists' }),
-        headers: {
-          'Content-Type': 'application/json',
-          'Access-Control-Allow-Origin': 'https://gameplanai.io',
-          'Access-Control-Allow-Headers': 'Content-Type',
-          'Access-Control-Allow-Methods': 'GET, POST, OPTIONS'
-        }
+        headers: CORS_HEADERS
       };
     }
 
@@ -253,24 +206,14 @@ async function handleRegister(data) {
         },
         token
       }),
-        headers: {
-          'Content-Type': 'application/json',
-          'Access-Control-Allow-Origin': 'https://gameplanai.io',
-          'Access-Control-Allow-Headers': 'Content-Type',
-          'Access-Control-Allow-Methods': 'GET, POST, OPTIONS'
-        }
+        headers: CORS_HEADERS
     };
   } catch (error) {
     console.error('Registration error:', error);
     return {
       statusCode: 500,
       body: JSON.stringify({ error: 'Failed to register user' }),
-        headers: {
-          'Content-Type': 'application/json',
-          'Access-Control-Allow-Origin': 'https://gameplanai.io',
-          'Access-Control-Allow-Headers': 'Content-Type',
-          'Access-Control-Allow-Methods': 'GET, POST, OPTIONS'
-        }
+        headers: CORS_HEADERS
     };
   }
 }
@@ -284,12 +227,7 @@ async function handleLogin(data) {
     return {
       statusCode: 400,
       body: JSON.stringify({ error: 'Email and password are required' }),
-        headers: {
-          'Content-Type': 'application/json',
-          'Access-Control-Allow-Origin': 'https://gameplanai.io',
-          'Access-Control-Allow-Headers': 'Content-Type',
-          'Access-Control-Allow-Methods': 'GET, POST, OPTIONS'
-        }
+        headers: CORS_HEADERS
     };
   }
 
@@ -304,12 +242,7 @@ async function handleLogin(data) {
       return {
         statusCode: 401,
         body: JSON.stringify({ error: 'Invalid credentials' }),
-        headers: {
-          'Content-Type': 'application/json',
-          'Access-Control-Allow-Origin': 'https://gameplanai.io',
-          'Access-Control-Allow-Headers': 'Content-Type',
-          'Access-Control-Allow-Methods': 'GET, POST, OPTIONS'
-        }
+        headers: CORS_HEADERS
       };
     }
 
@@ -321,12 +254,7 @@ async function handleLogin(data) {
       return {
         statusCode: 401,
         body: JSON.stringify({ error: 'Invalid credentials' }),
-        headers: {
-          'Content-Type': 'application/json',
-          'Access-Control-Allow-Origin': 'https://gameplanai.io',
-          'Access-Control-Allow-Headers': 'Content-Type',
-          'Access-Control-Allow-Methods': 'GET, POST, OPTIONS'
-        }
+        headers: CORS_HEADERS
       };
     }
 
@@ -334,12 +262,7 @@ async function handleLogin(data) {
       return {
         statusCode: 401,
         body: JSON.stringify({ error: 'Email not verified' }),
-        headers: {
-          'Content-Type': 'application/json',
-          'Access-Control-Allow-Origin': 'https://gameplanai.io',
-          'Access-Control-Allow-Headers': 'Content-Type',
-          'Access-Control-Allow-Methods': 'GET, POST, OPTIONS'
-        }
+        headers: CORS_HEADERS
       };
     }
     // Generate JWT token with longer expiry if rememberMe is true
@@ -372,24 +295,14 @@ async function handleLogin(data) {
         },
         token
       }),
-        headers: {
-          'Content-Type': 'application/json',
-          'Access-Control-Allow-Origin': 'https://gameplanai.io',
-          'Access-Control-Allow-Headers': 'Content-Type',
-          'Access-Control-Allow-Methods': 'GET, POST, OPTIONS'
-        }
+        headers: CORS_HEADERS
     };
   } catch (error) {
     console.error('Login error:', error);
     return {
       statusCode: 500,
       body: JSON.stringify({ error: 'Failed to login' }),
-        headers: {
-          'Content-Type': 'application/json',
-          'Access-Control-Allow-Origin': 'https://gameplanai.io',
-          'Access-Control-Allow-Headers': 'Content-Type',
-          'Access-Control-Allow-Methods': 'GET, POST, OPTIONS'
-        }
+        headers: CORS_HEADERS
     };
   }
 }
