@@ -28,7 +28,7 @@ exports.handler = async (event, context) => {
         'Access-Control-Allow-Headers': 'Content-Type',
         'Access-Control-Allow-Methods': 'POST, OPTIONS',
       },
-      body: '',
+      body: ''
     };
   }
   // Only allow GET requests
@@ -39,9 +39,11 @@ exports.handler = async (event, context) => {
     };
   }
 
+  
   try {
     // Get the authorization header
     const authHeader = event.headers.authorization;
+    console.log("authHeader", authHeader)
     if (!authHeader || !authHeader.startsWith('Bearer ')) {
       return {
         statusCode: 401,
